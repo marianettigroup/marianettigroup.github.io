@@ -1,0 +1,7 @@
+principia\_materia.cli.bid\_cli module
+======================================
+
+.. automodule:: principia_materia.cli.bid_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

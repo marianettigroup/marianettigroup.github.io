@@ -1,0 +1,21 @@
+principia\_materia.utils package
+================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.utils.config_manager
+   principia_materia.utils.db_utils
+   principia_materia.utils.testing
+   principia_materia.utils.text_file_search
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

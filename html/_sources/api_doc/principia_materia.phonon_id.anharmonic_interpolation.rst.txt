@@ -1,0 +1,7 @@
+principia\_materia.phonon\_id.anharmonic\_interpolation module
+==============================================================
+
+.. automodule:: principia_materia.phonon_id.anharmonic_interpolation
+   :members:
+   :undoc-members:
+   :show-inheritance:

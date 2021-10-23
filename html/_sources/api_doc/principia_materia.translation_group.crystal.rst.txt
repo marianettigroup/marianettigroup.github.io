@@ -1,0 +1,7 @@
+principia\_materia.translation\_group.crystal module
+====================================================
+
+.. automodule:: principia_materia.translation_group.crystal
+   :members:
+   :undoc-members:
+   :show-inheritance:

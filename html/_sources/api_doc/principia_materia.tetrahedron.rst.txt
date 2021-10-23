@@ -1,0 +1,18 @@
+principia\_materia.tetrahedron package
+======================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.tetrahedron.tetrahedra
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.tetrahedron
+   :members:
+   :undoc-members:
+   :show-inheritance:

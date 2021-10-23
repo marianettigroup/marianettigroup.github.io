@@ -1,0 +1,162 @@
+.. _compute-id:
+
+Compute Irreducible Derivatives
+===============================
+
+Within this package we can compute irreducible derivatives of phonons and phonon interactions at a given order with either LID or BID approach.
+The theory behind these approaches are described in the following paper:
+
+* `L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019) <https://doi.org/10.1103/PhysRevB.100.014303>`_.
+
+
+LID Approach on NaCl at Second Order
+---------------------------------------
+
+There are many ways to use this package to execute calculations of the irreducible derivatives with LID approach.
+Here we demonstrate a recommended workflow to execute our LID approach at second order on NaCl from forces computed by first principle method.
+
+First we create a file ``structure.yml`` describing the structure of NaCl::
+  
+  $ cat structure.yml
+  # CrystalFTG
+  vec:
+    [[ 0.00000000,  2.83000729,  2.83000729],
+     [ 2.83000729,  0.00000000,  2.83000729],
+     [ 2.83000729,  2.83000729,  0.00000000]]
+  atoms:
+    - Na: 
+        [[ 0.00000000,  0.00000000,  0.00000000]]
+    - Cl: 
+        [[ 0.50000000,  0.50000000,  0.50000000]]
+  orbitals: p
+  supa:
+    [[ 1,  0,  0],
+     [ 0,  1,  0],
+     [ 0,  0,  1]]
+
+(Currently we assign a default identity supercell to any primitive structure.)
+
+Then, with this structure and the point group of NaCl *Oh*, we can write the configuration file to execute the LID approach on :math:`2 \times 2 \times 2` mesh::
+
+  $ cat config.yml
+  structure: 'structure.yml'
+  supa: |
+    2 0 0
+    0 2 0
+    0 0 2
+  pg: 'Oh'
+  order:  2
+  full_symmetry: True
+  delta: [ 0.02, 0.03, 0.04]
+  fdtype: 'c'
+  root_directory: '.'
+  database: 'database.db'
+  db_type: 'sqlite'
+  db_table: 'lid_phonon'
+
+With the configuration file we can initiate the pre-processing step which will execute the symmetry analysis and create the jobs that need to be computed with
+first principles::
+
+  pm-lid-mesh --config config.yml --create --save-lid-mesh
+
+The above step will create two files:
+
+* ``lid_mesh.hdf5``: A HDF5 file containing the computed symmetry analysis results, which will be used in the post-processing step to compute the irreducible derivatives
+  after first principle calculations are finished.
+
+* ``database.db``: A SQLite database file containing the jobs need to be computed with first principle calculations (``db_type`` is specified to be 'sqlite' in the ``config.yml`` file,
+  other database can be used if a working interface is provided).
+
+
+.. Note::
+   The above steps can also be executed purely in command line with the following command::
+
+      pm-lid-mesh --save-config --create --save-lid-mesh --structure structure.yml \
+        --supa '2,0,0;0,2,0;0,0,2' --pg Oh --order 2 --full-symmetry \
+        --delta 0.02,0.03,0.04 --fdtype c --database database.db \
+        --db-type sqlite --db-table lid_phonon
+      
+The next step is to create the first principle jobs to be computed, the package generically supports all types of first principle compute engines provided a working interface,
+and here we demonstrate using VASP. We begin by create the VASP jobs to be executed::
+
+  pm-jobs --config config.yml --create --engine vasp --save-config jobs_config.yml \
+    --job-config-path path-to-vasp-input-templates
+
+Inside the ``path-to-vasp-input-templates`` directory, one usually needs to provide "INCAR", "KPOINTS" and "POTCAR" files and they will be used as templates when creating the
+vasp jobs, each vasp job will be created in a separate directory for convenience. Once these directories are created, VASP can be executed within each directory.
+Afterwards, the calculation results can be collected and stored in the database::
+
+  pm-jobs --config jobs_config.yml --retrieve
+
+.. Note::
+   We initiated the ``pm-jobs`` command with the input configuration file for the LID analysis ``config.yml``,
+   and subsequently saved a new configuration file ``jobs_config.yml`` for the ``pm-jobs`` code for the purpose of convenience.
+   These configuration files contains all the input arguments that are required to reproduce the exact same setup.
+
+Finally, we can execute the post-processing step of the LID approach to compute the irreducible derivatives and, for example, compute the force constants tensors for Fourier interpolation::
+
+  pm-lid-mesh --load-lid-mesh lid_mesh.hdf5 --config config.yml \
+    --post --save-fi --save-ids --save-dts
+
+If the material of interest is an insulator and the dipole-dipole interaction needs to be considered,
+the dataset for computing the dipole-dipole interaction needs to be provided as an input as well::
+
+  pm-lid-mesh --load-lid-mesh lid_mesh.hdf5 --config config.yml --epsilon path-to-epsilon.yml \
+    --post --save-fi --save-ids --save-dts
+
+The following files are created in this step:
+
+* ``irreducible_derivatives.hdf5``: A HDF5 files containing the names of the irreducible derivatives and their values.
+
+* ``fourier_interpolation.hdf5``: A HDF5 files containing all the necessary information (structure, force constants tensors, FTG and dipole-dipole contributions if at second order)
+  to compute Fourier interpolation.
+
+* ``dynamic_tensors.hdf5``: A HDF5 files containing all the dynamic tensors in the naive basis within irreducible Q.
+
+
+.. Note::
+   Both **BID** and **HS-BID** approaches can be executed following the exact same workflow while replacing the command ``pm-lid-mesh``
+   with ``pm-bid`` and ``pm-hsbid`` respectively, and a change of the table name for the database is also recommended (e.g. change to 'bid_phonon').
+
+
+Computing phonon dispersion and DOS
+-----------------------------------
+
+With the ``fourier_interpolation.hdf5`` file obtained at second order, we can compute phonon dispersion and density of states (DOS).
+
+Let's continue the NaCl example and first prepare the configuration file ``phonon_config.yml`` for computing the phonon dispersion and DOS::
+
+  $ cat phonon_config.yml
+  band:
+    - ['0 0 0', '1/2 1/2 0']
+    - ['-1/2 1/2 0', '0 0 0']
+    - ['0 0 0', '1/2 1/2 1/2']
+  band_label:
+    - $\Gamma$
+    - X
+    - $\Gamma$
+    - L
+  mesh: 20 20 20
+
+Then we can execute the following command to compute the band structure and DOS::
+
+  pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 --config phonon_config.yml \
+    --save-band --save-grid --save-dos --save-plot
+
+The following files are created in this step:
+
+* ``band_plot_config.yml``: A YAML file with the configuration the plot the band structure and DOS;
+
+* ``bands.dat``: A text file with the phonon band structure data computed with Fourier interpolation;
+
+* ``grid_phonons.dat``: A text file with the data of the phonons that are measured at the FTG that fall on the path in the plot;
+
+* ``dos.dat``: A text file with the data of phonon DOS.
+
+We can plot the phonon band structure and DOS with the following command::
+
+  pm-plot-band -s band_plot_config.yml
+
+.. image:: ../figures/phonon_id/nacl_phonon_band_dos.png
+  :width: 400
+  :alt: Phonon band structure and DOS of NaCl

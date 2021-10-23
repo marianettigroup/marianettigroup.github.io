@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Continuous Integration &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Documentations" href="api_doc/modules.html" />
+    <link rel="prev" title="Compute Phonon Linewidth and Thermal Conductivity" href="documentations/compute_thermal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Continuous Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ci-setup">CI setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Continuous Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ci.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="continuous-integration">
+<h1>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline"></a></h1>
+<p>Continuous integration is an essential part of the software’s development workflow,
+allowing the automation of multiple steps including code compilation, testing and deployment.
+This package utilizes several popular CI platforms to perform continuous integration.</p>
+<section id="unit-tests">
+<h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h2>
+<p>Our unit tests are written compatible with <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> module, which
+provides straightforward test execution and error reporting as well as an easy solution to assess tests
+coverage.
+<code class="docutils literal notranslate"><span class="pre">pytest</span></code> follows the standard test discovery rules that can be found
+<cite>here &lt;https://docs.pytest.org/en/stable/goodpractices.html#conventions-for-python-test-discovery&gt;_</cite>.
+For simple tests, we just need to write some functions with prefix <code class="docutils literal notranslate"><span class="pre">test</span></code>, while it is also possible
+to write test classes with prefix <code class="docutils literal notranslate"><span class="pre">Test</span></code>.</p>
+</section>
+<section id="ci-setup">
+<h2>CI setup<a class="headerlink" href="#ci-setup" title="Permalink to this headline"></a></h2>
+<p>The setup of CI for this package follows generally the following steps, here we use Travis-CI as an example
+for how we write the config script:</p>
+<ol class="arabic simple">
+<li><p>Set up the environment. Since the package mainly uses Python, the environment is fairly easy to setup.
+Folowing is an exmple for Travis-CI, that configures an linux environment with Python 3.8.
+It is also possible to set up different operating systems as well as different Python version with the
+matrix feature of the CI platforms.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+
+<span class="nt">os</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">linux</span>
+
+<span class="nt">cache</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pip</span>
+
+<span class="nt">virtualenv</span><span class="p">:</span>
+  <span class="nt">system_site_packages</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">python</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;3.8&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>The next step is to install dependencies.  At this stage all submodules will be
+checked out to load in documentations and unit tests. Both dependencies for the
+Fortran extensions and the required Python libraries will be installed in this
+step.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to install dependencies</span>
+<span class="nt">before_install</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule init</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule update</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install -y gcc gfortran libblas-dev liblapack-dev libgomp1</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo pip install --ignore-installed -r tests/requirements.txt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>This step is fairly straightforward, the package is compiled and installed
+in development mode, which is easier for debugging purposes.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to compile and install code</span>
+<span class="nt">install</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">echo &quot;Build&quot;</span>
+  <span class="no">python setup.py build</span>
+  <span class="no">python setup.py develop</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>After the package is successfully installed, the unit tests need to be executed
+and tests coverage will be recorded.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to run tests</span>
+<span class="nt">script</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">echo &quot;Run tests&quot;</span>
+  <span class="no">cd tests/tests</span>
+  <span class="no">make test</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>After the tests are successfully executed, one can compute the coverage statistics
+and generate coverage report and coverage badge.
+Meanwhile it can also be setup in a way when a new release is pushed to the git repository,
+the code will be compiled, packaged and uploaded to software repository platforms.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to create coverate report and badge</span>
+<span class="nt">after_success</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">cd ${TRAVIS_BUILD_DIR}/tests/tests</span>
+  <span class="no">coverage xml</span>
+  <span class="no">coverage html</span>
+  <span class="no">coverage-badge -o coverage.svg</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="documentations/compute_thermal.html" class="btn btn-neutral float-left" title="Compute Phonon Linewidth and Thermal Conductivity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_doc/modules.html" class="btn btn-neutral float-right" title="API Documentations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

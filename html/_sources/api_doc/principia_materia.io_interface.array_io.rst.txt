@@ -1,0 +1,7 @@
+principia\_materia.io\_interface.array\_io module
+=================================================
+
+.. automodule:: principia_materia.io_interface.array_io
+   :members:
+   :undoc-members:
+   :show-inheritance:

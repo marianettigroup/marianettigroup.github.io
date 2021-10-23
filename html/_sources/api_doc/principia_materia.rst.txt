@@ -1,0 +1,30 @@
+principia\_materia package
+==========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.cli
+   principia_materia.constants
+   principia_materia.hamiltonian
+   principia_materia.io_interface
+   principia_materia.mathematics
+   principia_materia.phonon_id
+   principia_materia.plotting
+   principia_materia.representation
+   principia_materia.symmetry
+   principia_materia.tetrahedron
+   principia_materia.translation_group
+   principia_materia.utils
+   principia_materia.visualization
+
+Module contents
+---------------
+
+.. automodule:: principia_materia
+   :members:
+   :undoc-members:
+   :show-inheritance:

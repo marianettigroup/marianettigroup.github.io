@@ -1,0 +1,21 @@
+principia\_materia.hamiltonian package
+======================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.hamiltonian.electron_hamiltonian
+   principia_materia.hamiltonian.hamiltonian
+   principia_materia.hamiltonian.model_hamiltonian
+   principia_materia.hamiltonian.phonon_hamiltonian
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.hamiltonian
+   :members:
+   :undoc-members:
+   :show-inheritance:

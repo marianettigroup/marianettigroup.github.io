@@ -1,0 +1,7 @@
+principia\_materia.phonon\_id.fd\_series module
+===============================================
+
+.. automodule:: principia_materia.phonon_id.fd_series
+   :members:
+   :undoc-members:
+   :show-inheritance:

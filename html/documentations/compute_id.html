@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compute Irreducible Derivatives &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compute Phonon Linewidth and Thermal Conductivity" href="compute_thermal.html" />
+    <link rel="prev" title="Translation group" href="translation_group.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation group</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Compute Irreducible Derivatives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lid-approach-on-nacl-at-second-order">LID Approach on NaCl at Second Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computing-phonon-dispersion-and-dos">Computing phonon dispersion and DOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentations</a> &raquo;</li>
+      <li>Compute Irreducible Derivatives</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentations/compute_id.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compute-irreducible-derivatives">
+<span id="compute-id"></span><h1>Compute Irreducible Derivatives<a class="headerlink" href="#compute-irreducible-derivatives" title="Permalink to this headline"></a></h1>
+<p>Within this package we can compute irreducible derivatives of phonons and phonon interactions at a given order with either LID or BID approach.
+The theory behind these approaches are described in the following paper:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevB.100.014303">L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019)</a>.</p></li>
+</ul>
+<section id="lid-approach-on-nacl-at-second-order">
+<h2>LID Approach on NaCl at Second Order<a class="headerlink" href="#lid-approach-on-nacl-at-second-order" title="Permalink to this headline"></a></h2>
+<p>There are many ways to use this package to execute calculations of the irreducible derivatives with LID approach.
+Here we demonstrate a recommended workflow to execute our LID approach at second order on NaCl from forces computed by first principle method.</p>
+<p>First we create a file <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> describing the structure of NaCl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat structure.yml
+# CrystalFTG
+vec:
+  [[ 0.00000000,  2.83000729,  2.83000729],
+   [ 2.83000729,  0.00000000,  2.83000729],
+   [ 2.83000729,  2.83000729,  0.00000000]]
+atoms:
+  - Na:
+      [[ 0.00000000,  0.00000000,  0.00000000]]
+  - Cl:
+      [[ 0.50000000,  0.50000000,  0.50000000]]
+orbitals: p
+supa:
+  [[ 1,  0,  0],
+   [ 0,  1,  0],
+   [ 0,  0,  1]]
+</pre></div>
+</div>
+<p>(Currently we assign a default identity supercell to any primitive structure.)</p>
+<p>Then, with this structure and the point group of NaCl <em>Oh</em>, we can write the configuration file to execute the LID approach on <span class="math notranslate nohighlight">\(2 \times 2 \times 2\)</span> mesh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat config.yml
+structure: &#39;structure.yml&#39;
+supa: |
+  2 0 0
+  0 2 0
+  0 0 2
+pg: &#39;Oh&#39;
+order:  2
+full_symmetry: True
+delta: [ 0.02, 0.03, 0.04]
+fdtype: &#39;c&#39;
+root_directory: &#39;.&#39;
+database: &#39;database.db&#39;
+db_type: &#39;sqlite&#39;
+db_table: &#39;lid_phonon&#39;
+</pre></div>
+</div>
+<p>With the configuration file we can initiate the pre-processing step which will execute the symmetry analysis and create the jobs that need to be computed with
+first principles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span>
+</pre></div>
+</div>
+<p>The above step will create two files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lid_mesh.hdf5</span></code>: A HDF5 file containing the computed symmetry analysis results, which will be used in the post-processing step to compute the irreducible derivatives
+after first principle calculations are finished.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">database.db</span></code>: A SQLite database file containing the jobs need to be computed with first principle calculations (<code class="docutils literal notranslate"><span class="pre">db_type</span></code> is specified to be ‘sqlite’ in the <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file,
+other database can be used if a working interface is provided).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above steps can also be executed purely in command line with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">config</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">structure</span> <span class="n">structure</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">--</span><span class="n">supa</span> <span class="s1">&#39;2,0,0;0,2,0;0,0,2&#39;</span> <span class="o">--</span><span class="n">pg</span> <span class="n">Oh</span> <span class="o">--</span><span class="n">order</span> <span class="mi">2</span> <span class="o">--</span><span class="n">full</span><span class="o">-</span><span class="n">symmetry</span> \
+  <span class="o">--</span><span class="n">delta</span> <span class="mf">0.02</span><span class="p">,</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.04</span> <span class="o">--</span><span class="n">fdtype</span> <span class="n">c</span> <span class="o">--</span><span class="n">database</span> <span class="n">database</span><span class="o">.</span><span class="n">db</span> \
+  <span class="o">--</span><span class="n">db</span><span class="o">-</span><span class="nb">type</span> <span class="n">sqlite</span> <span class="o">--</span><span class="n">db</span><span class="o">-</span><span class="n">table</span> <span class="n">lid_phonon</span>
+</pre></div>
+</div>
+</div>
+<p>The next step is to create the first principle jobs to be computed, the package generically supports all types of first principle compute engines provided a working interface,
+and here we demonstrate using VASP. We begin by create the VASP jobs to be executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">engine</span> <span class="n">vasp</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">config</span> <span class="n">jobs_config</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">--</span><span class="n">job</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">path</span> <span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">vasp</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="n">templates</span>
+</pre></div>
+</div>
+<p>Inside the <code class="docutils literal notranslate"><span class="pre">path-to-vasp-input-templates</span></code> directory, one usually needs to provide “INCAR”, “KPOINTS” and “POTCAR” files and they will be used as templates when creating the
+vasp jobs, each vasp job will be created in a separate directory for convenience. Once these directories are created, VASP can be executed within each directory.
+Afterwards, the calculation results can be collected and stored in the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">config</span> <span class="n">jobs_config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">retrieve</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We initiated the <code class="docutils literal notranslate"><span class="pre">pm-jobs</span></code> command with the input configuration file for the LID analysis <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>,
+and subsequently saved a new configuration file <code class="docutils literal notranslate"><span class="pre">jobs_config.yml</span></code> for the <code class="docutils literal notranslate"><span class="pre">pm-jobs</span></code> code for the purpose of convenience.
+These configuration files contains all the input arguments that are required to reproduce the exact same setup.</p>
+</div>
+<p>Finally, we can execute the post-processing step of the LID approach to compute the irreducible derivatives and, for example, compute the force constants tensors for Fourier interpolation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">load</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="n">lid_mesh</span><span class="o">.</span><span class="n">hdf5</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">--</span><span class="n">post</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">fi</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">ids</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dts</span>
+</pre></div>
+</div>
+<p>If the material of interest is an insulator and the dipole-dipole interaction needs to be considered,
+the dataset for computing the dipole-dipole interaction needs to be provided as an input as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">load</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="n">lid_mesh</span><span class="o">.</span><span class="n">hdf5</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">epsilon</span> <span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">epsilon</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">--</span><span class="n">post</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">fi</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">ids</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dts</span>
+</pre></div>
+</div>
+<p>The following files are created in this step:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">irreducible_derivatives.hdf5</span></code>: A HDF5 files containing the names of the irreducible derivatives and their values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fourier_interpolation.hdf5</span></code>: A HDF5 files containing all the necessary information (structure, force constants tensors, FTG and dipole-dipole contributions if at second order)
+to compute Fourier interpolation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dynamic_tensors.hdf5</span></code>: A HDF5 files containing all the dynamic tensors in the naive basis within irreducible Q.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both <strong>BID</strong> and <strong>HS-BID</strong> approaches can be executed following the exact same workflow while replacing the command <code class="docutils literal notranslate"><span class="pre">pm-lid-mesh</span></code>
+with <code class="docutils literal notranslate"><span class="pre">pm-bid</span></code> and <code class="docutils literal notranslate"><span class="pre">pm-hsbid</span></code> respectively, and a change of the table name for the database is also recommended (e.g. change to ‘bid_phonon’).</p>
+</div>
+</section>
+<section id="computing-phonon-dispersion-and-dos">
+<h2>Computing phonon dispersion and DOS<a class="headerlink" href="#computing-phonon-dispersion-and-dos" title="Permalink to this headline"></a></h2>
+<p>With the <code class="docutils literal notranslate"><span class="pre">fourier_interpolation.hdf5</span></code> file obtained at second order, we can compute phonon dispersion and density of states (DOS).</p>
+<p>Let’s continue the NaCl example and first prepare the configuration file <code class="docutils literal notranslate"><span class="pre">phonon_config.yml</span></code> for computing the phonon dispersion and DOS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat phonon_config.yml
+band:
+  - [&#39;0 0 0&#39;, &#39;1/2 1/2 0&#39;]
+  - [&#39;-1/2 1/2 0&#39;, &#39;0 0 0&#39;]
+  - [&#39;0 0 0&#39;, &#39;1/2 1/2 1/2&#39;]
+band_label:
+  - $\Gamma$
+  - X
+  - $\Gamma$
+  - L
+mesh: 20 20 20
+</pre></div>
+</div>
+<p>Then we can execute the following command to compute the band structure and DOS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">phonon</span><span class="o">-</span><span class="n">band</span><span class="o">-</span><span class="n">dos</span> <span class="o">--</span><span class="n">load</span><span class="o">-</span><span class="n">fi</span> <span class="n">fourier_interpolation</span><span class="o">.</span><span class="n">hdf5</span> <span class="o">--</span><span class="n">config</span> <span class="n">phonon_config</span><span class="o">.</span><span class="n">yml</span> \
+  <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">band</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">grid</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dos</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">plot</span>
+</pre></div>
+</div>
+<p>The following files are created in this step:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">band_plot_config.yml</span></code>: A YAML file with the configuration the plot the band structure and DOS;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bands.dat</span></code>: A text file with the phonon band structure data computed with Fourier interpolation;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_phonons.dat</span></code>: A text file with the data of the phonons that are measured at the FTG that fall on the path in the plot;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dos.dat</span></code>: A text file with the data of phonon DOS.</p></li>
+</ul>
+<p>We can plot the phonon band structure and DOS with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">plot</span><span class="o">-</span><span class="n">band</span> <span class="o">-</span><span class="n">s</span> <span class="n">band_plot_config</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/nacl_phonon_band_dos.png"><img alt="Phonon band structure and DOS of NaCl" src="../_images/nacl_phonon_band_dos.png" style="width: 400px;" /></a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="translation_group.html" class="btn btn-neutral float-left" title="Translation group" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="compute_thermal.html" class="btn btn-neutral float-right" title="Compute Phonon Linewidth and Thermal Conductivity" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+Continuous Integration
+----------------------
+
+Continuous integration is an essential part of the software's development workflow,
+allowing the automation of multiple steps including code compilation, testing and deployment.
+This package utilizes several popular CI platforms to perform continuous integration.
+
+
+Unit tests
+==========
+
+Our unit tests are written compatible with `pytest <https://docs.pytest.org/en/stable/>`_ module, which
+provides straightforward test execution and error reporting as well as an easy solution to assess tests
+coverage.
+``pytest`` follows the standard test discovery rules that can be found
+`here <https://docs.pytest.org/en/stable/goodpractices.html#conventions-for-python-test-discovery>_`.
+For simple tests, we just need to write some functions with prefix ``test``, while it is also possible
+to write test classes with prefix ``Test``.
+
+
+CI setup
+========
+
+The setup of CI for this package follows generally the following steps, here we use Travis-CI as an example
+for how we write the config script:
+
+
+1. Set up the environment. Since the package mainly uses Python, the environment is fairly easy to setup.
+   Folowing is an exmple for Travis-CI, that configures an linux environment with Python 3.8.
+   It is also possible to set up different operating systems as well as different Python version with the
+   matrix feature of the CI platforms.
+
+.. code-block:: yaml
+
+    language: python
+
+    os:
+      - linux
+
+    cache: pip
+
+    virtualenv:
+      system_site_packages: false
+
+    python:
+      - "3.8"
+
+2. The next step is to install dependencies.  At this stage all submodules will be
+   checked out to load in documentations and unit tests. Both dependencies for the
+   Fortran extensions and the required Python libraries will be installed in this
+   step.
+
+.. code-block:: yaml
+
+    # command to install dependencies
+    before_install:
+      - git submodule init
+      - git submodule update
+      - sudo apt-get update
+      - sudo apt-get install -y gcc gfortran libblas-dev liblapack-dev libgomp1
+      - sudo pip install --ignore-installed -r tests/requirements.txt
+
+
+3. This step is fairly straightforward, the package is compiled and installed
+   in development mode, which is easier for debugging purposes.
+
+.. code-block:: yaml
+
+    # command to compile and install code
+    install: |
+      echo "Build"
+      python setup.py build
+      python setup.py develop
+
+
+4. After the package is successfully installed, the unit tests need to be executed
+   and tests coverage will be recorded.
+
+.. code-block:: yaml
+
+    # command to run tests
+    script: |
+      echo "Run tests"
+      cd tests/tests
+      make test
+
+5. After the tests are successfully executed, one can compute the coverage statistics
+   and generate coverage report and coverage badge.
+   Meanwhile it can also be setup in a way when a new release is pushed to the git repository,
+   the code will be compiled, packaged and uploaded to software repository platforms.
+
+.. code-block:: yaml
+
+    # command to create coverate report and badge
+    after_success: |
+      cd ${TRAVIS_BUILD_DIR}/tests/tests
+      coverage xml
+      coverage html
+      coverage-badge -o coverage.svg
+

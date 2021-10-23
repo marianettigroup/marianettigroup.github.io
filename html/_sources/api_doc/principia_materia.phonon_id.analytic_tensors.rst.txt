@@ -1,0 +1,7 @@
+principia\_materia.phonon\_id.analytic\_tensors module
+======================================================
+
+.. automodule:: principia_materia.phonon_id.analytic_tensors
+   :members:
+   :undoc-members:
+   :show-inheritance:

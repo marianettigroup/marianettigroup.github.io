@@ -1,0 +1,7 @@
+principia\_materia.io\_interface.compute\_job\_series module
+============================================================
+
+.. automodule:: principia_materia.io_interface.compute_job_series
+   :members:
+   :undoc-members:
+   :show-inheritance:

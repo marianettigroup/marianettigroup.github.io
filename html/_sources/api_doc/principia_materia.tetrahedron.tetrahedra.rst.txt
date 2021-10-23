@@ -1,0 +1,7 @@
+principia\_materia.tetrahedron.tetrahedra module
+================================================
+
+.. automodule:: principia_materia.tetrahedron.tetrahedra
+   :members:
+   :undoc-members:
+   :show-inheritance:

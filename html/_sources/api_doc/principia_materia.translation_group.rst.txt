@@ -1,0 +1,26 @@
+principia\_materia.translation\_group package
+=============================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.translation_group.cluster
+   principia_materia.translation_group.crystal
+   principia_materia.translation_group.crystal_ftg
+   principia_materia.translation_group.kpoints
+   principia_materia.translation_group.lattice
+   principia_materia.translation_group.lattice_ftg
+   principia_materia.translation_group.minimum_supercell
+   principia_materia.translation_group.qpoints_n
+   principia_materia.translation_group.wigner_seitz
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.translation_group
+   :members:
+   :undoc-members:
+   :show-inheritance:

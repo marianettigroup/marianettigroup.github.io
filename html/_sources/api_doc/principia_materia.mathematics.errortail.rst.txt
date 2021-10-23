@@ -1,0 +1,7 @@
+principia\_materia.mathematics.errortail module
+===============================================
+
+.. automodule:: principia_materia.mathematics.errortail
+   :members:
+   :undoc-members:
+   :show-inheritance:

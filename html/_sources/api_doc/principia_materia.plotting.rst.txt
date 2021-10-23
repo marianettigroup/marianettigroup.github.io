@@ -1,0 +1,20 @@
+principia\_materia.plotting package
+===================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.plotting.kpath
+   principia_materia.plotting.plot_band
+   principia_materia.plotting.plot_errortail
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.plotting
+   :members:
+   :undoc-members:
+   :show-inheritance:

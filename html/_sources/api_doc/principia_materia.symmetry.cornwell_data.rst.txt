@@ -1,0 +1,7 @@
+principia\_materia.symmetry.cornwell\_data module
+=================================================
+
+.. automodule:: principia_materia.symmetry.cornwell_data
+   :members:
+   :undoc-members:
+   :show-inheritance:

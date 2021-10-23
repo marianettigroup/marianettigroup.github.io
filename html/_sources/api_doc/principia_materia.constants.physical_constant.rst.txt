@@ -1,0 +1,7 @@
+principia\_materia.constants.physical\_constant module
+======================================================
+
+.. automodule:: principia_materia.constants.physical_constant
+   :members:
+   :undoc-members:
+   :show-inheritance:

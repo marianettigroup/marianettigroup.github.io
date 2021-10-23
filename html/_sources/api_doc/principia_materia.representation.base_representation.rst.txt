@@ -1,0 +1,7 @@
+principia\_materia.representation.base\_representation module
+=============================================================
+
+.. automodule:: principia_materia.representation.base_representation
+   :members:
+   :undoc-members:
+   :show-inheritance:

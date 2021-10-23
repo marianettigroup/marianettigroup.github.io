@@ -1,0 +1,7 @@
+principia\_materia.mathematics.tensor\_utils module
+===================================================
+
+.. automodule:: principia_materia.mathematics.tensor_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

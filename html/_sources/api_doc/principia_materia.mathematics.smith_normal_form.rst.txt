@@ -1,0 +1,7 @@
+principia\_materia.mathematics.smith\_normal\_form module
+=========================================================
+
+.. automodule:: principia_materia.mathematics.smith_normal_form
+   :members:
+   :undoc-members:
+   :show-inheritance:

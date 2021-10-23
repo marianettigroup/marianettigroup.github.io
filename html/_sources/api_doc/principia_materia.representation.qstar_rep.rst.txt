@@ -1,0 +1,7 @@
+principia\_materia.representation.qstar\_rep module
+===================================================
+
+.. automodule:: principia_materia.representation.qstar_rep
+   :members:
+   :undoc-members:
+   :show-inheritance:

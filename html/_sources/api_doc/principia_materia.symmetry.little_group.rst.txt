@@ -1,0 +1,7 @@
+principia\_materia.symmetry.little\_group module
+================================================
+
+.. automodule:: principia_materia.symmetry.little_group
+   :members:
+   :undoc-members:
+   :show-inheritance:

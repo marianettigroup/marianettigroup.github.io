@@ -1,0 +1,7 @@
+principia\_materia.cli.hsbid\_cli module
+========================================
+
+.. automodule:: principia_materia.cli.hsbid_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

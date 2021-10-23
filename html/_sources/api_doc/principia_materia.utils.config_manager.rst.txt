@@ -1,0 +1,7 @@
+principia\_materia.utils.config\_manager module
+===============================================
+
+.. automodule:: principia_materia.utils.config_manager
+   :members:
+   :undoc-members:
+   :show-inheritance:

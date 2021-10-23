@@ -1,0 +1,7 @@
+principia\_materia.phonon\_id.dipole\_dipole module
+===================================================
+
+.. automodule:: principia_materia.phonon_id.dipole_dipole
+   :members:
+   :undoc-members:
+   :show-inheritance:

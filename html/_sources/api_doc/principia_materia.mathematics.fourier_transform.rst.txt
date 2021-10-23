@@ -1,0 +1,7 @@
+principia\_materia.mathematics.fourier\_transform module
+========================================================
+
+.. automodule:: principia_materia.mathematics.fourier_transform
+   :members:
+   :undoc-members:
+   :show-inheritance:

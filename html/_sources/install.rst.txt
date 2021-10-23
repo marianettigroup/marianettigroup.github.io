@@ -1,0 +1,86 @@
+.. index:: install
+
+.. _install:
+
+Install
+=======
+
+<+the package+> consists of Python codes with C++ and Fortran extensions.
+
+
+
+
+Install from PyPI
+-----------------
+
+.. code-block:: bash
+
+      pip install principia-materia
+
+
+Install from Conda
+------------------
+
+.. code-block:: bash
+
+      conda install -c principia-materia
+
+
+Using Docker image
+------------------
+
+.. code-block:: bash
+
+      docker pull marianettigroup/principia-materia
+
+
+Compile from source
+-------------------
+
+Compiling the package from source requires several libraries used in extensions.
+
+The required libraries are::
+
+      opemp
+      lapack
+      blas
+      gfortran
+
+* For Ubuntu 18.04 and latear with gcc compilers::
+
+      sudo apt install gcc gfortran libomp-dev liblapack-dev libblas-dev
+
+
+* For macOS with Homebrew::
+
+      brew install gcc lapack openblas
+
+Required python modules for the packge are listed in the file ``requirements.txt``::
+
+      pip install --upgrade -r requirements.txt
+
+The next step is compiling the source code.
+
+* For Ubuntu 18.04 and latear with gcc compilers::
+
+      python setup.py build
+
+
+* For macOS with Homebrew::
+
+      CC=gcc-11 CXX=g++-11 F90=gfortran-11 python setup.py build
+
+
+The installation step can be executed with either the regular mode ::
+
+      python setup.py install
+
+or the *development* mode ::
+
+      python setup.py develop
+
+with the latter offering more flexibility during development, where the
+repository is dynamically link to serve as the python module so that any
+changes to the code can come in effect without reinstalling the module. However
+for the extensions of the module that is written in either C or FORTRAN, the
+module requires recompilation to reflect any changes to the source code.

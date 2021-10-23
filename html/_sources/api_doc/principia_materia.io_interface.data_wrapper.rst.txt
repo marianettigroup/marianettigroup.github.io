@@ -1,0 +1,7 @@
+principia\_materia.io\_interface.data\_wrapper module
+=====================================================
+
+.. automodule:: principia_materia.io_interface.data_wrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+principia\_materia.mathematics.finite\_difference module
+========================================================
+
+.. automodule:: principia_materia.mathematics.finite_difference
+   :members:
+   :undoc-members:
+   :show-inheritance:

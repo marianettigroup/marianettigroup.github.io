@@ -1,0 +1,7 @@
+principia\_materia.utils.testing module
+=======================================
+
+.. automodule:: principia_materia.utils.testing
+   :members:
+   :undoc-members:
+   :show-inheritance:

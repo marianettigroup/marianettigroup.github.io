@@ -1,0 +1,7 @@
+principia\_materia.cli.jobs\_cli module
+=======================================
+
+.. automodule:: principia_materia.cli.jobs_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

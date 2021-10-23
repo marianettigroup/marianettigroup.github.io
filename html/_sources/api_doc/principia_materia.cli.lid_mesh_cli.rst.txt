@@ -1,0 +1,7 @@
+principia\_materia.cli.lid\_mesh\_cli module
+============================================
+
+.. automodule:: principia_materia.cli.lid_mesh_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:

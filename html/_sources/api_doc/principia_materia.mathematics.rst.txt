@@ -1,0 +1,25 @@
+principia\_materia.mathematics package
+======================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.mathematics.array_utils
+   principia_materia.mathematics.core_math
+   principia_materia.mathematics.errortail
+   principia_materia.mathematics.finite_difference
+   principia_materia.mathematics.fourier_transform
+   principia_materia.mathematics.new_fraction
+   principia_materia.mathematics.smith_normal_form
+   principia_materia.mathematics.tensor_utils
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.mathematics
+   :members:
+   :undoc-members:
+   :show-inheritance:

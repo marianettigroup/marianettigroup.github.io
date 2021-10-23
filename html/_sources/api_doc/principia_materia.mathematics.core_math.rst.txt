@@ -1,0 +1,7 @@
+principia\_materia.mathematics.core\_math module
+================================================
+
+.. automodule:: principia_materia.mathematics.core_math
+   :members:
+   :undoc-members:
+   :show-inheritance:

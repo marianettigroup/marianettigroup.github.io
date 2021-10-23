@@ -1,0 +1,19 @@
+Welcome
+=================
+
+Welcome to Principia Materia, the ultimate materials theory and simulation solution.
+
+Installation guide can be found in :doc:`here <install>`.
+
+This package contains a varietly of highlighted features:
+
+* :doc:`Compute irreducible derivatives at any given order with LID/BID/HS-BID approaches <documentations/compute_id>`.
+
+* :doc:`Compute phonon linewidth and thermal conductivity <documentations/compute_thermal>`.
+
+.. .. toctree::
+..    install
+..    documentations/contents
+..    ci
+..    api_doc/modules
+..    :maxdepth: 2

@@ -1,0 +1,14 @@
+.. _translation_group:
+
+Translation group
+=================
+
+Translation group the group that preserves the translation invariance of crystal.
+Here we focus on finite translation group (FTG), a homomorphic mapping with the
+infinite translation group via periodic boundary conditions. It's often referred
+to as a k-point grid or a super cell. We will refer to it as 
+:math:`\hat{\mathbf{S}}_{BZ}`.
+
+
+Determine translations in finite translation group
+--------------------------------------------------

@@ -1,0 +1,39 @@
+principia\_materia.phonon\_id package
+=====================================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   principia_materia.phonon_id.analytic_dynamic_tensor
+   principia_materia.phonon_id.analytic_strain_tensor
+   principia_materia.phonon_id.analytic_tensors
+   principia_materia.phonon_id.anharmonic_interpolation
+   principia_materia.phonon_id.bid
+   principia_materia.phonon_id.chainrule_derivatives
+   principia_materia.phonon_id.conductivity
+   principia_materia.phonon_id.dipole_dipole
+   principia_materia.phonon_id.dynamic_tensors
+   principia_materia.phonon_id.fd_series
+   principia_materia.phonon_id.finite_displacements
+   principia_materia.phonon_id.fourier_interpolation
+   principia_materia.phonon_id.frozen_phonons
+   principia_materia.phonon_id.hsbid
+   principia_materia.phonon_id.lid
+   principia_materia.phonon_id.lid_mesh
+   principia_materia.phonon_id.little_group_adt
+   principia_materia.phonon_id.phonon_db
+   principia_materia.phonon_id.phonon_report_util
+   principia_materia.phonon_id.phonon_tools
+   principia_materia.phonon_id.strained_fd_series
+   principia_materia.phonon_id.strained_finite_displacements
+
+Module contents
+---------------
+
+.. automodule:: principia_materia.phonon_id
+   :members:
+   :undoc-members:
+   :show-inheritance:

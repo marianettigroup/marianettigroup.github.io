@@ -1,0 +1,7 @@
+principia\_materia.cli.phonon\_band\_dos\_cli module
+====================================================
+
+.. automodule:: principia_materia.cli.phonon_band_dos_cli
+   :members:
+   :undoc-members:
+   :show-inheritance:
