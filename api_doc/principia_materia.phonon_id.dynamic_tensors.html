@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.phonon_id.dynamic_tensors module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.phonon_id.fd_series module" href="principia_materia.phonon_id.fd_series.html" />
+    <link rel="prev" title="principia_materia.phonon_id.dipole_dipole module" href="principia_materia.phonon_id.dipole_dipole.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a> &raquo;</li>
+      <li>principia_materia.phonon_id.dynamic_tensors module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.phonon_id.dynamic_tensors.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.phonon_id.dynamic_tensors">
+<span id="principia-materia-phonon-id-dynamic-tensors-module"></span><h1>principia_materia.phonon_id.dynamic_tensors module<a class="headerlink" href="#module-principia_materia.phonon_id.dynamic_tensors" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dynamic_tensors.</span></span><span class="sig-name descname"><span class="pre">DynamicTensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Dynamic tensors of a reciprocal mesh at arbitrary order.</p>
+<p>As a fundation to many other tools, this class accommodatas dynamic tensors,
+can rotate them from irreducible Q-points to full BZ. For second order, it
+can also accounts for dipole-dipole interaction.</p>
+<p>Instead of a dictionary, the dynamic tensors of different Q-points are stored
+as an array of tensors in the same order of the Q-points designated by
+principia_materia.translation_group.QpointsN class. In a sense, we created
+a custom hash table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>CrystalFTG object</em><em> or </em><em>a structure file of CrystalFTG</em>) – The crystal structure.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The supercell matrix.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – Order of the dynamic tensor.</p></li>
+<li><p><strong>pg</strong> (<em>str</em><em> or </em><em>PointGroup object</em>) – The point group.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Error tolerence.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.copy" title="Permalink to this definition"></a></dt>
+<dd><p>Make a copy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>new</strong> – A copy of the object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors" title="principia_materia.phonon_id.dynamic_tensors.DynamicTensors">DynamicTensors</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.get_D_at_Q">
+<span class="sig-name descname"><span class="pre">get_D_at_Q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.get_D_at_Q" title="Permalink to this definition"></a></dt>
+<dd><p>Get dynamic tensor at a given Q-point</p>
+<p>If the stored dynamic tensors are from irreducible Q-points and Q is not in the
+irreducible Q-points, rotate the dynamic tensor from the corresponding irreducible
+Q-point to Q.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Q</strong> (<em>array of Fraction</em><em>, </em><em>shape</em><em>(</em><em>order</em><em>, </em><em>dim</em><em>)</em>) – A Q-point.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dynamic_tensor</strong> – Dynamic tensor at Q-point.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of complex, shape(ndof, …, ndof) or shape(ndof, …, ndof, m)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.get_full_D">
+<span class="sig-name descname"><span class="pre">get_full_D</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.get_full_D" title="Permalink to this definition"></a></dt>
+<dd><p>Get dynamic tensors of full BZ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>dynamic_tensors</strong> – Dynamic tensors of full BZ.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>array of complex, shape(N, ndof, …, ndof) or shape(N, ndof, …, ndof, m)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.prepend_hiden_q">
+<span class="sig-name descname"><span class="pre">prepend_hiden_q</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.prepend_hiden_q" title="Permalink to this definition"></a></dt>
+<dd><p>Prepend the hidden q-point to Q-points</p>
+<p>For Q-points that didn’t keep the hidden q-point, this method
+can prepend the q-point back.
+(Due to the conservation of momentum, all q-points in a Q-point
+need to add up equivalent to Gamma point, thus there are only
+order-1 linearly independent q-points in a given Q-point, and
+the dependent one can be omitted. The convention here is to omit
+the first q-point, and referred to as the hidden q-point.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Qpoints</strong> (<em>array of Fraction</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>order - 1</em><em>, </em><em>dim</em><em>)</em>) – Q-points without the hidden q-point.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_D">
+<span class="sig-name descname"><span class="pre">set_D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">D</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_D" title="Permalink to this definition"></a></dt>
+<dd><p>Set dynamic tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Qpoints</strong> (<em>array of Fraction</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>order - 1</em><em>, </em><em>dim</em><em>) or </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>order</em><em>, </em><em>dim</em><em>)</em>) – Q-points either of the irreducible zone or the full BZ.
+Can be the full Q-points or the Q-points without the hidden q-point.</p></li>
+<li><p><strong>D</strong> (<em>array of complex</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>ndof</em><em>, </em><em>...</em><em>, </em><em>ndof</em><em>)</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>ndof</em><em>, </em><em>...</em><em>, </em><em>ndof</em><em>, </em><em>m</em><em>)</em>) – Dynamic tensors in the same order as the Qpoints.
+Can be dynamic tensors of irreducible Q-points, or of full BZ.
+Can be trivial dynamic tensors or vectorized tensors with the last axis being the
+vector axis.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_dipoledipole">
+<span class="sig-name descname"><span class="pre">set_dipoledipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zeu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G_ran</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lambda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_dipoledipole" title="Permalink to this definition"></a></dt>
+<dd><p>For the case of second order, initialize dipole dipole contribution data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>zeu</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>natoms</em><em>, </em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Born effective charge tensor.</p></li>
+<li><p><strong>epsilon</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Dielectric constant tensor.</p></li>
+<li><p><strong>dataset</strong> (<em>str</em>) – Path to a file that contains all the necessary data.
+(In the case when zeu and epsilon are absent, this dataset file is
+required, otherwise it is ignored. If any of optional parameters
+(i.e. G_ran, Lamda, factor and tol) is missing, the default value
+will be used.)</p></li>
+<li><p><strong>G_ran</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 5</em>) – Range of G vectors.</p></li>
+<li><p><strong>Lambda</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 0.20</em>) – Lamda value in the equation.</p></li>
+<li><p><strong>factor</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0</em>) – Overall unit conversion factor for the output matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_dipoledipole_contribution">
+<span class="sig-name descname"><span class="pre">set_dipoledipole_contribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_dipoledipole_contribution" title="Permalink to this definition"></a></dt>
+<dd><p>For 2nd order, subtract the dipole-dipole contribution from the dynamic matrices.</p>
+<p>This step is only supported when the stored dynamic matrices are of full BZ.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_irreducible_D">
+<span class="sig-name descname"><span class="pre">set_irreducible_D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors.set_irreducible_D" title="Permalink to this definition"></a></dt>
+<dd><p>Set irreducible dynamic tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>D</strong> (<em>array of complex</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>ndof</em><em>, </em><em>...</em><em>, </em><em>ndof</em><em>)</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>ndof</em><em>, </em><em>...</em><em>, </em><em>ndof</em><em>, </em><em>m</em><em>)</em>) – Dynamic tensors of irreducible Q-points.
+Can be trivial dynamic tensors or vectorized tensors with the last axis being the
+vector axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.get_DynamicTensors_from_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dynamic_tensors.</span></span><span class="sig-name descname"><span class="pre">get_DynamicTensors_from_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h5file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.get_DynamicTensors_from_hdf5" title="Permalink to this definition"></a></dt>
+<dd><p>Load DynamicTensors from HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h5file</strong> (<em>str</em><em> or </em><em>h5py.File/h5py.Group obejct</em>) – Path to a HDF5 file or a h5py.File/h5py.Group object.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Error tolerance to use when constructing the LittleGroupADT object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.get_DynamicTensors_hdf5_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dynamic_tensors.</span></span><span class="sig-name descname"><span class="pre">get_DynamicTensors_hdf5_wrapper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.get_DynamicTensors_hdf5_wrapper" title="Permalink to this definition"></a></dt>
+<dd><p>HDF5 data wrapper for DynamicTensors class.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dynamic_tensors.save_DynamicTensors_to_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dynamic_tensors.</span></span><span class="sig-name descname"><span class="pre">save_DynamicTensors_to_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h5file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dynamic_tensors.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dynamic_tensors.save_DynamicTensors_to_hdf5" title="Permalink to this definition"></a></dt>
+<dd><p>Save DynamicTensors data into HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<a class="reference internal" href="#principia_materia.phonon_id.dynamic_tensors.DynamicTensors" title="principia_materia.phonon_id.dynamic_tensors.DynamicTensors"><em>DynamicTensors</em></a>) – A DynamicTensors object.</p></li>
+<li><p><strong>h5file</strong> (<em>str</em><em> or </em><em>h5py.File/h5py.Group obejct</em><em>, </em><em>optional</em><em>, </em><em>default to &quot;dynamic_tensors.hdf5&quot;</em>) – Path to a HDF5 file or a h5py.File/h5py.Group object.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – When the file exists, whether to replace the content of the file
+with the content to be saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.phonon_id.dipole_dipole.html" class="btn btn-neutral float-left" title="principia_materia.phonon_id.dipole_dipole module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.phonon_id.fd_series.html" class="btn btn-neutral float-right" title="principia_materia.phonon_id.fd_series module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

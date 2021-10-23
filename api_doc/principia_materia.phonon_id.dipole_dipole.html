@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.phonon_id.dipole_dipole module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.phonon_id.dynamic_tensors module" href="principia_materia.phonon_id.dynamic_tensors.html" />
+    <link rel="prev" title="principia_materia.phonon_id.conductivity module" href="principia_materia.phonon_id.conductivity.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a> &raquo;</li>
+      <li>principia_materia.phonon_id.dipole_dipole module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.phonon_id.dipole_dipole.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.phonon_id.dipole_dipole">
+<span id="principia-materia-phonon-id-dipole-dipole-module"></span><h1>principia_materia.phonon_id.dipole_dipole module<a class="headerlink" href="#module-principia_materia.phonon_id.dipole_dipole" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dipole_dipole.</span></span><span class="sig-name descname"><span class="pre">DipoleDipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zeu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G_ran</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lambda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Method implemented is descrived in papers Phys. Rev. B 50, 13035(R) (1994) and Phys. Rev. B 55, 10355 (1997).</p>
+<div class="math notranslate nohighlight">
+\[\tilde{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+-\delta_{\kappa \kappa^{\prime}}
+\sum_{\kappa^{\prime\prime}}
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime\prime} \beta} (\textbf{q}=\bf{\Gamma})\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\sum_{\alpha^{\prime} \beta^{\prime}}
+Z^{\ast}_{\kappa, \alpha\alpha^{\prime}}
+Z^{\ast}_{\kappa^{\prime}, \beta\beta^{\prime}}
+\overline{C}^{DD}_{\kappa \alpha^{\prime} \kappa^{\prime} \beta^{\prime}} (\textbf{q})\]</div>
+<div class="math notranslate nohighlight">
+\[\overline{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\sum_{\textbf{G} \textrm{ with } \textbf{K} = \textbf{q} + \textbf{G}}
+\frac{4\pi}{\Omega}
+\frac{K_{\alpha}K_{\beta}}{
+\sum_{\gamma\gamma^{\prime}} K_{\gamma}\epsilon_{\gamma\gamma^{\prime}}K_{\gamma^{\prime}}
+}
+e^{i \textbf{K} \cdot (\tau_{\kappa} - \tau_{\kappa^{\prime}})}
+\exp{\left(-\frac{
+\sum_{\gamma\gamma^{\prime}} K_{\gamma}\epsilon_{\gamma\gamma^{\prime}}K_{\gamma^{\prime}}
+}{4\Lambda^2}
+\right)
+}\]</div>
+<dl class="simple">
+<dt>Units:</dt><dd><p>Since the dielectric tensor is unitless, the Born effective charges are in units of e (a.u.) and the unit
+of distances is in Angstroms in our convention, the unit of our dipole-dipole corrections is <span class="math notranslate nohighlight">\(\frac{e}/{\AA^3}\)</span>, to
+convert it to the unit of the force constants, we take note that <span class="math notranslate nohighlight">\(\frac{e}{a_0^2}=\frac{E_{hartree}}{a_0}\)</span>,
+which means <span class="math notranslate nohighlight">\(\frac{e}{a_0^3}=\frac{E_{hartree}}{a_0^2}\)</span>. Then we can convert from <span class="math notranslate nohighlight">\(\frac{e}/{\AA^3}\)</span>
+to <span class="math notranslate nohighlight">\(\frac{eV}{\AA^2}\)</span> with the factor of ~14.40.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>str</em><em> or </em><em>CrystalFTG instance</em>) – Path to the CrystalFTG structure file or a CrystalFTG instance.</p></li>
+<li><p><strong>dataset</strong> (<em>str</em>) – Path to a file that contains all the necessary data.
+(In the case when zeu and epsilon are absent, this dataset file is
+required, otherwise it is ignored. If any of optional parameters
+(i.e. G_ran, Lamda, factor and tol) is missing, the default value
+will be used.)</p></li>
+<li><p><strong>zeu</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>natoms</em><em>, </em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Born effective charge tensor.</p></li>
+<li><p><strong>epsilon</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Dielectric constant tensor.</p></li>
+<li><p><strong>G_ran</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 5</em>) – Range of G vectors.</p></li>
+<li><p><strong>Lambda</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 0.20</em>) – Lamda value in the equation.</p></li>
+<li><p><strong>factor</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0</em>) – Overall unit conversion factor for the output matrix.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Tolerence.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.Gvecs">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">Gvecs</span></span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.Gvecs" title="Permalink to this definition"></a></dt>
+<dd><p>The reciprocal space vectors to sum over.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd">
+<span class="sig-name descname"><span class="pre">c_dd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd" title="Permalink to this definition"></a></dt>
+<dd><p>The dipole dipole contribution term.</p>
+<div class="math notranslate nohighlight">
+\[\tilde{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+-\delta_{\kappa \kappa^{\prime}}
+\sum_{\kappa^{\prime\prime}}
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime\prime} \beta} (\textbf{q}=\bf{\Gamma})\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q</strong> (<em>array of Fraction</em><em> or </em><em>float</em>) – The q-point.</p></li>
+<li><p><strong>q_direction</strong> (<em>array of Fraction</em><em> or </em><em>float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The direction of q-&gt;0 when q is the Gamma point.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd_batch">
+<span class="sig-name descname"><span class="pre">c_dd_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd_batch" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the dipole dipole contribution term for multiple q-points at the same time in parallel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qs</strong> (<em>array of Fraction</em><em> or </em><em>float</em>) – An array of q-points.</p></li>
+<li><p><strong>q_direction</strong> (<em>array of Fraction</em><em> or </em><em>float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The direction of q-&gt;0 when q is the Gamma point.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd_q0">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">c_dd_q0</span></span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.c_dd_q0" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the <span class="math notranslate nohighlight">\(C^DD(\textbf{t}=0)\)</span> term.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_G_dK">
+<span class="sig-name descname"><span class="pre">dc_dd_G_dK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideriv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_G_dK" title="Permalink to this definition"></a></dt>
+<dd><p>The core term of the derivative of dipole-dipole contribution with respect to
+the q-points in Cartesian coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q</strong> (<em>array of Fraction</em><em> or </em><em>float</em>) – The q-point.</p></li>
+<li><p><strong>ideriv</strong> (<em>int</em><em>, </em><em>range</em><em>(</em><em>i</em><em>, </em><em>dim</em><em>)</em>) – The axis of the derivative.</p></li>
+<li><p><strong>q_direction</strong> (<em>array of Fraction</em><em> or </em><em>float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The direction of q-&gt;0 when q is the Gamma point.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_dK">
+<span class="sig-name descname"><span class="pre">dc_dd_dK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideriv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_dK" title="Permalink to this definition"></a></dt>
+<dd><p>The derivative of dipole-dipole contribution with respect to the q-points in Cartesian coordinates.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \tilde{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})}{\partial \textbf{K}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\textbf{K}\)</span> is the q-point <span class="math notranslate nohighlight">\(\textbf{q}\)</span> in Cartesian coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q</strong> (<em>array of Fraction</em><em> or </em><em>float</em>) – The q-point.</p></li>
+<li><p><strong>ideriv</strong> (<em>int</em><em>, </em><em>range</em><em>(</em><em>i</em><em>, </em><em>dim</em><em>)</em>) – The axis of the derivative.</p></li>
+<li><p><strong>use_q_direction</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to True</em>) – Whether to use q-direction the for derivative.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_dK_batch">
+<span class="sig-name descname"><span class="pre">dc_dd_dK_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_q_direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.dc_dd_dK_batch" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the derivative of dipole-dipole contribution with respect to the q-points in Cartesian
+coordinates for multiple q-points in parallel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qs</strong> (<em>array of Fraction</em><em> or </em><em>float</em>) – An array of q-points.</p></li>
+<li><p><strong>use_q_direction</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to True</em>) – Whether to use q-direction the for derivative.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.get_c_dd_q0">
+<span class="sig-name descname"><span class="pre">get_c_dd_q0</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.get_c_dd_q0" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the <span class="math notranslate nohighlight">\(C^DD(\textbf{t}=0)\)</span> term.</p>
+<div class="math notranslate nohighlight">
+\[\delta_{\kappa \kappa^{\prime}}
+\sum_{\kappa^{\prime\prime}}
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime\prime} \beta} (\textbf{q}=\bf{\Gamma})\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.DipoleDipole.get_valid_slice">
+<span class="sig-name descname"><span class="pre">get_valid_slice</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.DipoleDipole.get_valid_slice" title="Permalink to this definition"></a></dt>
+<dd><p>Determined the indices to slice out base on the orbitals of the structure.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.get_DipoleDipole_from_yaml">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dipole_dipole.</span></span><span class="sig-name descname"><span class="pre">get_DipoleDipole_from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.get_DipoleDipole_from_yaml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.get_dipole_dataset_yaml_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dipole_dipole.</span></span><span class="sig-name descname"><span class="pre">get_dipole_dataset_yaml_wrapper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.get_dipole_dataset_yaml_wrapper" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.dipole_dipole.save_DipoleDipole_to_yaml">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.dipole_dipole.</span></span><span class="sig-name descname"><span class="pre">save_DipoleDipole_to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'epsilon.yml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_structure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.dipole_dipole.save_DipoleDipole_to_yaml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.phonon_id.conductivity.html" class="btn btn-neutral float-left" title="principia_materia.phonon_id.conductivity module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.phonon_id.dynamic_tensors.html" class="btn btn-neutral float-right" title="principia_materia.phonon_id.dynamic_tensors module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

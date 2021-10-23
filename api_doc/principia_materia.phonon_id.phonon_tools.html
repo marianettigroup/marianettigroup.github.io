@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.phonon_id.phonon_tools module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.phonon_id.strained_fd_series module" href="principia_materia.phonon_id.strained_fd_series.html" />
+    <link rel="prev" title="principia_materia.phonon_id.phonon_report_util module" href="principia_materia.phonon_id.phonon_report_util.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a> &raquo;</li>
+      <li>principia_materia.phonon_id.phonon_tools module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.phonon_id.phonon_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.phonon_id.phonon_tools">
+<span id="principia-materia-phonon-id-phonon-tools-module"></span><h1>principia_materia.phonon_id.phonon_tools module<a class="headerlink" href="#module-principia_materia.phonon_id.phonon_tools" title="Permalink to this headline"></a></h1>
+<p>Copyright (C) 2021 Marianetti Group</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.adjust_eigenvectors_subspace">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">adjust_eigenvectors_subspace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eigenvectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.adjust_eigenvectors_subspace" title="Permalink to this definition"></a></dt>
+<dd><p>Adjust eigenvectors in degerate subspace based on the input matrices.</p>
+<p>It picks the eigenvectors in the frequency degenarete subspace so that the
+sub-matrix of <code class="docutils literal notranslate"><span class="pre">mat</span></code> can be diagonalized by the eigenvectors as well.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mat</strong> (<em>array of complex</em><em>, </em><em>shape</em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Matrices the adjustments of eigenvectors are based on.
+Renormalized with mass.</p></li>
+<li><p><strong>frequencies</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>)</em>) – Phonon frequencies, the subspace of eigenvectors are based on the
+degenracy of the phonon frequencies.</p></li>
+<li><p><strong>eigenvectors</strong> (<em>array of complex</em><em>, </em><em>shape</em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Phonon eigenvectors.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-4</em>) – Tolerance threshold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>adjusted_eigenvectors</strong> – Ajusted eigenvectors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of complex, shape(nq, nband, nband)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.compute_eigenvalues">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">compute_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UPLO</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.compute_eigenvalues" title="Permalink to this definition"></a></dt>
+<dd><p>Just find the eigenvalues and eigenvectors of Dq with mass matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dq</strong> (<em>array of complex</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>nband</em><em>) or </em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Dynamic matrix or an array of dynamic matrices.</p></li>
+<li><p><strong>mass_matrix</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>) or </em><em>(</em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Mass matrix.
+(either mass_matrix or structure need to be present to compute phonon)</p></li>
+<li><p><strong>UPLO</strong> (<em>'L'</em><em> or </em><em>'U'</em><em>, </em><em>optional</em><em>, </em><em>default to 'L'</em>) – Use either lower or upper triangular of the Hermetian matrix.</p></li>
+<li><p><strong>decimal</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 8</em>) – Decimal points of the precision.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>evals</strong> (<em>array of float, shape (nband, ) or (nq, nband)</em>) – Eigenvalues of dynamic matrices.</p></li>
+<li><p><strong>evecs</strong> (<em>array of complex, shape (nband, nband) or (nq, nband, nband)</em>) – Phonon eigenvectors.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.compute_phonon_frequencies_from_eigenvalues">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">compute_phonon_frequencies_from_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">evals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cm-1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.compute_phonon_frequencies_from_eigenvalues" title="Permalink to this definition"></a></dt>
+<dd><p>Compute phonon frequencies from eigenvalues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>evals</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>) or </em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>)</em>) – Eigenvalues of dynamic matrices.</p></li>
+<li><p><strong>units</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to 'cm-1'</em>) – Unit of phonon frequencies</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>freqs</strong> – Phonon frequencies.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of float, shape (nband, ) or (nq, nband)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.compute_phonons">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">compute_phonons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cm-1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UPLO</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.compute_phonons" title="Permalink to this definition"></a></dt>
+<dd><p>Compute phonon and eigenvectors for given structure, dynamic matrices and units.</p>
+<p>It is using the following formula:</p>
+<div class="math notranslate nohighlight">
+\[\hat{M}^{-\frac{1}{2}} \hat{D_q} \hat{M}^{-\frac{1}{2}} \vec{S} = \omega^2 \vec{S}\]</div>
+<p>This class also support diagonalization and unit adjustments for an array of dynamic matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dq</strong> (<em>array of complex</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>nband</em><em>) or </em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Dynamic matrix or an array of dynamic matrices.</p></li>
+<li><p><strong>mass_matrix</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>) or </em><em>(</em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Mass matrix.
+(either mass_matrix or structure need to be present to compute phonon)</p></li>
+<li><p><strong>structure</strong> (<em>str</em><em> or </em><em>CrystalFTG instance</em>) – Path to the CrystalFTG structure file or a CrystalFTG instance.</p></li>
+<li><p><strong>units</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to 'cm-1'</em>) – Unit of phonon frequencies</p></li>
+<li><p><strong>UPLO</strong> (<em>'L'</em><em> or </em><em>'U'</em><em>, </em><em>optional</em><em>, </em><em>default to 'L'</em>) – Use either lower or upper triangular of the Hermetian matrix.</p></li>
+<li><p><strong>decimal</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 8</em>) – Decimal points of the precision.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>freqs</strong> (<em>array of float, shape (nband, ) or (nq, nband)</em>) – Phonon frequencies.</p></li>
+<li><p><strong>evecs</strong> (<em>array of complex, shape (nband, nband) or (nq, nband, nband)</em>) – Phonon eigenvectors.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.find_degenerate_frequencies">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">find_degenerate_frequencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.find_degenerate_frequencies" title="Permalink to this definition"></a></dt>
+<dd><p>Find degerate sets of frequencies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequencies</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>)</em>) – Phonon frequencies.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-4</em>) – Tolerance threshold.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>degenerate_indicies</strong> – Index of degenerate indices of the frequencies grouped into list of lists.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of lists of integers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.get_mass_matrix">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">get_mass_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.get_mass_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Compute mass matrix from given structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>structure</strong> (<em>str</em><em> or </em><em>CrystalFTG instance</em>) – Path to the CrystalFTG structure file or a CrystalFTG instance.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mass_matrix</strong> – Mass matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of float, shape (nband, nband)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.phonon_tools.multiply_mass_matrix">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.phonon_tools.</span></span><span class="sig-name descname"><span class="pre">multiply_mass_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_matrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.phonon_tools.multiply_mass_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Multiply mass matrix to dynamic matrices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dq</strong> (<em>array of complex</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>nband</em><em>) or </em><em>(</em><em>nq</em><em>, </em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Dynamic matrices.</p></li>
+<li><p><strong>mass_matrix</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>nband</em><em>, </em><em>) or </em><em>(</em><em>nband</em><em>, </em><em>nband</em><em>)</em>) – Mass matrix.
+(either mass_matrix or structure need to be present to compute phonon)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dq</strong> – Mass renormalized dynamic matrices.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of complex, shape (nband, nband) or (nq, nband, nband)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.phonon_id.phonon_report_util.html" class="btn btn-neutral float-left" title="principia_materia.phonon_id.phonon_report_util module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.phonon_id.strained_fd_series.html" class="btn btn-neutral float-right" title="principia_materia.phonon_id.strained_fd_series module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

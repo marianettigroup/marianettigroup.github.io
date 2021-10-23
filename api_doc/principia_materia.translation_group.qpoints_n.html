@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.translation_group.qpoints_n module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.translation_group.wigner_seitz module" href="principia_materia.translation_group.wigner_seitz.html" />
+    <link rel="prev" title="principia_materia.translation_group.minimum_supercell module" href="principia_materia.translation_group.minimum_supercell.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.translation_group.html">principia_materia.translation_group package</a> &raquo;</li>
+      <li>principia_materia.translation_group.qpoints_n module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.translation_group.qpoints_n.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.translation_group.qpoints_n">
+<span id="principia-materia-translation-group-qpoints-n-module"></span><h1>principia_materia.translation_group.qpoints_n module<a class="headerlink" href="#module-principia_materia.translation_group.qpoints_n" title="Permalink to this headline"></a></h1>
+<p>Copyright (C) 2020 Marianetti Group</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.translation_group.qpoints_n.</span></span><span class="sig-name descname"><span class="pre">QpointsN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="principia_materia.translation_group.lattice.html#principia_materia.translation_group.lattice.Lattice" title="principia_materia.translation_group.lattice.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.translation_group.lattice.Lattice</span></code></a></p>
+<p>A list of Q-points at a given order that fit in a given supercell find irreducible Q with point and permutaion symmetry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vec</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The lattice vectors, in row convention.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Super lattice matrix.</p></li>
+<li><p><strong>pg</strong> (<em>str</em><em> or </em><em>a PointGroup object</em>) – The point group of the lattice.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Tolerance threshold.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>The Q-points that fit in the supercell.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.Qpoints_orbits">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">Qpoints_orbits</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.Qpoints_orbits" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.find_irreducible_Qpoints">
+<span class="sig-name descname"><span class="pre">find_irreducible_Qpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.find_irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Find the irreducible set of Q-points under the given symmetry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.get_Qindex">
+<span class="sig-name descname"><span class="pre">get_Qindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.get_Qindex" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the indices of Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>The irreducible Qpoints.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_Qind">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_Qind</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_Qind" title="Permalink to this definition"></a></dt>
+<dd><p>The index of the irreducible Q-points in the Q-points list.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_map">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_map</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_map" title="Permalink to this definition"></a></dt>
+<dd><p>The corresponding irreducible Q-point index in the irreducible Q-point list for each Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_mult">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_mult</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_mult" title="Permalink to this definition"></a></dt>
+<dd><p>The multiplicity of the irreducible Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_permutation">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_permutation</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_permutation" title="Permalink to this definition"></a></dt>
+<dd><p>The permutation that maps a Q-point to the corresponding irreducible Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_rotation">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_rotation</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.irreducible_Qpoints_rotation" title="Permalink to this definition"></a></dt>
+<dd><p>The point group operation that maps a Q-point to the corresponding irreducible Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.multiplicity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">multiplicity</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.multiplicity" title="Permalink to this definition"></a></dt>
+<dd><p>The multiplicity of the supercell.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.nQpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nQpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.nQpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Number of Q-points</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.n_irreducible_Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_irreducible_Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.n_irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.supa">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">supa</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.supa" title="Permalink to this definition"></a></dt>
+<dd><p>The supercell matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsN.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsN.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary containing key information about the QpointsN object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.translation_group.qpoints_n.</span></span><span class="sig-name descname"><span class="pre">QpointsPerm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="principia_materia.translation_group.lattice.html#principia_materia.translation_group.lattice.Lattice" title="principia_materia.translation_group.lattice.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.translation_group.lattice.Lattice</span></code></a></p>
+<p>A list of Q-points at a given order that fit in a given supercell, find permutationally irreducible Q.</p>
+<p>For a given order N Q point, in contains N-1 independent q-point, since the Q point
+needs to satisfy conservation of momentum and the sum of all q-points in a Q point
+must be equivalent to Gamma point (0, 0, 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vec</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The lattice vectors, in row convention.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – Super lattice matrix.</p></li>
+<li><p><strong>pg</strong> (<em>str</em><em> or </em><em>a PointGroup object</em>) – The point group of the lattice.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Tolerance threshold.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>The Q-points that fit in the supercell.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.find_permutationally_irreducible_Qpoints">
+<span class="sig-name descname"><span class="pre">find_permutationally_irreducible_Qpoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.find_permutationally_irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Find the permutationally irreducible set of Q-points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.get_Qindex">
+<span class="sig-name descname"><span class="pre">get_Qindex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Qpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.get_Qindex" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the indices of Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>The irreducible Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_map">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_map</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_map" title="Permalink to this definition"></a></dt>
+<dd><p>The index of corresponding irreducible Q-point of each Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_mult">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_mult</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_mult" title="Permalink to this definition"></a></dt>
+<dd><p>The multiplicity of each irreducible Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_permutation">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_Qpoints_permutation</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.irreducible_Qpoints_permutation" title="Permalink to this definition"></a></dt>
+<dd><p>The permutation that transform the Q-point to the corresponding irreducible Q-point.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.multiplicity">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">multiplicity</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.multiplicity" title="Permalink to this definition"></a></dt>
+<dd><p>The multiplicity of the supercell.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.nQpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nQpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.nQpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Number of Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.n_irreducible_Qpoints">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_irreducible_Qpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.n_irreducible_Qpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Number of irreducible Q-points.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.supa">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">supa</span></span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.supa" title="Permalink to this definition"></a></dt>
+<dd><p>The supercell matrix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.QpointsPerm.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.QpointsPerm.to_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary containing key information about the QpointsPerm object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.translation_group.qpoints_n.get_QpointsN_io_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.translation_group.qpoints_n.</span></span><span class="sig-name descname"><span class="pre">get_QpointsN_io_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'QpointsN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.qpoints_n.get_QpointsN_io_wrapper" title="Permalink to this definition"></a></dt>
+<dd><p>YAML data wrapper for QpointsN class.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.translation_group.minimum_supercell.html" class="btn btn-neutral float-left" title="principia_materia.translation_group.minimum_supercell module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.translation_group.wigner_seitz.html" class="btn btn-neutral float-right" title="principia_materia.translation_group.wigner_seitz module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

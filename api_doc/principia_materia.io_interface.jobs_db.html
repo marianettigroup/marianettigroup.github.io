@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.io_interface.jobs_db module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.io_interface.qpoints_io module" href="principia_materia.io_interface.qpoints_io.html" />
+    <link rel="prev" title="principia_materia.io_interface.hdf5_wrapper module" href="principia_materia.io_interface.hdf5_wrapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.io_interface.html">principia_materia.io_interface package</a> &raquo;</li>
+      <li>principia_materia.io_interface.jobs_db module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.io_interface.jobs_db.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.io_interface.jobs_db">
+<span id="principia-materia-io-interface-jobs-db-module"></span><h1>principia_materia.io_interface.jobs_db module<a class="headerlink" href="#module-principia_materia.io_interface.jobs_db" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.jobs_db.</span></span><span class="sig-name descname"><span class="pre">JobsDB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Interface jobs with database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root_directory</strong> (<em>str</em>) – The root directory that hosts all the jobs of the series.</p></li>
+<li><p><strong>db_path</strong> (<em>str</em>) – Path to database.</p></li>
+<li><p><strong>db_type</strong> (<em>str</em>) – Type of the database, for example “sqlite”.</p></li>
+<li><p><strong>structure</strong> (<a class="reference internal" href="principia_materia.translation_group.crystal.html#principia_materia.translation_group.crystal.Crystal" title="principia_materia.translation_group.crystal.Crystal"><em>Crystal</em></a><em> or </em><em>CrystalFTG object</em>) – The primitive crystal structure. Input input is a CrystalFTG object,
+the primitive cell will be used.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.add_filter">
+<span class="sig-name descname"><span class="pre">add_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.add_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Add a filtering condition for database action (query/update/insert).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – The name of the column.</p></li>
+<li><p><strong>value</strong> (<em>str/int/float/array</em>) – The filtering value of that column.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.create_job">
+<span class="sig-name descname"><span class="pre">create_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">displacement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.create_job" title="Permalink to this definition"></a></dt>
+<dd><p>Create a job with the given jobname in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The supercell matrix.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The prefixing directory of the job relative to the root directory of the job series.</p></li>
+<li><p><strong>displacement</strong> (<em>array of float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The displacement to the crystal.</p></li>
+<li><p><strong>strain</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The strain matrix of the structure.</p></li>
+<li><p><strong>velocities</strong> (<em>array of float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The initial velocities of the atoms of the crystal.</p></li>
+<li><p><strong>append</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – If True, skip existing jobs. Otherwise, throw an error.</p></li>
+<li><p><strong>dry_run</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – If True, don’t actually create the job.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.create_jobs">
+<span class="sig-name descname"><span class="pre">create_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">displacements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">velocities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_index_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.create_jobs" title="Permalink to this definition"></a></dt>
+<dd><p>Create a series of jobs in database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobnames</strong> (<em>list of str</em>) – The names of the jobs.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The supercell matrix.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The prefixing directory of the jobs relative to the root directory of the job series.</p></li>
+<li><p><strong>displacements</strong> (<em>array of float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The displacements to the crystal for the jobs.</p></li>
+<li><p><strong>strain</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The strain matrix of the structure.</p></li>
+<li><p><strong>velocities</strong> (<em>array of float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The initial velocities of the atoms of the crystal for the jobs.</p></li>
+<li><p><strong>append</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – If True, skip existing jobs. Otherwise, throw an error.</p></li>
+<li><p><strong>dry_run</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – If True, don’t actually create the job.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_born_effective_charges_from_job">
+<span class="sig-name descname"><span class="pre">get_born_effective_charges_from_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_born_effective_charges_from_job" title="Permalink to this definition"></a></dt>
+<dd><p>Get Born effective charges from the job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>step_index</strong> (<em>int</em>) – The step index of the job in an finite difference calculation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_dielectric_tensor_from_job">
+<span class="sig-name descname"><span class="pre">get_dielectric_tensor_from_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_dielectric_tensor_from_job" title="Permalink to this definition"></a></dt>
+<dd><p>Get the dielectric tensor from the job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>step_index</strong> (<em>int</em>) – The step index of the job in an finite difference calculation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_energy_from_job">
+<span class="sig-name descname"><span class="pre">get_energy_from_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_energy_from_job" title="Permalink to this definition"></a></dt>
+<dd><p>Get the energy from the job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>step_index</strong> (<em>int</em>) – The step index of the job in an finite difference calculation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_forces_from_job">
+<span class="sig-name descname"><span class="pre">get_forces_from_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_forces_from_job" title="Permalink to this definition"></a></dt>
+<dd><p>Get forces from the job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>step_index</strong> (<em>int</em>) – The step index of the job in an finite difference calculation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_metadata_path">
+<span class="sig-name descname"><span class="pre">get_metadata_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_metadata_path" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_results_from_jobs">
+<span class="sig-name descname"><span class="pre">get_results_from_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobnames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_index_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_results_from_jobs" title="Permalink to this definition"></a></dt>
+<dd><p>Get results of a series of jobs from database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobnames</strong> (<em>list of str</em>) – The names of the jobs.</p></li>
+<li><p><strong>data_type</strong> (<em>str</em>) – The type of results to retrieve, can be “forces”, “energy”, “stress”, “born_effective_charges”
+or “dielectric_tensor”.</p></li>
+<li><p><strong>prefix</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The prefix of the jobs relative to the root directory of the job series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>data</strong> – The retrieved results from jobs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.get_stress_from_job">
+<span class="sig-name descname"><span class="pre">get_stress_from_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.get_stress_from_job" title="Permalink to this definition"></a></dt>
+<dd><p>Get the stress from the job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobname</strong> (<em>str</em>) – The name of the job, as well as the directory name to create the job in.</p></li>
+<li><p><strong>step_index</strong> (<em>int</em>) – The step index of the job in an finite difference calculation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.remove_filter">
+<span class="sig-name descname"><span class="pre">remove_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.remove_filter" title="Permalink to this definition"></a></dt>
+<dd><p>Remive a filtering condition from database action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> (<em>str</em>) – The name of the column.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.reset_filters">
+<span class="sig-name descname"><span class="pre">reset_filters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.reset_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the database filters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.save_metadata">
+<span class="sig-name descname"><span class="pre">save_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.save_metadata" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.save_table_info">
+<span class="sig-name descname"><span class="pre">save_table_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info_table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.save_table_info" title="Permalink to this definition"></a></dt>
+<dd><p>Save some generic information of the table that the jobs are created in to an information table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info_table</strong> (<em>str</em>) – The name of the information table.</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The generic information to save in the information table.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.set_table">
+<span class="sig-name descname"><span class="pre">set_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.set_table" title="Permalink to this definition"></a></dt>
+<dd><p>Set name of the table to access.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>table</strong> (<em>str</em>) – Table name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_db.JobsDB.structure">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">structure</span></span><a class="headerlink" href="#principia_materia.io_interface.jobs_db.JobsDB.structure" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.io_interface.hdf5_wrapper.html" class="btn btn-neutral float-left" title="principia_materia.io_interface.hdf5_wrapper module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.io_interface.qpoints_io.html" class="btn btn-neutral float-right" title="principia_materia.io_interface.qpoints_io module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

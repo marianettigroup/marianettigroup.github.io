@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.phonon_id.chainrule_derivatives module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.phonon_id.conductivity module" href="principia_materia.phonon_id.conductivity.html" />
+    <link rel="prev" title="principia_materia.phonon_id.bid module" href="principia_materia.phonon_id.bid.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a> &raquo;</li>
+      <li>principia_materia.phonon_id.chainrule_derivatives module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.phonon_id.chainrule_derivatives.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.phonon_id.chainrule_derivatives">
+<span id="principia-materia-phonon-id-chainrule-derivatives-module"></span><h1>principia_materia.phonon_id.chainrule_derivatives module<a class="headerlink" href="#module-principia_materia.phonon_id.chainrule_derivatives" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">ChainruleDerivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="principia_materia.phonon_id.analytic_tensors.html#principia_materia.phonon_id.analytic_tensors.AnalyticTensors" title="principia_materia.phonon_id.analytic_tensors.AnalyticTensors"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.phonon_id.analytic_tensors.AnalyticTensors</span></code></a></p>
+<p>Compute chainrule derivatives of a measurement for a given crystal system at given FTG and order.</p>
+<p>In bundled irreducible derivatives (BID) method, for a given measurement basis, at a given order,
+structure and supercell, we can obtain a series of derivatives from finite displacement computations,
+referred to as <span class="math notranslate nohighlight">\(\textbf{V}_{b}^{\hat{S}_{BZ}}\)</span>, where <span class="math notranslate nohighlight">\(\hat{S}_{BZ}\)</span> is the supercell matrix.</p>
+<p>These measurement basis derivatives are linear combinations of irreducible derivatives in this
+system,</p>
+<div class="math notranslate nohighlight">
+\[\textbf{V}_{b}^{\hat{S}_{BZ}} = \hat{C}_b^{\hat{S}_{BZ}} \textbf{d}_{ir}^{\hat{S}_{BZ}}\]</div>
+<p>, where <span class="math notranslate nohighlight">\(\hat{C}_b^{\hat{S}_{BZ}}\)</span> is the chainrule matrix,
+and <span class="math notranslate nohighlight">\(\textbf{d}_{ir}^{\hat{S}_{BZ}}\)</span> is the vector of irreducible derivatives.
+This chainrule matrix is what we are aiming to find in this class, such linear combinations
+<span class="math notranslate nohighlight">\(\hat{C}_b^{\hat{S}_{BZ}}\)</span> can be calculated using chain rule derivatives. With the
+chainrule matrix and measurement basis derivatives, we can solve for irreducible derivatives.</p>
+<p>Additionally, in hierarchical supercell BID method, at a given supercell, the irreducible
+derivatives that fit in smaller supercells are already computed. Thus we can split the
+chainrule matrix into 2 parts: a known part and an unknown part, where the task at hand
+is to solve the unknown part for the irreducible derivatives.</p>
+<div class="math notranslate nohighlight">
+\[\textbf{V}_{b}^{\hat{S}_{BZ}} -
+\hat{C}_{b,known}^{\hat{S}_{BZ}} \textbf{d}_{ir,known}^{\hat{S}_{BZ}}
+=
+\hat{C}_{b,unknown}^{\hat{S}_{BZ}} \textbf{d}_{ir,unknown}^{\hat{S}_{BZ}}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>structure</strong> (<em>CrystalFTG object</em><em> or </em><em>a structure file of CrystalFTG</em>) – The crystal structure.</p></li>
+<li><p><strong>supa</strong> (<em>array of int</em><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>dim</em><em>)</em>) – The supercell matrix.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – Order of the dynamic tensor.</p></li>
+<li><p><strong>pg</strong> (<em>str</em><em> or </em><em>PointGroup object</em>) – The point group.</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to 1.0E-6</em>) – Error tolerence.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.add_known_ID">
+<span class="sig-name descname"><span class="pre">add_known_ID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">known_ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.add_known_ID" title="Permalink to this definition"></a></dt>
+<dd><p>Mark irreducible derivatives as know ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>known_ID</strong> (<em>list of nested tuples</em>) – Irreducible derivaties to be marked as known.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.compute_chainrule">
+<span class="sig-name descname"><span class="pre">compute_chainrule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">displacements</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.compute_chainrule" title="Permalink to this definition"></a></dt>
+<dd><p>Compute chainrule matrices/tensors that converts between irreducible derivatives and the measurement
+basis derivatives.</p>
+<p>For a single measurement.</p>
+<div class="math notranslate nohighlight">
+\[C_Q(u_1, \cdots, u_{O_{h}}) = \frac{1}{\left(O-O_{h}\right)!} \sum_{u_{O_{h} + 1}, \cdots, u_{O}}
+D_{Q}^{O}[u_{O_{h} + 1}, \cdots, u_{O}] \prod_{i=O_{h} + 1}^{O}
+\frac{\partial u_i}{\partial v_i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(O\)</span> is order, <span class="math notranslate nohighlight">\(O_{h}\)</span> is the hidden order, <span class="math notranslate nohighlight">\(u\)</span> is q-space displacement basis,
+<span class="math notranslate nohighlight">\(v\)</span> is the measurement bases at otrder <span class="math notranslate nohighlight">\(O\)</span>, <span class="math notranslate nohighlight">\(V\)</span> is the <span class="math notranslate nohighlight">\(u_0\)</span> line of
+the chainrule matrix, and <span class="math notranslate nohighlight">\(D_Q^{O}\)</span> is the tensor vector of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>displacements</strong> (<em>array of floats</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>order - hidden_order</em><em>, </em><em>natoms</em><em>, </em><em>dim</em><em>) or </em><em>(</em><em>order - hidden_order</em><em>, </em><em>natoms</em><em>, </em><em>dim</em><em>)</em>) – Measurement basis displacements, can be 1 set of measurement or multiple measurements at the same time.</p></li>
+<li><p><strong>hidden_order</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 1</em>) – The order of derivatives from first principles calculation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>chainrule_tensor</strong> – The chainrule matrix in a tensor form.
+If the input displacements shape is (order - hidden_order, natoms, dim), return value will be in shape
+(n_QpointsN, norbitals) * hidden_order + (n_irreducible_derivatives, ).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of complex, shape(N, ) + (n_QpointsN, norbitals) * hidden_order + (n_irreducible_derivatives, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.decompose_displacements">
+<span class="sig-name descname"><span class="pre">decompose_displacements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">displacements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.decompose_displacements" title="Permalink to this definition"></a></dt>
+<dd><p>Decompose the displacements in real space into reciprocal space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>displacements</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>, </em><em>) </em><em>+ self.displacement_shape</em>) – A measurement, which consists of several displacements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.displacement_shape">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">displacement_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.displacement_shape" title="Permalink to this definition"></a></dt>
+<dd><p>Shape of a single displacement.</p>
+<p>A measurement basis usually consists of several displacements.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.get_chainrule_factors">
+<span class="sig-name descname"><span class="pre">get_chainrule_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.get_chainrule_factors" title="Permalink to this definition"></a></dt>
+<dd><p>Compute chainrule factor of a measurement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measurement</strong> (<em>array of float</em><em>, </em><em>shape</em><em>(</em><em>order - hidden_order</em><em>, </em><em>supercell.natoms</em><em>, </em><em>dim</em><em>)</em>) – A set of displacement to displace the system.</p></li>
+<li><p><strong>hidden_order</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 1</em>) – The order of derivatives from first principles.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>decomp_measurement</strong> – The chainrule factors.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array of complex, shape(order - hidden_order, multiplicity, norbitals)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.known_ID">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">known_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.known_ID" title="Permalink to this definition"></a></dt>
+<dd><p>Names of known irreducible derivatives.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.nonzero_ID_index">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nonzero_ID_index</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.nonzero_ID_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.normalize_displacements">
+<span class="sig-name descname"><span class="pre">normalize_displacements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">displacements</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.normalize_displacements" title="Permalink to this definition"></a></dt>
+<dd><p>Normalize a measurement in reciprocal space.</p>
+<p>The normalization makes the reciprocal space decomposition of the displacements to 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>displacements</strong> (<em>array of float</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>, </em><em>) </em><em>+ self.displacement_shape</em>) – A measurement, which consists of several displacements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.set_basis">
+<span class="sig-name descname"><span class="pre">set_basis</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.set_basis" title="Permalink to this definition"></a></dt>
+<dd><p>Compute all the naive reciprocal displacement basis that fit in the supercell.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.unknown_ID">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">unknown_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.unknown_ID" title="Permalink to this definition"></a></dt>
+<dd><p>Names of unknown irreducible derivatives.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.get_ChainruleDerivatives_from_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">get_ChainruleDerivatives_from_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h5file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.get_ChainruleDerivatives_from_hdf5" title="Permalink to this definition"></a></dt>
+<dd><p>Load ChainruleDerivatives from HDF5 file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.get_ChainruleDerivatives_hdf5_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">get_ChainruleDerivatives_hdf5_wrapper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.get_ChainruleDerivatives_hdf5_wrapper" title="Permalink to this definition"></a></dt>
+<dd><p>HDF5 data wrapper for ChainruleDerivatives class.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.save_ChainruleDerivatives_to_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">save_ChainruleDerivatives_to_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h5file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'analytic_tensors.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.save_ChainruleDerivatives_to_hdf5" title="Permalink to this definition"></a></dt>
+<dd><p>Save ChainruleDerivatives data into HDF5 file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj</strong> (<a class="reference internal" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives" title="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives"><em>ChainruleDerivatives</em></a>) – A ChainruleDerivatives object.</p></li>
+<li><p><strong>h5file</strong> (<em>str</em><em> or </em><em>h5py.File/h5py.Group obejct</em><em>, </em><em>optional</em><em>, </em><em>default to &quot;dynamic_tensors.hdf5&quot;</em>) – Path to a HDF5 file or a h5py.File/h5py.Group object.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – When the file exists, whether to replace the content of the file
+with the content to be saved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.phonon_id.bid.html" class="btn btn-neutral float-left" title="principia_materia.phonon_id.bid module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.phonon_id.conductivity.html" class="btn btn-neutral float-right" title="principia_materia.phonon_id.conductivity module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

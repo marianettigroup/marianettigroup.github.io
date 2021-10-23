@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.io_interface.array_io module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.io_interface.base_data_wrapper module" href="principia_materia.io_interface.base_data_wrapper.html" />
+    <link rel="prev" title="principia_materia.io_interface package" href="principia_materia.io_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.io_interface.html">principia_materia.io_interface package</a> &raquo;</li>
+      <li>principia_materia.io_interface.array_io module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.io_interface.array_io.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.io_interface.array_io">
+<span id="principia-materia-io-interface-array-io-module"></span><h1>principia_materia.io_interface.array_io module<a class="headerlink" href="#module-principia_materia.io_interface.array_io" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">ArrayFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Format 2D array.</p>
+<p>Object oriented class for formatting arrays.
+The mechanism is to setup the desired style of the formatter, with which
+one can format arrays, just like any formatter function.
+Some default styles will be provided below, for convenience.</p>
+<p>This class implements all the basic features of a formatter, so that any
+new styles can be achieved with minimum work by simply providing style
+specifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prec</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 8</em>) – Decimal points to keep for floating points.
+Can be directly set in <cite>fmt</cite>.</p></li>
+<li><p><strong>fmt</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The string format for each array element.
+Default dynamically using <cite>prec</cite>, <cite>align</cite>, <cite>cell_length</cite> and the cell
+data type to determine the decimal points.
+Once the format is set to not None, it will be used for the cell format,
+align and cell_length will be ignored.</p></li>
+<li><p><strong>align</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to &quot;l&quot;</em><em>, </em><em>choices</em><em>(</em><em>&quot;l&quot;</em><em>, </em><em>&quot;r&quot;</em><em>, </em><em>&quot;c&quot;</em><em>)</em>) – The alignment of the cell, can choose between left, right and centered.</p></li>
+<li><p><strong>cell_length</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – The length of the cell, this is used to align the cell, if the provided
+<cite>cell_length</cite> is too short, it will be ignored.</p></li>
+<li><p><strong>delimiter</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to &quot; &quot;</em>) – The separator of each array element in the same row.</p></li>
+<li><p><strong>pad</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – (Takes in int for number of spaces, or str for more customized padding)
+The amount of space between element, this will pad between array
+elements and <cite>line_begin</cite>/<cite>line_end</cite>, as well as after delimiter
+and the next array element. If padding in either place is needed,
+add the padding to delimeter or <cite>line_begin</cite>/<cite>line_end</cite>.</p></li>
+<li><p><strong>newline</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to &quot;\n&quot;</em>) – The separator between each row.</p></li>
+<li><p><strong>header</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default empty</em>) – String that will appear immediately in front of the array.</p></li>
+<li><p><strong>footer</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default empty</em>) – String that will appear immediately after the array.</p></li>
+<li><p><strong>line_begin</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default empty</em>) – String that will appear immediately in front of each row of the array.</p></li>
+<li><p><strong>line_end</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default empty</em>) – String that will appear immediately after each row of the array.</p></li>
+<li><p><strong>indent</strong> (<em>int</em><em> or </em><em>str</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – (Takes in int for number of spaces, or str for more customized indent)
+Overall indent of the array, does not affect header and footer.
+For indent on the entire string, use <cite>textwrap.indent</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_array_nparray</span> <span class="o">=</span> <span class="n">ArrayFormatter</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">prec</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">line_begin</span><span class="o">=</span><span class="n">ArrayFormatter</span><span class="o">.</span><span class="n">firstline_line_begin</span><span class="p">(</span><span class="n">line_begin</span><span class="o">=</span><span class="s2">&quot;       [&quot;</span><span class="p">,</span> <span class="n">first_line_begin</span><span class="o">=</span><span class="s2">&quot;array([[&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">line_end</span><span class="o">=</span><span class="n">ArrayFormatter</span><span class="o">.</span><span class="n">lastline_line_end</span><span class="p">(</span><span class="n">line_end</span><span class="o">=</span><span class="s2">&quot;],&quot;</span><span class="p">,</span> <span class="n">last_line_end</span><span class="o">=</span><span class="s2">&quot;]])&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">format_array_nparray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+<span class="go">array([[ 1.00000000,  0.00000000,  0.00000000],</span>
+<span class="go">       [ 0.00000000,  1.00000000,  0.00000000],</span>
+<span class="go">       [ 0.00000000,  0.00000000,  1.00000000]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formatter</span> <span class="o">=</span> <span class="n">tex_array_formatter</span><span class="p">(</span><span class="n">texenv</span><span class="o">=</span><span class="s2">&quot;bmatrix&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">formatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+<span class="go">\begin{bmatrix}</span>
+<span class="go">   1.00000000 &amp;&amp;  0.00000000 &amp;&amp;  0.00000000 \\</span>
+<span class="go">   0.00000000 &amp;&amp;  1.00000000 &amp;&amp;  0.00000000 \\</span>
+<span class="go">   0.00000000 &amp;&amp;  0.00000000 &amp;&amp;  1.00000000 \\</span>
+<span class="go">\end{bmatrix}</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter.firstline_line_begin">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">firstline_line_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_line_begin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.firstline_line_begin" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter.format_array">
+<span class="sig-name descname"><span class="pre">format_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent_dimention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.format_array" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter.lastline_line_end">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lastline_line_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_line_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.lastline_line_end" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.format_array">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">format_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extent_dimention</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.format_array" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper funtion for ArrayFormatter</p>
+<p>The same feature but in a function call instead. This is suitable for one time use case.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.pad_array">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">pad_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">arr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">fillvalue=0</span></em>, <em class="sig-param"><span class="pre">allow_truncate=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.pad_array" title="Permalink to this definition"></a></dt>
+<dd><p>Pad array to a given shape with given fillvalue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>nested list of Number.</em>) – Array to be padded.</p></li>
+<li><p><strong>dtype</strong> (<em>any Number type</em><em>, </em><em>optional</em><em>, </em><em>default to float</em>) – Type for the array element to be converted into.</p></li>
+<li><p><strong>shape</strong> (<em>tuple of integers</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The shape of array to be padded into.</p></li>
+<li><p><strong>fillvalue</strong> (<em>any Number type</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – Fill values for padding.</p></li>
+<li><p><strong>allow_truncate</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – Whether allow truncation of array when padding into given
+shape, if allowed, any array element outside the padding
+target shape will be discarded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>array</strong> – The padded array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray of <code class="docutils literal notranslate"><span class="pre">dtype</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.parse_array">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">arr</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">max_denominator=None</span></em>, <em class="sig-param"><span class="pre">pad_to_shape=None</span></em>, <em class="sig-param"><span class="pre">fillvalue=0</span></em>, <em class="sig-param"><span class="pre">allow_truncate=False</span></em>, <em class="sig-param"><span class="pre">to_list=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_array" title="Permalink to this definition"></a></dt>
+<dd><p>Parse array from a compatible format and pad to dimension with given fill value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>parser compatible format</em><em> (</em><em>described below</em><em>)</em>) – Array to be parsed.</p></li>
+<li><p><strong>dtype</strong> (<em>any Number type</em><em>, </em><em>optional</em><em>, </em><em>default to float</em>) – Type for the array element to be converted into.</p></li>
+<li><p><strong>max_denominator</strong> (<em>integer</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – If dtype is Fraction, the maximum denominator.</p></li>
+<li><p><strong>pad_to_shape</strong> (<em>tuple of integers</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – The shape of array to be padded into.</p></li>
+<li><p><strong>fillvalue</strong> (<em>any Number type</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – Fill values for padding.</p></li>
+<li><p><strong>allow_truncate</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – Whether allow truncation of array when padding into given
+shape, if allowed, any array element outside the padding
+target shape will be discarded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul>
+<li><p><strong>array</strong> (nested list of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> or numpy.ndarray of <code class="docutils literal notranslate"><span class="pre">dtype</span></code>) – (if pad_to_shape is not None)</p>
+<p>returns numpy.ndarray of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> as the parsed and padded array.</p>
+<p>(if pad_to_shape is None)</p>
+<p>returns nested list of of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> as the parsed array.</p>
+</li>
+<li><p><em>Parser Compatible Format</em></p></li>
+<li><p><em>————————</em></p></li>
+<li><p><em>This format can be a numpy array of Number (integer, float, Fraction, any format</em></p></li>
+<li><p><em>that shares the abstract base class of Number), nested list of Number or a string</em></p></li>
+<li><p><em>with numbers (string format of Number or Fraction) that are separated by any one</em></p></li>
+<li><p><em>or more of space, comma, semicolon or newline.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_array</span><span class="p">(</span><span class="s1">&#39;0 0; 1 2&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Fraction</span><span class="p">,</span> <span class="n">max_denominator</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">pad_to_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">array([[Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)],</span>
+<span class="go">       [Fraction(1, 1), Fraction(2, 1), Fraction(0, 1)]], dtype=object)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.parse_number">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">num</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">max_denominator=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_number" title="Permalink to this definition"></a></dt>
+<dd><p>Parse number from compatible format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num</strong> (<em>any type/format compatible with Number</em><em> or </em><a class="reference internal" href="principia_materia.mathematics.new_fraction.html#principia_materia.mathematics.new_fraction.Fraction" title="principia_materia.mathematics.new_fraction.Fraction"><em>Fraction</em></a>) – Number to be parsed.</p></li>
+<li><p><strong>dtype</strong> (<em>any Number type</em><em>, </em><em>optional</em><em>, </em><em>default to float</em>) – Type for the number to be converted into.</p></li>
+<li><p><strong>max_denominator</strong> (<em>integer</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – If dtype is Fraction, the maximum denominator.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>num</strong> – Parsed number in type of <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.array_io.tex_array_formatter">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">tex_array_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texenv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bmatrix'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.tex_array_formatter" title="Permalink to this definition"></a></dt>
+<dd><p>Format array into a TeX matrix.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.io_interface.html" class="btn btn-neutral float-left" title="principia_materia.io_interface package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.io_interface.base_data_wrapper.html" class="btn btn-neutral float-right" title="principia_materia.io_interface.base_data_wrapper module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

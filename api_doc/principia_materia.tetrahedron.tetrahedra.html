@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.tetrahedron.tetrahedra module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.translation_group package" href="principia_materia.translation_group.html" />
+    <link rel="prev" title="principia_materia.tetrahedron package" href="principia_materia.tetrahedron.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a> &raquo;</li>
+      <li>principia_materia.tetrahedron.tetrahedra module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.tetrahedron.tetrahedra.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.tetrahedron.tetrahedra">
+<span id="principia-materia-tetrahedron-tetrahedra-module"></span><h1>principia_materia.tetrahedron.tetrahedra module<a class="headerlink" href="#module-principia_materia.tetrahedron.tetrahedra" title="Permalink to this headline"></a></h1>
+<p>Copyright (C) 2019 Marianetti Group</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.tetrahedron.tetrahedra.</span></span><span class="sig-name descname"><span class="pre">Tetrahedra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="principia_materia.translation_group.kpoints.html#principia_materia.translation_group.kpoints.Kpoints" title="principia_materia.translation_group.kpoints.Kpoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.translation_group.kpoints.Kpoints</span></code></a></p>
+<p>K-vectors for tetrahedron integration of the reciprocal space</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.diagonal_vecs">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">diagonal_vecs</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.diagonal_vecs" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_kpoint_ind_fort">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">itet_kpoint_ind_fort</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_kpoint_ind_fort" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.make_tetrahedrons">
+<span class="sig-name descname"><span class="pre">make_tetrahedrons</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.make_tetrahedrons" title="Permalink to this definition"></a></dt>
+<dd><p>Find the irreducible tetrahedra</p>
+<p>Construct the tetrahedra in terms of irreducible K-vectors and reduce this list of terahedra to a irreducible set.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_kpoint_ind">
+<span class="sig-name descname"><span class="pre">tet_kpoint_ind</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_kpoint_ind" title="Permalink to this definition"></a></dt>
+<dd><p>Tetrahedra in terms of indices of irreducible K-vectors in the irreducible K-vector list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of int, shape(self.vol * 6, 4)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_kpoint_ind">
+<span class="sig-name descname"><span class="pre">itet_kpoint_ind</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_kpoint_ind" title="Permalink to this definition"></a></dt>
+<dd><p>Irreducible tetrahedra in terms of indices of irreducible K-vectors in the irreducible K-vector list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of int, shape(N, 4)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_map">
+<span class="sig-name descname"><span class="pre">itet_map</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_map" title="Permalink to this definition"></a></dt>
+<dd><p>The index of irreducible tetrahedra of each tetradedron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of int, shape(self.vol * 6, )</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_mult">
+<span class="sig-name descname"><span class="pre">itet_mult</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.itet_mult" title="Permalink to this definition"></a></dt>
+<dd><p>The multiplicity of each irreducible tetrahedra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>array of int, shape(N)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.ptets">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">ptets</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.ptets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.shortest_diagonals">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">shortest_diagonals</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.shortest_diagonals" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_kpoint_ind_fort">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tet_kpoint_ind_fort</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_kpoint_ind_fort" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_mult">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tet_mult</span></span><a class="headerlink" href="#principia_materia.tetrahedron.tetrahedra.Tetrahedra.tet_mult" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.tetrahedron.html" class="btn btn-neutral float-left" title="principia_materia.tetrahedron package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.translation_group.html" class="btn btn-neutral float-right" title="principia_materia.translation_group package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

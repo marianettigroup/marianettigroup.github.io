@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>principia_materia.symmetry.point_group module &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="principia_materia.tetrahedron package" href="principia_materia.tetrahedron.html" />
+    <link rel="prev" title="principia_materia.symmetry.little_group module" href="principia_materia.symmetry.little_group.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Documentations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="principia_materia.html">principia_materia package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="principia_materia.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.cli.html">principia_materia.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.constants.html">principia_materia.constants package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.mathematics.html">principia_materia.mathematics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.phonon_id.html">principia_materia.phonon_id package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.plotting.html">principia_materia.plotting package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="principia_materia.symmetry.html">principia_materia.symmetry package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.tetrahedron.html">principia_materia.tetrahedron package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.translation_group.html">principia_materia.translation_group package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.utils.html">principia_materia.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.visualization.html">principia_materia.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="principia_materia.html#module-principia_materia">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">API Documentations</a> &raquo;</li>
+          <li><a href="principia_materia.html">principia_materia package</a> &raquo;</li>
+          <li><a href="principia_materia.symmetry.html">principia_materia.symmetry package</a> &raquo;</li>
+      <li>principia_materia.symmetry.point_group module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api_doc/principia_materia.symmetry.point_group.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-principia_materia.symmetry.point_group">
+<span id="principia-materia-symmetry-point-group-module"></span><h1>principia_materia.symmetry.point_group module<a class="headerlink" href="#module-principia_materia.symmetry.point_group" title="Permalink to this headline"></a></h1>
+<p>Copyright (C) 2019 Marianetti Group</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">PointGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror_notation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class allows one to encode all of the information about a point group, including the character table. This class mainly is a container
+for data. The only nontrivial method is for rotating to a different coordinate system.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.check_irrep_matr">
+<span class="sig-name descname"><span class="pre">check_irrep_matr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.check_irrep_matr" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the irrep matrices match the character table.</p>
+<p>This will check if the irrep matrices that were entered have the proper characters as prescribed by
+the character table, and we will confirm that they are unitary. This ensures no typos with Cornwell_group_matrices
+and that no typos are made when entering the point group info below.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.clas">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">clas</span></span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.clas" title="Permalink to this definition"></a></dt>
+<dd><p>clas will be the alias if set, otherwise it will return the default class names in Cornwell.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.create_all_pg">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create_all_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_all_pg" title="Permalink to this definition"></a></dt>
+<dd><p>Create all point groups that are listed in Cornwell class and return them as a dictionary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.create_alternate_pgs">
+<span class="sig-name descname"><span class="pre">create_alternate_pgs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_alternate_pgs" title="Permalink to this definition"></a></dt>
+<dd><p>Create a list of PointGroup instances enumerating all the different class choices given by clas_choices in Cornwell_point_group.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.create_pgop_to_pg">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create_pgop_to_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_pgop_to_pg" title="Permalink to this definition"></a></dt>
+<dd><p>Create a dictionary which maps a tuple of group elements to a point group. The keys must be sorted, and the values are a tuple containing the
+point group name and the default class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.find_multiplication_table">
+<span class="sig-name descname"><span class="pre">find_multiplication_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.find_multiplication_table" title="Permalink to this definition"></a></dt>
+<dd><p>This method will find the multiplication table, and it can be returned either in terms of the element names or numbers.</p>
+<p>The latter is useful to determine if two groups are isomorphic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.init_from">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">init_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from" title="Permalink to this definition"></a></dt>
+<dd><p>Construct PointGroup object from either a point group name or a list of point group operators.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.init_from_operators">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">init_from_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pgop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from_operators" title="Permalink to this definition"></a></dt>
+<dd><p>Construct PointGroup object from a list of point group operators.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_alias">
+<span class="sig-name descname"><span class="pre">set_alias</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_alias" title="Permalink to this definition"></a></dt>
+<dd><p>Rename the group elements according to the mapping provided by the dictionary mapd.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_clas">
+<span class="sig-name descname"><span class="pre">set_clas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_clas" title="Permalink to this definition"></a></dt>
+<dd><p>Set the classes using the same notation as in Cornwell file.</p>
+<p>The different classes are split on the ‘|’, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">|</span> <span class="n">c3z</span> <span class="n">ci3z</span> <span class="o">|</span> <span class="n">Ic2x</span> <span class="n">Ic2A</span> <span class="n">Ic2B</span> <span class="o">|</span> <span class="n">c2z</span> <span class="o">|</span> <span class="n">c6z</span> <span class="n">ci6z</span> <span class="o">|</span> <span class="n">Ic2y</span> <span class="n">Ic2C</span> <span class="n">Ic2D</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_ct">
+<span class="sig-name descname"><span class="pre">set_ct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_ct" title="Permalink to this definition"></a></dt>
+<dd><p>Set the character table values as a string using the same notation as in Cornwell file.</p>
+<p>The default is to take these from Cornwell. A set can be provided as a string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>    <span class="mi">1</span>   <span class="mi">1</span>   <span class="mi">1</span>    <span class="mi">1</span>   <span class="mi">1</span>
+<span class="mi">1</span>    <span class="mi">1</span>  <span class="o">-</span><span class="mi">1</span>   <span class="mi">1</span>    <span class="mi">1</span>  <span class="o">-</span><span class="mi">1</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_gmatr">
+<span class="sig-name descname"><span class="pre">set_gmatr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gmatr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_gmatr" title="Permalink to this definition"></a></dt>
+<dd><p>Set the group element matrices. The default is to take these from Cornwell.</p>
+<p>A set can be provided as a string (needs to be updated to CP data) or a list of matrices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_iname">
+<span class="sig-name descname"><span class="pre">set_iname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_iname" title="Permalink to this definition"></a></dt>
+<dd><p>Set the names of the irreps.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_irrep_matr">
+<span class="sig-name descname"><span class="pre">set_irrep_matr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">irrep_matr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_irrep_matr" title="Permalink to this definition"></a></dt>
+<dd><p>Set the irreducible representation matrices. They are either taken from Cornwell, or input, or neither.</p>
+<p>These are not required given that our representation code can compute them.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_mirror_notation">
+<span class="sig-name descname"><span class="pre">set_mirror_notation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_mirror_notation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.set_subgroups">
+<span class="sig-name descname"><span class="pre">set_subgroups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.set_subgroups" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.store_characters">
+<span class="sig-name descname"><span class="pre">store_characters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.store_characters" title="Permalink to this definition"></a></dt>
+<dd><p>Create an OrderedDict characters which stores the character for each group element.</p>
+<p>This is needed when using the projection operator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.class_method_descriptor">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">class_method_descriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.class_method_descriptor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.symmetry.point_group.find_inv">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">find_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sym_op</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.find_inv" title="Permalink to this definition"></a></dt>
+<dd><p>This function finds the inverse group operator of the input, in the given point group.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="principia_materia.symmetry.little_group.html" class="btn btn-neutral float-left" title="principia_materia.symmetry.little_group module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="principia_materia.tetrahedron.html" class="btn btn-neutral float-right" title="principia_materia.tetrahedron package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
