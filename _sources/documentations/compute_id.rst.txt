@@ -15,6 +15,10 @@ LID Approach on NaCl at Second Order
 There are many ways to use this package to execute calculations of the irreducible derivatives with LID approach.
 Here we demonstrate a recommended workflow to execute our LID approach at second order on NaCl from forces computed by first principle method.
 
+
+Symmetry Analysis and Find the Measurements to Compute
+******************************************************
+
 First we create a file ``structure.yml`` describing the structure of NaCl::
   
   $ cat structure.yml
@@ -75,6 +79,10 @@ The above step will create two files:
         --supa '2,0,0;0,2,0;0,0,2' --pg Oh --order 2 --full-symmetry \
         --delta 0.02,0.03,0.04 --fdtype c --database database.db \
         --db-type sqlite --db-table lid_phonon
+
+
+Prepare and Execute First Principle Calculations
+************************************************
       
 The next step is to create the first principle jobs to be computed, the package generically supports all types of first principle compute engines provided a working interface,
 and here we demonstrate using VASP. We begin by create the VASP jobs to be executed::
@@ -92,6 +100,10 @@ Afterwards, the calculation results can be collected and stored in the database:
    We initiated the ``pm-jobs`` command with the input configuration file for the LID analysis ``config.yml``,
    and subsequently saved a new configuration file ``jobs_config.yml`` for the ``pm-jobs`` code for the purpose of convenience.
    These configuration files contains all the input arguments that are required to reproduce the exact same setup.
+
+
+Compute Irreducible Derivatives from the Results of First Principle Calculations
+********************************************************************************
 
 Finally, we can execute the post-processing step of the LID approach to compute the irreducible derivatives and, for example, compute the force constants tensors for Fourier interpolation::
 

@@ -44,7 +44,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation group</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Compute Irreducible Derivatives</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#lid-approach-on-nacl-at-second-order">LID Approach on NaCl at Second Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lid-approach-on-nacl-at-second-order">LID Approach on NaCl at Second Order</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#symmetry-analysis-and-find-the-measurements-to-compute">Symmetry Analysis and Find the Measurements to Compute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-and-execute-first-principle-calculations">Prepare and Execute First Principle Calculations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compute-irreducible-derivatives-from-the-results-of-first-principle-calculations">Compute Irreducible Derivatives from the Results of First Principle Calculations</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#computing-phonon-dispersion-and-dos">Computing phonon dispersion and DOS</a></li>
 </ul>
 </li>
@@ -91,6 +96,8 @@ The theory behind these approaches are described in the following paper:</p>
 <h2>LID Approach on NaCl at Second Order<a class="headerlink" href="#lid-approach-on-nacl-at-second-order" title="Permalink to this headline"></a></h2>
 <p>There are many ways to use this package to execute calculations of the irreducible derivatives with LID approach.
 Here we demonstrate a recommended workflow to execute our LID approach at second order on NaCl from forces computed by first principle method.</p>
+<section id="symmetry-analysis-and-find-the-measurements-to-compute">
+<h3>Symmetry Analysis and Find the Measurements to Compute<a class="headerlink" href="#symmetry-analysis-and-find-the-measurements-to-compute" title="Permalink to this headline"></a></h3>
 <p>First we create a file <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> describing the structure of NaCl:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat structure.yml
 # CrystalFTG
@@ -151,6 +158,9 @@ other database can be used if a working interface is provided).</p></li>
 </pre></div>
 </div>
 </div>
+</section>
+<section id="prepare-and-execute-first-principle-calculations">
+<h3>Prepare and Execute First Principle Calculations<a class="headerlink" href="#prepare-and-execute-first-principle-calculations" title="Permalink to this headline"></a></h3>
 <p>The next step is to create the first principle jobs to be computed, the package generically supports all types of first principle compute engines provided a working interface,
 and here we demonstrate using VASP. We begin by create the VASP jobs to be executed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">jobs</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">create</span> <span class="o">--</span><span class="n">engine</span> <span class="n">vasp</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">config</span> <span class="n">jobs_config</span><span class="o">.</span><span class="n">yml</span> \
@@ -169,6 +179,9 @@ Afterwards, the calculation results can be collected and stored in the database:
 and subsequently saved a new configuration file <code class="docutils literal notranslate"><span class="pre">jobs_config.yml</span></code> for the <code class="docutils literal notranslate"><span class="pre">pm-jobs</span></code> code for the purpose of convenience.
 These configuration files contains all the input arguments that are required to reproduce the exact same setup.</p>
 </div>
+</section>
+<section id="compute-irreducible-derivatives-from-the-results-of-first-principle-calculations">
+<h3>Compute Irreducible Derivatives from the Results of First Principle Calculations<a class="headerlink" href="#compute-irreducible-derivatives-from-the-results-of-first-principle-calculations" title="Permalink to this headline"></a></h3>
 <p>Finally, we can execute the post-processing step of the LID approach to compute the irreducible derivatives and, for example, compute the force constants tensors for Fourier interpolation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="o">--</span><span class="n">load</span><span class="o">-</span><span class="n">lid</span><span class="o">-</span><span class="n">mesh</span> <span class="n">lid_mesh</span><span class="o">.</span><span class="n">hdf5</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> \
   <span class="o">--</span><span class="n">post</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">fi</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">ids</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dts</span>
@@ -192,6 +205,7 @@ to compute Fourier interpolation.</p></li>
 <p>Both <strong>BID</strong> and <strong>HS-BID</strong> approaches can be executed following the exact same workflow while replacing the command <code class="docutils literal notranslate"><span class="pre">pm-lid-mesh</span></code>
 with <code class="docutils literal notranslate"><span class="pre">pm-bid</span></code> and <code class="docutils literal notranslate"><span class="pre">pm-hsbid</span></code> respectively, and a change of the table name for the database is also recommended (e.g. change to ‘bid_phonon’).</p>
 </div>
+</section>
 </section>
 <section id="computing-phonon-dispersion-and-dos">
 <h2>Computing phonon dispersion and DOS<a class="headerlink" href="#computing-phonon-dispersion-and-dos" title="Permalink to this headline"></a></h2>
