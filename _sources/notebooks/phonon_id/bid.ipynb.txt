@@ -143,16 +143,6 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "dc05fe37",
-   "metadata": {
-    "scrolled": true
-   },
-   "outputs": [],
-   "source": []
-  },
-  {
    "cell_type": "markdown",
    "id": "f27fab2d",
    "metadata": {},
@@ -327,16 +317,6 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "8b4f6e55",
-   "metadata": {
-    "scrolled": true
-   },
-   "outputs": [],
-   "source": []
-  },
-  {
    "cell_type": "markdown",
    "id": "f997e865",
    "metadata": {},
@@ -345,14 +325,6 @@
     "\n",
     "![Phonon and DOS of NaCl](nacl_hsbid/figure.pdf)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "58d72216",
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
@@ -371,7 +343,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.8"
+   "version": "3.9.5"
   }
  },
  "nbformat": 4,
