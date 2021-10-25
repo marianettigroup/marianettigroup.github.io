@@ -2,16 +2,18 @@
 
 .. _install:
 
-Install
-=======
+Installation
+============
 
-<+the package+> consists of Python codes with C++ and Fortran extensions.
+principia-materia consists of Python codes with C++ and Fortran extensions.
 
 
 
 
 Install from PyPI
 -----------------
+
+If you use ``pip``, you can install principia-materia with:
 
 .. code-block:: bash
 
@@ -21,6 +23,8 @@ Install from PyPI
 Install from Conda
 ------------------
 
+If you use ``conda``, you can install principia-materia with:
+
 .. code-block:: bash
 
       conda install -c principia-materia
@@ -28,6 +32,8 @@ Install from Conda
 
 Using Docker image
 ------------------
+
+If you use ``docker``, you can install principia-materia with:
 
 .. code-block:: bash
 
@@ -37,19 +43,20 @@ Using Docker image
 Compile from source
 -------------------
 
-Compiling the package from source requires several libraries used in extensions.
+Additionally, you can also compile and install the package from the source code,
+which requires several libraries used in extensions.
 
 The required libraries are::
 
       opemp
       lapack
       blas
+      gcc
       gfortran
 
 * For Ubuntu 18.04 and latear with gcc compilers::
 
       sudo apt install gcc gfortran libomp-dev liblapack-dev libblas-dev
-
 
 * For macOS with Homebrew::
 
@@ -65,11 +72,9 @@ The next step is compiling the source code.
 
       python setup.py build
 
-
 * For macOS with Homebrew::
 
       CC=gcc-11 CXX=g++-11 F90=gfortran-11 python setup.py build
-
 
 The installation step can be executed with either the regular mode ::
 
@@ -84,3 +89,35 @@ repository is dynamically link to serve as the python module so that any
 changes to the code can come in effect without reinstalling the module. However
 for the extensions of the module that is written in either C or FORTRAN, the
 module requires recompilation to reflect any changes to the source code.
+
+
+Using Virtual Environment
+-------------------------
+
+Virtual environment is recommended when working with the package.
+To setup a virtual environment:
+
+.. code-block:: bash
+
+  python3 -m virtualenv ENVNAME && source ENVNAME/bin/activate
+
+(replace ``ENVNAME`` with the name of the environment).
+
+
+Setup Shell Auto-Complete
+-------------------------
+
+The auto-complete feature is optional, and is realized with `argcomplete <https://kislyuk.github.io/argcomplete>`_ module.
+To activate this feature, in Bash for example, install the moculde first:
+
+.. code-block:: bash
+
+   pip install argcomplete
+   activate-global-python-argcomplete
+
+then within the virtual environment source the ``pm-completion.sh`` script in activation script ``ENVNAME/bin/activate``:
+
+.. code-block:: bash
+
+  source ${VIRTUAL_ENV}/../pm-completion.sh
+
