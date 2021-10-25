@@ -145,7 +145,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/Users/lyuwenfu/Documents/Research/git_repos/principia-materia/principia_materia/phonon_id/finite_displacements.py:567: Warning: Jobnames of fetched data from database does not match input jobnames.\n",
+      "principia_materia/phonon_id/finite_displacements.py:567: Warning: Jobnames of fetched data from database does not match input jobnames.\n",
       "  self._raw_results = source.get_results_from_jobs(\n"
      ]
     }

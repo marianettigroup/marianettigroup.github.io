@@ -13,4 +13,3 @@ Documentations
    ../notebooks/phonon_id/bid
    ../notebooks/phonon_id/linewidth
    :maxdepth: 2
-   :caption: Contents:
