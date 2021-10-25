@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Continuous Integration" href="../ci.html" />
+    <link rel="next" title="Compute Irreducible Derivatives" href="compute_id.html" />
     <link rel="prev" title="Installation" href="../install.html" /> 
 </head>
 
@@ -41,7 +41,21 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html">Symmetry of a molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-analysis-for-phonons">Symmetry analysis for phonons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html">Symmetry analysis of phonon interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html">Finite Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/lid.html">Lone Irreducible Derivatives (LID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html">Bundled Irreducible Derivatives (BID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html#Hierarchical-Supercell-BID-Approach">Hierarchical Supercell BID Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/linewidth.html">Phonon linewidth and thermal conductivity</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
 </ul>
@@ -96,6 +110,68 @@
 </style>
 <section id="documentations">
 <h1>Documentations<a class="headerlink" href="#documentations" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html#lid-approach-on-nacl-at-second-order">LID Approach on NaCl at Second Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html#computing-phonon-dispersion-and-dos">Computing phonon dispersion and DOS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html#phonon-linewidth">Phonon Linewidth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html#thermal-conductivity">Thermal Conductivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/translation_group/translation_group.html">Translation Group</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Cluster">Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Lattice">Lattice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Crystal-and-CrystalFTG">Crystal and CrystalFTG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Algorithm-to-find-translation-vectors-of-any-given-supercell">Algorithm to find translation vectors of any given supercell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Algorithm-to-find-the-minimum-supcell-for-a-given-list-of-q-points">Algorithm to find the minimum supcell for a given list of q-points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html#Q-points-at-a-given-order-and-FTG">Q-points at a given order and FTG</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html">Symmetry of a molecule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-of-CO_2-molecule">Symmetry of <span class="math notranslate nohighlight">\(CO_2\)</span> molecule</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-analysis-for-phonons">Symmetry analysis for phonons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-of-Displacements-of-a-Crystal">Symmetry of Displacements of a Crystal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Direct-product-and-symmetric-direct-product-of-irreducible-representations">Direct product and symmetric direct product of irreducible representations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html">Hamiltonian</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html#Electron-Hamiltonian---1D-Hubbard">Electron Hamiltonian - 1D Hubbard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html#Phonon-Hamiltonian---Square-lattice">Phonon Hamiltonian - Square lattice</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html">Symmetry analysis of phonon interactions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html#Analytic-dynamic-tensor">Analytic dynamic tensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html#Little-group-ADT">Little group ADT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html#Analytic-tensors-within-a-given-FTG-at-a-given-order">Analytic tensors within a given FTG at a given order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html#Chainrule-derivatives">Chainrule derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html">Finite Displacements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html#Finite-Difference">Finite Difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html#id1">Finite Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html#Strained-Finite-Displacements">Strained Finite Displacements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/lid.html">Lone Irreducible Derivatives (LID) Approach</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/lid.html#Fourier-Interpolation-(with-dipole-dipole-contributions)">Fourier Interpolation (with dipole-dipole contributions)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/lid.html#Phonon-and-DOS-of-NaCl-with-FTG-4\hat{1}-including-LO-TO-splitting">Phonon and DOS of NaCl with FTG 4<span class="math notranslate nohighlight">\(\hat{1}\)</span> including LO-TO splitting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/bid.html">Bundled Irreducible Derivatives (BID) Approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/bid.html#Hierarchical-Supercell-BID-Approach">Hierarchical Supercell BID Approach</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html#Comparison-between-HS-BID-and-LID-of-Phonon-and-DOS-of-NaCl-with-FTG-4\hat{1}-including-LO-TO-splitting">Comparison between HS-BID and LID of Phonon and DOS of NaCl with FTG 4<span class="math notranslate nohighlight">\(\hat{1}\)</span> including LO-TO splitting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/phonon_id/linewidth.html">Phonon linewidth and thermal conductivity</a></li>
+</ul>
+</div>
 </section>
 
 
@@ -103,7 +179,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../ci.html" class="btn btn-neutral float-right" title="Continuous Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="compute_id.html" class="btn btn-neutral float-right" title="Compute Irreducible Derivatives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

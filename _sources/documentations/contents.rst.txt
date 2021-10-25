@@ -2,8 +2,6 @@ Documentations
 ==============
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
    compute_id
    compute_thermal
    ../notebooks/translation_group/translation_group
@@ -14,4 +12,5 @@ Documentations
    ../notebooks/phonon_id/lid
    ../notebooks/phonon_id/bid
    ../notebooks/phonon_id/linewidth
-
+   :maxdepth: 2
+   :caption: Contents:

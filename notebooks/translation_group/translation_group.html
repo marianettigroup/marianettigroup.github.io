@@ -20,7 +20,9 @@
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Symmetry of a molecule" href="../representation/group_theory_demostrations.html" />
+    <link rel="prev" title="Compute Phonon Linewidth and Thermal Conductivity" href="../../documentations/compute_thermal.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,10 +40,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../documentations/contents.html">Documentations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../documentations/compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentations/compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Translation Group</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Cluster">Cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Lattice">Lattice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Crystal-and-CrystalFTG">Crystal and CrystalFTG</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Wigner-Seitz-cell-of-a-supercell">Wigner Seitz cell of a supercell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Displacements-basis-vectors-at-a-given-q-point">Displacements basis vectors at a given q-point</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-to-find-translation-vectors-of-any-given-supercell">Algorithm to find translation vectors of any given supercell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Algorithm-to-find-the-minimum-supcell-for-a-given-list-of-q-points">Algorithm to find the minimum supcell for a given list of q-points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Q-points-at-a-given-order-and-FTG">Q-points at a given order and FTG</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../representation/group_theory_demostrations.html">Symmetry of a molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../representation/group_theory_demostrations.html#Symmetry-analysis-for-phonons">Symmetry analysis for phonons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hamiltonian/hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/phonon_interaction_analysis.html">Symmetry analysis of phonon interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/finite_displacements.html">Finite Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/lid.html">Lone Irreducible Derivatives (LID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/bid.html">Bundled Irreducible Derivatives (BID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/bid.html#Hierarchical-Supercell-BID-Approach">Hierarchical Supercell BID Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../phonon_id/linewidth.html">Phonon linewidth and thermal conductivity</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_doc/modules.html">API Documentations</a></li>
 </ul>
@@ -60,6 +88,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../documentations/contents.html">Documentations</a> &raquo;</li>
       <li>Translation Group</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/notebooks/translation_group/translation_group.ipynb.txt" rel="nofollow"> View page source</a>
@@ -1266,7 +1295,10 @@ array([[[Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)],
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../documentations/compute_thermal.html" class="btn btn-neutral float-left" title="Compute Phonon Linewidth and Thermal Conductivity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../representation/group_theory_demostrations.html" class="btn btn-neutral float-right" title="Symmetry of a molecule" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
