@@ -1,0 +1,656 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# General IO"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Array Parsing\n",
+    "\n",
+    "Throughout the entire package, array of numbers are very frequently used within the code as well as the inputs parameters to the methods. Thus, it is of great benefit to have a generic array parser to convert array into desired format, as well as enforcing array format for certain vairables."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from principia_materia import Fraction\n",
+    "from principia_materia.io_interface import parse_array"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "* We updated the methods of the built-in Fraction class, due to incompatibilities with numpy in python3.\n",
+    "* The `parse_array` method provides an easy way to creating an array, as demonstrated below. Supported delimiters for string format include space, comma, semicolon and newline, with hierarchy from low to high."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[[0.8660254037844386, 0.5, 0.5], [-0.5, 0.0, 0.5], [0.75, 0.5, 0.0]]"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "parse_array(\"\"\"\\\n",
+    "    r3/2 0.5 0.5\n",
+    "    -1/2 0.0 0.5\n",
+    "     3/4 0.5 0.0\"\"\", dtype=float)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[[Fraction(3, 2), Fraction(1, 2), Fraction(1, 2)],\n",
+       " [Fraction(-1, 2), Fraction(0, 1), Fraction(1, 2)],\n",
+       " [Fraction(3, 4), Fraction(1, 2), Fraction(0, 1)]]"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "parse_array(\"\"\"\\\n",
+    "     3/2 0.5 0.5\n",
+    "    -1/2 0.0 0.5\n",
+    "     3/4 0.5 0.0\"\"\", dtype=Fraction)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([[Fraction(3, 2), Fraction(1, 1), Fraction(1, 1)],\n",
+       "       [Fraction(-1, 2), Fraction(0, 1), Fraction(1, 1)],\n",
+       "       [Fraction(3, 4), Fraction(1, 2), Fraction(0, 1)]], dtype=object)"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "parse_array(\"\"\"\\\n",
+    "     3/2\n",
+    "    -1/2 0.0\n",
+    "     3/4 0.5 0.0\"\"\", dtype=Fraction, pad_to_shape=(3, 3), fillvalue=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from principia_materia.translation_group import (\n",
+    "    get_structure,\n",
+    "    save_structure,\n",
+    "    Cluster,\n",
+    "    Crystal,\n",
+    "    CrystalFTG,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Structure file\n",
+    "\n",
+    "For all translation group related classes, including Lattice, Cluster, Crystal, CrystalFTG, LatticeFTG and Kpoints, we present a method ``get_structure`` to construct an instance from a YAML format file.\n",
+    "The file needs to contain all the required keywords present for the desired class and the values need to be in supported format. \n",
+    "\n",
+    "In case of arrays, the method can take either a YAML supported nested list or in a string of numbers with space and newline of comma and semicolon delimiters.\n",
+    "\n",
+    "* ``vec``: lattice vectors, 2D array of float.\n",
+    "       \n",
+    "* ``atoms``: a list of single item dictionaries with the atom name as key and atom positions as the value.\n",
+    "\n",
+    "* ``orbitals``: orbitals used in the structure, string, or a list of strings.\n",
+    "\n",
+    "* ``supa``: supercell matrix, 2D array of int.\n",
+    "\n",
+    "* ``pg``: name of the point group, string\n",
+    "\n",
+    "This file format is easy to write by hand, thus can serve as an easy way to document a strcuture in study.\n",
+    "It is also used across the package to store structural information when needed. It can be easily converted into structure input files for different DFT engines on demand."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For example, if we have the follwing YAML string for a CrystalFTG class, we can pass it into the ``get_structure``  method, specifying the structure type with ``stype=CrystalFTG``, we will get a instance of the CrystalFTG class of rocksalt."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "structure_crystalftg = \"\"\"\\\n",
+    "vec: |\n",
+    "    0.0 0.5 0.5\n",
+    "    0.5 0.0 0.5\n",
+    "    0.5 0.5 0.0\n",
+    "atoms:\n",
+    "    - Na:\n",
+    "        0.0 0.0 0.0\n",
+    "    - Cl:\n",
+    "        0.5 0.5 0.5\n",
+    "orbitals: p\n",
+    "supa: |\n",
+    "    1 0 0\n",
+    "    0 1 0\n",
+    "    0 0 1\n",
+    "\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "OrderedDict([('vec',\n",
+       "              array([[0. , 0.5, 0.5],\n",
+       "                     [0.5, 0. , 0.5],\n",
+       "                     [0.5, 0.5, 0. ]])),\n",
+       "             ('atoms',\n",
+       "              OrderedDict([('Na', array([[0., 0., 0.]])),\n",
+       "                           ('Cl', array([[0.5, 0.5, 0.5]]))])),\n",
+       "             ('orbitals', 'p'),\n",
+       "             ('supa',\n",
+       "              array([[1, 0, 0],\n",
+       "                     [0, 1, 0],\n",
+       "                     [0, 0, 1]]))])"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "struct = get_structure(structure_crystalftg, stype=CrystalFTG)\n",
+    "struct.to_dict()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The same can be achieved by passing in the path to a YAML file, here we have this **structure_crystalftg.yml** file:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "vec: |\r\n",
+      "    0.0,0.5,0.5\r\n",
+      "    0.5,0.0,0.5\r\n",
+      "    0.5,0.5,0.0\r\n",
+      "atoms:\r\n",
+      "    - Na:\r\n",
+      "        0.0 0.0 0.0\r\n",
+      "    - Cl:\r\n",
+      "        0.5 0.5 0.5\r\n",
+      "orbitals: p\r\n",
+      "supa: |\r\n",
+      "    1 0 0\r\n",
+      "    0 1 0\r\n",
+      "    0 0 1\r\n",
+      "\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "cat structure_crystalftg.yml"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can construct an instance with the same information:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "OrderedDict([('vec',\n",
+       "              array([[0. , 0.5, 0.5],\n",
+       "                     [0.5, 0. , 0.5],\n",
+       "                     [0.5, 0.5, 0. ]])),\n",
+       "             ('atoms',\n",
+       "              OrderedDict([('Na', array([[0., 0., 0.]])),\n",
+       "                           ('Cl', array([[0.5, 0.5, 0.5]]))])),\n",
+       "             ('orbitals', 'p'),\n",
+       "             ('supa',\n",
+       "              array([[1, 0, 0],\n",
+       "                     [0, 1, 0],\n",
+       "                     [0, 0, 1]]))])"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "struct = get_structure(\"structure_crystalftg.yml\", stype=CrystalFTG)\n",
+    "struct.to_dict()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "OrderedDict([('vec',\n",
+       "              array([[ 0.8660254,  0.5      ,  0.       ],\n",
+       "                     [ 0.8660254, -0.5      ,  0.       ],\n",
+       "                     [ 0.       ,  0.       , 15.       ]])),\n",
+       "             ('atoms',\n",
+       "              OrderedDict([('C',\n",
+       "                            array([[0.        , 0.        , 0.        ],\n",
+       "                                   [0.66666667, 0.66666667, 0.        ]]))])),\n",
+       "             ('orbitals', 'p'),\n",
+       "             ('supa',\n",
+       "              array([[1, 0, 0],\n",
+       "                     [0, 1, 0],\n",
+       "                     [0, 0, 1]]))])"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "struct = get_structure(\"\"\"\\\n",
+    "vec: |\n",
+    "    r3/2  1/2  0\n",
+    "    r3/2 -1/2  0\n",
+    "    0          0   15\n",
+    "atoms:\n",
+    "    - C: |\n",
+    "        0.0 0.0 0.0\n",
+    "        2/3 2/3 0\n",
+    "orbitals: p\n",
+    "supa: |\n",
+    "    1 0 0\n",
+    "    0 1 0\n",
+    "    0 0 1\n",
+    "\"\"\", stype=CrystalFTG)\n",
+    "struct.to_dict()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A structure instance can also be easily saved into the file format:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "# CrystalFTG\n",
+      "vec:\n",
+      "  [[ 0.86602540,  0.50000000,  0.00000000],\n",
+      "   [ 0.86602540, -0.50000000,  0.00000000],\n",
+      "   [ 0.00000000,  0.00000000,  15.00000000]]\n",
+      "atoms:\n",
+      "  - C: \n",
+      "      [[ 0.00000000,  0.00000000,  0.00000000],\n",
+      "       [ 0.66666667,  0.66666667,  0.00000000]]\n",
+      "orbitals: p\n",
+      "supa:\n",
+      "  [[ 1,  0,  0],\n",
+      "   [ 0,  1,  0],\n",
+      "   [ 0,  0,  1]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(save_structure(struct))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Format arrays\n",
+    "\n",
+    "Since we are dealing with a lot of arrays, sometime we want to print them out to save into a file, or even just for inspection.\n",
+    "The `ArrayFormatter` class enables us to format 2D arrays into various ways.\n",
+    "\n",
+    "`ArrayFormatter` is a class that behaves like a function. Once instantiated, the object can be called just like a function.\n",
+    "This allows us to reused all of the formatting code and achieve various styles of formats in minimum amount of code.\n",
+    "\n",
+    "We can instantiate the class with configurations to format arrays in desired style, then use it to format the arrays we have.\n",
+    "Meanwhile, many frequently used styles are pre-configured and ready to use."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from principia_materia.io_interface import (\n",
+    "    ArrayFormatter, \n",
+    "    format_array_bracket, \n",
+    "    format_array_table, \n",
+    "    tex_array_formatter,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "See class docstring for usage details:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Help on class ArrayFormatter in module principia_materia.io_interface.array_io:\n",
+      "\n",
+      "class ArrayFormatter(builtins.object)\n",
+      " |  ArrayFormatter(prec=8, fmt=None, align='l', cell_length=1, delimiter=' ', pad=0, newline='\\n', header='', footer='', line_begin='', line_end='', indent=0)\n",
+      " |  \n",
+      " |  Format 2D array.\n",
+      " |  \n",
+      " |  Object oriented class for formatting arrays.\n",
+      " |  The mechanism is to setup the desired style of the formatter, with which\n",
+      " |  one can format arrays, just like any formatter function.\n",
+      " |  Some default styles will be provided below, for convenience.\n",
+      " |  \n",
+      " |  This class implements all the basic features of a formatter, so that any\n",
+      " |  new styles can be achieved with minimum work by simply providing style\n",
+      " |  specifications.\n",
+      " |  \n",
+      " |  Parameters\n",
+      " |  ----------\n",
+      " |  prec        : int, optional, default to 8\n",
+      " |      Decimal points to keep for floating points.\n",
+      " |      Can be directly set in `fmt`.\n",
+      " |  fmt         : str, optional, default to None\n",
+      " |      The string format for each array element.\n",
+      " |      Default dynamically using `prec`, `align`, `cell_length` and the cell\n",
+      " |      data type to determine the decimal points.\n",
+      " |      Once the format is set to not None, it will be used for the cell format,\n",
+      " |      align and cell_length will be ignored.\n",
+      " |  align       : str, optional, default to \"l\", choices(\"l\", \"r\", \"c\")\n",
+      " |      The alignment of the cell, can choose between left, right and centered.\n",
+      " |  cell_length : int, optional, default to 0\n",
+      " |      The length of the cell, this is used to align the cell, if the provided\n",
+      " |      `cell_length` is too short, it will be ignored.\n",
+      " |  delimiter   : str, optional, default to \" \"\n",
+      " |      The separator of each array element in the same row.\n",
+      " |  pad         : int or str, optional, default to 0\n",
+      " |      (Takes in int for number of spaces, or str for more customized padding)\n",
+      " |      The amount of space between element, this will pad between array\n",
+      " |      elements and `line_begin`/`line_end`, as well as after delimiter\n",
+      " |      and the next array element. If padding in either place is needed,\n",
+      " |      add the padding to delimeter or `line_begin`/`line_end`.\n",
+      " |  newline     : str, optional, default to \"\\\\n\"\n",
+      " |      The separator between each row.\n",
+      " |  header      : str, optional, default empty\n",
+      " |      String that will appear immediately in front of the array.\n",
+      " |  footer      : str, optional, default empty\n",
+      " |      String that will appear immediately after the array.\n",
+      " |  line_begin  : str, optional, default empty\n",
+      " |      String that will appear immediately in front of each row of the array.\n",
+      " |  line_end    : str, optional, default empty\n",
+      " |      String that will appear immediately after each row of the array.\n",
+      " |  indent      : int or str, optional, default to 0\n",
+      " |      (Takes in int for number of spaces, or str for more customized indent)\n",
+      " |      Overall indent of the array, does not affect header and footer.\n",
+      " |      For indent on the entire string, use `textwrap.indent`.\n",
+      " |  \n",
+      " |  \n",
+      " |  Examples\n",
+      " |  --------\n",
+      " |  >>> format_array_nparray = ArrayFormatter(\n",
+      " |  ...     prec=8,\n",
+      " |  ...     delimiter=\", \",\n",
+      " |  ...     line_begin=ArrayFormatter.firstline_line_begin(line_begin=\"       [\", first_line_begin=\"array([[\"),\n",
+      " |  ...     line_end=ArrayFormatter.lastline_line_end(line_end=\"],\", last_line_end=\"]])\"),\n",
+      " |  ...     )\n",
+      " |  >>> print(format_array_nparray(np.identity(3)))\n",
+      " |  array([[ 1.00000000,  0.00000000,  0.00000000],\n",
+      " |         [ 0.00000000,  1.00000000,  0.00000000],\n",
+      " |         [ 0.00000000,  0.00000000,  1.00000000]])\n",
+      " |  >>> formatter = tex_array_formatter(texenv=\"bmatrix\")\n",
+      " |  >>> print(formatter(np.identity(3)))\n",
+      " |  \\begin{bmatrix}\n",
+      " |     1.00000000 &&  0.00000000 &&  0.00000000 \\\\\n",
+      " |     0.00000000 &&  1.00000000 &&  0.00000000 \\\\\n",
+      " |     0.00000000 &&  0.00000000 &&  1.00000000 \\\\\n",
+      " |  \\end{bmatrix}\n",
+      " |  \n",
+      " |  Methods defined here:\n",
+      " |  \n",
+      " |  __call__(self, arr, prec=None, cell_length=None, extent_dimention=False)\n",
+      " |      Call self as a function.\n",
+      " |  \n",
+      " |  __init__(self, prec=8, fmt=None, align='l', cell_length=1, delimiter=' ', pad=0, newline='\\n', header='', footer='', line_begin='', line_end='', indent=0)\n",
+      " |      Initialize self.  See help(type(self)) for accurate signature.\n",
+      " |  \n",
+      " |  format_array(self, arr, prec=None, cell_length=None, extent_dimention=False)\n",
+      " |  \n",
+      " |  ----------------------------------------------------------------------\n",
+      " |  Static methods defined here:\n",
+      " |  \n",
+      " |  firstline_line_begin(line_begin, first_line_begin)\n",
+      " |  \n",
+      " |  lastline_line_end(line_end, last_line_end)\n",
+      " |  \n",
+      " |  ----------------------------------------------------------------------\n",
+      " |  Data descriptors defined here:\n",
+      " |  \n",
+      " |  __dict__\n",
+      " |      dictionary for instance variables (if defined)\n",
+      " |  \n",
+      " |  __weakref__\n",
+      " |      list of weak references to the object (if defined)\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "help(ArrayFormatter)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "array = np.array([\n",
+    "    [0.0, 0.5, 0.5],\n",
+    "    [0.5, 0.0, 0.5],\n",
+    "    [0.5, 0.5, 0.0],\n",
+    "])\n",
+    "fraction_array = np.array([\n",
+    "    [Fraction(0, 1), Fraction(1, 2), Fraction(1, 2)],\n",
+    "    [Fraction(1, 2), Fraction(0, 1), Fraction(1, 2)],\n",
+    "    [Fraction(1, 2), Fraction(1, 2), Fraction(0, 1)],\n",
+    "])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[ 0.00000000,  0.50000000,  0.50000000],\n",
+      " [ 0.50000000,  0.00000000,  0.50000000],\n",
+      " [ 0.50000000,  0.50000000,  0.00000000]]\n",
+      "[[0, 1/2, 1/2],\n",
+      " [1/2, 0, 1/2],\n",
+      " [1/2, 1/2, 0]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(format_array_bracket(array))\n",
+    "print(format_array_bracket(fraction_array))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      " 0.00000000  0.50000000  0.50000000\n",
+      " 0.50000000  0.00000000  0.50000000\n",
+      " 0.50000000  0.50000000  0.00000000\n",
+      "0 1/2 1/2\n",
+      "1/2 0 1/2\n",
+      "1/2 1/2 0\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(format_array_table(array))\n",
+    "print(format_array_table(fraction_array))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here the `tex_array_formatter` function can return a formatter instance that uses the specified tex environment (default to \"bmatrix\")."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\\begin{bmatrix}\n",
+      "   0.00000000 &&  0.50000000 &&  0.50000000 \\\\\n",
+      "   0.50000000 &&  0.00000000 &&  0.50000000 \\\\\n",
+      "   0.50000000 &&  0.50000000 &&  0.00000000 \\\\\n",
+      "\\end{bmatrix}\n"
+     ]
+    }
+   ],
+   "source": [
+    "tex_formatter = tex_array_formatter(texenv=\"bmatrix\")\n",
+    "print(tex_formatter(array))"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

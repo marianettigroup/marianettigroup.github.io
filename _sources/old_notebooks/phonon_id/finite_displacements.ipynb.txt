@@ -1,0 +1,294 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Finite Displacements\n",
+    "\n",
+    "This package used finite displacement (FD) in combination with pertubation theory to compute phonons and their \n",
+    "interactions. We take higher order derivatives on top of the energy derivatives that are available in DFT\n",
+    "engines. For example, most DFT engines computes forces using Hellmann-Feynman theorem, and in that case,\n",
+    "we need take 1 order of FD derivative for phonon and 2 orders of derivatives for cubic interactions.\n",
+    "\n",
+    "Here we present a generic tool kit to compute finite displacements that will be used throughout the package."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## FiniteDisplacements\n",
+    "\n",
+    "The `FiniteDisplacements` class computes finite displacements for a given measurement at a given order, a series of displacment amplitutes (deltas) for a given structure.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from principia_materia.io_interface.vasp import parse_poscar\n",
+    "from principia_materia.translation_group import get_structure, CrystalFTG\n",
+    "from principia_materia.phonon_id.finite_displacements import FiniteDisplacements"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "structure = get_structure(parse_poscar(\"nacl/POSCAR\"), stype=CrystalFTG)\n",
+    "structure.orbitals = \"p\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "supa = np.identity(3) * 2\n",
+    "fd = FiniteDisplacements(\n",
+    "  structure=structure,\n",
+    "  supa=supa,\n",
+    "  fdtype=\"c\",\n",
+    "  )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "displacements = np.zeros((2, ) + fd.supercell.positions.shape)\n",
+    "displacements[0][0, 0] = 1\n",
+    "displacements[1][1, 0] = 1\n",
+    "fd.set_displacement_vectors(dispvecs=displacements, displabels=[1, 2])\n",
+    "fd.set_delta([0.01, 0.02])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['testrun_d0',\n",
+       " 'testrun_d1',\n",
+       " 'testrun_d2',\n",
+       " 'testrun_d3',\n",
+       " 'testrun_d4',\n",
+       " 'testrun_d5',\n",
+       " 'testrun_d6',\n",
+       " 'testrun_d7']"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fd.create_dft_jobs(\n",
+    "    directory=\"./test_jobs\",\n",
+    "    dft_engine=\"vasp\",\n",
+    "    jobname_prefix=\"testrun\",\n",
+    "    dry_run=True,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "After DFT runs are finished, compute the finite displacements with the following codes:\n",
+    "\n",
+    "```python\n",
+    "fd.collect_data_from_dft_jobs(\n",
+    "    data_type=\"forces\",\n",
+    "    directory=\"./test_jobs\",\n",
+    "    dft_engine=\"vasp\",\n",
+    ")\n",
+    "fd.compute_finite_displacements()\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## FDSeries\n",
+    "\n",
+    "The `FDSeries` class offers an interface between our LID and BID analysis tools and the `FiniteDisplacements` class, making the management of a series of FD computations convenient. It also creates an easily readble directory hierarchy for these jobs. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from principia_materia.phonon_id.fd_series import FDSeries"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fdseries = FDSeries(\n",
+    "  structure=structure,\n",
+    "  supa=supa,\n",
+    "  order=2,\n",
+    "  )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "displacements = np.zeros((2, ) + fdseries.supercell.positions.shape)\n",
+    "displacements[0][0, 0] = 1\n",
+    "displacements[1][1, 0] = 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fdseries.set_measurements(measurements=displacements)\n",
+    "fdseries.set_deltas([0.01, 0.02, 0.03])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "fdseries.create_dft_jobs(\n",
+    "    root_directory=\"test_jobs_series\",\n",
+    "    dft_engine=\"vasp\",\n",
+    "    jobname_prefix=\"the_test_job_\",\n",
+    "    dry_run=True\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In order to compute the derivatives after the DFT jobs are finished, the following method can be called.\n",
+    "```python\n",
+    "fdseries.get_fd_results(\n",
+    "    root_directory=\"test_jobs_series\",\n",
+    "    dft_engine=\"vasp\",\n",
+    "    data_type=\"forces\",\n",
+    "    )\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Help on class FDSeries in module principia_materia.phonon_id.fd_series:\n",
+      "\n",
+      "class FDSeries(builtins.object)\n",
+      " |  FDSeries(structure, supa, order, fdtype='c', tol=1e-06)\n",
+      " |  \n",
+      " |  Methods defined here:\n",
+      " |  \n",
+      " |  __init__(self, structure, supa, order, fdtype='c', tol=1e-06)\n",
+      " |      Parameters\n",
+      " |      ----------\n",
+      " |      order : int\n",
+      " |          Order of the derivative.\n",
+      " |  \n",
+      " |  create_dft_jobs(self, root_directory, dft_engine, delta_format=<function format_delta_dirname at 0x7fc8339518c0>, jobname_prefix='', config_file='finite_displacements.yml', dft_config_path=None, dry_run=False)\n",
+      " |  \n",
+      " |  get_errortail_results(self, pick_min=3, pick_max=None, consecutive=False, penalty=<function penalty_linear_mse at 0x7fc833d7f830>, seperate_complex=True, return_pick=False, return_penalty=False)\n",
+      " |  \n",
+      " |  get_fd_results(self, root_directory, data_type, dft_engine, config_file='finite_displacements.yml')\n",
+      " |  \n",
+      " |  project_fd_results(self, basis)\n",
+      " |  \n",
+      " |  set_deltas(self, deltas, append=False)\n",
+      " |  \n",
+      " |  set_measurements(self, measurements, measurement_names=None)\n",
+      " |      Parameters\n",
+      " |      ----------\n",
+      " |      measurements       :   array of numbers\n",
+      " |      measurement_names  :   list of str\n",
+      " |          Name of the measurement sets, used to naming the directories.\n",
+      " |  \n",
+      " |  ----------------------------------------------------------------------\n",
+      " |  Data descriptors defined here:\n",
+      " |  \n",
+      " |  __dict__\n",
+      " |      dictionary for instance variables (if defined)\n",
+      " |  \n",
+      " |  __weakref__\n",
+      " |      list of weak references to the object (if defined)\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "help(FDSeries)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

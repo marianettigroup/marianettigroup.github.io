@@ -15,10 +15,11 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Translation group" href="translation_group.html" />
+    <link rel="next" title="Continuous Integration" href="../ci.html" />
     <link rel="prev" title="Installation" href="../install.html" /> 
 </head>
 
@@ -40,12 +41,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation group</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
 </ul>
@@ -74,27 +70,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="documentations">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="documentations">
 <h1>Documentations<a class="headerlink" href="#documentations" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="translation_group.html">Translation group</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="translation_group.html#determine-translations-in-finite-translation-group">Determine translations in finite translation group</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="compute_id.html#lid-approach-on-nacl-at-second-order">LID Approach on NaCl at Second Order</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compute_id.html#computing-phonon-dispersion-and-dos">Computing phonon dispersion and DOS</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html#phonon-linewidth">Phonon Linewidth</a></li>
-<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html#thermal-conductivity">Thermal Conductivity</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </section>
 
 
@@ -102,7 +103,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="translation_group.html" class="btn btn-neutral float-right" title="Translation group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../ci.html" class="btn btn-neutral float-right" title="Continuous Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

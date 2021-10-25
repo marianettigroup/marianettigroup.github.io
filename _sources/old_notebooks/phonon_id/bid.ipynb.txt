@@ -1,0 +1,144 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bundled irreducible derivatives approach\n",
+    "\n",
+    "Bundled irreducible derivatives approach (BID) tries to prove the entire system with as few displacements as possible. \n",
+    "We compute the chainrule matrix for our displacement vectors after execute the symmetry analysis.\n",
+    "Once we find the displacement vectors that the rank of chainrule matrix match the number of \n",
+    "irreducible derivatives we are looking to solve, we can use the set of displacements to compute the irreducible derivatives.\n",
+    "\n",
+    "As an example, we atempt to compute the phonons of rocksalt with FTG of $2\\hat{1}$, and we use DFT engine VASP to compute forces of displacements."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "from principia_materia.phonon_id.bid import BID\n",
+    "from principia_materia.io_interface.vasp import parse_poscar\n",
+    "from principia_materia.translation_group import get_structure, CrystalFTG"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "structure = get_structure(parse_poscar(\"nacl/POSCAR\"), stype=CrystalFTG)\n",
+    "structure.orbitals = \"p\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mesh = np.array([\n",
+    "  [2, 0, 0],\n",
+    "  [0, 2, 0],\n",
+    "  [0, 0, 2]])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Computing ADT for Qpoint: ((0, 0, 0), (0, 0, 0))\n",
+      "Computing ADT for Qpoint: ((1/2, 0, 0), (1/2, 0, 0))\n",
+      "Computing ADT for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))\n",
+      "Summarize irreducible derivatives.\n",
+      "Compute vectorized tensors.\n",
+      "Number of unknowns:  11\n",
+      "Rank of single measurements:  11\n",
+      "Estimated number of measurements:  1\n"
+     ]
+    }
+   ],
+   "source": [
+    "bid = BID(structure=structure, supa=mesh, order=2, pg=\"Oh\")\n",
+    "bid.set_chainrule_derivatives(verbose=True)\n",
+    "bid._set_displacement_generator()\n",
+    "bid.find_measurements(verbose=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we have found the displacements needed to solve for the irreducible derivatives, we can create the dft jobs for certain DFT engine."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bid.create_dft_jobs(\n",
+    "    root_directory=\"test_bid\",\n",
+    "    deltas=[0.01, 0.02, 0.03],\n",
+    "    dft_engine=\"vasp\",\n",
+    "    jobname_prefix=\"test_job_\",\n",
+    "    dry_run=True,\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In order to compute the finite displacements from the DFT results, \n",
+    "perform quadratic error tail for the central finite difference, \n",
+    "and solve for the irreducible derivatives, and compute dynamic tensors\n",
+    "of the FTG. \n",
+    "\n",
+    "```python\n",
+    "bid.get_fd_results(\n",
+    "    \"test_bid\",\n",
+    "    \"forces\",\n",
+    "    \"vasp\",\n",
+    "    config_file=\"finite_displacements.yml\",\n",
+    "    )\n",
+    "bid.get_errortail_results()\n",
+    "bid.compute_irreducible_derivatives()\n",
+    "bid.get_dynamic_tensors()\n",
+    "```"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

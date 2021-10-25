@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phonons &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../contents.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Phonons</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/old_notebooks/phonon_id/Phonons.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Phonons">
+<h1>Phonons<a class="headerlink" href="#Phonons" title="Permalink to this headline"></a></h1>
+<p>Phonon is one of the most important physical quantities that are been studied in this package. We have gone through the methods for computation of the second order Taylor series of the BO energy in LID and BID chapters, here we use the resulting dynamic matrices from those approaches to compute phonon frequencies.</p>
+<section id="Diagonalization">
+<h2>Diagonalization<a class="headerlink" href="#Diagonalization" title="Permalink to this headline"></a></h2>
+<p>In order to compute phonons from dynamic matrices, we need to solve the phonon eigenvalue problem:</p>
+<div class="math notranslate nohighlight">
+\[\hat{D} \left| W \right&gt; = \lambda \hat{M} \left| W \right&gt; = \omega^2 \hat{M} \left| W \right&gt;\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{D}\)</span> is the dynamic matrix, <span class="math notranslate nohighlight">\(\left| W \right&gt;\)</span> is phonon eigen vectors, <span class="math notranslate nohighlight">\(\hat{M}\)</span> the mass matrix, and <span class="math notranslate nohighlight">\(\lambda\)</span> eigenvalues which equals square of phonon frequencies <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+</section>
+<section id="Dipole-dipole-contribution">
+<h2>Dipole dipole contribution<a class="headerlink" href="#Dipole-dipole-contribution" title="Permalink to this headline"></a></h2>
+<p>For insulators like rocksalt and florite materials, we need to include the long-ranged dipole-dipole interaction for the phonon dispersion.</p>
+<p>We can account for this contribution using the Ewald summation. First, we subtract the dipole terms <span class="math notranslate nohighlight">\(\tilde{C}^{DD}(\textbf{q})\)</span> from the dynamic matrices <span class="math notranslate nohighlight">\(\hat{D}(\textbf{q})\)</span>. Then we can Fourier interpolate the resulting dynamic matrices to arbitrary <span class="math notranslate nohighlight">\(\textbf{q}\)</span>-points, and add the dipole effect <span class="math notranslate nohighlight">\(\tilde{C}^{DD}(\textbf{q})\)</span> back. When add the dipole terms back, at the Brillouin zone center the term depends on the limiting direction of <span class="math notranslate nohighlight">\(\textbf{q}\to\textbf{0}\)</span>.</p>
+<p>The formula for the dipole-dipole contribution is as follows:</p>
+<div class="math notranslate nohighlight">
+\[\tilde{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+-\delta_{\kappa \kappa^{\prime}}
+\sum_{\kappa^{\prime\prime}}
+\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime\prime} \beta} (\textbf{q}=\bf{\Gamma})\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\sum_{\alpha^{\prime} \beta^{\prime}}
+Z^{\ast}_{\kappa, \alpha\alpha^{\prime}}
+Z^{\ast}_{\kappa^{\prime}, \beta\beta^{\prime}}
+\overline{C}^{DD}_{\kappa \alpha^{\prime} \kappa^{\prime} \beta^{\prime}} (\textbf{q})\]</div>
+<div class="math notranslate nohighlight">
+\[\overline{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})
+=
+\sum_{\textbf{G} \textrm{ with } \textbf{K} = \textbf{q} + \textbf{G}}
+\frac{4\pi}{\Omega}
+\frac{K_{\alpha}K_{\beta}}{
+\sum_{\gamma\gamma^{\prime}} K_{\gamma}\epsilon_{\gamma\gamma^{\prime}}K_{\gamma^{\prime}}
+}
+e^{i \textbf{K} \cdot (\tau_{\kappa} - \tau_{\kappa^{\prime}})}
+\exp{\left(-\frac{
+\sum_{\gamma\gamma^{\prime}} K_{\gamma}\epsilon_{\gamma\gamma^{\prime}}K_{\gamma^{\prime}}
+}{4\Lambda^2}
+\right)
+}\]</div>
+<p>Here we only compute the reciprocal space sum.</p>
+<p>Ref: <a class="reference external" href="https://doi.org/10.1103/PhysRevB.50.13035">X. Gonze, J.-C. Charlier, D. C. Allan, and M. P. Teter, Phys. Rev. B 50, 13035 (1994)</a>, <a class="reference external" href="https://doi.org/10.1103/PhysRevB.55.10355">X. Gonze and C. Lee, Phys. Rev. B 55, 10355 (1997)</a>.</p>
+</section>
+<section id="Group-velocity">
+<h2>Group velocity<a class="headerlink" href="#Group-velocity" title="Permalink to this headline"></a></h2>
+<p>The group velocity is the <span class="math notranslate nohighlight">\(\textbf{q}\)</span> derivative of the phonon frequencies. The derivative can be taken with finite difference, but here we use the analytically formula to ensure accuracy.</p>
+<p>We can rewrite the derivative of phonon frequencies into derivatives of dynamical matricies.</p>
+<div class="math notranslate nohighlight">
+\[\textbf{v}_g(\textbf{q}j) =
+\frac{\partial \omega_{\textbf{q}j}}{\partial \textbf{q}}
+=
+\frac{1}{2\omega_{\textbf{q}j}}
+\frac{\partial (\omega_{\textbf{q}j})^2}{\partial \textbf{q}}
+=
+\frac{1}{2\omega_{\textbf{q}j}}
+\frac{\partial \left&lt;W_i(\textbf{q})\right|\hat{D}(\textbf{q})\left|W_i(\textbf{q})\right&gt;}{\partial \textbf{q}}
+= - \frac{1}{2\omega_{i}(\textbf{q})}
+    \left\langle W_i(\textbf{q})\middle\vert
+    \frac{\partial \hat{D}(\textbf{q})}{\partial \textbf{q}}
+    \middle\vert W_i(\textbf{q}) \right\rangle\]</div>
+<p>Since dynamical matrices are computed with Fourier interpolation, we can write the <span class="math notranslate nohighlight">\(\textbf{q}\)</span> derivative as follows.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial\hat D_{\mathbf{K}}}{\partial K_\alpha} =
+\sum_{\mathbf{t}} i T_\alpha  e^{i\mathbf{K}
+\cdot \mathbf{t}\hat a} \hat \Phi_{\mathbf{t}}\]</div>
+<p>When it comes to insulators with dipole-dipole contributions, the dipole part $ <span class="math">\frac{\partial \tilde{C}^{DD}_{\kappa \alpha \kappa^{\prime} \beta} (\textbf{q})}{\partial \textbf{q}}</span> $ is also analytically computed using chain rule of derivatives.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

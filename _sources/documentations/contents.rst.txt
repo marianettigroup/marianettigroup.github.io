@@ -2,8 +2,16 @@ Documentations
 ==============
 
 .. toctree::
-   translation_group
-   compute_id
-   compute_thermal
    :maxdepth: 2
    :caption: Contents:
+   compute_id
+   compute_thermal
+   ../notebooks/translation_group/translation_group
+   ../notebooks/representation/group_theory_demostrations
+   ../notebooks/hamiltonian/hamiltonian
+   ../notebooks/phonon_id/phonon_interaction_analysis
+   ../notebooks/phonon_id/finite_displacements
+   ../notebooks/phonon_id/lid
+   ../notebooks/phonon_id/bid
+   ../notebooks/phonon_id/linewidth
+
