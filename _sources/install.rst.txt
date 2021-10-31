@@ -20,14 +20,14 @@ If you use ``pip``, you can install principia-materia with:
       pip install principia-materia
 
 
-Install from Conda
-------------------
-
-If you use ``conda``, you can install principia-materia with:
-
-.. code-block:: bash
-
-      conda install -c principia-materia
+.. Install from Conda
+.. ------------------
+.. 
+.. If you use ``conda``, you can install principia-materia with:
+.. 
+.. .. code-block:: bash
+.. 
+..       conda install -c principia-materia
 
 
 Using Docker image
