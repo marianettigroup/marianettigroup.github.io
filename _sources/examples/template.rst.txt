@@ -1,0 +1,26 @@
+Material Name
+===============
+
+Here is the example of [Material Name].
+
+
+
+Compute phonon with LID
+-----------------------
+
+.. code-block:: bash
+
+    pm-lid-mesh --create ...
+
+
+Plot phonon band structure and DOS
+----------------------------------
+
+.. code-block:: bash
+
+    pm-phonon-band-dos ...
+
+
+.. code-block:: bash
+
+    pm-plot-band --show band_plot_config.yml

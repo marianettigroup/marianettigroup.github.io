@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Translation group &mdash; Principia Materia  documentation</title>
+  <title>Material Name &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -16,11 +16,11 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Continuous Integration" href="../ci.html" />
+    <link rel="prev" title="Examples" href="contents.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,11 +38,18 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents.html">Documentations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentations/contents.html">Documentations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Material Name</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compute-phonon-with-lid">Compute phonon with LID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-phonon-band-structure-and-dos">Plot phonon band structure and DOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
 </ul>
@@ -61,9 +68,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Translation group</li>
+          <li><a href="contents.html">Examples</a> &raquo;</li>
+      <li>Material Name</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/documentations/translation_group.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/examples/template.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -95,22 +103,33 @@
     text-align: unset;
 }
 </style>
-<section id="translation-group">
-<span id="id1"></span><h1>Translation group<a class="headerlink" href="#translation-group" title="Permalink to this headline"></a></h1>
-<p>Translation group the group that preserves the translation invariance of crystal.
-Here we focus on finite translation group (FTG), a homomorphic mapping with the
-infinite translation group via periodic boundary conditions. It’s often referred
-to as a k-point grid or a super cell. We will refer to it as
-<span class="math notranslate nohighlight">\(\hat{\mathbf{S}}_{BZ}\)</span>.</p>
-<section id="determine-translations-in-finite-translation-group">
-<h2>Determine translations in finite translation group<a class="headerlink" href="#determine-translations-in-finite-translation-group" title="Permalink to this headline"></a></h2>
+<section id="material-name">
+<h1>Material Name<a class="headerlink" href="#material-name" title="Permalink to this headline"></a></h1>
+<p>Here is the example of [Material Name].</p>
+<section id="compute-phonon-with-lid">
+<h2>Compute phonon with LID<a class="headerlink" href="#compute-phonon-with-lid" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-lid-mesh --create ...
+</pre></div>
+</div>
+</section>
+<section id="plot-phonon-band-structure-and-dos">
+<h2>Plot phonon band structure and DOS<a class="headerlink" href="#plot-phonon-band-structure-and-dos" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-phonon-band-dos ...
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-plot-band --show band_plot_config.yml
+</pre></div>
+</div>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contents.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ci.html" class="btn btn-neutral float-right" title="Continuous Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

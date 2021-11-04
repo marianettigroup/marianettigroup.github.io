@@ -1,7 +1,7 @@
 Welcome
 =================
 
-Welcome to Principia Materia, the ultimate materials theory and simulation solution.
+Welcome to Principia Materia, a group theoretical approach to materials theory and simulation.
 
 Installation guide can be found in :doc:`here <install>`.
 
