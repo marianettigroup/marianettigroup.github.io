@@ -128,6 +128,16 @@ The theory behind these approaches are described in the following paper:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://doi.org/10.1103/PhysRevB.100.014303">L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019)</a>.</p></li>
 </ul>
+<p>Specifically, we can execute the LID, SS-BID and HS-BID approaches from the command line using the following commands:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pm-lid-mesh</span></code>: compute irreducible derivatives of a given FTG and order using LID method;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pm-bid</span></code>: compute irreducible derivatives of a given FTG and order using SS-BID method;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pm-hsbid</span></code>: compute irreducible derivatives of a given FTG and order using HD-BID method.</p></li>
+</ol>
+<p>These commands take in generally the same command line options, therefore one can switch between approaches by changing the command while keeping
+the options the same.
+For example, below is guide on using the LID approach to compute irreducible derivatives of NaCl at second order but one can replace <code class="docutils literal notranslate"><span class="pre">pm-lid-mesh</span></code>
+with <code class="docutils literal notranslate"><span class="pre">pm-bid</span></code> or <code class="docutils literal notranslate"><span class="pre">pm-hsbid</span></code> to execute SS-BID or HS-BID approach.</p>
 <section id="lid-approach-on-nacl-at-second-order">
 <h2>LID Approach on NaCl at Second Order<a class="headerlink" href="#lid-approach-on-nacl-at-second-order" title="Permalink to this headline"></a></h2>
 <p>There are many ways to use this package to execute calculations of the irreducible derivatives with LID approach.

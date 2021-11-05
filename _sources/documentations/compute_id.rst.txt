@@ -8,6 +8,19 @@ The theory behind these approaches are described in the following paper:
 
 * `L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019) <https://doi.org/10.1103/PhysRevB.100.014303>`_.
 
+Specifically, we can execute the LID, SS-BID and HS-BID approaches from the command line using the following commands:
+
+#. ``pm-lid-mesh``: compute irreducible derivatives of a given FTG and order using LID method;
+
+#. ``pm-bid``: compute irreducible derivatives of a given FTG and order using SS-BID method;
+
+#. ``pm-hsbid``: compute irreducible derivatives of a given FTG and order using HD-BID method.
+
+These commands take in generally the same command line options, therefore one can switch between approaches by changing the command while keeping
+the options the same.
+For example, below is guide on using the LID approach to compute irreducible derivatives of NaCl at second order but one can replace ``pm-lid-mesh``
+with ``pm-bid`` or ``pm-hsbid`` to execute SS-BID or HS-BID approach.
+
 
 LID Approach on NaCl at Second Order
 ---------------------------------------
