@@ -10,14 +10,14 @@ principia-materia consists of Python codes with C++ and Fortran extensions.
 
 
 
-Install from PyPI
------------------
-
-If you use ``pip``, you can install principia-materia with:
-
-.. code-block:: bash
-
-      pip install principia-materia
+.. Install from PyPI
+.. -----------------
+..
+.. If you use ``pip``, you can install principia-materia with:
+..
+.. .. code-block:: bash
+..
+..       pip install principia-materia
 
 
 .. Install from Conda
@@ -30,14 +30,14 @@ If you use ``pip``, you can install principia-materia with:
 ..       conda install -c principia-materia
 
 
-Using Docker image
-------------------
-
-If you use ``docker``, you can install principia-materia with:
-
-.. code-block:: bash
-
-      docker pull marianettigroup/principia-materia
+.. Using Docker image
+.. ------------------
+..
+.. If you use ``docker``, you can install principia-materia with:
+..
+.. .. code-block:: bash
+..
+..       docker pull marianettigroup/principia-materia
 
 
 Compile from source
@@ -48,7 +48,7 @@ which requires several libraries used in extensions.
 
 The required libraries are::
 
-      opemp
+      openmp
       lapack
       blas
       gcc
@@ -56,11 +56,11 @@ The required libraries are::
 
 * For Ubuntu 18.04 and latear with gcc compilers::
 
-      sudo apt install gcc gfortran libomp-dev liblapack-dev libblas-dev
+      sudo apt install gcc gfortran libopenblas-dev libgomp1 libhdf5-dev
 
 * For macOS with Homebrew::
 
-      brew install gcc lapack openblas
+      brew install gcc openblas
 
 Required python modules for the packge are listed in the file ``requirements.txt``::
 
