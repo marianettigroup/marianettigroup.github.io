@@ -45,7 +45,13 @@
 <li class="toctree-l1"><a class="reference internal" href="examples/contents.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Continuous Integration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ci-setup">CI setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ci-configuration-for-github-actions">CI Configuration for GitHub Actions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing-workflow">Unit Testing Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deployment-workflow">Deployment Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ci-configuration-for-travis-ci">CI Configuration for Travis-CI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ci-for-documentation">CI for Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_doc/modules.html">API Documentations</a></li>
@@ -103,26 +109,215 @@
 <h1>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline"></a></h1>
 <p>Continuous integration is an essential part of the software’s development workflow,
 allowing the automation of multiple steps including code compilation, testing and deployment.
-This package utilizes several popular CI platforms to perform continuous integration.</p>
+This package utilizes several popular CI platforms to perform continuous integration: GitHub Actions and Travis-CI.</p>
 <section id="unit-tests">
 <h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h2>
 <p>Our unit tests are written compatible with <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> module, which
-provides straightforward test execution and error reporting as well as an easy solution to assess tests
+provides straightforward test execution and error reporting as well as an easy solution to assess test
 coverage.
 <code class="docutils literal notranslate"><span class="pre">pytest</span></code> follows the standard test discovery rules that can be found
 <cite>here &lt;https://docs.pytest.org/en/stable/goodpractices.html#conventions-for-python-test-discovery&gt;_</cite>.
 For simple tests, we just need to write some functions with prefix <code class="docutils literal notranslate"><span class="pre">test</span></code>, while it is also possible
-to write test classes with prefix <code class="docutils literal notranslate"><span class="pre">Test</span></code>.</p>
+to write test classes with prefix <code class="docutils literal notranslate"><span class="pre">Test</span></code>.
+Additionally, <code class="docutils literal notranslate"><span class="pre">pytest</span></code> also provides a variety of features including fixtures and parameterization to
+facilitate unit testing.</p>
 </section>
-<section id="ci-setup">
-<h2>CI setup<a class="headerlink" href="#ci-setup" title="Permalink to this headline"></a></h2>
-<p>The setup of CI for this package follows generally the following steps, here we use Travis-CI as an example
-for how we write the config script:</p>
+<section id="ci-configuration-for-github-actions">
+<h2>CI Configuration for GitHub Actions<a class="headerlink" href="#ci-configuration-for-github-actions" title="Permalink to this headline"></a></h2>
+<p>GitHub Actions is a continuous integration platform provided by GitHub with a variety of community built <code class="docutils literal notranslate"><span class="pre">action</span></code>,
+that can be easily used to execute tasks with minimum configuration.
+For example, with our unit testing workflow, we uses the <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v2</span></code> action to check out the repositories,
+the <code class="docutils literal notranslate"><span class="pre">actions/setup-python&#64;v2</span></code> to setup python of a specific version.</p>
+<p>At the moment we implemented 2 types of workflow to perform unit tests and deploy the package.</p>
+<section id="unit-testing-workflow">
+<h3>Unit Testing Workflow<a class="headerlink" href="#unit-testing-workflow" title="Permalink to this headline"></a></h3>
+<p>In the unit testing workflow, our goal is to compile and unit test our package on both <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> and <code class="docutils literal notranslate"><span class="pre">macos</span></code> operating systems,
+with both Python 3.8 and 3.9versions. The workflow is executed whenever a branch recieves a push or a pull request (excluding branches with prefix <code class="docutils literal notranslate"><span class="pre">text</span></code>),
+and the workflow can also be triggered manually for testing purposes.</p>
+<p>The workflow consits of the following steps:</p>
+<ol class="arabic simple">
+<li><p>Check out the package repository with <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v2</span></code> action and install python of the specified version with <code class="docutils literal notranslate"><span class="pre">actions/setup-python&#64;v2</span></code> action;</p></li>
+<li><p>Installed build and runtime dependencies using <code class="docutils literal notranslate"><span class="pre">apt</span></code>/<code class="docutils literal notranslate"><span class="pre">brew</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span></code>;</p></li>
+<li><p>Compile and install the package;</p></li>
+<li><p>Check out the unit test repository with <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v2</span></code> action;</p></li>
+<li><p>Install test dependencies with <code class="docutils literal notranslate"><span class="pre">pip</span></code>;</p></li>
+<li><p>Run unit tests with <code class="docutils literal notranslate"><span class="pre">py.test</span></code> and assess test coverage with <code class="docutils literal notranslate"><span class="pre">coverage</span></code>.</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will install Python dependencies, run tests and lint with a variety of Python versions</span>
+<span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
+
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build and Test Python Package</span>
+
+<span class="nt">on</span><span class="p">:</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branhes-ignore</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">test**</span>
+  <span class="nt">pull_request</span><span class="p">:</span>
+    <span class="nt">branhes-ignore</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">test**</span>
+  <span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
+
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.os }}</span>
+    <span class="nt">continue-on-error</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.experimental }}</span>
+    <span class="nt">strategy</span><span class="p">:</span>
+      <span class="nt">fail-fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">matrix</span><span class="p">:</span>
+        <span class="nt">os</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">ubuntu-latest</span><span class="p p-Indicator">]</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">3.8</span><span class="p p-Indicator">,</span> <span class="nv">3.9</span><span class="p p-Indicator">]</span>
+        <span class="nt">experimental</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">false</span><span class="p p-Indicator">]</span>
+        <span class="c1"># include:</span>
+        <span class="c1">#   - os: macos-latest</span>
+        <span class="c1">#     python-version: 3.9</span>
+        <span class="c1">#     experimental: true</span>
+
+    <span class="nt">steps</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python ${{ matrix.python-version }}</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">if [ &quot;${RUNNER_OS}&quot; == &quot;Linux&quot; ]; then</span>
+            <span class="no">echo &quot;OS is Linux&quot;</span>
+            <span class="no">sudo apt update</span>
+            <span class="no">sudo apt install gcc gfortran libopenblas-dev libgomp1 libhdf5-dev make</span>
+        <span class="no">elif [ &quot;${RUNNER_OS}&quot; == &quot;macOS&quot; ]; then</span>
+            <span class="no">echo &quot;OS is macOS&quot;</span>
+            <span class="no">brew install gcc openblas</span>
+        <span class="no">else</span>
+            <span class="no">echo &quot;OS $RUNNER_OS not supported&quot;</span>
+            <span class="no">exit 1</span>
+        <span class="no">fi</span>
+        <span class="no">python -m pip install --upgrade pip</span>
+        <span class="no">if [ -f requirements.txt ]; then pip install -r requirements.txt; fi</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Compile and install the package</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">if [ &quot;${RUNNER_OS}&quot; == &quot;macOS&quot; ]; then</span>
+            <span class="no">export CC=gcc-11</span>
+            <span class="no">export CXX=g++-11</span>
+            <span class="no">export F90=gfortran-11</span>
+        <span class="no">fi</span>
+        <span class="no">python setup.py build</span>
+        <span class="no">python setup.py install</span>
+    <span class="c1"># - name: Lint with flake8</span>
+    <span class="c1">#   run: |</span>
+    <span class="c1">#     python -m pip install flake8</span>
+    <span class="c1">#     # stop the build if there are Python syntax errors or undefined names</span>
+    <span class="c1">#     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics</span>
+    <span class="c1">#     # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide</span>
+    <span class="c1">#     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Checkout tests</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">repository</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">marianettigroup/principia-materia-tests</span>
+        <span class="nt">token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.TEST_PAT }}</span> <span class="c1"># `GitHub_PAT` is a secret that contains your PAT</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tests</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Test with pytest</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">python -m pip install -r tests/requirements.txt</span>
+        <span class="no">cd tests/tests &amp;&amp; make coverage</span>
+</pre></div>
+</div>
+</section>
+<section id="deployment-workflow">
+<h3>Deployment Workflow<a class="headerlink" href="#deployment-workflow" title="Permalink to this headline"></a></h3>
+<p>The goal of the deployment workflow is the build the package and its extensions into python wheels for a variety of platforms for easy distribution.
+This is usually a very cumbersome task.
+However, with the cibuildwheel package and the <code class="docutils literal notranslate"><span class="pre">pypa/cibuildwheel&#64;v2.2.2</span></code> action provided by Python Packaging Authority (PyPA).
+The wheels for a variety of platforms and python versions can be built with only a few lines of configuration.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build and upload to PyPI</span>
+
+<span class="c1"># Build on every branch push, tag push, and pull request change:</span>
+<span class="c1"># on: [push, pull_request]</span>
+<span class="c1"># Alternatively, to publish when a (published) GitHub Release is created, use the following:</span>
+<span class="nt">on</span><span class="p">:</span>
+  <span class="c1"># push:</span>
+  <span class="c1"># pull_request:</span>
+  <span class="nt">release</span><span class="p">:</span>
+    <span class="nt">types</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">published</span>
+  <span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="nt">build_wheels</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build wheels on ${{ matrix.os }}</span>
+    <span class="nt">continue-on-error</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.experimental }}</span>
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.os }}</span>
+    <span class="nt">strategy</span><span class="p">:</span>
+      <span class="nt">fail-fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">matrix</span><span class="p">:</span>
+        <span class="nt">os</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">ubuntu-latest</span><span class="p p-Indicator">,</span> <span class="nv">macos-latest</span><span class="p p-Indicator">]</span>
+        <span class="c1"># os: [ubuntu-latest, windows-latest, macos-latest]</span>
+        <span class="nt">experimental</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">true</span><span class="p p-Indicator">]</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">3.9</span><span class="p p-Indicator">]</span>
+
+    <span class="nt">steps</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install Python</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build wheels</span>
+        <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pypa/cibuildwheel@v2.2.2</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./wheelhouse/*.whl</span>
+
+  <span class="nt">build_sdist</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build source distribution</span>
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+    <span class="nt">steps</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+        <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install Python</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="nt">python-version</span><span class="p">:</span> <span class="s">&#39;3.9&#39;</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build sdist</span>
+        <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+          <span class="no">pip install numpy</span>
+          <span class="no">python setup.py sdist</span>
+
+      <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v2</span>
+        <span class="nt">with</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dist/*.tar.gz</span>
+
+  <span class="c1"># upload_pypi:</span>
+  <span class="c1">#   needs: [build_wheels, build_sdist]</span>
+  <span class="c1">#   runs-on: ubuntu-latest</span>
+  <span class="c1">#   # upload to PyPI on every tag starting with &#39;v&#39;</span>
+  <span class="c1">#   if: github.event_name == &#39;push&#39; &amp;&amp; startsWith(github.event.ref, &#39;refs/tags/v&#39;)</span>
+  <span class="c1">#   # alternatively, to publish when a GitHub Release is created, use the following rule:</span>
+  <span class="c1">#   # if: github.event_name == &#39;release&#39; &amp;&amp; github.event.action == &#39;published&#39;</span>
+  <span class="c1">#   steps:</span>
+  <span class="c1">#     - uses: actions/download-artifact@v2</span>
+  <span class="c1">#       with:</span>
+  <span class="c1">#         name: artifact</span>
+  <span class="c1">#         path: dist</span>
+  <span class="c1">#</span>
+  <span class="c1">#     - uses: pypa/gh-action-pypi-publish@v1.4.2</span>
+  <span class="c1">#       with:</span>
+  <span class="c1">#         user: __token__</span>
+  <span class="c1">#         password: ${{ secrets.pypi_password }}</span>
+  <span class="c1">#         # To test: repository_url: https://test.pypi.org/legacy/</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ci-configuration-for-travis-ci">
+<h2>CI Configuration for Travis-CI<a class="headerlink" href="#ci-configuration-for-travis-ci" title="Permalink to this headline"></a></h2>
+<p>Here we demonstrate the Configuration of CI workflow on Travis-CI of the package:</p>
 <ol class="arabic simple">
 <li><p>Set up the environment. Since the package mainly uses Python, the environment is fairly easy to setup.
-Folowing is an exmple for Travis-CI, that configures an linux environment with Python 3.8.
-It is also possible to set up different operating systems as well as different Python version with the
-matrix feature of the CI platforms.</p></li>
+Folowing is an exmple for Travis-CI, that configures an linux environment with a matrix of 2 Python version: 3.8 and 3.9.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">language</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
 
@@ -136,43 +331,42 @@ matrix feature of the CI platforms.</p></li>
 
 <span class="nt">python</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;3.8&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;3.9&quot;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>The next step is to install dependencies.  At this stage all submodules will be
-checked out to load in documentation and unit tests. Both dependencies for the
-Fortran extensions and the required Python libraries will be installed in this
-step.</p></li>
+<li><p>The next step is to install dependencies.
+Both dependencies for the extensions and the required Python libraries will be installed in this step.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to install dependencies</span>
 <span class="nt">before_install</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule init</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule update</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install -y gcc gfortran libblas-dev liblapack-dev libgomp1</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo pip install --ignore-installed -r tests/requirements.txt</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get install -y gcc libopenblas-dev libgomp1 make</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python -m pip install --ignore-installed -r requirements.txt</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>This step is fairly straightforward, the package is compiled and installed
-in development mode, which is easier for debugging purposes.</p></li>
+<li><p>Then the package needs to be compiled and installed, in order to be tested.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to compile and install code</span>
 <span class="nt">install</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-  <span class="no">echo &quot;Build&quot;</span>
+  <span class="no">echo &quot;Build Package&quot;</span>
   <span class="no">python setup.py build</span>
-  <span class="no">python setup.py develop</span>
+  <span class="no">python setup.py install</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>After the package is successfully installed, the unit tests need to be executed
-and tests coverage will be recorded.</p></li>
+<li><p>After the package is successfully installed, the unit tests need to be checked out and executed.
+Tests coverage will be assessed in the meantime.</p></li>
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to run tests</span>
 <span class="nt">script</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-  <span class="no">echo &quot;Run tests&quot;</span>
-  <span class="no">cd tests/tests</span>
-  <span class="no">make test</span>
+  <span class="no">echo &quot;Test package&quot;</span>
+  <span class="no">git clone git@github.com:marianettigroup/principia-materia-tests.git</span>
+  <span class="no">cd principia-materia-tests</span>
+  <span class="no">python -m pip install coverage-badge</span>
+  <span class="no">python -m pip install -r requirements.txt</span>
+  <span class="no">cd tests &amp;&amp; make</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
@@ -183,10 +377,78 @@ the code will be compiled, packaged and uploaded to software repository platform
 </ol>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># command to create coverate report and badge</span>
 <span class="nt">after_success</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-  <span class="no">cd ${TRAVIS_BUILD_DIR}/tests/tests</span>
+  <span class="no">cd ${TRAVIS_BUILD_DIR}/principia-materia-tests/tests</span>
   <span class="no">coverage xml</span>
   <span class="no">coverage html</span>
   <span class="no">coverage-badge -o coverage.svg</span>
+</pre></div>
+</div>
+</section>
+<section id="ci-for-documentation">
+<h2>CI for Documentation<a class="headerlink" href="#ci-for-documentation" title="Permalink to this headline"></a></h2>
+<p>The documentation website of the package is hosted with GitHub Pages and is built and deployed conveniently using GitHub Action.
+The build process is similar to a regular python package with running <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> command at the end.
+The <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v3</span></code> action is used to deploy the built website to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the <code class="docutils literal notranslate"><span class="pre">marianettigroup/marianettigroup.github.io</span></code>
+repository, making it accessible from the URL <a class="reference external" href="https://marianettigroup.github.io">marianettigroup.github.io</a>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># This workflow will build the sphinx documentation and deploy it to github pages</span>
+<span class="c1"># For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions</span>
+
+<span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sphinx documentation</span>
+
+<span class="nt">on</span><span class="p">:</span>
+  <span class="nt">push</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">master</span> <span class="p p-Indicator">]</span>
+  <span class="nt">pull_request</span><span class="p">:</span>
+    <span class="nt">branches</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">master</span> <span class="p p-Indicator">]</span>
+  <span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="nt">build</span><span class="p">:</span>
+
+    <span class="nt">runs-on</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+    <span class="nt">strategy</span><span class="p">:</span>
+      <span class="nt">fail-fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="nt">matrix</span><span class="p">:</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">3.9</span><span class="p p-Indicator">]</span>
+
+    <span class="nt">steps</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Set up Python ${{ matrix.python-version }}</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">python-version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">sudo apt-get update</span>
+        <span class="no">sudo apt-get install -y pandoc</span>
+        <span class="no">python -m pip install --upgrade pip</span>
+        <span class="no">python -m pip install -r requirements.txt</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Checkout pm code repository</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">repository</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">marianettigroup/principia-materia</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">principia-materia</span>
+        <span class="nt">token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.PERSONAL_TOKEN }}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install the package dependencies and build pm package for API documentation</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">sudo apt update</span>
+        <span class="no">sudo apt install libblas-dev liblapack-dev libomp-dev gfortran make</span>
+        <span class="no">cd principia-materia</span>
+        <span class="no">pip install -U numpy</span>
+        <span class="no">pip install -U -r requirements.txt</span>
+        <span class="no">python setup.py build</span>
+        <span class="no">python setup.py develop</span>
+        <span class="no">cd ../</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build documentation with sphinx</span>
+      <span class="nt">run</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">sphinx-build -M html &quot;.&quot; &quot;_build&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Deploy to marianettigroup.github.io</span>
+      <span class="nt">uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">peaceiris/actions-gh-pages@v3</span>
+      <span class="nt">if</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/master&#39;</span>
+      <span class="nt">with</span><span class="p">:</span>
+        <span class="nt">personal_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">${{ secrets.PERSONAL_TOKEN }}</span>
+        <span class="nt">external_repository</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">marianettigroup/marianettigroup.github.io</span>
+        <span class="nt">publish_dir</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">./_build/html</span>
 </pre></div>
 </div>
 </section>

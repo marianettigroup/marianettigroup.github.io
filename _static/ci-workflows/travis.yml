@@ -1,0 +1,51 @@
+language: python
+
+branches:
+  except:
+  - /^test.*$/
+
+os:
+  - linux
+
+env:
+  global:
+    - WORKSPACE: ${TRAVIS_BUILD_DIR}
+  matrix:
+    - ENVSYS=pypi
+
+cache: pip
+
+virtualenv:
+  system_site_packages: false
+
+python:
+  - "3.8"
+  - "3.9"
+
+# command to install dependencies
+before_install:
+  - sudo apt update
+  - sudo apt install -y gcc gfortran libopenblas-dev libgomp1 libhdf5-dev make
+  - python -m pip install --ignore-installed -r requirements.txt
+
+# command to compile and install code
+install: |
+  echo "Build package"
+  python setup.py build
+  python setup.py install
+
+# command to run tests
+script: |
+  echo "Test package"
+  git clone git@github.com:marianettigroup/principia-materia-tests.git
+  cd principia-materia-tests
+  python -m pip install coverage-badge
+  python -m pip install -r requirements.txt
+  cd tests && make
+
+# command to create coverate report and badge
+after_success: |
+  cd $WORKSPACE/principia-materia-tests/tests
+  coverage xml
+  coverage html
+  coverage-badge -o coverage.svg
