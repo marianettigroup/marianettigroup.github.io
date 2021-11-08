@@ -165,9 +165,6 @@ One of the more compact ways to achieve the same input files as above is:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently, errors within the yaml file yield exceptions that are not intuitive. For example, the file
-below needs at least more space before the coordinates are entered for Ca and F, and the lack thereof
-leads to the following exception</p>
 <p>In the case of syntax error in YAML file, a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> will be thrown indicating the an error has
 occurred during the YAML loading process. For example, with the following text as YAML input:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.764309</span>

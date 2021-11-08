@@ -61,10 +61,6 @@ One of the more compact ways to achieve the same input files as above is:
 
 .. Note::
   
-  Currently, errors within the yaml file yield exceptions that are not intuitive. For example, the file
-  below needs at least more space before the coordinates are entered for Ca and F, and the lack thereof
-  leads to the following exception ::
-
   In the case of syntax error in YAML file, a ``RuntimeError`` will be thrown indicating the an error has
   occurred during the YAML loading process. For example, with the following text as YAML input:
 
