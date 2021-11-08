@@ -101,7 +101,7 @@ The next step is to create the first principle jobs to be computed, the package 
 and here we demonstrate using VASP. We begin by create the VASP jobs to be executed::
 
   pm-jobs --config config.yml --create --engine vasp --save-config jobs_config.yml \
-    --job-config-path path-to-vasp-input-templates
+    --job-config-path path-to-vasp-input-templates --root-directory jobs-ro-run
 
 Inside the ``path-to-vasp-input-templates`` directory, one usually needs to provide "INCAR", "KPOINTS" and "POTCAR" files and they will be used as templates when creating the
 vasp jobs, each vasp job will be created in a separate directory for convenience. Once these directories are created, VASP can be executed within each directory.
