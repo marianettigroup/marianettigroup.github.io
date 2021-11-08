@@ -46,7 +46,7 @@ for how we write the config script:
       - "3.8"
 
 2. The next step is to install dependencies.  At this stage all submodules will be
-   checked out to load in documentations and unit tests. Both dependencies for the
+   checked out to load in documentation and unit tests. Both dependencies for the
    Fortran extensions and the required Python libraries will be installed in this
    step.
 

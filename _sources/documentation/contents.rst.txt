@@ -1,7 +1,8 @@
-Documentations
-==============
+Documentation
+=============
 
 .. toctree::
+   crystal_structure
    compute_id
    compute_thermal
    ../notebooks/translation_group/translation_group

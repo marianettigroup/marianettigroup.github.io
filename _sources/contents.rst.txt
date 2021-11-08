@@ -12,7 +12,7 @@ Table of Contents
 
    index
    install
-   documentations/contents
+   documentation/contents
    examples/contents
    ci
    api_doc/modules

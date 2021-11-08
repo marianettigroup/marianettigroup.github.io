@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entering Crystal Structures &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compute Irreducible Derivatives" href="compute_id.html" />
+    <link rel="prev" title="Documentation" href="contents.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html">Symmetry of a molecule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-analysis-for-phonons">Symmetry analysis for phonons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html">Symmetry analysis of phonon interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html">Finite Displacements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/lid.html">Lone Irreducible Derivatives (LID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html">Bundled Irreducible Derivatives (BID) Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html#Hierarchical-Supercell-BID-Approach">Hierarchical Supercell BID Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/linewidth.html">Phonon linewidth and thermal conductivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Entering Crystal Structures</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentation/crystal_structure.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="entering-crystal-structures">
+<span id="crystal-structure"></span><h1>Entering Crystal Structures<a class="headerlink" href="#entering-crystal-structures" title="Permalink to this headline"></a></h1>
+<p>For many different tasks performed in the PM suite, a crystal structure, or
+some component of a crystal structure, must be provided to the code. Most
+likely, this will be done using a yaml input file, and the two required key words
+are <strong>vec</strong> and <strong>atoms</strong>, which will contain the lattice vectors and the basis atoms, respectively.
+Considering the flourite structure, the most straightforward yaml file would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vec</span><span class="p">:</span>
+  <span class="p">[[</span><span class="mf">0.000000</span><span class="p">,</span><span class="mf">2.764309</span><span class="p">,</span><span class="mf">2.764309</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">2.764309</span><span class="p">,</span><span class="mf">0.000000</span><span class="p">,</span><span class="mf">2.764309</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">2.764309</span><span class="p">,</span><span class="mf">2.764309</span><span class="p">,</span><span class="mf">0.000000</span><span class="p">]]</span>
+<span class="n">atoms</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Ca</span><span class="p">:</span>
+     <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+  <span class="o">-</span> <span class="n">F</span><span class="p">:</span>
+     <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">],</span>
+      <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.75</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>The code will infer that there is one basis atom labeled <em>Ca</em> and two basis atoms labeled <em>F</em>.</p>
+<p>When entering matrices, we will always run the input through our general array
+parser (see parse_array if interested in the details). Therefore, there are many different
+options for entering a matrix as a string. For example, consider:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="p">:</span> <span class="mf">2.764309</span>
+<span class="n">vec</span><span class="p">:</span> <span class="o">|</span>
+   <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span>
+   <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span>
+   <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="n">atoms</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Ca</span><span class="p">:</span> <span class="o">|</span>
+     <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+  <span class="o">-</span> <span class="n">F</span><span class="p">:</span> <span class="o">|</span>
+     <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span>
+     <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>where <strong>scale</strong> is a constant that multiplies all lattice vectors (a list of
+three constants could have been provided), and the vertical lines tells yaml to
+expect a text block.  Our parser has a hierarchy of delimiters, ranging from
+space, comma, semicolon, newline. In the above example, we have two types of
+delimiters (i.e. spaces and newlines), which tells the code to form a matrix.
+One of the more compact ways to achieve the same input files as above is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="p">:</span> <span class="mf">2.764309</span>
+<span class="n">vec</span><span class="p">:</span> <span class="o">|</span>
+   <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">;</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="n">atoms</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Ca</span><span class="p">:</span> <span class="o">|</span>
+     <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+  <span class="o">-</span> <span class="n">F</span><span class="p">:</span> <span class="o">|</span>
+     <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="p">;</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently, errors within the yaml file yield exceptions that are not intuitive. For example, the file
+below needs at least more space before the coordinates are entered for Ca and F, and the lack thereof
+leads to the following exception</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="p">:</span> <span class="mf">2.764309</span>
+<span class="n">vec</span><span class="p">:</span> <span class="o">|</span>
+   <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">;</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span>
+<span class="n">atoms</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Ca</span><span class="p">:</span> <span class="o">|</span>
+    <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+  <span class="o">-</span> <span class="n">F</span><span class="p">:</span> <span class="o">|</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="p">;</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Traceback (most recent call last):</dt><dd><dl class="simple">
+<dt>File “/home/cam1/git_projects/principia_materia/venv/bin/pm-periodica”, line 33, in &lt;module&gt;</dt><dd><p>sys.exit(load_entry_point(‘principia-materia’, ‘console_scripts’, ‘pm-periodica’)())</p>
+</dd>
+<dt>File “/home/cam1/git_projects/principia_materia/principia_materia/cli/periodica_cli.py”, line 130, in main</dt><dd><p>structure = get_structure(data[“structure”].read(), stype=CrystalFTG)</p>
+</dd>
+<dt>File “/home/cam1/git_projects/principia_materia/principia_materia/translation_group/__init__.py”, line 175, in get_structure</dt><dd><p>raise ValueError(“Error occured processing input variable inp.”)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>ValueError: Error occured processing input variable inp.</p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contents.html" class="btn btn-neutral float-left" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="compute_id.html" class="btn btn-neutral float-right" title="Compute Irreducible Derivatives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
