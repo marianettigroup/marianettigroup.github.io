@@ -85,8 +85,21 @@
 <p>Continuous integration is an essential part of the software’s development workflow,
 allowing the automation of multiple steps including code compilation, testing and deployment.
 This package utilizes several popular CI platforms to perform continuous integration: GitHub Actions and Travis-CI.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#unit-tests" id="id1">Unit tests</a></p></li>
+<li><p><a class="reference internal" href="#ci-configuration-for-github-actions" id="id2">CI Configuration for GitHub Actions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#unit-testing-workflow" id="id3">Unit Testing Workflow</a></p></li>
+<li><p><a class="reference internal" href="#deployment-workflow" id="id4">Deployment Workflow</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ci-configuration-for-travis-ci" id="id5">CI Configuration for Travis-CI</a></p></li>
+<li><p><a class="reference internal" href="#ci-for-documentation" id="id6">CI for Documentation</a></p></li>
+</ul>
+</div>
 <section id="unit-tests">
-<h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h2>
+<h2><a class="toc-backref" href="#id1">Unit tests</a><a class="headerlink" href="#unit-tests" title="Permalink to this headline"></a></h2>
 <p>Our unit tests are written compatible with <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> module, which
 provides straightforward test execution and error reporting as well as an easy solution to assess test
 coverage.
@@ -98,14 +111,14 @@ Additionally, <code class="docutils literal notranslate"><span class="pre">pytes
 facilitate unit testing.</p>
 </section>
 <section id="ci-configuration-for-github-actions">
-<h2>CI Configuration for GitHub Actions<a class="headerlink" href="#ci-configuration-for-github-actions" title="Permalink to this headline"></a></h2>
+<h2><a class="toc-backref" href="#id2">CI Configuration for GitHub Actions</a><a class="headerlink" href="#ci-configuration-for-github-actions" title="Permalink to this headline"></a></h2>
 <p>GitHub Actions is a continuous integration platform provided by GitHub with a variety of community built <code class="docutils literal notranslate"><span class="pre">action</span></code>,
 that can be easily used to execute tasks with minimum configuration.
 For example, with our unit testing workflow, we uses the <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v2</span></code> action to check out the repositories,
 the <code class="docutils literal notranslate"><span class="pre">actions/setup-python&#64;v2</span></code> to setup python of a specific version.</p>
 <p>At the moment we implemented 2 types of workflow to perform unit tests and deploy the package.</p>
 <section id="unit-testing-workflow">
-<h3>Unit Testing Workflow<a class="headerlink" href="#unit-testing-workflow" title="Permalink to this headline"></a></h3>
+<h3><a class="toc-backref" href="#id3">Unit Testing Workflow</a><a class="headerlink" href="#unit-testing-workflow" title="Permalink to this headline"></a></h3>
 <p>In the unit testing workflow, our goal is to compile and unit test our package on both <code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> and <code class="docutils literal notranslate"><span class="pre">macos</span></code> operating systems,
 with both Python 3.8 and 3.9versions. The workflow is executed whenever a branch recieves a push or a pull request (excluding branches with prefix <code class="docutils literal notranslate"><span class="pre">text</span></code>),
 and the workflow can also be triggered manually for testing purposes.</p>
@@ -199,7 +212,7 @@ and the workflow can also be triggered manually for testing purposes.</p>
 </div>
 </section>
 <section id="deployment-workflow">
-<h3>Deployment Workflow<a class="headerlink" href="#deployment-workflow" title="Permalink to this headline"></a></h3>
+<h3><a class="toc-backref" href="#id4">Deployment Workflow</a><a class="headerlink" href="#deployment-workflow" title="Permalink to this headline"></a></h3>
 <p>The goal of the deployment workflow is the build the package and its extensions into python wheels for a variety of platforms for easy distribution.
 This is usually a very cumbersome task.
 However, with the cibuildwheel package and the <code class="docutils literal notranslate"><span class="pre">pypa/cibuildwheel&#64;v2.2.2</span></code> action provided by Python Packaging Authority (PyPA).
@@ -288,7 +301,7 @@ The wheels for a variety of platforms and python versions can be built with only
 </section>
 </section>
 <section id="ci-configuration-for-travis-ci">
-<h2>CI Configuration for Travis-CI<a class="headerlink" href="#ci-configuration-for-travis-ci" title="Permalink to this headline"></a></h2>
+<h2><a class="toc-backref" href="#id5">CI Configuration for Travis-CI</a><a class="headerlink" href="#ci-configuration-for-travis-ci" title="Permalink to this headline"></a></h2>
 <p>Here we demonstrate the Configuration of CI workflow on Travis-CI of the package:</p>
 <ol class="arabic simple">
 <li><p>Set up the environment. Since the package mainly uses Python, the environment is fairly easy to setup.
@@ -360,7 +373,7 @@ the code will be compiled, packaged and uploaded to software repository platform
 </div>
 </section>
 <section id="ci-for-documentation">
-<h2>CI for Documentation<a class="headerlink" href="#ci-for-documentation" title="Permalink to this headline"></a></h2>
+<h2><a class="toc-backref" href="#id6">CI for Documentation</a><a class="headerlink" href="#ci-for-documentation" title="Permalink to this headline"></a></h2>
 <p>The documentation website of the package is hosted with GitHub Pages and is built and deployed conveniently using GitHub Action.
 The build process is similar to a regular python package with running <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> command at the end.
 The <code class="docutils literal notranslate"><span class="pre">peaceiris/actions-gh-pages&#64;v3</span></code> action is used to deploy the built website to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of the <code class="docutils literal notranslate"><span class="pre">marianettigroup/marianettigroup.github.io</span></code>

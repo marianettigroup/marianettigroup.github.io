@@ -5,6 +5,10 @@ Continuous integration is an essential part of the software's development workfl
 allowing the automation of multiple steps including code compilation, testing and deployment.
 This package utilizes several popular CI platforms to perform continuous integration: GitHub Actions and Travis-CI.
 
+.. contents::
+   :depth: 2
+   :local:
+
 
 Unit tests
 ==========
