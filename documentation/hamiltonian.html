@@ -129,7 +129,7 @@ and we will be studying the electrons in the <span class="math notranslate nohig
 </pre></div>
 </div>
 <p>With the Hamiltonian created in <a class="reference internal" href="#model-hamiltonian">Model Hamiltonian</a>, we can construct the electron Hamiltonian class
-and compute the Fermi energy (<span class="math notranslate nohighlight">\(E_f=0~eV\)</span>) and density of states (shown in <a class="reference internal" href="#fig-eh-dos-1dhubbard"><span class="std std-numref">Fig. 2</span></a>).</p>
+and compute the Fermi energy (<span class="math notranslate nohighlight">\(E_f=0~eV\)</span>) and density of states (shown in <a class="reference internal" href="#fig-eh-dos-1dhubbard"><span class="std std-numref">Fig. 3</span></a>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eham</span> <span class="o">=</span> <span class="n">ElectronHamiltonian</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">structure</span><span class="p">,</span> <span class="n">pg</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">nelect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">eham</span><span class="o">.</span><span class="n">set_hamiltonian</span><span class="p">(</span><span class="n">ham</span><span class="p">)</span>
@@ -145,7 +145,7 @@ and compute the Fermi energy (<span class="math notranslate nohighlight">\(E_f=0
 <figure class="align-center" id="fig-eh-dos-1dhubbard">
 <a class="reference internal image-reference" href="../_images/electron_dos.pdf"><img alt="../_images/electron_dos.pdf" src="../_images/electron_dos.pdf" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Density of states of 1D Hubbard module.</span><a class="headerlink" href="#fig-eh-dos-1dhubbard" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Density of states of 1D Hubbard module.</span><a class="headerlink" href="#fig-eh-dos-1dhubbard" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -204,7 +204,7 @@ Here we choose the compute the band along the path from <span class="math notran
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kpath</span><span class="o">.</span><span class="n">set_kpath</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Once the path is setup, we can compute the <span class="math notranslate nohighlight">\(\textbf{q}\)</span>-points along the path and plot the phonon spectrum as shown in <a class="reference internal" href="#fig-ph-band-square"><span class="std std-numref">Fig. 3</span></a>.</p>
+<p>Once the path is setup, we can compute the <span class="math notranslate nohighlight">\(\textbf{q}\)</span>-points along the path and plot the phonon spectrum as shown in <a class="reference internal" href="#fig-ph-band-square"><span class="std std-numref">Fig. 4</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pham</span><span class="o">.</span><span class="n">set_hamiltonian_at_kpoints</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">kpoints</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">kpoints_distances</span><span class="p">,</span> <span class="n">pham</span><span class="o">.</span><span class="n">_eigenvalues</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
@@ -224,7 +224,7 @@ Here we choose the compute the band along the path from <span class="math notran
 <figure class="align-center" id="fig-ph-band-square">
 <a class="reference internal image-reference" href="../_images/phonon_band.pdf"><img alt="../_images/phonon_band.pdf" src="../_images/phonon_band.pdf" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Phonon band structure of square lattice.</span><a class="headerlink" href="#fig-ph-band-square" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Phonon band structure of square lattice.</span><a class="headerlink" href="#fig-ph-band-square" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
