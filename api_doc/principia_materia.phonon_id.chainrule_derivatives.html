@@ -15,9 +15,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -98,35 +96,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.phonon_id.chainrule_derivatives">
+  <section id="module-principia_materia.phonon_id.chainrule_derivatives">
 <span id="principia-materia-phonon-id-chainrule-derivatives-module"></span><h1>principia_materia.phonon_id.chainrule_derivatives module<a class="headerlink" href="#module-principia_materia.phonon_id.chainrule_derivatives" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">ChainruleDerivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.chainrule_derivatives.</span></span><span class="sig-name descname"><span class="pre">ChainruleDerivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="principia_materia.phonon_id.analytic_tensors.html#principia_materia.phonon_id.analytic_tensors.AnalyticTensors" title="principia_materia.phonon_id.analytic_tensors.AnalyticTensors"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.phonon_id.analytic_tensors.AnalyticTensors</span></code></a></p>
 <p>Compute chainrule derivatives of a measurement for a given crystal system at given FTG and order.</p>
 <p>In bundled irreducible derivatives (BID) method, for a given measurement basis, at a given order,
@@ -216,7 +190,7 @@ If the input displacements shape is (order - hidden_order, natoms, dim), return 
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.displacement_shape">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">displacement_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.displacement_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">displacement_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.displacement_shape" title="Permalink to this definition"></a></dt>
 <dd><p>Shape of a single displacement.</p>
 <p>A measurement basis usually consists of several displacements.</p>
 </dd></dl>
@@ -243,13 +217,13 @@ If the input displacements shape is (order - hidden_order, natoms, dim), return 
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.known_ID">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">known_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.known_ID" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">known_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.known_ID" title="Permalink to this definition"></a></dt>
 <dd><p>Names of known irreducible derivatives.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.nonzero_ID_index">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">nonzero_ID_index</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.nonzero_ID_index" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nonzero_ID_index</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.nonzero_ID_index" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -272,7 +246,7 @@ If the input displacements shape is (order - hidden_order, natoms, dim), return 
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.unknown_ID">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">unknown_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.unknown_ID" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unknown_ID</span></span><a class="headerlink" href="#principia_materia.phonon_id.chainrule_derivatives.ChainruleDerivatives.unknown_ID" title="Permalink to this definition"></a></dt>
 <dd><p>Names of unknown irreducible derivatives.</p>
 </dd></dl>
 

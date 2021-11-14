@@ -21,6 +21,7 @@ Considering the flourite structure, the most straightforward yaml file would be:
     - F:
        [[0.25,0.25,0.25],
         [0.75,0.75,0.75]]
+
 The code will infer that there is one basis atom labeled *Ca* and two basis atoms labeled *F*.
 
 When entering matrices, we will always run the input through our general array

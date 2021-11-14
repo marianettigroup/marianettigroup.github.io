@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,35 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.phonon_id.fd_series">
+  <section id="module-principia_materia.phonon_id.fd_series">
 <span id="principia-materia-phonon-id-fd-series-module"></span><h1>principia_materia.phonon_id.fd_series module<a class="headerlink" href="#module-principia_materia.phonon_id.fd_series" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.fd_series.FDSeries">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.fd_series.</span></span><span class="sig-name descname"><span class="pre">FDSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.fd_series.</span></span><span class="sig-name descname"><span class="pre">FDSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Execute a series of finite displacements calculations.</p>
 <p>In calculations of phonons and their interactions, a seiries of finite displacements calculations
@@ -144,7 +119,7 @@ between our finite displacement engine and the phonon interaction analysis tools
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.fd_series.FDSeries.create_jobs">
-<span class="sig-name descname"><span class="pre">create_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">job_handler</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">delta_format=&lt;function</span> <span class="pre">format_delta_dirname&gt;</span></em>, <em class="sig-param"><span class="pre">jobname_prefix=''</span></em>, <em class="sig-param"><span class="pre">config_file='finite_displacements.yml'</span></em>, <em class="sig-param"><span class="pre">append=False</span></em>, <em class="sig-param"><span class="pre">dry_run=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries.create_jobs" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">create_jobs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_format=&lt;function</span> <span class="pre">format_delta_dirname&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobname_prefix=''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_file='finite_displacements.yml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries.create_jobs" title="Permalink to this definition"></a></dt>
 <dd><p>Create compute jobs for the finite displacements calculations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -194,7 +169,7 @@ Must be in form of <code class="docutils literal notranslate"><span class="pre">
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.fd_series.FDSeries.set_errortail_results">
-<span class="sig-name descname"><span class="pre">set_errortail_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">pick_min=3</span></em>, <em class="sig-param"><span class="pre">pick_max=None</span></em>, <em class="sig-param"><span class="pre">consecutive=False</span></em>, <em class="sig-param"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></em>, <em class="sig-param"><span class="pre">separate_complex=True</span></em>, <em class="sig-param"><span class="pre">return_pick=False</span></em>, <em class="sig-param"><span class="pre">return_penalty=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries.set_errortail_results" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_errortail_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pick_min=3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_max=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consecutive=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate_complex=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_pick=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_penalty=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fd_series.FDSeries.set_errortail_results" title="Permalink to this definition"></a></dt>
 <dd><p>Compute error tail for the finite displacements result.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

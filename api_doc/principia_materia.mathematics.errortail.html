@@ -15,9 +15,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -98,35 +96,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.mathematics.errortail">
+  <section id="module-principia_materia.mathematics.errortail">
 <span id="principia-materia-mathematics-errortail-module"></span><h1>principia_materia.mathematics.errortail module<a class="headerlink" href="#module-principia_materia.mathematics.errortail" title="Permalink to this headline"></a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.mathematics.errortail.fit_errortail">
-<span class="sig-prename descclassname"><span class="pre">principia_materia.mathematics.errortail.</span></span><span class="sig-name descname"><span class="pre">fit_errortail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">delta</span></em>, <em class="sig-param"><span class="pre">datapoints</span></em>, <em class="sig-param"><span class="pre">power=2</span></em>, <em class="sig-param"><span class="pre">pick_min=3</span></em>, <em class="sig-param"><span class="pre">pick_max=None</span></em>, <em class="sig-param"><span class="pre">consecutive_picks=False</span></em>, <em class="sig-param"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></em>, <em class="sig-param"><span class="pre">separate_complex=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.mathematics.errortail.fit_errortail" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">principia_materia.mathematics.errortail.</span></span><span class="sig-name descname"><span class="pre">fit_errortail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datapoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power=2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_min=3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_max=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consecutive_picks=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate_complex=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.mathematics.errortail.fit_errortail" title="Permalink to this definition"></a></dt>
 <dd><p>Fit error tail for finite difference calculations.</p>
 <p>Either pick n and pick N scheme can be used with various penalty function.</p>
 <dl class="field-list simple">
@@ -176,7 +150,7 @@ separetely.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.mathematics.errortail.get_errortail">
-<span class="sig-prename descclassname"><span class="pre">principia_materia.mathematics.errortail.</span></span><span class="sig-name descname"><span class="pre">get_errortail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">deltas</span></em>, <em class="sig-param"><span class="pre">values</span></em>, <em class="sig-param"><span class="pre">fdtype='c'</span></em>, <em class="sig-param"><span class="pre">pick_min=3</span></em>, <em class="sig-param"><span class="pre">pick_max=None</span></em>, <em class="sig-param"><span class="pre">consecutive=False</span></em>, <em class="sig-param"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></em>, <em class="sig-param"><span class="pre">separate_complex=True</span></em>, <em class="sig-param"><span class="pre">return_xcoef=False</span></em>, <em class="sig-param"><span class="pre">return_pick=False</span></em>, <em class="sig-param"><span class="pre">return_penalty=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.mathematics.errortail.get_errortail" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">principia_materia.mathematics.errortail.</span></span><span class="sig-name descname"><span class="pre">get_errortail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fdtype='c'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_min=3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pick_max=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">consecutive=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty=&lt;function</span> <span class="pre">penalty_linear_mse&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separate_complex=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_xcoef=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_pick=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_penalty=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.mathematics.errortail.get_errortail" title="Permalink to this definition"></a></dt>
 <dd><p>Compute error tail for finite difference results.</p>
 <p>In this function, contrary to the <code class="docutils literal notranslate"><span class="pre">fit_errortail</span></code> function, the order of
 the errortail is determined by the type of the finite difference instead.</p>

@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,36 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.translation_group.kpoints">
+  <section id="module-principia_materia.translation_group.kpoints">
 <span id="principia-materia-translation-group-kpoints-module"></span><h1>principia_materia.translation_group.kpoints module<a class="headerlink" href="#module-principia_materia.translation_group.kpoints" title="Permalink to this headline"></a></h1>
-<p>Copyright (C) 2019 Marianetti Group</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.translation_group.kpoints.</span></span><span class="sig-name descname"><span class="pre">Kpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.translation_group.kpoints.</span></span><span class="sig-name descname"><span class="pre">Kpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict_symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="principia_materia.translation_group.lattice.html#principia_materia.translation_group.lattice.Lattice" title="principia_materia.translation_group.lattice.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.translation_group.lattice.Lattice</span></code></a></p>
 <p>A list of K-points that fit in a given supercell.</p>
 <dl class="field-list simple">
@@ -167,43 +141,43 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.invsupa">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">invsupa</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.invsupa" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invsupa</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.invsupa" title="Permalink to this definition"></a></dt>
 <dd><p>The inverse of the supercell matrix.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints" title="Permalink to this definition"></a></dt>
 <dd><p>The irreducible k-points.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_index_map">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_kpoints_index_map</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_index_map" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_kpoints_index_map</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_index_map" title="Permalink to this definition"></a></dt>
 <dd><p>The corresponding irreducible k-point index in the k-point list for each k-point.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_map">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_kpoints_map</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_map" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_kpoints_map</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_map" title="Permalink to this definition"></a></dt>
 <dd><p>The corresponding irreducible k-point index in the irreducible k-point list for each k-point.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_mult">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_kpoints_mult</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_mult" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_kpoints_mult</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_mult" title="Permalink to this definition"></a></dt>
 <dd><p>The multiplicity of each irreducible k-point.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_trans">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_kpoints_trans</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_trans" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_kpoints_trans</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.irreducible_kpoints_trans" title="Permalink to this definition"></a></dt>
 <dd><p>The name of the operation takes the k-points at its index to one of the irreducible k-points.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.kpoints">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.kpoints" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.kpoints" title="Permalink to this definition"></a></dt>
 <dd><p>The k-points that fit in the supercell.</p>
 </dd></dl>
 
@@ -226,7 +200,7 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.multiplicity">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">multiplicity</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.multiplicity" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">multiplicity</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.multiplicity" title="Permalink to this definition"></a></dt>
 <dd><p>The multiplicity of the supercell.</p>
 </dd></dl>
 
@@ -249,19 +223,19 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.rotated_kpoints">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rotated_kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.rotated_kpoints" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotated_kpoints</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.rotated_kpoints" title="Permalink to this definition"></a></dt>
 <dd><p>Dictionary of how what each k-points rotate into for each group operation. (Indices)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.rvec_bz">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rvec_bz</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.rvec_bz" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rvec_bz</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.rvec_bz" title="Permalink to this definition"></a></dt>
 <dd><p>The reciprocal lattice vector of the supercell.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.translation_group.kpoints.Kpoints.supa">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">supa</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.supa" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supa</span></span><a class="headerlink" href="#principia_materia.translation_group.kpoints.Kpoints.supa" title="Permalink to this definition"></a></dt>
 <dd><p>The supercell matrix.</p>
 </dd></dl>
 

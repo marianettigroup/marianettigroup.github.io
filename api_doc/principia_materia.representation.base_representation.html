@@ -15,9 +15,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -98,35 +96,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.representation.base_representation">
+  <section id="module-principia_materia.representation.base_representation">
 <span id="principia-materia-representation-base-representation-module"></span><h1>principia_materia.representation.base_representation module<a class="headerlink" href="#module-principia_materia.representation.base_representation" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.base_representation.</span></span><span class="sig-name descname"><span class="pre">BaseRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.base_representation.</span></span><span class="sig-name descname"><span class="pre">BaseRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rdim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The abstract class for representations</p>
 <p>As a abstract class for all different representations to derive from, this class contains the most
@@ -136,13 +110,13 @@ irreducible representations, projecting irreducible basis, etc.</p>
 and <code class="docutils literal notranslate"><span class="pre">_set_basis</span></code>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.G">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">G</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.G" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">G</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.G" title="Permalink to this definition"></a></dt>
 <dd><p>The matrix representation of the group elements.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.basis">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">basis</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.basis" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">basis</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.basis" title="Permalink to this definition"></a></dt>
 <dd><p>The name of the basis of the representation.</p>
 <p>This is the original basis of the representation before symmetrization.</p>
 <dl class="field-list simple">
@@ -157,7 +131,7 @@ and <code class="docutils literal notranslate"><span class="pre">_set_basis</spa
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.chi">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">chi</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.chi" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">chi</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.chi" title="Permalink to this definition"></a></dt>
 <dd><p>The characters of the representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -225,7 +199,7 @@ attempts make as many matrix elements into integer form as possible.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.irreducible_basis_rowname">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_basis_rowname</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irreducible_basis_rowname" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_basis_rowname</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irreducible_basis_rowname" title="Permalink to this definition"></a></dt>
 <dd><p>The names of the rows for the irreducible basis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -239,7 +213,7 @@ attempts make as many matrix elements into integer form as possible.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.irrep_counter">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irrep_counter</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irrep_counter" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irrep_counter</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irrep_counter" title="Permalink to this definition"></a></dt>
 <dd><p>The dictionary of the irreducible representations and the number of instances.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -253,7 +227,7 @@ attempts make as many matrix elements into integer form as possible.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.irreps">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreps</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irreps" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreps</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irreps" title="Permalink to this definition"></a></dt>
 <dd><p>A list of irreducible representations and it’s instance number.</p>
 <p>This can be used to distinguish between different irreps as well as different
 instances of the same irrep.</p>
@@ -269,7 +243,7 @@ instances of the same irrep.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.irrvec">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irrvec</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irrvec" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irrvec</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.irrvec" title="Permalink to this definition"></a></dt>
 <dd><p>The matrix form of irreducible basis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -318,7 +292,7 @@ We will simply return a matrix of dimension (dim_irrep,dim_rep).</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.representation.base_representation.BaseRepresentation.rdim">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">rdim</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.rdim" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rdim</span></span><a class="headerlink" href="#principia_materia.representation.base_representation.BaseRepresentation.rdim" title="Permalink to this definition"></a></dt>
 <dd><p>Dimension of the representations</p>
 </dd></dl>
 

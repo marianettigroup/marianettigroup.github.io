@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,35 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.io_interface.array_io">
+  <section id="module-principia_materia.io_interface.array_io">
 <span id="principia-materia-io-interface-array-io-module"></span><h1>principia_materia.io_interface.array_io module<a class="headerlink" href="#module-principia_materia.io_interface.array_io" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">ArrayFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">ArrayFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">footer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Format 2D array.</p>
 <p>Object oriented class for formatting arrays.
@@ -186,7 +161,7 @@ For indent on the entire string, use <cite>textwrap.indent</cite>.</p></li>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter.firstline_line_begin">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">firstline_line_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_line_begin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.firstline_line_begin" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">firstline_line_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_begin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_line_begin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.firstline_line_begin" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -196,7 +171,7 @@ For indent on the entire string, use <cite>textwrap.indent</cite>.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.ArrayFormatter.lastline_line_end">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">lastline_line_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_line_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.lastline_line_end" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lastline_line_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_line_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.ArrayFormatter.lastline_line_end" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -210,7 +185,7 @@ For indent on the entire string, use <cite>textwrap.indent</cite>.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.pad_array">
-<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">pad_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">arr</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">fillvalue=0</span></em>, <em class="sig-param"><span class="pre">allow_truncate=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.pad_array" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">pad_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillvalue=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_truncate=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.pad_array" title="Permalink to this definition"></a></dt>
 <dd><p>Pad array to a given shape with given fillvalue.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -235,7 +210,7 @@ target shape will be discarded.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.parse_array">
-<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">arr</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">max_denominator=None</span></em>, <em class="sig-param"><span class="pre">pad_to_shape=None</span></em>, <em class="sig-param"><span class="pre">fillvalue=0</span></em>, <em class="sig-param"><span class="pre">allow_truncate=False</span></em>, <em class="sig-param"><span class="pre">to_list=False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_array" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_denominator=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_to_shape=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fillvalue=0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_truncate=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_list=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_array" title="Permalink to this definition"></a></dt>
 <dd><p>Parse array from a compatible format and pad to dimension with given fill value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -277,7 +252,7 @@ target shape will be discarded.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.io_interface.array_io.parse_number">
-<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">num</span></em>, <em class="sig-param"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></em>, <em class="sig-param"><span class="pre">max_denominator=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_number" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.array_io.</span></span><span class="sig-name descname"><span class="pre">parse_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_denominator=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.array_io.parse_number" title="Permalink to this definition"></a></dt>
 <dd><p>Parse number from compatible format.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

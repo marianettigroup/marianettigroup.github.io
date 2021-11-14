@@ -15,9 +15,7 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -98,35 +96,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.phonon_id.fourier_interpolation">
+  <section id="module-principia_materia.phonon_id.fourier_interpolation">
 <span id="principia-materia-phonon-id-fourier-interpolation-module"></span><h1>principia_materia.phonon_id.fourier_interpolation module<a class="headerlink" href="#module-principia_materia.phonon_id.fourier_interpolation" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.fourier_interpolation.FourierInterpolation">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.fourier_interpolation.</span></span><span class="sig-name descname"><span class="pre">FourierInterpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fourier_interpolation.FourierInterpolation" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.fourier_interpolation.</span></span><span class="sig-name descname"><span class="pre">FourierInterpolation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">supa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fourier_interpolation.FourierInterpolation" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="principia_materia.phonon_id.dynamic_tensors.html#principia_materia.phonon_id.dynamic_tensors.DynamicTensors" title="principia_materia.phonon_id.dynamic_tensors.DynamicTensors"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.phonon_id.dynamic_tensors.DynamicTensors</span></code></a></p>
 <p>Generic Fourier interpolation of phonon interactions at arbitrary order.</p>
 <p>Supports either dynamic tensors or force constants tensors as input,
@@ -177,7 +151,7 @@ are provided, skip the Fourier tranformation step.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.fourier_interpolation.FourierInterpolation.from_dynamic_tensors">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dynamic_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamic_tensors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fourier_interpolation.FourierInterpolation.from_dynamic_tensors" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dynamic_tensors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamic_tensors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.fourier_interpolation.FourierInterpolation.from_dynamic_tensors" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

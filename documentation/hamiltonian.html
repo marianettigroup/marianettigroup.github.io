@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamiltonian &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Phonons and their interactions" href="phonon_and_interactions.html" />
+    <link rel="prev" title="Representation" href="representation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="crystal_structure.html">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hamiltonian</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model-hamiltonian">Model Hamiltonian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#electron-hamiltonian-1d-hubbard-model">Electron Hamiltonian - 1D Hubbard Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#phonon-hamiltonian-square-lattice">Phonon Hamiltonian - Square Lattice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="phonon_and_interactions.html">Phonons and their interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Hamiltonian</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentation/hamiltonian.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hamiltonian">
+<span id="id1"></span><h1>Hamiltonian<a class="headerlink" href="#hamiltonian" title="Permalink to this headline"></a></h1>
+<p>Hamiltonian classes are used to manipulate electron and phonon Hamiltonians to compute various
+properties including band structure and density of states.
+We also included a model Hamiltonian class allowing us to work with simple theory models.</p>
+<p>Here we demonstrate the usage of Hamiltonian classes with simple models.</p>
+<section id="model-hamiltonian">
+<h2>Model Hamiltonian<a class="headerlink" href="#model-hamiltonian" title="Permalink to this headline"></a></h2>
+<p>Model Hamiltonian class serves as a container for simple Hamiltonians.
+For example, we can create a 1-dimensional Hamiltonian with nearest neighbor hopping as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hamiltonian_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">        ( 0, 0, 0): [[0.00]],</span>
+<span class="go">        ( 1, 0, 0): [[0.25]],</span>
+<span class="go">        (-1, 0, 0): [[0.25]],</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span> <span class="o">=</span> <span class="n">ModelHamiltonian</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span><span class="o">.</span><span class="n">set_hamiltonian</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">hamiltonian_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">hamiltonian_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span><span class="o">.</span><span class="n">tpoints</span>
+<span class="go">array([[ 0,  0,  0],</span>
+<span class="go">       [ 1,  0,  0],</span>
+<span class="go">       [-1,  0,  0]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span><span class="o">.</span><span class="n">hamiltonian_matrices</span>
+<span class="go">array([[[0.  ]],</span>
+
+<span class="go">       [[0.25]],</span>
+
+<span class="go">       [[0.25]]])</span>
+</pre></div>
+</div>
+<p>We can use this Hamiltonian in our 1D Hubbard model to study its electronic band structure.</p>
+</section>
+<section id="electron-hamiltonian-1d-hubbard-model">
+<h2>Electron Hamiltonian - 1D Hubbard Model<a class="headerlink" href="#electron-hamiltonian-1d-hubbard-model" title="Permalink to this headline"></a></h2>
+<p>First, we create a CrystalFTG object with the structure of a 1D crystal of 1 atom per unit cell,
+and we will be studying the electrons in the <span class="math notranslate nohighlight">\(s\)</span> orbital.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atoms</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],])}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orbitals</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">CrystalFTG</span><span class="p">(</span><span class="n">vec</span><span class="o">=</span><span class="n">vec</span><span class="p">,</span> <span class="n">atoms</span><span class="o">=</span><span class="n">atoms</span><span class="p">,</span> <span class="n">orbitals</span><span class="o">=</span><span class="n">orbitals</span><span class="p">,</span> <span class="n">supa</span><span class="o">=</span><span class="n">supa</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the Hamiltonian created in <a class="reference internal" href="#model-hamiltonian">Model Hamiltonian</a>, we can construct the electron Hamiltonian class
+and compute the Fermi energy (<span class="math notranslate nohighlight">\(E_f=0~eV\)</span>) and density of states (shown in <a class="reference internal" href="#fig-eh-dos-1dhubbard"><span class="std std-numref">Fig. 2</span></a>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eham</span> <span class="o">=</span> <span class="n">ElectronHamiltonian</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">structure</span><span class="p">,</span> <span class="n">pg</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">nelect</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eham</span><span class="o">.</span><span class="n">set_hamiltonian</span><span class="p">(</span><span class="n">ham</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">eham</span><span class="o">.</span><span class="n">set_hamiltonian_from_mesh</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">eham</span><span class="o">.</span><span class="n">get_fermi_energy</span><span class="p">())</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dos</span> <span class="o">=</span> <span class="n">eham</span><span class="o">.</span><span class="n">compute_DOS</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">eham</span><span class="o">.</span><span class="n">_dos_bins</span> <span class="o">-</span> <span class="n">eham</span><span class="o">.</span><span class="n">get_fermi_energy</span><span class="p">(),</span> <span class="n">dos</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;DOS&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eham</span><span class="o">.</span><span class="n">units</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$E - E_f$ (eV)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eham</span><span class="o">.</span><span class="n">units</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-center" id="fig-eh-dos-1dhubbard">
+<a class="reference internal image-reference" href="../_images/electron_dos.pdf"><img alt="../_images/electron_dos.pdf" src="../_images/electron_dos.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Density of states of 1D Hubbard module.</span><a class="headerlink" href="#fig-eh-dos-1dhubbard" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="phonon-hamiltonian-square-lattice">
+<h2>Phonon Hamiltonian - Square Lattice<a class="headerlink" href="#phonon-hamiltonian-square-lattice" title="Permalink to this headline"></a></h2>
+<p>For the purpose of simplicity, we refer to square lattice to demonstrate the usage of phonon Hamiltonian.
+First we create a CrystalFTG object of a square lattice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atoms</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],])}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orbitals</span> <span class="o">=</span> <span class="s2">&quot;p_z&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">CrystalFTG</span><span class="p">(</span><span class="n">vec</span><span class="o">=</span><span class="n">vec</span><span class="p">,</span> <span class="n">atoms</span><span class="o">=</span><span class="n">atoms</span><span class="p">,</span> <span class="n">orbitals</span><span class="o">=</span><span class="n">orbitals</span><span class="p">,</span> <span class="n">supa</span><span class="o">=</span><span class="n">supa</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then we can construct a model Hamiltonian of force constants with only the nearest neighbor forces.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">force_constants</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">        ( 0,  0, 0): [[ 4 * gamma]],</span>
+<span class="go">        ( 1,  0, 0): [[-1 * gamma]],</span>
+<span class="go">        (-1,  0, 0): [[-1 * gamma]],</span>
+<span class="go">        ( 0,  1, 0): [[-1 * gamma]],</span>
+<span class="go">        ( 0, -1, 0): [[-1 * gamma]],</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span> <span class="o">=</span> <span class="n">ModelHamiltonian</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ham</span><span class="o">.</span><span class="n">set_hamiltonian</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">force_constants</span><span class="o">.</span><span class="n">keys</span><span class="p">())),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">force_constants</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
+</pre></div>
+</div>
+<p>With the above structure and Hamiltonian, we can construct the phonon Hamiltonian object
+and compute the phonon band structure of the square lattice.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">pham</span> <span class="o">=</span> <span class="n">PhononHamiltonian</span><span class="p">(</span><span class="n">structure</span><span class="o">=</span><span class="n">structure</span><span class="p">,</span> <span class="n">pg</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+<span class="n">pham</span><span class="o">.</span><span class="n">set_hamiltonian</span><span class="p">(</span><span class="n">ham</span><span class="p">)</span>
+<span class="n">pham</span><span class="o">.</span><span class="n">set_hamiltonian_from_mesh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>However, in order to compute the band structure, we need to setup the <span class="math notranslate nohighlight">\(\textbf{q}\)</span>-point path.
+Here we choose the compute the band along the path from <span class="math notranslate nohighlight">\(\vec{\Gamma}=\left(0,0\right)\)</span> to <span class="math notranslate nohighlight">\(\vec{X}=\left(\frac{1}{2},0\right)\)</span>,
+<span class="math notranslate nohighlight">\(\vec{R}=\left(\frac{1}{2},\frac{1}{2}\right)\)</span> and back to <span class="math notranslate nohighlight">\(\vec{\Gamma}\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vertices</span> <span class="o">=</span> <span class="n">parse_array</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="go">        0 0 0</span>
+<span class="go">        1/2 0 0</span>
+<span class="go">        1/2 1/2 0</span>
+<span class="go">        0 0 0</span>
+<span class="go">    &quot;&quot;&quot;, dtype=float)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vertices_names</span> <span class="o">=</span> <span class="p">[</span>
+<span class="go">        r&quot;$\Gamma$&quot;,</span>
+<span class="go">        &quot;X&quot;,</span>
+<span class="go">        &quot;R&quot;,</span>
+<span class="go">        r&quot;$\Gamma$&quot;,</span>
+<span class="go">    ]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpath</span> <span class="o">=</span> <span class="n">KPath</span><span class="p">(</span>
+<span class="go">        vertices=vertices,</span>
+<span class="go">        vertices_names=vertices_names,</span>
+<span class="go">        npoints=101,</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kpath</span><span class="o">.</span><span class="n">set_kpath</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once the path is setup, we can compute the <span class="math notranslate nohighlight">\(\textbf{q}\)</span>-points along the path and plot the phonon spectrum as shown in <a class="reference internal" href="#fig-ph-band-square"><span class="std std-numref">Fig. 3</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pham</span><span class="o">.</span><span class="n">set_hamiltonian_at_kpoints</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">kpoints</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">kpoints_distances</span><span class="p">,</span> <span class="n">pham</span><span class="o">.</span><span class="n">_eigenvalues</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">vertices_distances</span><span class="p">)):</span>
+<span class="go">        plt.plot(</span>
+<span class="go">            [kpath.vertices_distances[i], kpath.vertices_distances[i]],</span>
+<span class="go">            [0, np.max(pham._eigenvalues) * 1.05],</span>
+<span class="go">            c=&quot;gray&quot;,</span>
+<span class="go">            ls=&quot;-&quot;,</span>
+<span class="go">            lw=1</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pham</span><span class="o">.</span><span class="n">_eigenvalues</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">kpath</span><span class="o">.</span><span class="n">vertices_distances</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">kpath</span><span class="o">.</span><span class="n">vertices_names</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequencies (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pham</span><span class="o">.</span><span class="n">units</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-center" id="fig-ph-band-square">
+<a class="reference internal image-reference" href="../_images/phonon_band.pdf"><img alt="../_images/phonon_band.pdf" src="../_images/phonon_band.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Phonon band structure of square lattice.</span><a class="headerlink" href="#fig-ph-band-square" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="representation.html" class="btn btn-neutral float-left" title="Representation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="phonon_and_interactions.html" class="btn btn-neutral float-right" title="Phonons and their interactions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

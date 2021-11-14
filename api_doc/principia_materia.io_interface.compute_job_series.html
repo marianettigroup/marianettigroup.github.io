@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,35 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.io_interface.compute_job_series">
+  <section id="module-principia_materia.io_interface.compute_job_series">
 <span id="principia-materia-io-interface-compute-job-series-module"></span><h1>principia_materia.io_interface.compute_job_series module<a class="headerlink" href="#module-principia_materia.io_interface.compute_job_series" title="Permalink to this headline"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.io_interface.compute_job_series.ComputeJobSeries">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.compute_job_series.</span></span><span class="sig-name descname"><span class="pre">ComputeJobSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.compute_job_series.</span></span><span class="sig-name descname"><span class="pre">ComputeJobSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Manage a series of jobs</p>
 <p>Since many part of this package (for example, phonon irreducible derivatives computaiton),
@@ -145,7 +120,7 @@ template.</p></li>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.io_interface.compute_job_series.ComputeJobSeries.config_path">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">config_path</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.config_path" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_path</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.config_path" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -315,7 +290,7 @@ or “dielectric_tensor”.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.io_interface.compute_job_series.ComputeJobSeries.series_exists">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">series_exists</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.series_exists" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">series_exists</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.series_exists" title="Permalink to this definition"></a></dt>
 <dd><p>Whether if the root directory exists.</p>
 </dd></dl>
 
@@ -335,7 +310,7 @@ or “dielectric_tensor”.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.io_interface.compute_job_series.ComputeJobSeries.structure">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">structure</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.structure" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">structure</span></span><a class="headerlink" href="#principia_materia.io_interface.compute_job_series.ComputeJobSeries.structure" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

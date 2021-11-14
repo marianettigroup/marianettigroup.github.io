@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,36 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.symmetry.point_group">
+  <section id="module-principia_materia.symmetry.point_group">
 <span id="principia-materia-symmetry-point-group-module"></span><h1>principia_materia.symmetry.point_group module<a class="headerlink" href="#module-principia_materia.symmetry.point_group" title="Permalink to this headline"></a></h1>
-<p>Copyright (C) 2019 Marianetti Group</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">PointGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror_notation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">PointGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror_notation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class allows one to encode all of the information about a point group, including the character table. This class mainly is a container
 for data. The only nontrivial method is for rotating to a different coordinate system.</p>
@@ -140,13 +114,13 @@ and that no typos are made when entering the point group info below.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.clas">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">clas</span></span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.clas" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clas</span></span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.clas" title="Permalink to this definition"></a></dt>
 <dd><p>clas will be the alias if set, otherwise it will return the default class names in Cornwell.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.create_all_pg">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create_all_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_all_pg" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_all_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_all_pg" title="Permalink to this definition"></a></dt>
 <dd><p>Create all point groups that are listed in Cornwell class and return them as a dictionary.</p>
 </dd></dl>
 
@@ -158,7 +132,7 @@ and that no typos are made when entering the point group info below.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.create_pgop_to_pg">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">create_pgop_to_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_pgop_to_pg" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_pgop_to_pg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.create_pgop_to_pg" title="Permalink to this definition"></a></dt>
 <dd><p>Create a dictionary which maps a tuple of group elements to a point group. The keys must be sorted, and the values are a tuple containing the
 point group name and the default class.</p>
 </dd></dl>
@@ -172,13 +146,13 @@ point group name and the default class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.init_from">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">init_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from" title="Permalink to this definition"></a></dt>
 <dd><p>Construct PointGroup object from either a point group name or a list of point group operators.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.PointGroup.init_from_operators">
-<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">init_from_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pgop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from_operators" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_from_operators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pgop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.PointGroup.init_from_operators" title="Permalink to this definition"></a></dt>
 <dd><p>Construct PointGroup object from a list of point group operators.</p>
 </dd></dl>
 
@@ -251,7 +225,7 @@ point group name and the default class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.symmetry.point_group.class_method_descriptor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">class_method_descriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.class_method_descriptor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.symmetry.point_group.</span></span><span class="sig-name descname"><span class="pre">class_method_descriptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.symmetry.point_group.class_method_descriptor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Representation &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hamiltonian" href="hamiltonian.html" />
+    <link rel="prev" title="Translation Group" href="translation_group.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="crystal_structure.html">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Representation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#symmetry-of-atoms-in-a-molecule">Symmetry of atoms in a molecule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symmetry-of-displacements-of-a-molecule">Symmetry of displacements of a molecule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symmetry-of-displacements-of-a-crystal">Symmetry of Displacements of a Crystal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#direct-product-and-symmetric-direct-product-of-irreducible-representations">Direct product and symmetric direct product of irreducible representations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonon_and_interactions.html">Phonons and their interactions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Representation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentation/representation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="representation">
+<span id="id1"></span><h1>Representation<a class="headerlink" href="#representation" title="Permalink to this headline"></a></h1>
+<p>Representation classes are the foundation of our group theory analysis,
+where we build the representation of the groups and compute various properties of the group.
+In this section, we demonstrate the usage of the representation classes for group theory analysis.</p>
+<section id="symmetry-of-atoms-in-a-molecule">
+<h2>Symmetry of atoms in a molecule<a class="headerlink" href="#symmetry-of-atoms-in-a-molecule" title="Permalink to this headline"></a></h2>
+<p>We continue with the example of the <span class="math notranslate nohighlight">\(\textrm{CO}_2\)</span> molecule from Section ref{sec:si:tg:cluster}.
+As shown in Fig. ref{fig:diag:co2}, if we categorize the symmetry operations the same
+way we categorized the atomic displacements (i.e. along-the-axis and perpendicular-to-axis),
+we can observe an identity operation and an inversion (or mirror) operation perpendicular to
+the rotational axis at the position of the C atom.</p>
+<p>Therefore we can construct the representation of the atoms in the molecule with <span class="math notranslate nohighlight">\(C_i\)</span> point group.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_rep</span> <span class="o">=</span> <span class="n">ClusterRep</span><span class="p">(</span><span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Ci&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_rep</span><span class="o">.</span><span class="n">irrep_counter</span>
+<span class="go">OrderedDict([(&#39;A&#39;, 2), (&#39;B&#39;, 1)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_rep</span><span class="o">.</span><span class="n">construct_irreducible_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_rep</span><span class="o">.</span><span class="n">irrvec_dict</span>
+<span class="go">OrderedDict([((&#39;A&#39;, 0), array([[1., 0., 0.]])),</span>
+<span class="go">             ((&#39;A&#39;, 1), array([[0.        , 0.70710678, 0.70710678]])),</span>
+<span class="go">             ((&#39;B&#39;, 0), array([[ 0.        ,  0.70710678, -0.70710678]]))])</span>
+</pre></div>
+</div>
+<p>Here we found the decomposition the representation of the atoms into irreducible representations:</p>
+<div class="math notranslate nohighlight">
+\[\Gamma = 2 A \oplus B\]</div>
+<p>as well as the basis of the irreducible representations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec{u}_{C, odd}  &amp; = \vec{u}_{A}     = \left[ 1, 0, 0 \right] ^T \\
+\vec{u}_{O, odd}  &amp; = \vec{u}_{A^{'}} = \frac{1}{\sqrt{2}}\left[ 0, 1, 1 \right] ^T \\
+\vec{u}_{O, even} &amp; = \vec{u}_{B}     = \frac{1}{\sqrt{2}}\left[ 0, 1, -1 \right] ^T\end{split}\]</div>
+</section>
+<section id="symmetry-of-displacements-of-a-molecule">
+<h2>Symmetry of displacements of a molecule<a class="headerlink" href="#symmetry-of-displacements-of-a-molecule" title="Permalink to this headline"></a></h2>
+<p>In addition to representation of the atoms, we can analyze the representation of the displacements
+of the atoms of the <span class="math notranslate nohighlight">\(\textrm{CO}_2\)</span> molecule.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">disp_cluster_rep</span> <span class="o">=</span> <span class="n">DispClusterRep</span><span class="p">(</span><span class="n">cluster</span><span class="o">=</span><span class="n">cluster</span><span class="p">,</span> <span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Ci&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_cluster_rep</span><span class="o">.</span><span class="n">irrep_counter</span>
+<span class="go">OrderedDict([(&#39;A&#39;, 2), (&#39;B&#39;, 4)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_cluster_rep</span><span class="o">.</span><span class="n">construct_irreducible_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disp_cluster_rep</span><span class="o">.</span><span class="n">irrvec_dict</span>
+<span class="go">OrderedDict([((&#39;A&#39;, 0),</span>
+<span class="go">              array([[ 0.        ,  0.        ,  0.70710678,  0.        , -0.70710678,  0.        ]])),</span>
+<span class="go">             ((&#39;A&#39;, 1),</span>
+<span class="go">              array([[ 0.        ,  0.        ,  0.        ,  0.70710678,  0.        , -0.70710678]])),</span>
+<span class="go">             ((&#39;B&#39;, 0), array([[1., 0., 0., 0., 0., 0.]])),</span>
+<span class="go">             ((&#39;B&#39;, 1), array([[0., 1., 0., 0., 0., 0.]])),</span>
+<span class="go">             ((&#39;B&#39;, 2),</span>
+<span class="go">              array([[0.        , 0.        , 0.70710678, 0.        , 0.70710678, 0.        ]])),</span>
+<span class="go">             ((&#39;B&#39;, 3),</span>
+<span class="go">              array([[0.        , 0.        , 0.        , 0.70710678, 0.        , 0.70710678]]))])</span>
+</pre></div>
+</div>
+<p>With the same point group, we found the decomposition of the representation of the displacements of
+the atoms into irreducible representations:</p>
+<div class="math notranslate nohighlight">
+\[\Gamma = 2 A \oplus 4 B\]</div>
+<p>and the irreducible basis:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec{u}_{C, x, odd}  &amp; = \vec{u}_{B}    = \left[ 1, 0, 0, 0, 0, 0 \right] ^T \\
+\vec{u}_{C, y, odd}  &amp; = \vec{u}_{B'}   = \left[ 0, 1, 0, 0, 0, 0 \right] ^T \\
+%
+\vec{u}_{O, x, odd}  &amp; = \vec{u}_{B''}  = \frac{1}{\sqrt{2}}\left[ 0, 0, 1, 0, 1, 0 \right] ^T \\
+\vec{u}_{O, y, odd}  &amp; = \vec{u}_{B'''} = \frac{1}{\sqrt{2}}\left[ 0, 0, 0, 1, 0, 1 \right] ^T \\
+\vec{u}_{O, x, even} &amp; = \vec{u}_{A}    = \frac{1}{\sqrt{2}}\left[ 0, 0, 1, 0, -1, 0 \right] ^T \\
+\vec{u}_{O, y, even} &amp; = \vec{u}_{A'}   = \frac{1}{\sqrt{2}}\left[ 0, 0, 0, 1, 0, -1 \right] ^T\end{split}\]</div>
+</section>
+<section id="symmetry-of-displacements-of-a-crystal">
+<h2>Symmetry of Displacements of a Crystal<a class="headerlink" href="#symmetry-of-displacements-of-a-crystal" title="Permalink to this headline"></a></h2>
+<p>WIth a crystal that translates across space, the symmetry operators could rotate the atoms
+away from the primitive cell, resulting in a translation operator that sometimes carries
+a complex phase.</p>
+<p>We will be using NaCl crystal as an example material.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="go">        [0.0, 0.5, 0.5],</span>
+<span class="go">        [0.5, 0.0, 0.5],</span>
+<span class="go">        [0.5, 0.5, 0.0],</span>
+<span class="go">    ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atoms</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">        &quot;Na&quot;: np.array([</span>
+<span class="go">            [0.0, 0.0, 0.0]</span>
+<span class="go">        ]),</span>
+<span class="go">        &quot;Cl&quot;: np.array([</span>
+<span class="go">            [0.5, 0.5, 0.5],</span>
+<span class="go">        ])</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orbitals</span> <span class="o">=</span> <span class="s2">&quot;p&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">CrystalFTG</span><span class="p">(</span><span class="n">vec</span><span class="o">=</span><span class="n">vec</span><span class="p">,</span> <span class="n">atoms</span><span class="o">=</span><span class="n">atoms</span><span class="p">,</span> <span class="n">orbitals</span><span class="o">=</span><span class="n">orbitals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we take a look at the displacements at <span class="math notranslate nohighlight">\(\Gamma\)</span> point (i.e. <span class="math notranslate nohighlight">\(\textbf{q} = \left( 0, 0, 0 \right)\)</span>).
+For a crystal at <span class="math notranslate nohighlight">\(\Gamma\)</span> point, there are <span class="math notranslate nohighlight">\(d\)</span> modes where all the atoms shift along the same direction.
+These shift modes do not change the energy of the crystal, and we usually ommit them when studying lattice dynamics.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cbr</span> <span class="o">=</span> <span class="n">CharmBlochRep</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        pg=&quot;Oh&quot;,</span>
+<span class="go">        qpoint=np.array(parse_array(&quot;0 0 0&quot;, dtype=Fraction)),</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cbr</span><span class="o">.</span><span class="n">construct_irreducible_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cbr</span><span class="o">.</span><span class="n">orthogonalize_shift_modes</span><span class="p">(</span><span class="n">remove</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cbr</span><span class="o">.</span><span class="n">irrep_counter</span>
+<span class="go">OrderedDict([(&#39;T1u&#39;, 1)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">cbr</span><span class="o">.</span><span class="n">irrvec_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="go">(&#39;T1u&#39;, 0)</span>
+<span class="go">[[ 0.707107+0.j  0.      +0.j  0.      +0.j -0.707107+0.j  0.      +0.j  0.      +0.j]</span>
+<span class="go"> [ 0.      +0.j  0.707107+0.j  0.      +0.j  0.      +0.j -0.707107+0.j  0.      +0.j]</span>
+<span class="go"> [ 0.      +0.j  0.      +0.j  0.707107+0.j  0.      +0.j  0.      +0.j -0.707107+0.j]]</span>
+</pre></div>
+</div>
+<p>In NaCl, we found, excluding the shift mode, the representation of the displacements of the crystal at <span class="math notranslate nohighlight">\(\Gamma\)</span> point
+can be decomposed into irreducible representations <span class="math notranslate nohighlight">\(\Gamma = T_{1u}\)</span> with the following bases:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{u}_{\Gamma}^{(T_{1u}, 0)} = \frac{1}{\sqrt{2}}
+\begin{bmatrix}[r]
+1 &amp; 0 &amp; 0 &amp; -1 &amp;  0 &amp;  0 \\
+0 &amp; 1 &amp; 0 &amp;  0 &amp; -1 &amp;  0 \\
+0 &amp; 0 &amp; 1 &amp;  0 &amp;  0 &amp; -1
+\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="direct-product-and-symmetric-direct-product-of-irreducible-representations">
+<h2>Direct product and symmetric direct product of irreducible representations<a class="headerlink" href="#direct-product-and-symmetric-direct-product-of-irreducible-representations" title="Permalink to this headline"></a></h2>
+<p>Direct product and symmetric direct product representations can be used the analyze phonons and their interactions.
+For example, with NaCl crystal at <span class="math notranslate nohighlight">\(\Gamma\)</span> point, we can analyze the second order phonons of the <span class="math notranslate nohighlight">\(T_{1u}\)</span>
+irreducible representation.</p>
+<p>First, we can compute the decomposition of the direct product
+<span class="math notranslate nohighlight">\(T_{1u} \otimes T_{1u} = A_{1g} \oplus E_g \oplus T_{1g} \oplus T_{2g}\)</span>
+and it’s irreducible basis. In the case of phonon, we only concern the irreducible basis that transforms like identity:</p>
+<div class="math notranslate nohighlight">
+\[\vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
+\begin{bmatrix}[r]
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span> <span class="o">=</span> <span class="n">DirectProduct</span><span class="p">(</span><span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Oh&quot;</span><span class="p">,</span> <span class="n">irrep_inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1u&quot;</span><span class="p">,</span> <span class="s2">&quot;T1u&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">irrep_counter</span>
+<span class="go">OrderedDict([(&#39;A1g&#39;, 1), (&#39;Eg&#39;, 1), (&#39;T1g&#39;, 1), (&#39;T2g&#39;, 1)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">construct_irreducible_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">irrvec_dict</span><span class="p">[(</span><span class="s2">&quot;A1g&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="go">array([[0.57735027, 0.        , 0.        , 0.        , 0.57735027, 0.        , 0.        , 0.        , 0.57735027]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span><span class="o">.</span><span class="n">basis</span>
+<span class="go">[((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 0)),</span>
+<span class="go"> ((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 1)),</span>
+<span class="go"> ((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 2)),</span>
+<span class="go"> ((&#39;T1u&#39;, 1), (&#39;T1u&#39;, 0)),</span>
+<span class="go"> ((&#39;T1u&#39;, 1), (&#39;T1u&#39;, 1)),</span>
+<span class="go"> ((&#39;T1u&#39;, 1), (&#39;T1u&#39;, 2)),</span>
+<span class="go"> ((&#39;T1u&#39;, 2), (&#39;T1u&#39;, 0)),</span>
+<span class="go"> ((&#39;T1u&#39;, 2), (&#39;T1u&#39;, 1)),</span>
+<span class="go"> ((&#39;T1u&#39;, 2), (&#39;T1u&#39;, 2))]</span>
+</pre></div>
+</div>
+<p>Since phonons and their interaction have permutation symmetry of the derivative, we need to use the symmetric direct
+product when computing the product of the same irreducible representations.
+With symmetric direct product, we find the decomposition becomes
+<span class="math notranslate nohighlight">\(\left[ T_{1u} \otimes T_{1u} \right]= A_{1g} \oplus E_g \oplus T_{2g}\)</span>
+and the identity irreducible basis becomes:</p>
+<div class="math notranslate nohighlight">
+\[\vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
+\begin{bmatrix}[r]
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1
+\end{bmatrix}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span> <span class="o">=</span> <span class="n">SymmetricDirectProduct</span><span class="p">(</span><span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Oh&quot;</span><span class="p">,</span> <span class="n">irrep_inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1u&quot;</span><span class="p">,</span> <span class="s2">&quot;T1u&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span><span class="o">.</span><span class="n">irrep_counter</span>
+<span class="go">OrderedDict([(&#39;A1g&#39;, 1), (&#39;Eg&#39;, 1), (&#39;T2g&#39;, 1)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span><span class="o">.</span><span class="n">construct_irreducible_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span><span class="o">.</span><span class="n">irrvec_dict</span><span class="p">[(</span><span class="s2">&quot;A1g&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="go">array([[0.57735027, 0.        , 0.        , 0.57735027, 0.        , 0.57735027]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span><span class="o">.</span><span class="n">basis</span>
+<span class="go">[((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 0)),</span>
+<span class="go"> ((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 1)),</span>
+<span class="go"> ((&#39;T1u&#39;, 0), (&#39;T1u&#39;, 2)),</span>
+<span class="go"> ((&#39;T1u&#39;, 1), (&#39;T1u&#39;, 1)),</span>
+<span class="go"> ((&#39;T1u&#39;, 1), (&#39;T1u&#39;, 2)),</span>
+<span class="go"> ((&#39;T1u&#39;, 2), (&#39;T1u&#39;, 2))]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="translation_group.html" class="btn btn-neutral float-left" title="Translation Group" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hamiltonian.html" class="btn btn-neutral float-right" title="Hamiltonian" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

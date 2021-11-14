@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,36 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.phonon_id.analytic_dynamic_tensor">
+  <section id="module-principia_materia.phonon_id.analytic_dynamic_tensor">
 <span id="principia-materia-phonon-id-analytic-dynamic-tensor-module"></span><h1>principia_materia.phonon_id.analytic_dynamic_tensor module<a class="headerlink" href="#module-principia_materia.phonon_id.analytic_dynamic_tensor" title="Permalink to this headline"></a></h1>
-<p>Copyright (C) 2020 Marianetti Group</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.analytic_dynamic_tensor.</span></span><span class="sig-name descname"><span class="pre">AnalyticDynamicTensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Qpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.phonon_id.analytic_dynamic_tensor.</span></span><span class="sig-name descname"><span class="pre">AnalyticDynamicTensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Qpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract class for analytic representation of dynamic tensor under group theory.</p>
 <p>Exploits the group theory to find the irreducible derivatives, and construct the dynamic
@@ -145,7 +119,7 @@ of the crystal.</p>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.Qpoint">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">Qpoint</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.Qpoint" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Qpoint</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.Qpoint" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -205,25 +179,25 @@ If <code class="docutils literal notranslate"><span class="pre">symmetrized_basi
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.irreducible_derivative_names">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">irreducible_derivative_names</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.irreducible_derivative_names" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">irreducible_derivative_names</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.irreducible_derivative_names" title="Permalink to this definition"></a></dt>
 <dd><p>The list of names of of all irreducible derivatives in the tensor, also reference for the vectorized tensors.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.n_irreducible_derivatives">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">n_irreducible_derivatives</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.n_irreducible_derivatives" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_irreducible_derivatives</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.n_irreducible_derivatives" title="Permalink to this definition"></a></dt>
 <dd><p>Number of irreducible derivatives</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.order">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.order" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.order" title="Permalink to this definition"></a></dt>
 <dd><p>The order of the irreducible derivatives.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.qpoint_displacement_rep">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">qpoint_displacement_rep</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.qpoint_displacement_rep" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qpoint_displacement_rep</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.qpoint_displacement_rep" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -239,13 +213,13 @@ If <code class="docutils literal notranslate"><span class="pre">symmetrized_basi
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_irreducible_derivatives">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">set_irreducible_derivatives</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_irreducible_derivatives" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_irreducible_derivatives</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_irreducible_derivatives" title="Permalink to this definition"></a></dt>
 <dd><p>Constructs irreducible derivatives as well as the coefficients for them in the symmetrized basis.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_qpoint_displacement_rep">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">set_qpoint_displacement_rep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_qpoint_displacement_rep" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_qpoint_displacement_rep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.set_qpoint_displacement_rep" title="Permalink to this definition"></a></dt>
 <dd><p>Find all irreducible derivatives allowed in the given Qpoint and PointGroup.</p>
 </dd></dl>
 
@@ -285,31 +259,31 @@ which equals the number of irreducible derivatives.</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_tensor_shape">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">symmetrized_tensor_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_tensor_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">symmetrized_tensor_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_tensor_shape" title="Permalink to this definition"></a></dt>
 <dd><p>The shape of the dynamic tensor in symmetrized basis.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_vectorized_tensor">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">symmetrized_vectorized_tensor</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_vectorized_tensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">symmetrized_vectorized_tensor</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.symmetrized_vectorized_tensor" title="Permalink to this definition"></a></dt>
 <dd><p>Vectorized analytic dynamic tensor in symmetrized basis.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.tensor_shape">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tensor_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.tensor_shape" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tensor_shape</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.tensor_shape" title="Permalink to this definition"></a></dt>
 <dd><p>The shape of the dynamic tensor in naive basis.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.unique_qpoints">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">unique_qpoints</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.unique_qpoints" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unique_qpoints</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.unique_qpoints" title="Permalink to this definition"></a></dt>
 <dd><p>Unique q-points in the Q-point.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.vectorized_tensor">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">vectorized_tensor</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.vectorized_tensor" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectorized_tensor</span></span><a class="headerlink" href="#principia_materia.phonon_id.analytic_dynamic_tensor.AnalyticDynamicTensor.vectorized_tensor" title="Permalink to this definition"></a></dt>
 <dd><p>Vectorized analytic dynamic tensor in naive basis.</p>
 </dd></dl>
 

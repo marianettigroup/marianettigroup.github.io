@@ -15,13 +15,11 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Translation Group" href="../notebooks/translation_group/translation_group.html" />
+    <link rel="next" title="Translation Group" href="translation_group.html" />
     <link rel="prev" title="Compute Irreducible Derivatives" href="compute_id.html" /> 
 </head>
 
@@ -51,16 +49,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#thermal-conductivity">Thermal Conductivity</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/translation_group/translation_group.html">Translation Group</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html">Symmetry of a molecule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/representation/group_theory_demostrations.html#Symmetry-analysis-for-phonons">Symmetry analysis for phonons</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/hamiltonian/hamiltonian.html">Hamiltonian</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/phonon_interaction_analysis.html">Symmetry analysis of phonon interactions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/finite_displacements.html">Finite Displacements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/lid.html">Lone Irreducible Derivatives (LID) Approach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html">Bundled Irreducible Derivatives (BID) Approach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/bid.html#Hierarchical-Supercell-BID-Approach">Hierarchical Supercell BID Approach</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notebooks/phonon_id/linewidth.html">Phonon linewidth and thermal conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonon_and_interactions.html">Phonons and their interactions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
@@ -93,31 +85,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="compute-phonon-linewidth-and-thermal-conductivity">
+  <section id="compute-phonon-linewidth-and-thermal-conductivity">
 <span id="compute-thermal"></span><h1>Compute Phonon Linewidth and Thermal Conductivity<a class="headerlink" href="#compute-phonon-linewidth-and-thermal-conductivity" title="Permalink to this headline"></a></h1>
 <p>With the irreducible derivatives at second and third order computed with the methods described in the chapter <a class="reference internal" href="compute_id.html#compute-id"><span class="std std-ref">Compute Irreducible Derivatives</span></a>,
 we can predict the phonon linewidth and thermal conductivity using perturbation theory.</p>
@@ -177,7 +145,7 @@ mesh: [11, 11, 11]
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="compute_id.html" class="btn btn-neutral float-left" title="Compute Irreducible Derivatives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../notebooks/translation_group/translation_group.html" class="btn btn-neutral float-right" title="Translation Group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="translation_group.html" class="btn btn-neutral float-right" title="Translation Group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

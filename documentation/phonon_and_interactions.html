@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phonons and their interactions &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/contents.html" />
+    <link rel="prev" title="Hamiltonian" href="hamiltonian.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="crystal_structure.html">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Phonons and their interactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#finite-displacements">Finite Displacements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#phonon-interaction-symmetry-analysis">Phonon Interaction Symmetry Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lone-irreducible-derivatives-approach">Lone Irreducible Derivatives Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bundled-irreducible-derivatives-approach">Bundled Irreducible Derivatives Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#phonon-linewidth-and-thermal-conductivity">Phonon Linewidth and Thermal Conductivity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Phonons and their interactions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentation/phonon_and_interactions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="phonons-and-their-interactions">
+<span id="phonon-interactions"></span><h1>Phonons and their interactions<a class="headerlink" href="#phonons-and-their-interactions" title="Permalink to this headline"></a></h1>
+<p>Computing phonons and their interactions is one of the main feature we developed in this thesis.
+Here we will break down the workflow in the key features including finite displacements, symmetry analysis,
+lone irreducible derivatives approach (LID), bundled irreducible derivatives approach (BID),
+hierarchical supercell bundled irreducible derivatives approach (HS-BID) and phonon linewidth and thermal conductivity.</p>
+<p>In this section we will mainly use NaCl as an example material
+(see structure illustration in Figure ref{fig:group_theory:nacl_struct} and configuration Section ref{sec:si:tg:crystal}),
+for the finite displacements demonstration, symmetry analysis, and phonon calculations with LID, BID and HS-BID approaches.
+We will demonstrate phonon linewidth and conductivity predicted with phonon interaction coefficients using <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span>.</p>
+<section id="finite-displacements">
+<h2>Finite Displacements<a class="headerlink" href="#finite-displacements" title="Permalink to this headline"></a></h2>
+<p>Finite displacements method takes derivatives of a function with respect to atomic displacements using finite difference
+approach.
+As we can see from the flowchart that illustrates the workflow of our finite displacements approach in <a class="reference internal" href="#fig-si-fd-flowchart"><span class="std std-numref">Fig. 4</span></a>,
+we begin by constructing the finite displacement stencils of the measurement.
+With the displacement amplitudes <span class="math notranslate nohighlight">\(\Delta\)</span> we can find the unique jobs that need computed from a first principle approach,
+where each job simply represent the structure of the material of interest at a certain supercell
+that includes some displacements and sometimes even strain.
+We emphasize that we adopt a database centered approach and we store all the jobs inside a database.
+The input files of the first principle calculations are created from the database and the results from the calculations,
+including energy, forces, etc., are also parsed from the output of the first principle calculations and stored into the database.
+These results will then be served from the database to compute the finite displacement derivatives.</p>
+<figure class="align-center" id="fig-si-fd-flowchart">
+<a class="reference internal image-reference" href="../_images/fd_flowchart.pdf"><img alt="../_images/fd_flowchart.pdf" src="../_images/fd_flowchart.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Flowchart illustrating the workflow of the finite displacements implementation,
+where red boxes represent quantities, blue boxes represent operations and green box database.
+Single-lined arrows represent the direction of the workflow and double-lined arrows the direction of
+data in and out of the database.</span><a class="headerlink" href="#fig-si-fd-flowchart" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Since the finite displacements method is simply the finite difference with respect to the nuclei displacements,
+we first present the FiniteDifference class that houses all the abstract finite difference functionalities, including
+construction of stencils and steps, where a step is a point <span class="math notranslate nohighlight">\((x_1^{\prime},\cdots, x_n^{\prime})\)</span>
+at which the target function <span class="math notranslate nohighlight">\(f(x_1,\cdots, x_n)\)</span> of the finite difference is evaluated at in order to compute
+the finite difference derivative. Additionally, unique steps reduces redundancy considering computing finite
+difference at multiple <span class="math notranslate nohighlight">\(\Delta\)</span> at the same time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span> <span class="o">=</span> <span class="n">FiniteDifference</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="o">.</span><span class="n">set_delta</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="o">.</span><span class="n">set_steps</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="o">.</span><span class="n">_stencils</span>
+<span class="go">array([[ 2,  1],</span>
+<span class="go">       [ 2, -1],</span>
+<span class="go">       [ 0,  1],</span>
+<span class="go">       [ 0, -1],</span>
+<span class="go">       [-2,  1],</span>
+<span class="go">       [-2, -1]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="o">.</span><span class="n">uniq_steps</span>
+<span class="go">array([[-0.04, -0.02],</span>
+<span class="go">       [-0.04,  0.02],</span>
+<span class="go">       [-0.02, -0.01],</span>
+<span class="go">       [-0.02,  0.01],</span>
+<span class="go">       [ 0.  , -0.02],</span>
+<span class="go">       [ 0.  , -0.01],</span>
+<span class="go">       [ 0.  ,  0.01],</span>
+<span class="go">       [ 0.  ,  0.02],</span>
+<span class="go">       [ 0.02, -0.01],</span>
+<span class="go">       [ 0.02,  0.01],</span>
+<span class="go">       [ 0.04, -0.02],</span>
+<span class="go">       [ 0.04,  0.02]])</span>
+</pre></div>
+</div>
+<p>With these unique steps and the displacements basis to take the derivatives of,
+the FiniteDisplacements class is able compute displacements needed to be applied to the structure.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span> <span class="o">=</span> <span class="n">FiniteDisplacements</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        supa=supa,</span>
+<span class="go">        fdtype=&quot;c&quot;,</span>
+<span class="go">        tol=1.0E-6,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">displacements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="p">)</span> <span class="o">+</span> <span class="n">fd</span><span class="o">.</span><span class="n">supercell</span><span class="o">.</span><span class="n">positions</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">displacements</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">displacements</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span><span class="o">.</span><span class="n">set_displacement_vectors</span><span class="p">(</span><span class="n">dispvecs</span><span class="o">=</span><span class="n">displacements</span><span class="p">,</span> <span class="n">displabels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span><span class="o">.</span><span class="n">set_delta</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Although we normally would store the jobs into a database and compute first principles from there,
+in this demonstration we can directly create the input files for the first principle calculations.
+Here we use VASP to compute the energy and forces at the displacements,
+and we can create the jobs from the displacements and the supercell matrix for VASP to compute.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span><span class="o">.</span><span class="n">set_jobs</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root_directory</span> <span class="o">=</span> <span class="s2">&quot;fd_runs&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dft_engine</span> <span class="o">=</span> <span class="s2">&quot;vasp&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span> <span class="o">=</span> <span class="n">ComputeJobSeries</span><span class="p">(</span>
+<span class="go">      structure=fd.supercell,</span>
+<span class="go">      root_directory=root_directory,</span>
+<span class="go">      compute_engine=dft_engine,</span>
+<span class="go">      config_path=None,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd</span><span class="o">.</span><span class="n">create_jobs</span><span class="p">(</span>
+<span class="go">      job_handler=job_handler,</span>
+<span class="go">    )</span>
+</pre></div>
+</div>
+<p>Additionally, we can also use strained finite displacements class to compute the derivatives of a function
+with respect to strain and displacements at the same time.
+In this following demonstration, we compute the second order derivative of <span class="math notranslate nohighlight">\(\varepsilon_{xx}\)</span> strain of energy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">structure</span><span class="o">.</span><span class="n">dim</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span> <span class="o">=</span> <span class="n">StrainedFiniteDisplacements</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      supa=supa,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">set_strain</span><span class="p">(</span><span class="n">strain</span><span class="o">=</span><span class="p">[</span><span class="n">e_xx</span><span class="p">,</span> <span class="p">],</span> <span class="n">strain_orders</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strain_delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">set_strain_delta</span><span class="p">(</span><span class="n">strain_delta</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">set_finite_difference</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here we have the first principle calculation already finished and stored in a database,
+we can retrieve the energy from the database and compute the finite displacements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">set_jobs</span><span class="p">(</span><span class="n">skip_zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span> <span class="o">=</span> <span class="n">JobsDB</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      root_directory=&quot;nacl_sfd&quot;,</span>
+<span class="go">      db_path=&quot;nacl_sfd/database.db&quot;,</span>
+<span class="go">      db_type=&quot;sqlite&quot;</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span><span class="o">.</span><span class="n">set_table</span><span class="p">(</span><span class="s2">&quot;strain&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">create_jobs</span><span class="p">(</span>
+<span class="go">      job_handler=job_handler,</span>
+<span class="go">      dry_run=True,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">set_raw_results</span><span class="p">(</span>
+<span class="go">      source=job_handler,</span>
+<span class="go">      data_type=&quot;energy&quot;</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sfd</span><span class="o">.</span><span class="n">compute_finite_displacements</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Since the strained finite displacements calculations are computed with multiple deltas and with central finite difference,
+we can compute the quadratic error tail (see <a class="reference internal" href="#fig-si-sfd-errortail"><span class="std std-numref">Fig. 5</span></a>) and extrapolate to <span class="math notranslate nohighlight">\(\delta \to 0\)</span>,
+and finally obtain the second order derivative of <span class="math notranslate nohighlight">\(\varepsilon_{xx}\)</span>:
+<span class="math notranslate nohighlight">\(\partial^2 V / \partial \varepsilon_{xx}^2 = 13.75 eV\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">,</span> <span class="n">xcoef</span><span class="p">,</span> <span class="n">pick</span><span class="p">,</span> <span class="n">penalty</span> <span class="o">=</span> <span class="n">get_errortail</span><span class="p">(</span>
+<span class="go">      deltas=strain_delta,</span>
+<span class="go">      values=sfd.fd_result.reshape((-1, 1)),</span>
+<span class="go">      fdtype=&quot;c&quot;,</span>
+<span class="go">      pick_min=3,</span>
+<span class="go">      pick_max=5,</span>
+<span class="go">      separate_complex=False,</span>
+<span class="go">      return_xcoef=True,</span>
+<span class="go">      return_pick=True,</span>
+<span class="go">      return_penalty=True,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">13.750108012806797</span>
+</pre></div>
+</div>
+<figure class="align-center" id="fig-si-sfd-errortail">
+<a class="reference internal image-reference" href="../_images/sfd_errortail.pdf"><img alt="../_images/sfd_errortail.pdf" src="../_images/sfd_errortail.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Quadratic error tail of the finite difference calculation <span class="math notranslate nohighlight">\(\Delta^2 V / \Delta \varepsilon_{xx}^2\)</span>,
+where the green circles and the red triangles are the <span class="math notranslate nohighlight">\(\Delta\)</span> at which the finite displacements are computed
+and the blue line is the fitted quadratic error tail. The red triangles are the points picked when fitting the
+error tail.</span><a class="headerlink" href="#fig-si-sfd-errortail" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="phonon-interaction-symmetry-analysis">
+<h2>Phonon Interaction Symmetry Analysis<a class="headerlink" href="#phonon-interaction-symmetry-analysis" title="Permalink to this headline"></a></h2>
+<p>The group theory behind the symmetry analysis of phonon interactions can be found in Chapter ref{chap:group_theory},
+and the workflow is illustrated in the flowchart in <a class="reference internal" href="#fig-si-phonon-sym-flowchart"><span class="std std-numref">Fig. 6</span></a>.
+First we need the information for the symmetry analysis, which includes the crystal structure, the space group of the
+crystal, the FTG <span class="math notranslate nohighlight">\(\hat{S}_{BZ}\)</span> (i.e. a supercell) and the order <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> of the interaction.
+Subsequently, we can find the irreducible <span class="math notranslate nohighlight">\(Q\)</span>-points <span class="math notranslate nohighlight">\(\tilde{Q}_{IBZ}\)</span> with the aforementioned information,
+and then we can find the irreducible representations of the nuclei displacements at each <span class="math notranslate nohighlight">\(\textbf{q} \in Q\)</span>.
+Then the symmetric direct products can be constructed for find the irreducible derivatives allowed by group theory
+for each <span class="math notranslate nohighlight">\(Q \in \tilde{Q}_{IBZ}\)</span>, and the irreducible basis of the identity representations in the symmetric direct
+products determine the coefficients on how to populate the analytic dynamic tensors in the symmetrized basis.
+We can write out the phonon Hamiltonian in terms of the irreducible derivatives by multiplying the analytic dynamic tensors
+with their respective displacements basis.
+Additionally, sparse tensors can implemented for analytic dynamic tensors to increase space efficiency.</p>
+<figure class="align-center" id="fig-si-phonon-sym-flowchart">
+<a class="reference internal image-reference" href="../_images/phonon_symmetry_analysis_flowchart.pdf"><img alt="../_images/phonon_symmetry_analysis_flowchart.pdf" src="../_images/phonon_symmetry_analysis_flowchart.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Flowchart illustrating the workflow of phonon interaction symmetry analysis we implemented,
+where red boxes represent quantities, blue boxes represent operations and green box database.
+Single-lined arrows represent the direction of the workflow.</span><a class="headerlink" href="#fig-si-phonon-sym-flowchart" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The rock salt structure is used for demonstration.
+We can start with building an analytic dynamic tensor for a given <span class="math notranslate nohighlight">\(Q\)</span>-point.
+For example, at second order we can build the analytic tensor for <span class="math notranslate nohighlight">\(Q = \left[L_x, L_x\right]\)</span>,
+and we can see that the first irreducible derivative in this <span class="math notranslate nohighlight">\(Q\)</span> contributes to a <span class="math notranslate nohighlight">\(3\time3\)</span>
+submatrix of the analytic dynamic tensor in the naive basis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Qpoint</span> <span class="o">=</span> <span class="n">parse_array</span><span class="p">(</span><span class="s2">&quot;1/2 0 0; 1/2 0 0&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Fraction</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Qpoint</span>
+<span class="go">[[Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)],</span>
+<span class="go"> [Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span> <span class="o">=</span> <span class="n">LittleGroupADT</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        pg=&quot;Oh&quot;,</span>
+<span class="go">        Qpoint=Qpoint)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_qpoint_displacement_rep</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_irreducible_derivatives</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_vectorized_tensor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">irreducible_derivative_names</span>
+<span class="go">[((((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A1g&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A1g&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eg&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eg&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">lgadt</span><span class="o">.</span><span class="n">vectorized_tensor</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="go">[[ 0.          0.          0.          0.          0.          0.        ]</span>
+<span class="go"> [ 0.          0.          0.          0.          0.          0.        ]</span>
+<span class="go"> [ 0.          0.          0.          0.          0.          0.        ]</span>
+<span class="go"> [ 0.          0.          0.          0.33333333 -0.33333333 -0.33333333]</span>
+<span class="go"> [ 0.          0.          0.         -0.33333333  0.33333333  0.33333333]</span>
+<span class="go"> [ 0.          0.          0.         -0.33333333  0.33333333  0.33333333]]</span>
+</pre></div>
+</div>
+<p>%
+We can also construct the analytic dynamic tensor at third order for <span class="math notranslate nohighlight">\(Q = \left[\Gamma, L_x, L_x\right]\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Qpoint</span> <span class="o">=</span> <span class="n">parse_array</span><span class="p">(</span><span class="s2">&quot;0 0 0; 1/2 0 0; 1/2 0 0&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Fraction</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Qpoint</span>
+<span class="go">[[Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)],</span>
+<span class="go"> [Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)],</span>
+<span class="go"> [Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span> <span class="o">=</span> <span class="n">LittleGroupADT</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        pg=&quot;Oh&quot;,</span>
+<span class="go">        Qpoint=Qpoint)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_qpoint_displacement_rep</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_irreducible_derivatives</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">set_vectorized_tensor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lgadt</span><span class="o">.</span><span class="n">irreducible_derivative_names</span>
+<span class="go">[((((Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A1g&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eg&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A1g&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;A2u&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eg&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0)),</span>
+<span class="go"> ((((Fraction(0, 1), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eg&#39;, 0)),</span>
+<span class="go">   ((Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)), (&#39;Eu&#39;, 0))),</span>
+<span class="go">  (&#39;A1g&#39;, 0))]</span>
+</pre></div>
+</div>
+<p>Second, we construct the analytic tensors for a given FTG at a given order.
+For example, for the FTG <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=2\hat{1}\)</span>, we can build analytic dynamic tensors with the AnalyticTensors class
+and find the irreducible derivatives allowed by group theory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">at</span> <span class="o">=</span> <span class="n">AnalyticTensors</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        supa=supa,</span>
+<span class="go">        order=2,</span>
+<span class="go">        pg=&quot;Oh&quot;,</span>
+<span class="go">    )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">at</span><span class="o">.</span><span class="n">set_ADT</span><span class="p">(</span>
+<span class="go">        little_group=True,</span>
+<span class="go">        verbose=True,</span>
+<span class="go">    )</span>
+<span class="go">Computing ADT for Qpoint: ((0, 0, 0), (0, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">Summarize irreducible derivatives.</span>
+<span class="go">Compute vectorized tensors.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">irreducible_derivative</span> <span class="ow">in</span> <span class="n">at</span><span class="o">.</span><span class="n">irreducible_derivative_names</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">tuple_to_str</span><span class="p">(</span><span class="n">irreducible_derivative</span><span class="p">))</span>
+<span class="go">((((0, 0, 0), (T1u, 0)), ((0, 0, 0), (T1u, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 0, 0), (A1g, 0)), ((1/2, 0, 0), (A1g, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 0, 0), (Eg, 0)), ((1/2, 0, 0), (Eg, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 0, 0), (A2u, 0)), ((1/2, 0, 0), (A2u, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 0, 0), (Eu, 0)), ((1/2, 0, 0), (Eu, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (A2u, 0)), ((1/2, 1/2, 0), (A2u, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (A2u, 0)), ((1/2, 1/2, 0), (A2u, 1))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (A2u, 1)), ((1/2, 1/2, 0), (A2u, 1))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (Eu, 0)), ((1/2, 1/2, 0), (Eu, 0))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (Eu, 0)), ((1/2, 1/2, 0), (Eu, 1))), (A1g, 0))</span>
+<span class="go">((((1/2, 1/2, 0), (Eu, 1)), ((1/2, 1/2, 0), (Eu, 1))), (A1g, 0))</span>
+</pre></div>
+</div>
+<p>Furthermore, with the analytic tensors of the FTG, we are able to perform more complicated analysis on phonon interactions.
+One of them is using chain rule derivatives to compute the transformation matrices of arbitrary displacements for BID approach.</p>
+<p>For the purpose of simplicity, we use the FTG <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=\hat{S}[C]\)</span> as an example to compute the chain rule matrix of the displacement along <span class="math notranslate nohighlight">\(x\)</span>-axis of
+the first {Na} atom with the ChainruleDerivatives class, and from the resulting chain rule matrix we can see that such simple displacement
+probed multiple irreducible derivatives in the FTG <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=\hat{S}[C]\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chainrule</span> <span class="o">=</span>  <span class="n">ChainruleDerivatives</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        supa=supa,</span>
+<span class="go">        order=2,</span>
+<span class="go">        pg=&#39;Oh&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chainrule</span><span class="o">.</span><span class="n">set_ADT</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">Computing ADT for Qpoint: ((0, 0, 0), (0, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">Summarize irreducible derivatives.</span>
+<span class="go">Compute vectorized tensors.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chainrule</span><span class="o">.</span><span class="n">set_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">displacements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">chainrule</span><span class="o">.</span><span class="n">order</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">chainrule</span><span class="o">.</span><span class="n">supercell</span><span class="o">.</span><span class="n">natoms</span><span class="p">,</span> <span class="n">chainrule</span><span class="o">.</span><span class="n">supercell</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">displacements</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">chainrule</span><span class="o">.</span><span class="n">compute_chainrule</span><span class="p">(</span><span class="n">displacements</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">chainrule</span><span class="o">.</span><span class="n">n_irreducible_derivatives</span><span class="p">))</span><span class="o">.</span><span class="n">real</span>
+<span class="go">array([[ 0.25,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],</span>
+<span class="go">       [-0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],</span>
+<span class="go">       [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],</span>
+<span class="go">       [-0.25,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ],</span>
+<span class="go">       ...,</span>
+<span class="go">       [ 0.  ,  0.  ,  0.5 ,  0.  ,  0.  ,  0.  ,  0.  ],</span>
+<span class="go">       [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  , -0.  ,  0.  ],</span>
+<span class="go">       [ 0.  ,  0.  ,  0.  ,  0.  ,  0.  , -0.  , -0.  ]])</span>
+</pre></div>
+</div>
+</section>
+<section id="lone-irreducible-derivatives-approach">
+<h2>Lone Irreducible Derivatives Approach<a class="headerlink" href="#lone-irreducible-derivatives-approach" title="Permalink to this headline"></a></h2>
+<p>The LID approach performs symmetry analysis for phonons and phonon interactions at
+each <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>-point individually, and find displacements to perturb each irreducible
+derivative separately.</p>
+<p>The LID approach tries to compute one irreducible derivative or as few irreducible derivatives as possible
+with a single measurement.
+As shown in the flowchart in <a class="reference internal" href="#fig-si-lid-flowchart"><span class="std std-numref">Fig. 7</span></a>, we begin with the analytic dynamic tensors obtained
+with the workflow described in Section ref{sec:si:phonon:symmetry}.
+We can find the symmetrized displacements basis sets the probes the irreducible derivatives as separately as possible,
+but these displacements are generally complex since they carry a phase in the Fourier series.
+Therefore, we need to apply a similarity transformation and transform those complex displacements to displacements that
+are purely real (see Section ref{sec:fd:lid} for details).
+We can compute the finite displacements with the workflow described in Section ref{sec:si:phonon:fd}, after we obtained
+the measurements in the real space, and extrapolate quadratic error tails for the <span class="math notranslate nohighlight">\(\Delta \to 0\)</span> results.
+Finally, we can solve for the irreducible derivatives with the finite displacements derivatives extrapolated from the error tail.</p>
+<figure class="align-center" id="fig-si-lid-flowchart">
+<a class="reference internal image-reference" href="../_images/lid_flowchart.pdf"><img alt="../_images/lid_flowchart.pdf" src="../_images/lid_flowchart.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Flowchart illustrating the workflow of LID approach,
+where red boxes represent quantities, blue boxes represent operations and green box database.
+Single-lined arrows represent the direction of the workflow.</span><a class="headerlink" href="#fig-si-lid-flowchart" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>We demonstrate the workflow of the LID approach with the rock salt structure,
+at second order and <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=2\hat{1}\)</span>. Additionally, we will be using
+central finite difference on forces from the first principle calculations
+so that we only need first order finite displacements derivatives.
+First we can construct the LIDMesh object with said configurations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ORDER</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PG</span> <span class="o">=</span> <span class="s2">&quot;Oh&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MESH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid_mesh</span> <span class="o">=</span> <span class="n">LIDMesh</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      supa=MESH,</span>
+<span class="go">      order=ORDER,</span>
+<span class="go">      pg=PG,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid_mesh</span><span class="o">.</span><span class="n">set_lid</span><span class="p">()</span>
+<span class="go">Setting up LID for Qpoint: ((0, 0, 0), (0, 0, 0))</span>
+<span class="go">Setting up LID for Qpoint: ((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">Setting up LID for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+</pre></div>
+</div>
+<p>Then we can create the finite displacements jobs that first principle calculations need to be executed at.
+We will store the jobs into a database since we are using a database centric approach.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span><span class="o">=</span> <span class="n">JobsDB</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      root_directory=&quot;.&quot;,</span>
+<span class="go">      db_path=&quot;nacl_lid/database.db&quot;,</span>
+<span class="go">      db_type=&quot;sqlite&quot;,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span><span class="o">.</span><span class="n">set_table</span><span class="p">(</span><span class="s2">&quot;lid_phonon&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DELTA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid_mesh</span><span class="o">.</span><span class="n">create_jobs</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        deltas=DELTA,</span>
+<span class="go">        append=True,</span>
+<span class="go">        dry_run=True,</span>
+<span class="go">        )</span>
+</pre></div>
+</div>
+<p>Once we finished the first principles calculations, and store the results back into
+the database, we can compute the finite displacements, extrapolate the quadratic
+error tail and finally compute the irreducible derivatives and the dynamic tensors
+from the finite displacements results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lid_mesh</span><span class="o">.</span><span class="n">set_results</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        data_type=&quot;forces&quot;,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid_mesh</span><span class="o">.</span><span class="n">set_errortail_results</span><span class="p">(</span>
+<span class="go">        pick_min=3,</span>
+<span class="go">        pick_max=5,</span>
+<span class="go">        separate_complex=True,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dynamic_tensors</span> <span class="o">=</span> <span class="n">lid_mesh</span><span class="o">.</span><span class="n">get_dynamic_tensors</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lid_mesh</span><span class="o">.</span><span class="n">QpointsN</span><span class="o">.</span><span class="n">irreducible_Qpoints</span><span class="p">)):</span>
+<span class="go">        print(tuple_to_str(lid_mesh.QpointsN.irreducible_Qpoints[i]))</span>
+<span class="go">        print(dynamic_tensors.real[i])</span>
+<span class="go">((0, 0, 0), (0, 0, 0))</span>
+<span class="go">[[ 1.2142316  0.         0.        -1.2142316  0.         0.       ]</span>
+<span class="go"> [ 0.         1.2142316  0.         0.        -1.2142316  0.       ]</span>
+<span class="go"> [ 0.         0.         1.2142316  0.         0.        -1.2142316]</span>
+<span class="go"> [-1.2142316  0.         0.         1.2142316  0.         0.       ]</span>
+<span class="go"> [ 0.        -1.2142316  0.         0.         1.2142316  0.       ]</span>
+<span class="go"> [ 0.         0.        -1.2142316  0.         0.         1.2142316]]</span>
+<span class="go">((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">[[ 2.18334962 -0.80283112 -0.80283112  0.          0.          0.        ]</span>
+<span class="go"> [-0.80283112  2.18334962  0.80283112  0.          0.          0.        ]</span>
+<span class="go"> [-0.80283112  0.80283112  2.18334962  0.          0.          0.        ]</span>
+<span class="go"> [ 0.          0.          0.          2.30355673 -0.76809942 -0.76809942]</span>
+<span class="go"> [ 0.          0.          0.         -0.76809942  2.30355673  0.76809942]</span>
+<span class="go"> [ 0.          0.          0.         -0.76809942  0.76809942  2.30355673]]</span>
+<span class="go">((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">[[ 1.47829446  0.          0.          1.02011023  0.          0.        ]</span>
+<span class="go"> [ 0.          1.47829446  0.          0.          1.02011023  0.        ]</span>
+<span class="go"> [ 0.          0.          1.99846289  0.          0.         -0.59315421]</span>
+<span class="go"> [ 1.02011023  0.          0.          2.09150467  0.          0.        ]</span>
+<span class="go"> [ 0.          1.02011023  0.          0.          2.09150467  0.        ]</span>
+<span class="go"> [ 0.          0.         -0.59315421  0.          0.          3.44754191]]</span>
+</pre></div>
+</div>
+<p>We can compute the phonon band structure with LO-TO splitting
+with the computed dynamic tensors, dielectric tensor and born effective charges,
+using Fourier interpolation.
+(Note that the above demonstration used <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=2\hat{1}\)</span> for simplicity,
+but the <a class="reference internal" href="#fig-si-lid-phonon"><span class="std std-numref">Fig. 8</span></a> used <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=4\hat{1}\)</span> as the denser
+FTG contains for information at a relatively cheap computational cost).</p>
+<figure class="align-center" id="fig-si-lid-phonon">
+<a class="reference internal image-reference" href="../_images/nacl_lid_phonon.pdf"><img alt="../_images/nacl_lid_phonon.pdf" src="../_images/nacl_lid_phonon.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Phonon and DOS of NaCl with FTG 4:math:<cite>hat{1}</cite> including LO-TO splitting.</span><a class="headerlink" href="#fig-si-lid-phonon" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Furthermore, we can also construct the LID object for a single <span class="math notranslate nohighlight">\(Q\)</span>-point if
+we are only studying that <span class="math notranslate nohighlight">\(Q\)</span>-point, and follow the similar workflow as above
+to create first principle calculations and compute the finite displacements from
+the results.</p>
+<p>%TODO</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Qpoint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">parse_array</span><span class="p">(</span><span class="s2">&quot;1/2 0 0; 1/2 0 0&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Fraction</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid</span> <span class="o">=</span> <span class="n">LoneID_FP</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        Qpoint=Qpoint,</span>
+<span class="go">        pg=PG,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid</span><span class="o">.</span><span class="n">set_analytic_tensor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid</span><span class="o">.</span><span class="n">set_displacements_basis</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid</span><span class="o">.</span><span class="n">set_displacements</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lid</span><span class="o">.</span><span class="n">set_realspace_displacements</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="bundled-irreducible-derivatives-approach">
+<h2>Bundled Irreducible Derivatives Approach<a class="headerlink" href="#bundled-irreducible-derivatives-approach" title="Permalink to this headline"></a></h2>
+<p>label{sec:si:phonon:bid}</p>
+<p>Both SS-BID and HS-BID approaches try to compute all irreducible derivatives at a given FTG and order with as few measurements as possible.
+The workflow of SS-BID is illustrated in the flowchart in <a class="reference internal" href="#fig-si-bid-flowchart"><span class="std std-numref">Fig. 9</span></a>.
+First we estimate the minimum number of measurements needed N with dividing the total number of irreducible derivatives with the rank of the
+chain rule matrix of a single measurement.
+Then we generate N measurements and if the chain rule matrix of the measurements is not full rank, we increment N by 1 until resulting chain
+rule matrix is full rank. In practice we try a few measurement sets at each N to make sure we can’t reach full rank with N measurements.
+Once we find the minimum number of measurements, we compute the finite displacements, fit the quadratic error tail and solve for
+the irreducible derivatives.
+Finally, we can compute the dynamic tensors and phonon Hamiltonian with the irreducible derivatives.
+With the HS-BID approach, we find the hierarchical supercells for the irreducible <span class="math notranslate nohighlight">\(Q\)</span>-points with a greedy algorithm, and execute
+SS-BID at each supercell, while counting for the irreducible derivatives at the smaller supercells as known derivatives.</p>
+<figure class="align-center" id="fig-si-bid-flowchart">
+<a class="reference internal image-reference" href="../_images/bid_flowchart.pdf"><img alt="../_images/bid_flowchart.pdf" src="../_images/bid_flowchart.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Flowchart illustrating the workflow of BID approach,
+where red boxes represent quantities, blue boxes represent operations and green box database.
+Single-lined arrows represent the direction of the workflow.</span><a class="headerlink" href="#fig-si-bid-flowchart" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Here we use <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=2\hat{1}\)</span> to demonstrate the workflow of SS-BID and HS-BID approaches.
+First, we can construct the BID object with the same configurations as those used for the LID object in Section ref{sec:si:phonon:lid}.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ORDER</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PG</span> <span class="o">=</span> <span class="s2">&quot;Oh&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">MESH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span> <span class="o">=</span> <span class="n">BID</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      supa=MESH,</span>
+<span class="go">      order=ORDER,</span>
+<span class="go">      pg=PG,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">set_chainrule_derivatives</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">_set_displacement_generator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">find_measurements</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">Computing ADT for Qpoint: ((0, 0, 0), (0, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">Summarize irreducible derivatives.</span>
+<span class="go">Compute vectorized tensors.</span>
+<span class="go">Number of unknowns:  11</span>
+<span class="go">Rank of single measurements:  11</span>
+<span class="go">Estimated number of measurements:  1</span>
+</pre></div>
+</div>
+<p>Then we can create the finite displacements jobs and store them in a database.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span><span class="o">=</span> <span class="n">JobsDB</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      root_directory=ROOT_DIR,</span>
+<span class="go">      db_path=&quot;nacl_hsbid/database.db&quot;,</span>
+<span class="go">      db_type=&quot;sqlite&quot;,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_handler</span><span class="o">.</span><span class="n">set_table</span><span class="p">(</span><span class="s2">&quot;bid_phonon&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DELTA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">create_jobs</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        deltas=DELTA,</span>
+<span class="go">        append=True,</span>
+<span class="go">        )</span>
+</pre></div>
+</div>
+<p>After the first principle calculations are finished, we can retrieve the results and compute
+irreducible derivatives with finite displacements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">set_results</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        data_type=&quot;forces&quot;,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">set_errortail_results</span><span class="p">(</span>
+<span class="go">        pick_min=3,</span>
+<span class="go">        pick_max=5,</span>
+<span class="go">        separate_complex=True,</span>
+<span class="go">        output=&quot;out_errortail.hdf5&quot;,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bid</span><span class="o">.</span><span class="n">compute_irreducible_derivatives</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>However, with the SS-BID approach all of the irreducible derivatives are computed from a single FTG,
+which shown by our minimum supercell multiplicity equation derived in Section ref{sec:fd:mincell}, is very
+inefficient. And the SS-BID approach is not able to utilize the irreducible derivatives already
+computed from a smaller FTG and we have to perform redundant computations, further decreasing the efficiency.</p>
+<p>Thus, the hierarchical supercell BID approach is needed to address these problems.
+HS-BID uses a greedy algorithm to find the minimum number of supercells to satisfy that each
+irreducible derivative can be computed in the smallest possible supercell the derivative fits in.</p>
+<p>We can construct a HS-BID object with the same configurations as the BID object above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span> <span class="o">=</span> <span class="n">HSBID</span><span class="p">(</span>
+<span class="go">      structure=structure,</span>
+<span class="go">      supa=MESH,</span>
+<span class="go">      order=ORDER,</span>
+<span class="go">      pg=PG,</span>
+<span class="go">      )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">set_chainrule_derivatives</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">set_hsbid</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">find_measurements</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">Computing ADT for Qpoint: ((0, 0, 0), (0, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">Computing ADT for Qpoint: ((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">Summarize irreducible derivatives.</span>
+<span class="go">Compute vectorized tensors.</span>
+<span class="go">Find measurements for supercell # 0</span>
+<span class="go">Number of unknowns:  1</span>
+<span class="go">Rank of single measurements:  1</span>
+<span class="go">Estimated number of measurements:  1</span>
+<span class="go">Find measurements for supercell # 1</span>
+<span class="go">Number of unknowns:  4</span>
+<span class="go">Rank of single measurements:  4</span>
+<span class="go">Estimated number of measurements:  1</span>
+<span class="go">Find measurements for supercell # 2</span>
+<span class="go">Number of unknowns:  6</span>
+<span class="go">Rank of single measurements:  5</span>
+<span class="go">Estimated number of measurements:  2</span>
+</pre></div>
+</div>
+<p>And create the finite displacements jobs with the same job_handler object to store them into the database.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">create_jobs</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        deltas=DELTA,</span>
+<span class="go">        append=True,</span>
+<span class="go">        )</span>
+</pre></div>
+</div>
+<p>Here we can use the finished first principle results stored in the database to compute finite displacements
+and solve for the irreducible derivatives and dynamic tensors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">set_results</span><span class="p">(</span>
+<span class="go">        job_handler=job_handler,</span>
+<span class="go">        data_type=&quot;forces&quot;,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">set_errortail_results</span><span class="p">(</span>
+<span class="go">        pick_min=3,</span>
+<span class="go">        pick_max=5,</span>
+<span class="go">        separate_complex=True,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hsbid</span><span class="o">.</span><span class="n">compute_irreducible_derivatives</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dynamic_tensors</span> <span class="o">=</span> <span class="n">hsbid</span><span class="o">.</span><span class="n">get_dynamic_tensors</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hsbid</span><span class="o">.</span><span class="n">_chainrule</span><span class="o">.</span><span class="n">QpointsN</span><span class="o">.</span><span class="n">irreducible_Qpoints</span><span class="p">)):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">tuple_to_str</span><span class="p">(</span><span class="n">hsbid</span><span class="o">.</span><span class="n">_chainrule</span><span class="o">.</span><span class="n">QpointsN</span><span class="o">.</span><span class="n">irreducible_Qpoints</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">dynamic_tensors</span><span class="p">[</span><span class="n">hsbid</span><span class="o">.</span><span class="n">_chainrule</span><span class="o">.</span><span class="n">QpointsN</span><span class="o">.</span><span class="n">irreducible_Qpoints_Qind</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="go">((0, 0, 0), (0, 0, 0))</span>
+<span class="go">[[ 1.2163185  0.         0.        -1.2163185  0.         0.       ]</span>
+<span class="go"> [ 0.         1.2163185  0.         0.        -1.2163185  0.       ]</span>
+<span class="go"> [ 0.         0.         1.2163185  0.         0.        -1.2163185]</span>
+<span class="go"> [-1.2163185  0.         0.         1.2163185  0.         0.       ]</span>
+<span class="go"> [ 0.        -1.2163185  0.         0.         1.2163185  0.       ]</span>
+<span class="go"> [ 0.         0.        -1.2163185  0.         0.         1.2163185]]</span>
+<span class="go">((1/2, 0, 0), (1/2, 0, 0))</span>
+<span class="go">[[ 2.18264725 -0.80163822 -0.80163822  0.          0.          0.        ]</span>
+<span class="go"> [-0.80163822  2.18264725  0.80163822  0.          0.          0.        ]</span>
+<span class="go"> [-0.80163822  0.80163822  2.18264725  0.          0.          0.        ]</span>
+<span class="go"> [ 0.          0.          0.          2.30057778 -0.76845191 -0.76845191]</span>
+<span class="go"> [ 0.          0.          0.         -0.76845191  2.30057778  0.76845191]</span>
+<span class="go"> [ 0.          0.          0.         -0.76845191  0.76845191  2.30057778]]</span>
+<span class="go">((1/2, 1/2, 0), (1/2, 1/2, 0))</span>
+<span class="go">[[ 1.47854869  0.          0.          1.0212613   0.          0.        ]</span>
+<span class="go"> [ 0.          1.47854869  0.          0.          1.0212613   0.        ]</span>
+<span class="go"> [ 0.          0.          1.99804315  0.          0.         -0.59932048]</span>
+<span class="go"> [ 1.0212613   0.          0.          2.09450795  0.          0.        ]</span>
+<span class="go"> [ 0.          1.0212613   0.          0.          2.09450795  0.        ]</span>
+<span class="go"> [ 0.          0.         -0.59932048  0.          0.          3.44972342]]</span>
+</pre></div>
+</div>
+<p>Same as Section ref{sec:si:phonon:lid}, we can compute phonon band structure and density of states with LO-TO splitting
+using Fourier interpolation. As we can see in <a class="reference internal" href="#fig-si-hsbid-phonon"><span class="std std-numref">Fig. 10</span></a>, the phonons from both LID and HS-BID methods are basically
+identical, showing both methods can achieve similarly high quality results at second order.</p>
+<figure class="align-center" id="fig-si-hsbid-phonon">
+<a class="reference internal image-reference" href="../_images/nacl_hsbid_phonon.pdf"><img alt="../_images/nacl_hsbid_phonon.pdf" src="../_images/nacl_hsbid_phonon.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Comparison between HS-BID and LID of Phonon and DOS of NaCl with FTG 4:math:<cite>hat{1}</cite> including LO-TO splitting,
+where the points are the phonons computed within the FTG and the lines are the Fourier interpolation from the FTG.</span><a class="headerlink" href="#fig-si-hsbid-phonon" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="phonon-linewidth-and-thermal-conductivity">
+<h2>Phonon Linewidth and Thermal Conductivity<a class="headerlink" href="#phonon-linewidth-and-thermal-conductivity" title="Permalink to this headline"></a></h2>
+<p>label{sec:si:phonon:linewidth}</p>
+<p>With phonons and phonon interactions computed, we can use these coefficients to compute thermodynamic properties
+including phonon linewidth and thermal conductivity.</p>
+<p>In this section, we will compute the phonon linewidth and thermal conductivity of <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span> from its phonon interaction
+coefficients.
+For convenience of demonstration, we will interpolate the phonon interactions onto an FTG of <span class="math notranslate nohighlight">\(3\hat{1}\)</span> to integrate
+the <span class="math notranslate nohighlight">\(\delta\)</span>-functions to compute the linewidth and conductivity.
+See Section ref{sec:apps:tho2} for more accurate results.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="s2">&quot;Oh&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">supa</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="go">      [1, 0, 0],</span>
+<span class="go">      [0, 1, 0],</span>
+<span class="go">      [0, 0, 1],</span>
+<span class="go">      ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span> <span class="o">=</span> <span class="n">get_structure</span><span class="p">(</span><span class="n">parse_poscar</span><span class="p">(</span><span class="s2">&quot;tho2_linewidth/POSCAR&quot;</span><span class="p">),</span> <span class="n">stype</span><span class="o">=</span><span class="n">CrystalFTG</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span><span class="o">.</span><span class="n">species_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Th&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">structure</span><span class="o">.</span><span class="n">orbitals</span> <span class="o">=</span> <span class="s2">&quot;p&quot;</span>
+</pre></div>
+</div>
+<p>We can use the above configurations to construct the Conductivity object and assign the
+phonon interaction coefficients through the FourierInterpolation objects.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cond</span> <span class="o">=</span> <span class="n">Conductivity</span><span class="p">(</span>
+<span class="go">        structure=structure,</span>
+<span class="go">        mesh=supa,</span>
+<span class="go">        pg=pg,</span>
+<span class="go">        )</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cond</span><span class="o">.</span><span class="n">set_Phi</span><span class="p">(</span><span class="s2">&quot;tho2_linewidth/order2/fi_mesh444.hdf5&quot;</span><span class="p">,</span>  <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cond</span><span class="o">.</span><span class="n">set_Phi</span><span class="p">(</span><span class="s2">&quot;tho2_linewidth/order3/fi_meshsBcc.hdf5&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As an example, we can compute the phonon linewidth at <span class="math notranslate nohighlight">\(\textbf{q} = \left(\frac{1}{2}, 0, 0\right)\)</span> and the plot the
+different branches with respect to temperature the linewidth is evaluated at, shown in Fig. ref{fig:si:tho2:linewidth}.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">qpoint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">parse_array</span><span class="p">(</span><span class="s2">&quot;1/2 0 0&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">Fraction</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">qpoint</span>
+<span class="go">array([Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)], dtype=object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gamma</span> <span class="o">=</span> <span class="n">cond</span><span class="o">.</span><span class="n">gamma_tetra_at_phonon</span><span class="p">(</span><span class="n">qpoint</span><span class="o">=</span><span class="n">qpoint</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">phonon_cutoff</span><span class="o">=</span><span class="mf">1.0E-4</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="fig-si-tho2-linewidth">
+<a class="reference internal image-reference" href="../_images/tho2_linewidth.pdf"><img alt="../_images/tho2_linewidth.pdf" src="../_images/tho2_linewidth.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Phonon linewidth of <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span>.</span><a class="headerlink" href="#fig-si-tho2-linewidth" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Additionally, we can also compute the thermal conductivity with relaxation time approximation, shown in Fig. ref{fig:si:tho2:conductivity}.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conductivity</span> <span class="o">=</span> <span class="n">cond</span><span class="o">.</span><span class="n">thermal_conductivity_RTA</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">phonon_cutoff</span><span class="o">=</span><span class="mf">1.0E-4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kappa</span> <span class="o">=</span> <span class="n">conductivity</span><span class="p">[:,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/tho2_conductivity.pdf"><img alt="../_images/tho2_conductivity.pdf" src="../_images/tho2_conductivity.pdf" style="width: 400px;" /></a>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hamiltonian.html" class="btn btn-neutral float-left" title="Hamiltonian" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/contents.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

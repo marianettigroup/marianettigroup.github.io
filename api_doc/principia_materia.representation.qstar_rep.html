@@ -15,7 +15,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -96,36 +95,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<section id="module-principia_materia.representation.qstar_rep">
+  <section id="module-principia_materia.representation.qstar_rep">
 <span id="principia-materia-representation-qstar-rep-module"></span><h1>principia_materia.representation.qstar_rep module<a class="headerlink" href="#module-principia_materia.representation.qstar_rep" title="Permalink to this headline"></a></h1>
-<p>Copyright (C) 2020 Marianetti Group</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.representation.qstar_rep.QStarRep">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.qstar_rep.</span></span><span class="sig-name descname"><span class="pre">QStarRep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.qstar_rep.QStarRep" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.qstar_rep.</span></span><span class="sig-name descname"><span class="pre">QStarRep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.qstar_rep.QStarRep" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="principia_materia.representation.base_representation.html#principia_materia.representation.base_representation.BaseRepresentation" title="principia_materia.representation.base_representation.BaseRepresentation"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.representation.base_representation.BaseRepresentation</span></code></a></p>
 <p>Representation of Q-star</p>
 <p>It represents how Q transform in the Q-star under symmetry operation of the point group.</p>
@@ -148,7 +122,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="principia_materia.representation.qstar_rep.SymmetricQStarRep">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.qstar_rep.</span></span><span class="sig-name descname"><span class="pre">SymmetricQStarRep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.qstar_rep.SymmetricQStarRep" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.representation.qstar_rep.</span></span><span class="sig-name descname"><span class="pre">SymmetricQStarRep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rvec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.representation.qstar_rep.SymmetricQStarRep" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="principia_materia.representation.symmetric_direct_product.html#principia_materia.representation.symmetric_direct_product.SymmetricDirectProduct" title="principia_materia.representation.symmetric_direct_product.SymmetricDirectProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.representation.symmetric_direct_product.SymmetricDirectProduct</span></code></a></p>
 <p>Symmetric Product representation of Q</p>
 <p>It represents how Q transform in the Q-star under symmetry operation of the point group, with an
