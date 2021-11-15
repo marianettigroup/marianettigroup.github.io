@@ -98,7 +98,7 @@ The following <code class="docutils literal notranslate"><span class="pre">struc
    <span class="p p-Indicator">[</span> <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">1</span><span class="p p-Indicator">]]</span>
 </pre></div>
 </div>
-<p>This example can be found in the <code class="docutils literal notranslate"><span class="pre">examples/compute_id/al/hsbid/order2</span></code> directory of the  <code class="docutils literal notranslate"><span class="pre">principia-materia-examples</span></code> repostory.</p>
+<p>This example can be found in the <code class="docutils literal notranslate"><span class="pre">examples/compute_id/al/hsbid/order2</span></code> directory of the  <code class="docutils literal notranslate"><span class="pre">principia-materia-examples</span></code> repository.</p>
 <section id="compute-phonon-with-hs-bid">
 <h2>Compute phonon with HS-BID<a class="headerlink" href="#compute-phonon-with-hs-bid" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
@@ -107,6 +107,23 @@ These jobs we be saved in the database <code class="docutils literal notranslate
 </ol>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-hsbid --config config.yml --create --save-hsbid
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file is defined below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="s">&#39;../../data/structure.yml&#39;</span>
+<span class="nt">supa</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+  <span class="no">4 0 0</span>
+  <span class="no">0 4 0</span>
+  <span class="no">0 0 4</span>
+<span class="nt">pg</span><span class="p">:</span> <span class="s">&#39;Oh&#39;</span>
+<span class="nt">order</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">full_symmetry</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="nt">delta</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">0.02</span><span class="p p-Indicator">,</span> <span class="nv">0.03</span><span class="p p-Indicator">,</span> <span class="nv">0.04</span><span class="p p-Indicator">]</span>
+<span class="nt">fdtype</span><span class="p">:</span> <span class="s">&#39;c&#39;</span>
+<span class="nt">root_directory</span><span class="p">:</span> <span class="s">&#39;.&#39;</span>
+<span class="nt">database</span><span class="p">:</span> <span class="s">&#39;database.db&#39;</span>
+<span class="nt">db_type</span><span class="p">:</span> <span class="s">&#39;sqlite&#39;</span>
+<span class="nt">db_table</span><span class="p">:</span> <span class="s">&#39;bid_phonon&#39;</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -128,6 +145,7 @@ and store them into the database we created.</p></li>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-jobs --config jobs_config.yml --retrieve
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">jobs_config.yml</span></code> file is generated from the previous step.</p>
 </div></blockquote>
 <ol class="arabic simple" start="4">
 <li><p>Finally, we run the post-processing step to solve for the irreducible derivatives and compute dynamic tensors and real space force constant tensors.</p></li>

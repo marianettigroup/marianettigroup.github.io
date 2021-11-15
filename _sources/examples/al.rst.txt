@@ -21,7 +21,7 @@ The following ``structure.yml`` file is used in this example:
      [ 0,  1,  0],
      [ 0,  0,  1]]
 
-This example can be found in the ``examples/compute_id/al/hsbid/order2`` directory of the  ``principia-materia-examples`` repostory.
+This example can be found in the ``examples/compute_id/al/hsbid/order2`` directory of the  ``principia-materia-examples`` repository.
 
 Compute phonon with HS-BID
 --------------------------
@@ -32,6 +32,25 @@ Compute phonon with HS-BID
   .. code-block:: bash
 
       pm-hsbid --config config.yml --create --save-hsbid
+
+  The ``config.yml`` file is defined below:
+
+  .. code-block:: yaml
+
+      structure: '../../data/structure.yml'
+      supa: |
+        4 0 0
+        0 4 0
+        0 0 4
+      pg: 'Oh'
+      order:  2
+      full_symmetry: True
+      delta: [ 0.02, 0.03, 0.04]
+      fdtype: 'c'
+      root_directory: '.'
+      database: 'database.db'
+      db_type: 'sqlite'
+      db_table: 'bid_phonon'
 
 2. In this example, we use VASP to perform first principle calculations. This we need to create the input files for VASP calculations.
 
@@ -48,6 +67,8 @@ Compute phonon with HS-BID
   .. code-block:: bash
 
       pm-jobs --config jobs_config.yml --retrieve
+
+  The ``jobs_config.yml`` file is generated from the previous step.
 
 4. Finally, we run the post-processing step to solve for the irreducible derivatives and compute dynamic tensors and real space force constant tensors.
 
