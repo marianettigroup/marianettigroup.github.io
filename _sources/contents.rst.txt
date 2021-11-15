@@ -18,6 +18,12 @@ Table of Contents
    api_doc/modules
 
 
+.. toctree::
+   :hidden:
+
+   known_issues
+
+
 
 Indices and tables
 ==================

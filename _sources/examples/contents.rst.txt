@@ -1,7 +1,15 @@
 Examples
 ========
 
+Here an array of examples on a variety of materials are demonstrated to showcase the usage of the package.
+
 .. toctree::
    :maxdepth: 1
+
+   al
+
+
+.. toctree::
+   :hidden:
 
    template

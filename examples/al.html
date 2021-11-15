@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aluminum Example &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Material Name" href="template.html" />
+    <link rel="prev" title="Examples" href="contents.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/contents.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Aluminum Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compute-phonon-with-hs-bid">Compute phonon with HS-BID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plot-phonon-band-structure-and-dos">Plot phonon band structure and DOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Examples</a> &raquo;</li>
+      <li>Aluminum Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/al.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="aluminum-example">
+<h1>Aluminum Example<a class="headerlink" href="#aluminum-example" title="Permalink to this headline"></a></h1>
+<p>Here is the example of Aluminum.
+Aluminum has FCC lattice with a single atom per primitive unit cell.
+The following <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> file is used in this example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># CrystalFTG</span>
+<span class="nt">vec</span><span class="p">:</span>
+  <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">],</span>
+   <span class="p p-Indicator">[</span> <span class="nv">1.99208958</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">],</span>
+   <span class="p p-Indicator">[</span> <span class="nv">1.99208958</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">]]</span>
+<span class="nt">atoms</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">Al</span><span class="p">:</span>
+      <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">]]</span>
+<span class="nt">orbitals</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">p</span>
+<span class="nt">supa</span><span class="p">:</span>
+  <span class="p p-Indicator">[[</span> <span class="nv">1</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">],</span>
+   <span class="p p-Indicator">[</span> <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">1</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">],</span>
+   <span class="p p-Indicator">[</span> <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">1</span><span class="p p-Indicator">]]</span>
+</pre></div>
+</div>
+<p>This example can be found in the <code class="docutils literal notranslate"><span class="pre">examples/compute_id/al/hsbid/order2</span></code> directory of the  <code class="docutils literal notranslate"><span class="pre">principia-materia-examples</span></code> repostory.</p>
+<section id="compute-phonon-with-hs-bid">
+<h2>Compute phonon with HS-BID<a class="headerlink" href="#compute-phonon-with-hs-bid" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>First, we execute the symmetry analysis and create the jobs that need to be calculated with a first principle method.
+These jobs we be saved in the database <code class="docutils literal notranslate"><span class="pre">database.db</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-hsbid --config config.yml --create --save-hsbid
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>In this example, we use VASP to perform first principle calculations. This we need to create the input files for VASP calculations.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-jobs --config config.yml --create --engine vasp --save-config jobs_config.yml <span class="se">\</span>
+  --job-config-path ../../data/dft_files --root-directory jobs-to-run
+</pre></div>
+</div>
+<p>After the input files are generated, we can execute VASP inside the directories of the individual jobs.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>When the first principle calculations are finished. The following command can parse out the results of the calculations
+and store them into the database we created.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-jobs --config jobs_config.yml --retrieve
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Finally, we run the post-processing step to solve for the irreducible derivatives and compute dynamic tensors and real space force constant tensors.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-hsbid --load-hsbid hsbid.hdf5 --config config.yml <span class="se">\</span>
+    --post --save-fi --save-ids --save-dts
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="plot-phonon-band-structure-and-dos">
+<h2>Plot phonon band structure and DOS<a class="headerlink" href="#plot-phonon-band-structure-and-dos" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>First we prepare the configuration file to compute phonon band structure and DOS:</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">0 0 0; 1/2 1/2 0</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-1/2 1/2 0; 0 0 0</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">0 0 0; 1/2 0 0</span>
+<span class="nt">band_label</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">X</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">L</span>
+<span class="nt">mesh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20 20 20</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Then we compute phonon band structure and DOS with <code class="docutils literal notranslate"><span class="pre">pm-phonon-band-dos</span></code> command.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 <span class="se">\</span>
+  --config ../../data/phonon_config.yml <span class="se">\</span>
+  --save-band --save-grid --save-dos --save-plot --units THz
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Finally we can plot the phonon band structure and DOS of Al with the following to get <a class="reference internal" href="#fig-exp-al-phonon"><span class="std std-numref">Fig. 13</span></a>.</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-plot-band --show band_plot_config.yml
+</pre></div>
+</div>
+</div></blockquote>
+<figure class="align-center" id="fig-exp-al-phonon">
+<a class="reference internal image-reference" href="../_images/al_phonon_dos.pdf"><img alt="../_images/al_phonon_dos.pdf" src="../_images/al_phonon_dos.pdf" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Phonon band structure and DOS of Al.</span><a class="headerlink" href="#fig-exp-al-phonon" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contents.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="template.html" class="btn btn-neutral float-right" title="Material Name" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
