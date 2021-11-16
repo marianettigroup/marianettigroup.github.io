@@ -13,7 +13,7 @@ In this section we will mainly use NaCl as an example material
 for the finite displacements demonstration, symmetry analysis, and phonon calculations with LID, BID and HS-BID approaches.
 We will demonstrate phonon linewidth and conductivity predicted with phonon interaction coefficients using :math:`\textrm{ThO}_2`.
 
-.. figure:: ../figures/subpackages/fig_nacl_structure.pdf
+.. figure:: ../figures/subpackages/fig_nacl_structure.*
   :width: 400
   :align: center
   :name: fig-nacl-struct
@@ -46,7 +46,7 @@ The input files of the first principle calculations are created from the databas
 including energy, forces, etc., are also parsed from the output of the first principle calculations and stored into the database.
 These results will then be served from the database to compute the finite displacement derivatives.
 
-.. figure:: ../figures/subpackages/fd_flowchart.pdf
+.. figure:: ../figures/subpackages/fd_flowchart.*
   :width: 600
   :align: center
   :name: fig-si-fd_flowchart
@@ -194,7 +194,7 @@ and finally obtain the second order derivative of :math:`\varepsilon_{xx}`:
   13.750108012806797
 
 
-.. figure:: ../figures/subpackages/sfd_errortail.pdf
+.. figure:: ../figures/subpackages/sfd_errortail.*
   :width: 400
   :align: center
   :name: fig-si-sfd-errortail
@@ -223,7 +223,7 @@ Additionally, sparse tensors can implemented for analytic dynamic tensors to inc
 
 .. _paper: https://doi.org/10.1103/PhysRevB.100.014303
 
-.. figure:: ../figures/subpackages/phonon_symmetry_analysis_flowchart.pdf
+.. figure:: ../figures/subpackages/phonon_symmetry_analysis_flowchart.*
   :width: 600
   :align: center
   :name: fig-si-phonon_sym_flowchart
@@ -404,7 +404,7 @@ We can compute the finite displacements with the workflow described in `finite d
 the measurements in the real space, and extrapolate quadratic error tails for the :math:`\Delta \to 0` results.
 Finally, we can solve for the irreducible derivatives with the finite displacements derivatives extrapolated from the error tail.
 
-.. figure:: ../figures/subpackages/lid_flowchart.pdf
+.. figure:: ../figures/subpackages/lid_flowchart.*
   :width: 600
   :align: center
   :name: fig-si-lid_flowchart
@@ -507,7 +507,7 @@ using Fourier interpolation.
 but the :numref:`fig-si-lid-phonon` used :math:`\hat{S}_{BZ}=4\hat{1}` as the denser
 FTG contains for information at a relatively cheap computational cost).
 
-.. figure:: ../figures/subpackages/nacl_lid_phonon.pdf
+.. figure:: ../figures/subpackages/nacl_lid_phonon.*
   :width: 400
   :align: center
   :name: fig-si-lid-phonon
@@ -552,7 +552,7 @@ Finally, we can compute the dynamic tensors and phonon Hamiltonian with the irre
 With the HS-BID approach, we find the hierarchical supercells for the irreducible :math:`Q`-points with a greedy algorithm, and execute
 SS-BID at each supercell, while counting for the irreducible derivatives at the smaller supercells as known derivatives.
 
-.. figure:: ../figures/subpackages/bid_flowchart.pdf
+.. figure:: ../figures/subpackages/bid_flowchart.*
   :width: 600
   :align: center
   :name: fig-si-bid_flowchart
@@ -723,7 +723,7 @@ Same as `lone irreducible derivatives approach`_, we can compute phonon band str
 using Fourier interpolation. As we can see in :numref:`fig-si-hsbid-phonon`, the phonons from both LID and HS-BID methods are basically
 identical, showing both methods can achieve similarly high quality results at second order.
 
-.. figure:: ../figures/subpackages/nacl_hsbid_phonon.pdf
+.. figure:: ../figures/subpackages/nacl_hsbid_phonon.*
   :width: 400
   :align: center
   :name: fig-si-hsbid-phonon
@@ -782,7 +782,7 @@ different branches with respect to temperature the linewidth is evaluated at, sh
   array([Fraction(1, 2), Fraction(0, 1), Fraction(0, 1)], dtype=object)
   >>> gamma = cond.gamma_tetra_at_phonon(qpoint=qpoint, temperature=temperature, phonon_cutoff=1.0E-4)
 
-.. figure:: ../figures/subpackages/tho2_linewidth.pdf
+.. figure:: ../figures/subpackages/tho2_linewidth.*
   :width: 400
   :align: center
   :name: fig-si-tho2-linewidth
@@ -797,7 +797,7 @@ Additionally, we can also compute the thermal conductivity with relaxation time 
   >>> x, y = np.array([(0, 0), (1, 1), (2, 2), (0, 1), (1, 2), (0, 2)]).T
   >>> kappa = conductivity[:, x, y]
 
-.. figure:: ../figures/subpackages/tho2_conductivity.pdf
+.. figure:: ../figures/subpackages/tho2_conductivity.*
   :width: 400
   :align: center
   :name: fig-si-tho2-conductivity

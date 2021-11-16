@@ -189,7 +189,7 @@ We can plot the phonon band structure and DOS with the following command::
 
   pm-plot-band -s band_plot_config.yml
 
-.. figure:: ../figures/phonon_id/nacl_phonon_band_dos.png
+.. figure:: ../figures/phonon_id/nacl_phonon_band_dos.*
   :width: 400
   :align: center
   :name: fig-compute_id-nacl-phonon

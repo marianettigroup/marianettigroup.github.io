@@ -104,7 +104,7 @@ hierarchical supercell bundled irreducible derivatives approach (HS-BID) and pho
 for the finite displacements demonstration, symmetry analysis, and phonon calculations with LID, BID and HS-BID approaches.
 We will demonstrate phonon linewidth and conductivity predicted with phonon interaction coefficients using <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span>.</p>
 <figure class="align-center" id="fig-nacl-struct">
-<a class="reference internal image-reference" href="../_images/fig_nacl_structure.pdf"><img alt="../_images/fig_nacl_structure.pdf" src="../_images/fig_nacl_structure.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/fig_nacl_structure.png"><img alt="../_images/fig_nacl_structure.png" src="../_images/fig_nacl_structure.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">A schematic of the structure of the cubic unit cell (i.e. <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=\hat{S}_{C}\)</span>
 where <span class="math notranslate nohighlight">\(\hat{S}_{C}\)</span> is defined below) of rock salt NaCl,
@@ -132,7 +132,7 @@ The input files of the first principle calculations are created from the databas
 including energy, forces, etc., are also parsed from the output of the first principle calculations and stored into the database.
 These results will then be served from the database to compute the finite displacement derivatives.</p>
 <figure class="align-center" id="fig-si-fd-flowchart">
-<a class="reference internal image-reference" href="../_images/fd_flowchart.pdf"><img alt="../_images/fd_flowchart.pdf" src="../_images/fd_flowchart.pdf" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/fd_flowchart.png"><img alt="../_images/fd_flowchart.png" src="../_images/fd_flowchart.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Flowchart illustrating the workflow of the finite displacements implementation,
 where red boxes represent quantities, blue boxes represent operations and green box database.
@@ -260,7 +260,7 @@ and finally obtain the second order derivative of <span class="math notranslate 
 </pre></div>
 </div>
 <figure class="align-center" id="fig-si-sfd-errortail">
-<a class="reference internal image-reference" href="../_images/sfd_errortail.pdf"><img alt="../_images/sfd_errortail.pdf" src="../_images/sfd_errortail.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/sfd_errortail.png"><img alt="../_images/sfd_errortail.png" src="../_images/sfd_errortail.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Quadratic error tail of the finite difference calculation <span class="math notranslate nohighlight">\(\Delta^2 V / \Delta \varepsilon_{xx}^2\)</span>,
 where the green circles and the red triangles are the <span class="math notranslate nohighlight">\(\Delta\)</span> at which the finite displacements are computed
@@ -284,7 +284,7 @@ We can write out the phonon Hamiltonian in terms of the irreducible derivatives 
 with their respective displacements basis.
 Additionally, sparse tensors can implemented for analytic dynamic tensors to increase space efficiency.</p>
 <figure class="align-center" id="fig-si-phonon-sym-flowchart">
-<a class="reference internal image-reference" href="../_images/phonon_symmetry_analysis_flowchart.pdf"><img alt="../_images/phonon_symmetry_analysis_flowchart.pdf" src="../_images/phonon_symmetry_analysis_flowchart.pdf" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/phonon_symmetry_analysis_flowchart.png"><img alt="../_images/phonon_symmetry_analysis_flowchart.png" src="../_images/phonon_symmetry_analysis_flowchart.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Flowchart illustrating the workflow of phonon interaction symmetry analysis we implemented,
 where red boxes represent quantities, blue boxes represent operations and green box database.
@@ -449,7 +449,7 @@ We can compute the finite displacements with the workflow described in <a class=
 the measurements in the real space, and extrapolate quadratic error tails for the <span class="math notranslate nohighlight">\(\Delta \to 0\)</span> results.
 Finally, we can solve for the irreducible derivatives with the finite displacements derivatives extrapolated from the error tail.</p>
 <figure class="align-center" id="fig-si-lid-flowchart">
-<a class="reference internal image-reference" href="../_images/lid_flowchart.pdf"><img alt="../_images/lid_flowchart.pdf" src="../_images/lid_flowchart.pdf" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/lid_flowchart.png"><img alt="../_images/lid_flowchart.png" src="../_images/lid_flowchart.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Flowchart illustrating the workflow of LID approach,
 where red boxes represent quantities, blue boxes represent operations and green box database.
@@ -541,7 +541,7 @@ using Fourier interpolation.
 but the <a class="reference internal" href="#fig-si-lid-phonon"><span class="std std-numref">Fig. 10</span></a> used <span class="math notranslate nohighlight">\(\hat{S}_{BZ}=4\hat{1}\)</span> as the denser
 FTG contains for information at a relatively cheap computational cost).</p>
 <figure class="align-center" id="fig-si-lid-phonon">
-<a class="reference internal image-reference" href="../_images/nacl_lid_phonon.pdf"><img alt="../_images/nacl_lid_phonon.pdf" src="../_images/nacl_lid_phonon.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/nacl_lid_phonon.png"><img alt="../_images/nacl_lid_phonon.png" src="../_images/nacl_lid_phonon.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Phonon and DOS of NaCl with FTG 4:math:<cite>hat{1}</cite> including LO-TO splitting.</span><a class="headerlink" href="#fig-si-lid-phonon" title="Permalink to this image"></a></p>
 </figcaption>
@@ -579,7 +579,7 @@ Finally, we can compute the dynamic tensors and phonon Hamiltonian with the irre
 With the HS-BID approach, we find the hierarchical supercells for the irreducible <span class="math notranslate nohighlight">\(Q\)</span>-points with a greedy algorithm, and execute
 SS-BID at each supercell, while counting for the irreducible derivatives at the smaller supercells as known derivatives.</p>
 <figure class="align-center" id="fig-si-bid-flowchart">
-<a class="reference internal image-reference" href="../_images/bid_flowchart.pdf"><img alt="../_images/bid_flowchart.pdf" src="../_images/bid_flowchart.pdf" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/bid_flowchart.png"><img alt="../_images/bid_flowchart.png" src="../_images/bid_flowchart.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Flowchart illustrating the workflow of BID approach,
 where red boxes represent quantities, blue boxes represent operations and green box database.
@@ -728,7 +728,7 @@ and solve for the irreducible derivatives and dynamic tensors.</p>
 using Fourier interpolation. As we can see in <a class="reference internal" href="#fig-si-hsbid-phonon"><span class="std std-numref">Fig. 12</span></a>, the phonons from both LID and HS-BID methods are basically
 identical, showing both methods can achieve similarly high quality results at second order.</p>
 <figure class="align-center" id="fig-si-hsbid-phonon">
-<a class="reference internal image-reference" href="../_images/nacl_hsbid_phonon.pdf"><img alt="../_images/nacl_hsbid_phonon.pdf" src="../_images/nacl_hsbid_phonon.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/nacl_hsbid_phonon.png"><img alt="../_images/nacl_hsbid_phonon.png" src="../_images/nacl_hsbid_phonon.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Comparison between HS-BID and LID of Phonon and DOS of NaCl with FTG 4:math:<cite>hat{1}</cite> including LO-TO splitting,
 where the points are the phonons computed within the FTG and the lines are the Fourier interpolation from the FTG.</span><a class="headerlink" href="#fig-si-hsbid-phonon" title="Permalink to this image"></a></p>
@@ -776,7 +776,7 @@ different branches with respect to temperature the linewidth is evaluated at, sh
 </pre></div>
 </div>
 <figure class="align-center" id="fig-si-tho2-linewidth">
-<a class="reference internal image-reference" href="../_images/tho2_linewidth.pdf"><img alt="../_images/tho2_linewidth.pdf" src="../_images/tho2_linewidth.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/tho2_linewidth.png"><img alt="../_images/tho2_linewidth.png" src="../_images/tho2_linewidth.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Phonon linewidth of <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span>.</span><a class="headerlink" href="#fig-si-tho2-linewidth" title="Permalink to this image"></a></p>
 </figcaption>
@@ -788,7 +788,7 @@ different branches with respect to temperature the linewidth is evaluated at, sh
 </pre></div>
 </div>
 <figure class="align-center" id="fig-si-tho2-conductivity">
-<a class="reference internal image-reference" href="../_images/tho2_conductivity.pdf"><img alt="../_images/tho2_conductivity.pdf" src="../_images/tho2_conductivity.pdf" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/tho2_conductivity.png"><img alt="../_images/tho2_conductivity.png" src="../_images/tho2_conductivity.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Phonon conductivity of <span class="math notranslate nohighlight">\(\textrm{ThO}_2\)</span>.</span><a class="headerlink" href="#fig-si-tho2-conductivity" title="Permalink to this image"></a></p>
 </figcaption>

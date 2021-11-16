@@ -71,7 +71,7 @@ and compute the Fermi energy (:math:`E_f=0~eV`) and density of states (shown in 
   >>> plt.ylabel("DOS".format(eham.units))
   >>> plt.xlabel(r"$E - E_f$ (eV)".format(eham.units))
 
-.. figure:: ../figures/subpackages/electron_dos.pdf
+.. figure:: ../figures/subpackages/electron_dos.*
   :width: 400
   :align: center
   :name: fig-eh-dos-1dhubbard
@@ -166,7 +166,7 @@ Once the path is setup, we can compute the :math:`\textbf{q}`-points along the p
   >>> plt.xticks(kpath.vertices_distances.tolist(), kpath.vertices_names)
   >>> plt.ylabel("Frequencies ({})".format(pham.units))
 
-.. figure:: ../figures/subpackages/phonon_band.pdf
+.. figure:: ../figures/subpackages/phonon_band.*
   :width: 400
   :align: center
   :name: fig-ph-band-square

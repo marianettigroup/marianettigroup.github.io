@@ -30,7 +30,7 @@ in :numref:`fig-diag-co2`, and the following statements are used to construct th
       }
   >>> cluster = Cluster(atoms=atoms, orbitals="p_x,p_y")
 
-.. figure:: ../figures/subpackages/co2.pdf
+.. figure:: ../figures/subpackages/co2.*
   :width: 400
   :align: center
   :name: fig-diag-co2
