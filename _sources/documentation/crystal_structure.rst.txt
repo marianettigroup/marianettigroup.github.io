@@ -10,6 +10,7 @@ are **vec** and **atoms**, which will contain the lattice vectors and the basis 
 Considering the flourite structure, the most straightforward yaml file would be:
 
 .. code-block:: yaml
+  :caption: structure.yml
 
   vec: 
     [[0.000000,2.764309,2.764309],
@@ -29,6 +30,7 @@ parser (see parse_array if interested in the details). Therefore, there are many
 options for entering a matrix as a string. For example, consider:
 
 .. code-block:: yaml
+  :caption: structure.yml
 
   scale: 2.764309
   vec: |
@@ -50,6 +52,7 @@ delimiters (i.e. spaces and newlines), which tells the code to form a matrix.
 One of the more compact ways to achieve the same input files as above is:
 
 .. code-block:: yaml
+  :caption: structure.yml
 
   scale: 2.764309
   vec: 0 1 1 ; 1 0 1 ; 1 1 0

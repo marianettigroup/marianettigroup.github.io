@@ -98,6 +98,24 @@ we can predict the phonon linewidth and thermal conductivity using perturbation 
 <h2>Phonon Linewidth<a class="headerlink" href="#phonon-linewidth" title="Permalink to this headline"></a></h2>
 <p>Here we continue the NaCl example from <a class="reference internal" href="compute_id.html#compute-id"><span class="std std-ref">Compute Irreducible Derivatives</span></a>.</p>
 <p>First, we need to prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> for the <code class="docutils literal notranslate"><span class="pre">pm-conductivity</span></code> command:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.yml</span>
+<span class="nt">load_fi2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span>
+<span class="nt">load_fi3</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span>
+<span class="nt">mesh</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">]</span>
+<span class="nt">band</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span>
+<span class="nt">band_label</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">X</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">L</span>
+</pre></div>
+</div>
+</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> contains structure of NaCl;</p></li>
@@ -115,6 +133,15 @@ to the mesh of <span class="math notranslate nohighlight">\(11\hat{\mathbf{1}}\)
 <section id="thermal-conductivity">
 <h2>Thermal Conductivity<a class="headerlink" href="#thermal-conductivity" title="Permalink to this headline"></a></h2>
 <p>Using the same NaCl example, we can prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> similar to the one above:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.yml</span>
+<span class="nt">load_fi2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span>
+<span class="nt">load_fi3</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span>
+<span class="nt">mesh</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
 <p>Execute the following command the compute the thermal conductivity using relaxation time approximation (RTA):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">conductivity</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">kappa</span> <span class="o">--</span><span class="n">mode</span> <span class="n">RTA</span>
 </pre></div>
