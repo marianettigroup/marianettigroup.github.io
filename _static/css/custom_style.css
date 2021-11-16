@@ -1,0 +1,5 @@
+.strikethrough { text-decoration: line-through; }
+.redacted { background-color: #404040; }
+.strike { text-decoration: line-through; }
+.rst-content a, .rst-content a:visited { color: #2980B9; }
+/*.document a, .document a:visited, .compound a, footer a, .wy-breadcrumbs a, .compound a:visited, footer a:visited, .wy-breadcrumbs a:visited { color: #2980B9; }*/
