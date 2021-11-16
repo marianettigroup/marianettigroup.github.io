@@ -9,10 +9,27 @@ lone irreducible derivatives approach (LID), bundled irreducible derivatives app
 hierarchical supercell bundled irreducible derivatives approach (HS-BID) and phonon linewidth and thermal conductivity.
 
 In this section we will mainly use NaCl as an example material
-(see structure illustration in Figure \ref{fig:group_theory:nacl_struct} and configuration Section \ref{sec:si:tg:crystal}),
+(see structure illustration in :numref:`fig-nacl-struct`),
 for the finite displacements demonstration, symmetry analysis, and phonon calculations with LID, BID and HS-BID approaches.
 We will demonstrate phonon linewidth and conductivity predicted with phonon interaction coefficients using :math:`\textrm{ThO}_2`.
 
+.. figure:: ../figures/subpackages/fig_nacl_structure.pdf
+  :width: 400
+  :align: center
+  :name: fig-nacl-struct
+
+  A schematic of the structure of the cubic unit cell (i.e. :math:`\hat{S}_{BZ}=\hat{S}_{C}`
+  where :math:`\hat{S}_{C}` is defined below) of rock salt NaCl,
+  where the blue spheres represent the Na atoms, and the red spheres the Cl atoms. The red dashed lines
+  enclose the primitive unit cell (i.e. :math:`\hat{S}_{BZ}=\hat{1}`).
+
+.. math::
+
+  \hat{S}_{C} = \begin{bmatrix}
+    \bar{1} &  1 &  1 \\
+     1 & \bar{1} &  1 \\
+     1 &  1 & \bar{1}
+    \end{bmatrix}
 
 Finite Displacements
 ++++++++++++++++++++
@@ -191,7 +208,7 @@ and finally obtain the second order derivative of :math:`\varepsilon_{xx}`:
 Phonon Interaction Symmetry Analysis
 ++++++++++++++++++++++++++++++++++++
 
-The group theory behind the symmetry analysis of phonon interactions can be found in Chapter \ref{chap:group_theory},
+The group theory behind the symmetry analysis of phonon interactions can be found in the `paper`_,
 and the workflow is illustrated in the flowchart in :numref:`fig-si-phonon_sym_flowchart`.
 First we need the information for the symmetry analysis, which includes the crystal structure, the space group of the
 crystal, the FTG :math:`\hat{S}_{BZ}` (i.e. a supercell) and the order :math:`\mathcal{N}` of the interaction.
@@ -203,6 +220,8 @@ products determine the coefficients on how to populate the analytic dynamic tens
 We can write out the phonon Hamiltonian in terms of the irreducible derivatives by multiplying the analytic dynamic tensors
 with their respective displacements basis.
 Additionally, sparse tensors can implemented for analytic dynamic tensors to increase space efficiency.
+
+.. _paper: https://doi.org/10.1103/PhysRevB.100.014303
 
 .. figure:: ../figures/subpackages/phonon_symmetry_analysis_flowchart.pdf
   :width: 600
@@ -376,12 +395,12 @@ derivative separately.
 The LID approach tries to compute one irreducible derivative or as few irreducible derivatives as possible
 with a single measurement.
 As shown in the flowchart in :numref:`fig-si-lid_flowchart`, we begin with the analytic dynamic tensors obtained
-with the workflow described in Section \ref{sec:si:phonon:symmetry}.
+with the workflow described in `phonon interaction symmetry analysis`_.
 We can find the symmetrized displacements basis sets the probes the irreducible derivatives as separately as possible,
 but these displacements are generally complex since they carry a phase in the Fourier series.
 Therefore, we need to apply a similarity transformation and transform those complex displacements to displacements that
-are purely real (see Section \ref{sec:fd:lid} for details).
-We can compute the finite displacements with the workflow described in Section \ref{sec:si:phonon:fd}, after we obtained
+are purely real (see the `paper`_ for details).
+We can compute the finite displacements with the workflow described in `finite displacements`_, after we obtained
 the measurements in the real space, and extrapolate quadratic error tails for the :math:`\Delta \to 0` results.
 Finally, we can solve for the irreducible derivatives with the finite displacements derivatives extrapolated from the error tail.
 
@@ -543,7 +562,7 @@ SS-BID at each supercell, while counting for the irreducible derivatives at the 
   Single-lined arrows represent the direction of the workflow.
 
 Here we use :math:`\hat{S}_{BZ}=2\hat{1}` to demonstrate the workflow of SS-BID and HS-BID approaches.
-First, we can construct the BID object with the same configurations as those used for the LID object in Section \ref{sec:si:phonon:lid}.
+First, we can construct the BID object with the same configurations as those used for the LID object in `lone irreducible derivatives approach`_.
 
 .. code-block:: python
 
@@ -607,7 +626,7 @@ irreducible derivatives with finite displacements.
 
 
 However, with the SS-BID approach all of the irreducible derivatives are computed from a single FTG,
-which shown by our minimum supercell multiplicity equation derived in Section \ref{sec:fd:mincell}, is very
+which shown by our minimum supercell multiplicity equation derived in the `paper`_, is very
 inefficient. And the SS-BID approach is not able to utilize the irreducible derivatives already
 computed from a smaller FTG and we have to perform redundant computations, further decreasing the efficiency.
 
@@ -700,7 +719,7 @@ and solve for the irreducible derivatives and dynamic tensors.
    [ 0.          0.         -0.59932048  0.          0.          3.44972342]]
 
 
-Same as Section \ref{sec:si:phonon:lid}, we can compute phonon band structure and density of states with LO-TO splitting
+Same as `lone irreducible derivatives approach`_, we can compute phonon band structure and density of states with LO-TO splitting
 using Fourier interpolation. As we can see in :numref:`fig-si-hsbid-phonon`, the phonons from both LID and HS-BID methods are basically
 identical, showing both methods can achieve similarly high quality results at second order.
 
@@ -724,7 +743,6 @@ In this section, we will compute the phonon linewidth and thermal conductivity o
 coefficients.
 For convenience of demonstration, we will interpolate the phonon interactions onto an FTG of :math:`3\hat{1}` to integrate
 the :math:`\delta`-functions to compute the linewidth and conductivity.
-See Section \ref{sec:apps:tho2} for more accurate results.
 
 .. code-block:: python
 
@@ -755,7 +773,7 @@ phonon interaction coefficients through the FourierInterpolation objects.
 
 
 As an example, we can compute the phonon linewidth at :math:`\textbf{q} = \left(\frac{1}{2}, 0, 0\right)` and the plot the
-different branches with respect to temperature the linewidth is evaluated at, shown in Fig. \ref{fig:si:tho2:linewidth}.
+different branches with respect to temperature the linewidth is evaluated at, shown in :numref:`fig-si-tho2-linewidth`.
 
 .. code-block:: python
 
@@ -771,7 +789,7 @@ different branches with respect to temperature the linewidth is evaluated at, sh
 
   Phonon linewidth of :math:`\textrm{ThO}_2`.
 
-Additionally, we can also compute the thermal conductivity with relaxation time approximation, shown in Fig. \ref{fig:si:tho2:conductivity}.
+Additionally, we can also compute the thermal conductivity with relaxation time approximation, shown in :numref:`fig-si-tho2-conductivity`.
 
 .. code-block:: python
 
@@ -781,3 +799,7 @@ Additionally, we can also compute the thermal conductivity with relaxation time 
 
 .. figure:: ../figures/subpackages/tho2_conductivity.pdf
   :width: 400
+  :align: center
+  :name: fig-si-tho2-conductivity
+
+  Phonon conductivity of :math:`\textrm{ThO}_2`.

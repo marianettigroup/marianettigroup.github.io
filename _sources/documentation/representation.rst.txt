@@ -11,8 +11,8 @@ In this section, we demonstrate the usage of the representation classes for grou
 Symmetry of atoms in a molecule
 +++++++++++++++++++++++++++++++
 
-We continue with the example of the :math:`\textrm{CO}_2` molecule from Section \ref{sec:si:tg:cluster}.
-As shown in Fig. \ref{fig:diag:co2}, if we categorize the symmetry operations the same
+We continue with the example of the :math:`\textrm{CO}_2` molecule from :ref:`cluster`.
+As shown in :numref:`fig-diag-co2`, if we categorize the symmetry operations the same
 way we categorized the atomic displacements (i.e. along-the-axis and perpendicular-to-axis),
 we can observe an identity operation and an inversion (or mirror) operation perpendicular to 
 the rotational axis at the position of the C atom.

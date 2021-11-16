@@ -8,6 +8,7 @@ The module is developed in an object oriented manner, such that the Cluster and 
 the foundation of the module and the other classes (e.g. Kpoints, Crystal, CrystalFTG and QpointsN)
 are derived from these two classes.
 
+.. _cluster:
 
 Cluster Class
 +++++++++++++
@@ -170,11 +171,13 @@ instead of the Cartesian coordinates in Cluster class.
    [ 1.5 -0.5 -0.5]]
 
 Due to limitations of the complexity and computing power, we are unable to work with the infinite lattice.
-Thus we often turn to a finite translation group (see Section \ref{sec:group_theory:ftg}) as an approximation.
+Thus we often turn to a finite translation group (see `paper`_ for details) as an approximation.
 A finite translation group is defined by a supercell with which there are a finite number of translation
 vectors that translate the primitive cell of the crystal across the space.
 Thus we can derive the CrystalFTG class from the Crystal class,
 and construct a CrystalFTG class object from a Crystal class object with a supercell matrix.
+
+.. _paper: https://doi.org/10.1103/PhysRevB.100.014303
 
 .. code-block:: python
 
@@ -203,7 +206,7 @@ The finite translation group, provides various properties of the crystal.
 ..  \subsubsection{Wigner Seitz cell of a supercell}
 
 For example, we can construct the Wigner-Seitz cell of the supercell. 
-This is a crucial piece of information used in our Fourier interpolation scheme (see Section \ref{sec:fi:ws}).
+This is a crucial piece of information used in our Fourier interpolation scheme (see `paper`_ for details).
 
 .. code-block:: python
 
@@ -258,11 +261,11 @@ Algorithm to find translation vectors of any given supercell
 Although diagonal matrices are most commonly used as supercell matrices,
 non-diagonal supercells are crucial in the lattice dynamic analysis of crystals.
 Phonons and their interactions can be extracted in the smallest non-diagonal supercells
-that accommodate the irreducible derivatives (see Section \ref{sec:fd:mincell}).
+that accommodate the irreducible derivatives (see `paper`_ for details).
 Therefore, a robust algorithm is required to find the translation vectors of a given
 supercell matrix, as well as indexing the vectors with the supercell.
 
-The details of the algorithm to find translation vectors of any given supercell is explained in Appendix \ref{app:tpoint_algo}.
+The details of the algorithm to find translation vectors of any given supercell is explained in the Appendix of the `paper`_.
 The same algorithm can be reversed to compute the indices of the lattice points at :math:`\mathcal{O}(1)` time complexity
 without searching through the list of all translation vectors.
 
@@ -282,7 +285,7 @@ without searching through the list of all translation vectors.
 Algorithm to find the minimum supercell for a given list of :math:`\textbf{q}`-points
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-The minimum supercell multiplicity is derived in Section \ref{sec:fd:mincell}.
+The minimum supercell multiplicity is derived in the `paper`_.
 Here using the implemented function, we find that for the :math:`\textbf{q}`-point
 :math:`\textbf{q}=\left(\frac{1}{4}, \frac{3}{4}, 0\right)` the supercell of the minimum multiplicity is:
 
