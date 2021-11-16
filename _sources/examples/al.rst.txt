@@ -6,6 +6,7 @@ Aluminum has FCC lattice with a single atom per primitive unit cell.
 The following ``structure.yml`` file is used in this example:
 
 .. code-block:: yaml
+  :caption: structure.yml
 
   # CrystalFTG
   vec:
@@ -36,6 +37,7 @@ Compute phonon with HS-BID
   The ``config.yml`` file is defined below:
 
   .. code-block:: yaml
+      :caption: config.yml
 
       structure: '../../data/structure.yml'
       supa: |
@@ -80,9 +82,10 @@ Compute phonon with HS-BID
 Plot phonon band structure and DOS
 ----------------------------------
 
-1. First we prepare the configuration file to compute phonon band structure and DOS:
+1. First we prepare the configuration file ``phonon_config.yml`` to compute phonon band structure and DOS:
 
   .. code-block:: yaml
+      :caption: phonon_config.yml
 
       band:
         - 0 0 0; 1/2 1/2 0
@@ -99,8 +102,7 @@ Plot phonon band structure and DOS
 
   .. code-block:: bash
 
-      pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 \
-        --config ../../data/phonon_config.yml \
+      pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 --config phonon_config.yml \
         --save-band --save-grid --save-dos --save-plot --units THz
 
 3. Finally we can plot the phonon band structure and DOS of Al with the following to get :numref:`fig-exp-al-phonon`.

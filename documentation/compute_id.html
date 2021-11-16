@@ -7,6 +7,7 @@
   <title>Compute Irreducible Derivatives &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom_style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,6 +17,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -64,6 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../report_issues.html">Reporting Issues</a></li>
 </ul>
 
         </div>
@@ -115,6 +119,8 @@ Here we demonstrate a recommended workflow to execute our LID approach at second
 <section id="symmetry-analysis-and-find-the-measurements-to-compute">
 <h3>Symmetry Analysis and Find the Measurements to Compute<a class="headerlink" href="#symmetry-analysis-and-find-the-measurements-to-compute" title="Permalink to this headline"></a></h3>
 <p>First we create a file <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> describing the structure of NaCl:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># CrystalFTG</span>
 <span class="nt">vec</span><span class="p">:</span>
   <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">],</span>
@@ -127,7 +133,10 @@ Here we demonstrate a recommended workflow to execute our LID approach at second
       <span class="p p-Indicator">[[</span> <span class="nv">0.50000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.50000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.50000000</span><span class="p p-Indicator">]]</span>
 </pre></div>
 </div>
+</div>
 <p>Then, with this structure and the point group of NaCl <em>Oh</em>, we can write the minimal configuration file, named <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>, to execute the LID approach on <span class="math notranslate nohighlight">\(2 \times 2 \times 2\)</span> mesh:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="s">&#39;structure.yml&#39;</span>
 <span class="nt">supa</span><span class="p">:</span> <span class="p p-Indicator">|</span>
   <span class="no">2 0 0</span>
@@ -138,6 +147,7 @@ Here we demonstrate a recommended workflow to execute our LID approach at second
 <span class="nt">full_symmetry</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 <span class="nt">delta</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">0.02</span><span class="p p-Indicator">,</span> <span class="nv">0.03</span><span class="p p-Indicator">,</span> <span class="nv">0.04</span><span class="p p-Indicator">]</span>
 </pre></div>
+</div>
 </div>
 <p>There are numerous parameters which have default settings that can be changed, and these can be
 added to the config.yml file listed above:</p>
@@ -223,18 +233,20 @@ with <code class="docutils literal notranslate"><span class="pre">pm-bid</span><
 <h2>Computing phonon dispersion and DOS<a class="headerlink" href="#computing-phonon-dispersion-and-dos" title="Permalink to this headline"></a></h2>
 <p>With the <code class="docutils literal notranslate"><span class="pre">fourier_interpolation.hdf5</span></code> file obtained at second order, we can compute phonon dispersion and density of states (DOS).</p>
 <p>Let’s continue the NaCl example and first prepare the configuration file <code class="docutils literal notranslate"><span class="pre">phonon_config.yml</span></code> for computing the phonon dispersion and DOS:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat phonon_config.yml
-band:
-  - [&#39;0 0 0&#39;, &#39;1/2 1/2 0&#39;]
-  - [&#39;-1/2 1/2 0&#39;, &#39;0 0 0&#39;]
-  - [&#39;0 0 0&#39;, &#39;1/2 1/2 1/2&#39;]
-band_label:
-  - $\Gamma$
-  - X
-  - $\Gamma$
-  - L
-mesh: 20 20 20
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">phonon_config.yml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
+  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span>
+<span class="nt">band_label</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">X</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">L</span>
+<span class="nt">mesh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20 20 20</span>
 </pre></div>
+</div>
 </div>
 <p>Then we can execute the following command to compute the band structure and DOS:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">phonon</span><span class="o">-</span><span class="n">band</span><span class="o">-</span><span class="n">dos</span> <span class="o">--</span><span class="n">load</span><span class="o">-</span><span class="n">fi</span> <span class="n">fourier_interpolation</span><span class="o">.</span><span class="n">hdf5</span> <span class="o">--</span><span class="n">config</span> <span class="n">phonon_config</span><span class="o">.</span><span class="n">yml</span> \

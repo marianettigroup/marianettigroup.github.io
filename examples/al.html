@@ -7,6 +7,7 @@
   <title>Aluminum Example &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom_style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,6 +17,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -52,6 +55,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../report_issues.html">Reporting Issues</a></li>
 </ul>
 
         </div>
@@ -84,6 +88,8 @@
 <p>Here is the example of Aluminum.
 Aluminum has FCC lattice with a single atom per primitive unit cell.
 The following <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> file is used in this example:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># CrystalFTG</span>
 <span class="nt">vec</span><span class="p">:</span>
   <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">,</span>  <span class="nv">1.99208958</span><span class="p p-Indicator">],</span>
@@ -99,6 +105,7 @@ The following <code class="docutils literal notranslate"><span class="pre">struc
    <span class="p p-Indicator">[</span> <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">0</span><span class="p p-Indicator">,</span>  <span class="nv">1</span><span class="p p-Indicator">]]</span>
 </pre></div>
 </div>
+</div>
 <p>This example can be found in the <code class="docutils literal notranslate"><span class="pre">examples/compute_id/al/hsbid/order2</span></code> directory of the  <code class="docutils literal notranslate"><span class="pre">principia-materia-examples</span></code> repository.</p>
 <section id="compute-phonon-with-hs-bid">
 <h2>Compute phonon with HS-BID<a class="headerlink" href="#compute-phonon-with-hs-bid" title="Permalink to this headline"></a></h2>
@@ -111,6 +118,8 @@ These jobs we be saved in the database <code class="docutils literal notranslate
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file is defined below:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="s">&#39;../../data/structure.yml&#39;</span>
 <span class="nt">supa</span><span class="p">:</span> <span class="p p-Indicator">|</span>
   <span class="no">4 0 0</span>
@@ -126,6 +135,7 @@ These jobs we be saved in the database <code class="docutils literal notranslate
 <span class="nt">db_type</span><span class="p">:</span> <span class="s">&#39;sqlite&#39;</span>
 <span class="nt">db_table</span><span class="p">:</span> <span class="s">&#39;bid_phonon&#39;</span>
 </pre></div>
+</div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -161,10 +171,12 @@ and store them into the database we created.</p></li>
 <section id="plot-phonon-band-structure-and-dos">
 <h2>Plot phonon band structure and DOS<a class="headerlink" href="#plot-phonon-band-structure-and-dos" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
-<li><p>First we prepare the configuration file to compute phonon band structure and DOS:</p></li>
+<li><p>First we prepare the configuration file <code class="docutils literal notranslate"><span class="pre">phonon_config.yml</span></code> to compute phonon band structure and DOS:</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span>
+<div><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">phonon_config.yml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">0 0 0; 1/2 1/2 0</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-1/2 1/2 0; 0 0 0</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">0 0 0; 1/2 0 0</span>
@@ -176,13 +188,13 @@ and store them into the database we created.</p></li>
 <span class="nt">mesh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20 20 20</span>
 </pre></div>
 </div>
+</div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li><p>Then we compute phonon band structure and DOS with <code class="docutils literal notranslate"><span class="pre">pm-phonon-band-dos</span></code> command.</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 <span class="se">\</span>
-  --config ../../data/phonon_config.yml <span class="se">\</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-phonon-band-dos --load-fi fourier_interpolation.hdf5 --config phonon_config.yml <span class="se">\</span>
   --save-band --save-grid --save-dos --save-plot --units THz
 </pre></div>
 </div>

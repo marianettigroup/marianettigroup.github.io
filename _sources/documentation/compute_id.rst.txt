@@ -35,6 +35,7 @@ Symmetry Analysis and Find the Measurements to Compute
 First we create a file ``structure.yml`` describing the structure of NaCl:
   
 .. code-block:: yaml
+  :caption: structure.yml
 
   # CrystalFTG
   vec:
@@ -51,6 +52,7 @@ First we create a file ``structure.yml`` describing the structure of NaCl:
 Then, with this structure and the point group of NaCl *Oh*, we can write the minimal configuration file, named ``config.yml``, to execute the LID approach on :math:`2 \times 2 \times 2` mesh:
 
 .. code-block:: yaml
+  :caption: config.yml
 
   structure: 'structure.yml'
   supa: |
@@ -152,9 +154,11 @@ Computing phonon dispersion and DOS
 
 With the ``fourier_interpolation.hdf5`` file obtained at second order, we can compute phonon dispersion and density of states (DOS).
 
-Let's continue the NaCl example and first prepare the configuration file ``phonon_config.yml`` for computing the phonon dispersion and DOS::
+Let's continue the NaCl example and first prepare the configuration file ``phonon_config.yml`` for computing the phonon dispersion and DOS:
 
-  $ cat phonon_config.yml
+.. code-block:: yaml
+  :caption: phonon_config.yml
+
   band:
     - ['0 0 0', '1/2 1/2 0']
     - ['-1/2 1/2 0', '0 0 0']

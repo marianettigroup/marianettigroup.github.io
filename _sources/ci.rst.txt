@@ -51,6 +51,7 @@ The workflow consits of the following steps:
 #. Run unit tests with ``py.test`` and assess test coverage with ``coverage``.
 
 .. literalinclude:: _static/ci-workflows/python-package.yml
+   :caption: python-package.yml
    :language: yaml
 
 
@@ -63,6 +64,7 @@ However, with the cibuildwheel package and the ``pypa/cibuildwheel@v2.2.2`` acti
 The wheels for a variety of platforms and python versions can be built with only a few lines of configuration.
 
 .. literalinclude:: _static/ci-workflows/github-deploy.yml
+   :caption: github-deploy.yml
    :language: yaml
 
 

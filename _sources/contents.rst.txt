@@ -16,6 +16,7 @@ Table of Contents
    examples/contents
    ci
    api_doc/modules
+   report_issues
 
 
 .. toctree::

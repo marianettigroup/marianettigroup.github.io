@@ -7,6 +7,7 @@
   <title>Compute Phonon Linewidth and Thermal Conductivity &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom_style.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
@@ -16,6 +17,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -59,6 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../report_issues.html">Reporting Issues</a></li>
 </ul>
 
         </div>
@@ -94,22 +98,6 @@ we can predict the phonon linewidth and thermal conductivity using perturbation 
 <h2>Phonon Linewidth<a class="headerlink" href="#phonon-linewidth" title="Permalink to this headline"></a></h2>
 <p>Here we continue the NaCl example from <a class="reference internal" href="compute_id.html#compute-id"><span class="std std-ref">Compute Irreducible Derivatives</span></a>.</p>
 <p>First, we need to prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> for the <code class="docutils literal notranslate"><span class="pre">pm-conductivity</span></code> command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat config.yml
-structure: structure.yml
-load_fi2: fi_order2.hdf5
-load_fi3: fi_order3.hdf5
-mesh: [11, 11, 11]
-band:
-  - [&#39;0 0 0&#39;, &#39;1/2 1/2 0&#39;]
-  - [&#39;-1/2 1/2 0&#39;, &#39;0 0 0&#39;]
-  - [&#39;0 0 0&#39;, &#39;1/2 1/2 1/2&#39;]
-band_label:
-  - $\Gamma$
-  - X
-  - $\Gamma$
-  - L
-</pre></div>
-</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> contains structure of NaCl;</p></li>
@@ -127,13 +115,6 @@ to the mesh of <span class="math notranslate nohighlight">\(11\hat{\mathbf{1}}\)
 <section id="thermal-conductivity">
 <h2>Thermal Conductivity<a class="headerlink" href="#thermal-conductivity" title="Permalink to this headline"></a></h2>
 <p>Using the same NaCl example, we can prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> similar to the one above:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat config.yml
-structure: structure.yml
-load_fi2: fi_order2.hdf5
-load_fi3: fi_order3.hdf5
-mesh: [11, 11, 11]
-</pre></div>
-</div>
 <p>Execute the following command the compute the thermal conductivity using relaxation time approximation (RTA):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">conductivity</span> <span class="o">--</span><span class="n">config</span> <span class="n">config</span><span class="o">.</span><span class="n">yml</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">kappa</span> <span class="o">--</span><span class="n">mode</span> <span class="n">RTA</span>
 </pre></div>

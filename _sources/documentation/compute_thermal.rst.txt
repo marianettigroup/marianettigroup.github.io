@@ -12,9 +12,11 @@ Phonon Linewidth
 
 Here we continue the NaCl example from :ref:`compute-id`.
 
-First, we need to prepare a configuration file ``config.yml`` for the ``pm-conductivity`` command::
+First, we need to prepare a configuration file ``config.yml`` for the ``pm-conductivity`` command:
 
-  $ cat config.yml
+.. code-block:: yaml
+   :caption: config.yml
+
   structure: structure.yml
   load_fi2: fi_order2.hdf5
   load_fi3: fi_order3.hdf5
@@ -49,9 +51,11 @@ Execute the following command the compute the phonon linewidth::
 Thermal Conductivity
 --------------------
 
-Using the same NaCl example, we can prepare a configuration file ``config.yml`` similar to the one above::
+Using the same NaCl example, we can prepare a configuration file ``config.yml`` similar to the one above:
 
-  $ cat config.yml
+.. code-block:: yaml
+   :caption: config.yml
+
   structure: structure.yml
   load_fi2: fi_order2.hdf5
   load_fi3: fi_order3.hdf5
