@@ -203,7 +203,7 @@ These shift modes do not change the energy of the crystal, and we usually ommit 
 can be decomposed into irreducible representations <span class="math notranslate nohighlight">\(\Gamma = T_{1u}\)</span> with the following bases:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\hat{u}_{\Gamma}^{(T_{1u}, 0)} = \frac{1}{\sqrt{2}}
-\begin{bmatrix}[r]
+\begin{bmatrix}
 1 &amp; 0 &amp; 0 &amp; -1 &amp;  0 &amp;  0 \\
 0 &amp; 1 &amp; 0 &amp;  0 &amp; -1 &amp;  0 \\
 0 &amp; 0 &amp; 1 &amp;  0 &amp;  0 &amp; -1
@@ -219,7 +219,7 @@ irreducible representation.</p>
 and it’s irreducible basis. In the case of phonon, we only concern the irreducible basis that transforms like identity:</p>
 <div class="math notranslate nohighlight">
 \[\vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
-\begin{bmatrix}[r]
+\begin{bmatrix}
 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 1
 \end{bmatrix}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span> <span class="o">=</span> <span class="n">DirectProduct</span><span class="p">(</span><span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Oh&quot;</span><span class="p">,</span> <span class="n">irrep_inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1u&quot;</span><span class="p">,</span> <span class="s2">&quot;T1u&quot;</span><span class="p">])</span>
@@ -247,7 +247,7 @@ With symmetric direct product, we find the decomposition becomes
 and the identity irreducible basis becomes:</p>
 <div class="math notranslate nohighlight">
 \[\vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
-\begin{bmatrix}[r]
+\begin{bmatrix}
 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1
 \end{bmatrix}\]</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sdp</span> <span class="o">=</span> <span class="n">SymmetricDirectProduct</span><span class="p">(</span><span class="n">pg</span><span class="o">=</span><span class="s2">&quot;Oh&quot;</span><span class="p">,</span> <span class="n">irrep_inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1u&quot;</span><span class="p">,</span> <span class="s2">&quot;T1u&quot;</span><span class="p">])</span>

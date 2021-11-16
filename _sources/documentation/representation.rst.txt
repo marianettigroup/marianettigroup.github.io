@@ -150,7 +150,7 @@ can be decomposed into irreducible representations :math:`\Gamma = T_{1u}` with 
 .. math::
 
   \hat{u}_{\Gamma}^{(T_{1u}, 0)} = \frac{1}{\sqrt{2}}
-  \begin{bmatrix}[r]
+  \begin{bmatrix}
   1 & 0 & 0 & -1 &  0 &  0 \\
   0 & 1 & 0 &  0 & -1 &  0 \\
   0 & 0 & 1 &  0 &  0 & -1
@@ -171,7 +171,7 @@ and it's irreducible basis. In the case of phonon, we only concern the irreducib
 .. math::
 
   \vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
-  \begin{bmatrix}[r]
+  \begin{bmatrix}
   1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1
   \end{bmatrix}
 
@@ -204,7 +204,7 @@ and the identity irreducible basis becomes:
 .. math::
 
   \vec{u}_{(A_{1g}, 0)} = \frac{1}{\sqrt{3}}
-  \begin{bmatrix}[r]
+  \begin{bmatrix}
   1 & 0 & 0 & 1 & 0 & 1
   \end{bmatrix}
 
