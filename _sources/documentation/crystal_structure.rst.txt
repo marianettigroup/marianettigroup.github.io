@@ -52,13 +52,10 @@ One of the more compact ways to achieve the same input files as above is:
 .. code-block:: yaml
 
   scale: 2.764309
-  vec: |
-     0 1 1 ; 1 0 1 ; 1 1 0
+  vec: 0 1 1 ; 1 0 1 ; 1 1 0
   atoms:
-    - Ca: |
-       0 0 0
-    - F: |
-       1/4 1/4 1/4 ; 3/4 3/4 3/4
+    - Ca: 0 0 0
+    - F: 1/4 1/4 1/4 ; 3/4 3/4 3/4
 
 .. Note::
   

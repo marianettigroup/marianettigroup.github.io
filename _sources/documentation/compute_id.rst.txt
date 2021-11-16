@@ -32,9 +32,10 @@ Here we demonstrate a recommended workflow to execute our LID approach at second
 Symmetry Analysis and Find the Measurements to Compute
 ******************************************************
 
-First we create a file ``structure.yml`` describing the structure of NaCl::
+First we create a file ``structure.yml`` describing the structure of NaCl:
   
-  $ cat structure.yml
+.. code-block:: yaml
+
   # CrystalFTG
   vec:
     [[ 0.00000000,  2.83000729,  2.83000729],
@@ -45,17 +46,12 @@ First we create a file ``structure.yml`` describing the structure of NaCl::
         [[ 0.00000000,  0.00000000,  0.00000000]]
     - Cl: 
         [[ 0.50000000,  0.50000000,  0.50000000]]
-  orbitals: p
-  supa:
-    [[ 1,  0,  0],
-     [ 0,  1,  0],
-     [ 0,  0,  1]]
 
-(Currently we assign a default identity supercell to any primitive structure.)
 
-Then, with this structure and the point group of NaCl *Oh*, we can write the configuration file to execute the LID approach on :math:`2 \times 2 \times 2` mesh::
+Then, with this structure and the point group of NaCl *Oh*, we can write the minimal configuration file, named ``config.yml``, to execute the LID approach on :math:`2 \times 2 \times 2` mesh:
 
-  $ cat config.yml
+.. code-block:: yaml
+
   structure: 'structure.yml'
   supa: |
     2 0 0
@@ -65,7 +61,14 @@ Then, with this structure and the point group of NaCl *Oh*, we can write the con
   order:  2
   full_symmetry: True
   delta: [ 0.02, 0.03, 0.04]
-  fdtype: 'c'
+
+
+There are numerous parameters which have default settings that can be changed, and these can be
+added to the config.yml file listed above:
+
+.. code-block:: yaml
+
+  fdtype: 'c'                  
   root_directory: '.'
   database: 'database.db'
   db_type: 'sqlite'
