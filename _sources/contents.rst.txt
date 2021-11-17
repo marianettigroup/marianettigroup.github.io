@@ -15,7 +15,7 @@ Table of Contents
    documentation/contents
    examples/contents
    ci
-   api_doc/modules
+   api_doc/principia_materia
    report_issues
 
 
