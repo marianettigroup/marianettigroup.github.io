@@ -14,3 +14,8 @@ background-color: rgba(243,244,246,var(--tw-bg-opacity));
 border-top-left-radius: 0.5em;
 border-top-right-radius: 0.5em;
 }
+.gh-icon{
+  width: 24px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
