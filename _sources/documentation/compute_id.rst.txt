@@ -134,6 +134,14 @@ the dataset for computing the dipole-dipole interaction needs to be provided as 
   pm-lid-mesh --load-lid-mesh lid_mesh.hdf5 --config config.yml --epsilon path-to-epsilon.yml \
     --post --save-fi --save-ids --save-dts
 
+The dataset for computing the dipole-dipole interaction can be computed from first principle methods.
+Continuing with the VASP example, we can obtain the dataset by executing a static calculation adding ``LEPSILON=.TRUE.`` to the "ICNAR" file.
+Once the calculation is finished, use the following command inside the calculation directory to parse the output from VASP and create the ``epsilon.yml`` file::
+
+  pm-epsilon --vasp -o epsilon.yml .
+
+then replace ``path-to-epsilon.yml`` with the path to the generated ``epsilon.yml`` file.
+
 The following files are created in this step:
 
 * ``irreducible_derivatives.hdf5``: A HDF5 files containing the names of the irreducible derivatives and their values.

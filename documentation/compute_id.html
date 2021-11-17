@@ -222,6 +222,13 @@ the dataset for computing the dipole-dipole interaction needs to be provided as 
   <span class="o">--</span><span class="n">post</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">fi</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">ids</span> <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">dts</span>
 </pre></div>
 </div>
+<p>The dataset for computing the dipole-dipole interaction can be computed from first principle methods.
+Continuing with the VASP example, we can obtain the dataset by executing a static calculation adding <code class="docutils literal notranslate"><span class="pre">LEPSILON=.TRUE.</span></code> to the “ICNAR” file.
+Once the calculation is finished, use the following command inside the calculation directory to parse the output from VASP and create the <code class="docutils literal notranslate"><span class="pre">epsilon.yml</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pm</span><span class="o">-</span><span class="n">epsilon</span> <span class="o">--</span><span class="n">vasp</span> <span class="o">-</span><span class="n">o</span> <span class="n">epsilon</span><span class="o">.</span><span class="n">yml</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>then replace <code class="docutils literal notranslate"><span class="pre">path-to-epsilon.yml</span></code> with the path to the generated <code class="docutils literal notranslate"><span class="pre">epsilon.yml</span></code> file.</p>
 <p>The following files are created in this step:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">irreducible_derivatives.hdf5</span></code>: A HDF5 files containing the names of the irreducible derivatives and their values.</p></li>
@@ -291,7 +298,7 @@ with <code class="docutils literal notranslate"><span class="pre">pm-bid</span><
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Marianetti Group.</p>
+    <p>&#169; Copyright 2021, Marianetti Group.</p>
   </div>
 
    
