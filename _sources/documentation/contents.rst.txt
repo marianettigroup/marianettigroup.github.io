@@ -12,3 +12,5 @@ Documentation
    representation
    hamiltonian
    phonon_and_interactions
+
+   configuration

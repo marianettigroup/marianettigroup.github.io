@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration &mdash; Principia Materia  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom_style.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/contents.html" />
+    <link rel="prev" title="Phonons and their interactions" href="phonon_and_interactions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../contents.html" class="icon icon-home"> Principia Materia
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="crystal_structure.html">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonon_and_interactions.html">Phonons and their interactions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api_doc/modules.html">API Documentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../report_issues.html">Reporting Issues</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Principia Materia</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/documentation/configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h1>
+<p>Configuration files can be used to alter certain default behaviors of the package.
+It can be supplied globally in the following directory based on the operating system:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$HOME/.config/principia_materia/config.yml</span></code> on Linux and macOS.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%AppData%\\principia_materia\\config.yml</span></code> on windows.</p></li>
+</ul>
+<p>Additionally, configurations can also be provided locally in the <code class="docutils literal notranslate"><span class="pre">.config.yml</span></code> file in the current working directory.
+The local configurations will overwrite the global configurations.</p>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>debug<span class="classifier">bool, default False</span></dt><dd><p>Debug flag, whether to print out traceback when error occurred.</p>
+</dd>
+<dt>tol<span class="classifier">float, default 1.0E-6</span></dt><dd><p>Error tolerance.</p>
+</dd>
+<dt>hidden_order<span class="classifier">int, default 1</span></dt><dd><p>Default hidden order, the order of derivative obtained from first principle method.</p>
+</dd>
+<dt>full_symmetry<span class="classifier">bool, default False</span></dt><dd><p>Whether to use full symmetry analysis approach.</p>
+</dd>
+<dt>fdtype<span class="classifier">str, default “c”</span></dt><dd><p>Finite difference type, c=central f=forward b=backward.</p>
+</dd>
+<dt>job_config_path<span class="classifier">str, default None</span></dt><dd><p>First principle caculation input template.</p>
+</dd>
+<dt>root_directory<span class="classifier">str, default “.”</span></dt><dd><p>The root directory for creating first principle calculation input files.</p>
+</dd>
+<dt>save_database<span class="classifier">bool, default True</span></dt><dd><p>Whether to save database by default.</p>
+</dd>
+<dt>db_name<span class="classifier">str, default “database.db”</span></dt><dd><p>Default database name.</p>
+</dd>
+<dt>save_analysis_hdf5<span class="classifier">bool, default True</span></dt><dd><p>Whether to save LID/LIDMesh/BID/HSBID HDF5 file by default.</p>
+</dd>
+<dt>err_pick_min<span class="classifier">int, default 3</span></dt><dd><p>Minimum number of picks for error tail fitting.</p>
+</dd>
+<dt>err_pick_max<span class="classifier">int, default None</span></dt><dd><p>Maximum number of picks for error tail fitting.</p>
+</dd>
+<dt>err_consecutive<span class="classifier">bool, default False</span></dt><dd><p>Whether to pick consecutive points for error tail fitting.</p>
+</dd>
+<dt>err_separate_complex<span class="classifier">bool, default True</span></dt><dd><p>Whether to fit real and imaginary part separately.</p>
+</dd>
+<dt>err_output<span class="classifier">str, default None</span></dt><dd><p>Default error tail fit data output file.</p>
+</dd>
+<dt>db_type<span class="classifier">str, default ‘sqlite’</span></dt><dd><p>Default database type.</p>
+</dd>
+<dt>lid_db_table<span class="classifier">str, default ‘lid_jobs’</span></dt><dd><p>Default table name for LID jobs.</p>
+</dd>
+<dt>bid_db_table<span class="classifier">str, default ‘bid_jobs’</span></dt><dd><p>Default table name for BID jobs.</p>
+</dd>
+<dt>strain_db_table<span class="classifier">str, default ‘strain_jobs’</span></dt><dd><p>Default table name for strain jobs.</p>
+</dd>
+<dt>phonon_unitsa<span class="classifier">str, default ‘THz’</span></dt><dd><p>Default phonon units.</p>
+</dd>
+<dt>structure_parser<span class="classifier">dict</span></dt><dd><p>parser for structure files for first principle engines input format.</p>
+</dd>
+<dt>compute_engine<span class="classifier">dict</span></dt><dd><p>ComputeJob classes for first principle engines.</p>
+</dd>
+<dt>plot.default_fontsize<span class="classifier">float, default 12.0</span></dt><dd><p>Default font size for plotting.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="phonon_and_interactions.html" class="btn btn-neutral float-left" title="Phonons and their interactions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/contents.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Marianetti Group.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
