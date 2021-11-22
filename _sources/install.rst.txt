@@ -5,7 +5,11 @@
 Installation
 ============
 
-principia-materia consists of Python codes with Fortran extensions.
+principia-materia (PM) consists of Python codes with C++ and Fortran
+extensions. There will soon be a variety of options for installing PM, but we
+presently recommend cloning the git repository, creating a virtual environment,
+installing the required dependencies, and compiling the source code. 
+We also provide the option of having auto-completion at the Bash shell using argcomplete.
 
 
 
@@ -39,22 +43,44 @@ principia-materia consists of Python codes with Fortran extensions.
 ..
 ..       docker pull marianettigroup/principia-materia
 
+Obtaining the source code
+---------------------------
 
-Compile from source
--------------------
+Clone the git repository:
 
-Additionally, you can also compile and install the package from the source code,
-which requires several libraries used in extensions.
+.. code-block:: bash
 
-The required libraries are::
+  git clone git@github.com:marianettigroup/principia-materia.git
 
-      openmp
-      lapack
-      blas
-      gcc
-      gfortran
+Using a Virtual Environment
+---------------------------
 
-* For Ubuntu 18.04 and latear with gcc compilers::
+A virtual environment is recommended when working with PM.
+To setup a virtual environment:
+
+.. code-block:: bash
+
+  python3 -m virtualenv ENVNAME 
+
+(replace ``ENVNAME`` with the name you choose for the environment).
+
+To launch the environment, issue the following command:
+
+.. code-block:: bash
+
+  source ENVNAME/bin/activate
+
+This virtual environment will be launched whenever running PM.
+
+
+Installing dependencies
+------------------------
+
+The PM package depends on several external libraries::
+
+      openmp, lapack, blas, gcc, gfortran
+
+* For Ubuntu 18.04 and later with gcc compilers::
 
       sudo apt install gcc gfortran libopenblas-dev libgomp1 libhdf5-dev
 
@@ -66,7 +92,10 @@ Required python modules for the packge are listed in the file ``requirements.txt
 
       pip install --upgrade -r requirements.txt
 
-The next step is compiling the source code.
+Compiling PM
+--------------
+
+The final step is compiling the source code.
 
 * For Ubuntu 18.04 and latear with gcc compilers::
 
@@ -89,19 +118,9 @@ repository is dynamically link to serve as the python module so that any
 changes to the code can come in effect without reinstalling the module. However
 for the extensions of the module that is written in either C or FORTRAN, the
 module requires recompilation to reflect any changes to the source code.
+We currently recommend installing in the development mode, given that many 
+changes are still being made to the code.
 
-
-Using Virtual Environment
--------------------------
-
-Virtual environment is recommended when working with the package.
-To setup a virtual environment:
-
-.. code-block:: bash
-
-  python3 -m virtualenv ENVNAME && source ENVNAME/bin/activate
-
-(replace ``ENVNAME`` with the name of the environment).
 
 
 Setup Shell Auto-Complete

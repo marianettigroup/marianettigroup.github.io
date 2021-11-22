@@ -44,8 +44,10 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Welcome</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#compile-from-source">Compile from source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-virtual-environment">Using Virtual Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#obtaining-the-source-code">Obtaining the source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-a-virtual-environment">Using a Virtual Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-dependencies">Installing dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-pm">Compiling PM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setup-shell-auto-complete">Setup Shell Auto-Complete</a></li>
 </ul>
 </li>
@@ -88,21 +90,40 @@
              
   <section id="installation">
 <span id="install"></span><span id="index-0"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
-<p>principia-materia consists of Python codes with Fortran extensions.</p>
-<section id="compile-from-source">
-<h2>Compile from source<a class="headerlink" href="#compile-from-source" title="Permalink to this headline"></a></h2>
-<p>Additionally, you can also compile and install the package from the source code,
-which requires several libraries used in extensions.</p>
-<p>The required libraries are:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openmp</span>
-<span class="n">lapack</span>
-<span class="n">blas</span>
-<span class="n">gcc</span>
-<span class="n">gfortran</span>
+<p>principia-materia (PM) consists of Python codes with C++ and Fortran
+extensions. There will soon be a variety of options for installing PM, but we
+presently recommend cloning the git repository, creating a virtual environment,
+installing the required dependencies, and compiling the source code.
+We also provide the option of having auto-completion at the Bash shell using argcomplete.</p>
+<section id="obtaining-the-source-code">
+<h2>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Permalink to this headline"></a></h2>
+<p>Clone the git repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:marianettigroup/principia-materia.git
+</pre></div>
+</div>
+</section>
+<section id="using-a-virtual-environment">
+<h2>Using a Virtual Environment<a class="headerlink" href="#using-a-virtual-environment" title="Permalink to this headline"></a></h2>
+<p>A virtual environment is recommended when working with PM.
+To setup a virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m virtualenv ENVNAME
+</pre></div>
+</div>
+<p>(replace <code class="docutils literal notranslate"><span class="pre">ENVNAME</span></code> with the name you choose for the environment).</p>
+<p>To launch the environment, issue the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ENVNAME/bin/activate
+</pre></div>
+</div>
+<p>This virtual environment will be launched whenever running PM.</p>
+</section>
+<section id="installing-dependencies">
+<h2>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Permalink to this headline"></a></h2>
+<p>The PM package depends on several external libraries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">openmp</span><span class="p">,</span> <span class="n">lapack</span><span class="p">,</span> <span class="n">blas</span><span class="p">,</span> <span class="n">gcc</span><span class="p">,</span> <span class="n">gfortran</span>
 </pre></div>
 </div>
 <ul>
-<li><p>For Ubuntu 18.04 and latear with gcc compilers:</p>
+<li><p>For Ubuntu 18.04 and later with gcc compilers:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">gfortran</span> <span class="n">libopenblas</span><span class="o">-</span><span class="n">dev</span> <span class="n">libgomp1</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
@@ -117,7 +138,10 @@ which requires several libraries used in extensions.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-<p>The next step is compiling the source code.</p>
+</section>
+<section id="compiling-pm">
+<h2>Compiling PM<a class="headerlink" href="#compiling-pm" title="Permalink to this headline"></a></h2>
+<p>The final step is compiling the source code.</p>
 <ul>
 <li><p>For Ubuntu 18.04 and latear with gcc compilers:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span>
@@ -142,16 +166,9 @@ which requires several libraries used in extensions.</p>
 repository is dynamically link to serve as the python module so that any
 changes to the code can come in effect without reinstalling the module. However
 for the extensions of the module that is written in either C or FORTRAN, the
-module requires recompilation to reflect any changes to the source code.</p>
-</section>
-<section id="using-virtual-environment">
-<h2>Using Virtual Environment<a class="headerlink" href="#using-virtual-environment" title="Permalink to this headline"></a></h2>
-<p>Virtual environment is recommended when working with the package.
-To setup a virtual environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m virtualenv ENVNAME <span class="o">&amp;&amp;</span> <span class="nb">source</span> ENVNAME/bin/activate
-</pre></div>
-</div>
-<p>(replace <code class="docutils literal notranslate"><span class="pre">ENVNAME</span></code> with the name of the environment).</p>
+module requires recompilation to reflect any changes to the source code.
+We currently recommend installing in the development mode, given that many
+changes are still being made to the code.</p>
 </section>
 <section id="setup-shell-auto-complete">
 <h2>Setup Shell Auto-Complete<a class="headerlink" href="#setup-shell-auto-complete" title="Permalink to this headline"></a></h2>
