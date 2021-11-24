@@ -12,36 +12,35 @@ installing the required dependencies, and compiling the source code.
 We also provide the option of having auto-completion at the Bash shell using argcomplete.
 
 
+..
+ Install from PyPI
+ -----------------
+
+ If you use ``pip``, you can install principia-materia with:
+
+ .. code-block:: bash
+
+       pip install principia-materia
 
 
-.. Install from PyPI
-.. -----------------
-..
-.. If you use ``pip``, you can install principia-materia with:
-..
-.. .. code-block:: bash
-..
-..       pip install principia-materia
+ Install from Conda
+ ------------------
+ 
+ If you use ``conda``, you can install principia-materia with:
+ 
+ .. code-block:: bash
+ 
+       conda install -c principia-materia
 
 
-.. Install from Conda
-.. ------------------
-.. 
-.. If you use ``conda``, you can install principia-materia with:
-.. 
-.. .. code-block:: bash
-.. 
-..       conda install -c principia-materia
+ Using Docker image
+ ------------------
 
+ If you use ``docker``, you can install principia-materia with:
 
-.. Using Docker image
-.. ------------------
-..
-.. If you use ``docker``, you can install principia-materia with:
-..
-.. .. code-block:: bash
-..
-..       docker pull marianettigroup/principia-materia
+ .. code-block:: bash
+
+       docker pull marianettigroup/principia-materia
 
 Obtaining the source code
 ---------------------------

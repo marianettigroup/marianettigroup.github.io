@@ -11,9 +11,3 @@ This package contains a varietly of highlighted features:
 
 * :doc:`Compute phonon linewidth and thermal conductivity <documentation/compute_thermal>`.
 
-.. .. toctree::
-..    install
-..    documentation/contents
-..    ci
-..    api_doc/modules
-..    :maxdepth: 2

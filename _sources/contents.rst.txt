@@ -12,6 +12,7 @@ Table of Contents
 
    index
    install
+   conventions
    documentation/contents
    examples/contents
    ci
