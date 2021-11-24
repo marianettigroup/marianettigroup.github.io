@@ -1,0 +1,562 @@
+Command Line Interfaces
+-----------------------
+
+PM contains a variety of command line interfaces (CLI) that allow a user to perform standard calculations. 
+Here we summarize the various CLI's and their input variables, and we summarize proposed changes for the inputs;
+which is still being evaluated.
+
+
+pm-periodica
+=====================
+.. code-block:: bash
+
+  positional arguments:    
+    structure             The structure file.                                                                                            
+                                                                                                                                         
+  optional arguments:                                                                                                                    
+    -h, --help            show this help message and exit                                                                                
+    --poscar              The structure is provided in POSCAR.                                                                           
+    --summary, --print-summary                                                                                                           
+                          Print a summary of the structure.                                                                              
+    --tol TOL             Error tolerance.                                                                                               
+    --output OUTPUT, -o OUTPUT                                                                                                           
+                          The name of the output file. If it is not provided, the structure will be printed to stdout.
+    --orbitals ORBITALS   The orbitals of the structure.
+    --species-names SPECIES_NAMES
+                          The name of the species of the structure.
+    --supa SUPA           The supercell of the structure.
+    --axial-strain AXIAL_STRAIN
+                          Apply axial strain to the structure.
+    --strain STRAIN       Apply strain to the structure.
+    --similarity-transform SIMILARITY_TRANSFORM, --rotate SIMILARITY_TRANSFORM
+                          Apply rotation or other similarity transformation to the structure.
+    --shift-atoms SHIFT_ATOMS
+                          Shift the atoms of the structure.
+    --shift-origin SHIFT_ORIGIN
+                          Shift the origin of the structure.
+    --shift-in-cell       Shift atoms of the atoms of primitive cell into the primitive cell the structure.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Proposed changes for inputs.
+
+.. code-block:: bash
+
+    --summary, --sum                                                                                                        
+                          Print a summary of the structure.                                                                              
+    --species-names SPECIES_NAMES, --spec SPECIES_NAMES
+                          The name of the species of the structure.
+    --supercell SUPERCELL, --supa SUPERCELL          
+                          The supercell of the structure.
+    --strain STRAIN       
+                          XX This method needs to be fixed: user should only input independent components of matrix.
+    --similarity-transform SIMILARITY_TRANSFORM 
+                          Apply similarity transformation to the structure.
+    --rotate ROTATION, --rot ROTATION
+                          Apply rotation to the structure. XX Check orthogonality/determinant of user input.
+    --all-in-cell, --allin    
+        Shift any atoms outside of the primitive cell in.
+
+pm-lid
+=====================
+.. code-block:: bash
+
+  Compute phonons and phonon interactions of a Q-point with LID method.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --Qpoint QPOINT, -Q QPOINT
+                          The Qpoint.
+    --irrep-products IRREP_PRODUCTS
+                          A list of the products of irreducible representations to compute.
+    --supa SUPA           The supercell matrix.
+    --pg PG               The point group.
+    --full-symmetry       Whether to use full group analysis or little group ananlysis.
+    --hidden-order HIDDEN_ORDER
+                          The order of derivatives from first principles.
+    --delta DELTA         The displacement amplitude.
+    --fdtype FDTYPE       Type of finite displacement.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --err-pick-min ERR_PICK_MIN
+                          Minimum number of picks for errortail
+    --err-pick-max ERR_PICK_MAX
+                          Maximum number of picks for set_errortail_arguments
+    --err-consecutive     Whether to pick consecutive delta points.
+    --err-separate-complex
+                          Whether to fit real and imaginary parts separately.
+    --err-output ERR_OUTPUT
+                          The output file for the errotail.
+    --save-ids [SAVE_IDS]
+                          The file to save irreducible derivatives into.
+    --create-jobs, --create
+                          Perform symmetry analysis and create jobs.
+    --compute-results, --compute, --post
+                          Retrieve first principle computation results and compute finite displacements.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --load-lid [LOAD_LID], --load [LOAD_LID]
+                          Load LID object from HDF5 file.
+    --save-lid [SAVE_LID], --save [SAVE_LID]
+                          Save LID object to HDF5 file.
+    --save-dqn [SAVE_DQN]
+                          Save DynamicTensor object to HDF5 file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still working on proposed changes
+
+.. code-block:: bash
+
+    --crystal-structure CRYSTAL_STRUCTURE, --xtal CRYSTAL_STRUCTURE
+                          The file containing the crystal structure.
+    --poscar POSCAR       XX Remove this: the user can interchange using pm-periodica. 
+    --irreducible-representations IRREDUCBILE_REPRESENTATIONS, --irreps IRREDUCBILE_REPRESENTATIONS
+                          A list of irreducible representations to compute.
+    --supercell SUPERCELL, --supa SUPERCELL
+                          The supercell matrix.
+    --point-group POINT_GROUP, --pg POINT_GROUP
+                          The point group.
+    --full-symmetry       Whether to use full group analysis or little group ananlysis.
+    --hidden-order HIDDEN_ORDER
+                          The order of derivatives from first principles.
+    --finite-diff-delta DELTA, --delta DELTA         
+                          The displacement amplitude.
+    --fdtype FDTYPE       Type of finite displacement.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --err-pick-min ERR_PICK_MIN
+                          Minimum number of picks for errortail
+    --err-pick-max ERR_PICK_MAX
+                          Maximum number of picks for set_errortail_arguments
+    --err-consecutive     Whether to pick consecutive delta points.
+    --err-separate-complex
+                          Whether to fit real and imaginary parts separately.
+    --err-output ERR_OUTPUT
+                          The output file for the errotail.
+    --save-ids [SAVE_IDS]
+                          The file to save irreducible derivatives into.
+    --create-jobs, --create
+                          Perform symmetry analysis and create jobs.
+    --compute-results, --compute, --post
+                          Retrieve first principle computation results and compute finite displacements.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --load-lid [LOAD_LID], --load [LOAD_LID]
+                          Load LID object from HDF5 file.
+    --save-lid [SAVE_LID], --save [SAVE_LID]
+                          Save LID object to HDF5 file.
+    --save-dqn [SAVE_DQN]
+                          Save DynamicTensor object to HDF5 file.
+
+pm-lid-mesh
+=====================
+.. code-block:: bash
+
+  Compute phonons and phonon interactions LID method.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --supa SUPA           The supercell matrix.
+    --pg PG               The point group.
+    --order ORDER         The order of the phonon interactions.
+    --full-symmetry       Whether to use full group analysis or little group ananlysis.
+    --hidden-order HIDDEN_ORDER
+                          The order of derivatives from first principles.
+    --delta DELTA         The displacement amplitude.
+    --fdtype FDTYPE       Type of finite displacement.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --err-pick-min ERR_PICK_MIN
+                          Minimum number of picks for errortail
+    --err-pick-max ERR_PICK_MAX
+                          Maximum number of picks for set_errortail_arguments
+    --err-consecutive     Whether to pick consecutive delta points.
+    --err-separate-complex
+                          Whether to fit real and imaginary parts separately.
+    --err-output ERR_OUTPUT
+                          The output file for the errotail.
+    --save-fi [SAVE_FI]   The file to save FourierInterpolation object into.
+    --epsilon EPSILON     The file containing dielectric tensor and Born effective charges.
+    --save-dts [SAVE_DTS]
+                          The file to save DynamicTensors object into.
+    --save-ids [SAVE_IDS]
+                          The file to save irreducible derivatives into.
+    --preprocess          Perform symmetry analysis and create jobs.
+    --postprocess         Retrieve first principle computation results and compute finite displacements.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --load-lid-mesh [LOAD_LID_MESH], --load [LOAD_LID_MESH]
+                          Load LIDMesh object from YAML/HDF5 file.
+    --save-lid-mesh [SAVE_LID_MESH], --save [SAVE_LID_MESH]
+                          Save LIDMesh object to YAML/HDF5 file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
+pm-bid
+=====================
+.. code-block:: bash
+
+  Compute phonons and phonon interactions with SS-BID method.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --supa SUPA           The supercell matrix.
+    --pg PG               The point group.
+    --order ORDER         The order of the phonon interactions.
+    --full-symmetry       Whether to use full group analysis or little group ananlysis.
+    --hidden-order HIDDEN_ORDER
+                          The order of derivatives from first principles.
+    --delta DELTA         The displacement amplitude.
+    --fdtype FDTYPE       Type of finite displacement.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --err-pick-min ERR_PICK_MIN
+                          Minimum number of picks for errortail
+    --err-pick-max ERR_PICK_MAX
+                          Maximum number of picks for set_errortail_arguments
+    --err-consecutive     Whether to pick consecutive delta points.
+    --err-separate-complex
+                          Whether to fit real and imaginary parts separately.
+    --err-output ERR_OUTPUT
+                          The output file for the errotail.
+    --save-fi [SAVE_FI]   The file to save FourierInterpolation object into.
+    --epsilon EPSILON     The file containing dielectric tensor and Born effective charges.
+    --save-dts [SAVE_DTS]
+                          The file to save DynamicTensors object into.
+    --save-ids [SAVE_IDS]
+                          The file to save irreducible derivatives into.
+    --extra-measurements EXTRA_MEASUREMENTS
+                          Increase the number measurements. The amount of extra measurement, the new number of measurement is
+                          calculated with the equation: n_measurements *= extra_measurements + 1.
+    --create-jobs, --create
+                          Perform symmetry analysis and create jobs.
+    --compute-results, --compute, --post
+                          Retrieve first principle computation results and compute finite displacements.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --load-bid [LOAD_BID], --load [LOAD_BID]
+                          Load BID object from HDF5 file.
+    --save-bid [SAVE_BID], --save [SAVE_BID]
+                          Save BID object to HDF5 file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
+pm-hsbid
+=====================
+.. code-block:: bash
+
+  Compute phonons and phonon interactions with HS-BID method.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --supa SUPA           The supercell matrix.
+    --pg PG               The point group.
+    --order ORDER         The order of the phonon interactions.
+    --full-symmetry       Whether to use full group analysis or little group ananlysis.
+    --hidden-order HIDDEN_ORDER
+                          The order of derivatives from first principles.
+    --delta DELTA         The displacement amplitude.
+    --fdtype FDTYPE       Type of finite displacement.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --err-pick-min ERR_PICK_MIN
+                          Minimum number of picks for errortail
+    --err-pick-max ERR_PICK_MAX
+                          Maximum number of picks for set_errortail_arguments
+    --err-consecutive     Whether to pick consecutive delta points.
+    --err-separate-complex
+                          Whether to fit real and imaginary parts separately.
+    --err-output ERR_OUTPUT
+                          The output file for the errotail.
+    --save-fi [SAVE_FI]   The file to save FourierInterpolation object into.
+    --epsilon EPSILON     The file containing dielectric tensor and Born effective charges.
+    --save-dts [SAVE_DTS]
+                          The file to save DynamicTensors object into.
+    --save-ids [SAVE_IDS]
+                          The file to save irreducible derivatives into.
+    --extra-measurements EXTRA_MEASUREMENTS
+                          Increase the number measurements. The amount of extra measurement, the new number of measurement is
+                          calculated with the equation: n_measurements *= extra_measurements + 1.
+    --create-jobs, --create
+                          Perform symmetry analysis and create jobs.
+    --compute-results, --compute, --post
+                          Retrieve first principle computation results and compute finite displacements.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --load-hsbid [LOAD_HSBID], --load [LOAD_HSBID]
+                          Load HSBID object from HDF5 file.
+    --save-hsbid [SAVE_HSBID], --save [SAVE_HSBID]
+                          Save HSBID object to HDF5 file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
+pm-jobs
+=====================
+.. code-block:: bash
+
+  Manage jobs for first principle computation.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --compute-engine COMPUTE_ENGINE, --engine COMPUTE_ENGINE
+                          The compute engine that is used to create jobs.
+    --root-directory ROOT_DIRECTORY, --directory ROOT_DIRECTORY
+                          The root directory of the jobs.
+    --job-config-path JOB_CONFIG_PATH
+                          The path to configuration files for the jobs.
+    --dry-run, -n         In dry run mode, go through everything without creating the jobs.
+    --static-files STATIC_FILES
+                          The static files to copy to the job directory.
+    --static-files-abspath
+                          If the static files are using absolute path.
+    --database DATABASE   The path to a database.
+    --db-type DB_TYPE     The type of database to use.
+    --db-table DB_TABLE   The table to use in database.
+    --search-condition SEARCH_CONDITION, --filter SEARCH_CONDITION
+    --create-jobs, --create
+                          Create jobs.
+    --retrieve-results, --retrieve
+                          Retrieve first principle computation results.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
+pm-convert-errortail
+=====================
+.. code-block:: bash
+
+  Convert errortail dataset from HDF5 file into YAML files for plotting.
+
+  positional arguments:
+    filename              The HDF5 file containing the errortail data.
+  
+  optional arguments:
+    -h, --help            show this help message and exit
+    --output-dir OUTPUT_DIR, --out-dir OUTPUT_DIR, -d OUTPUT_DIR
+                          The directory of the output files.
+    --prefix PREFIX       The prefix of the output file.
+    --no-overwrite        Do not overwrite if output files exists.
+
+Still need to evaluate for any changes.
+
+pm-plot-errortail
+=====================
+.. code-block:: bash
+
+  positional arguments:
+  file                  Path to errortail data file.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --linestyle LINESTYLE, --ls LINESTYLE, -l LINESTYLE
+                          Line style of the errortail curve.
+    --iscomplex, --complex, -c
+                          Is the errortail complex..
+    --marker MARKER, -m MARKER
+                          Marker style of the finite difference derivatives data points.
+    --linecolor LINECOLOR, --lc LINECOLOR
+                          Line color of the errortail curve.
+    --markercolor MARKERCOLOR, --mc MARKERCOLOR
+                          Marker color of the finite difference derivatives data points.
+    --output [OUTPUT], -o [OUTPUT]
+                          Output figure filename.
+    --dpi DPI             The DPI of the output figure.
+    --show, -s            Whether to show the errortail figure.
+
+Still need to evaluate for any changes.
+
+pm-phonon-band-dos
+=====================
+.. code-block:: bash
+
+  Compute phonon band structure and density of states.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --load-fi [LOAD_FI]   The file to load FourierInterpolation object from.
+    --epsilon EPSILON     The file containing dielectric tensor and Born effective charges.
+    --band BAND           The coordinates of band structure vertex points
+    --band-label BAND_LABEL
+                          The labels of the band structure vertex points.
+    --band-points BAND_POINTS
+                          The number of points to interpolate between the band vertex points.
+    --units UNITS         The units of phonon frequency.
+    --mesh MESH           The interpolation mesh for DOS computation.
+    --nbins NBINS         The number of points DOS is evaluated.
+    --save-band [SAVE_BAND]
+                          The file to save phonon band dispersion.
+    --save-grid [SAVE_GRID]
+                          The file to save phonon of grid points.
+    --save-dos [SAVE_DOS]
+                          The file to save phonon DOS.
+    --save-plot [SAVE_PLOT]
+                          The file to save plot configuration.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
+pm-plot-band
+=====================
+.. code-block:: bash
+
+  positional arguments:
+  config                The configuration file.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --show, -s
+    --output OUTPUT, -o OUTPUT
+                          The name of the output figure file.
+    --width-ratio WIDTH_RATIO
+                          The ratio between the band structure plot and the DOS plot.
+    --dpi DPI             The DPI of the output figure.
+
+Still need to evaluate for any changes.
+
+pm-conductivity
+=====================
+.. code-block:: bash
+
+  Compute phonon linewidth and thermal conductivity.
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    --structure STRUCTURE, -t STRUCTURE
+                          The structure file.
+    --poscar POSCAR       The structure file from POSCAR.
+    --tol TOL             Error tolerance.
+    --band BAND           The coordinates of band structure vertex points
+    --band-label BAND_LABEL
+                          The labels of the band structure vertex points.
+    --band-points BAND_POINTS
+                          The number of points to interpolate between the band vertex points.
+    --units UNITS         The units of phonon frequency.
+    --pg PG               The point group.
+    --mesh MESH           The interpolation mesh for DOS computation.
+    --phonon-cutoff PHONON_CUTOFF
+                          Cutoff value for phonon frequency in THz, values lower than the cutoff will be treated as 0.
+    --mode MODE           The mode of thermal conductivity RTA/LBTE.
+    --min-temp MIN_TEMP   Minimum temperature.
+    --max-temp MAX_TEMP   Maximum temperature.
+    --ntemp NTEMP         Number of temperature data points.
+    --load-fi2 LOAD_FI2   The file to load order 2 FourierInterpolation object from.
+    --load-fi3 LOAD_FI3   The file to load order 3 FourierInterpolation object from.
+    --load-fi4 LOAD_FI4   The file to load order 4 FourierInterpolation object from.
+    --epsilon EPSILON     The file containing dielectric tensor and Born effective charges.
+    --q-direction Q_DIRECTION
+                          The q-direction to use at q->0 limit.
+    --save-kappa [SAVE_KAPPA]
+                          The HDF5 file to save thermal conductivity data.
+    --save-gamma [SAVE_GAMMA]
+                          The HDF5 file to save phonon linewidth data.
+    --save-config [SAVE_CONFIG]
+                          Save command line arguements into a configuration file.
+    --load-config [LOAD_CONFIG], --config [LOAD_CONFIG]
+                          Load command line arguements from a configuration file.
+    --debug, -D           In debug mode, print tracebacks when an error occurs.
+
+Still need to evaluate for any changes.
+
