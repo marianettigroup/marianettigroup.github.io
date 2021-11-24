@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Known Issues &mdash; Principia Materia  documentation</title>
+  <title>Software Conventions &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -22,7 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Reporting Issues" href="report_issues.html" /> 
+    <link rel="next" title="Documentation" href="documentation/contents.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,10 +41,10 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conventions.html">Software Conventions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation/contents.html">Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/contents.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ci.html">Continuous Integration</a></li>
@@ -65,9 +66,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="contents.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Known Issues</li>
+      <li>Software Conventions</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/known_issues.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/conventions.rst.txt" rel="nofollow"> View page source</a>
           <a href="https://github.com/marianettigroup/principia-materia" style="padding-top: 0px; padding-bottom: 0px;">
             <img class="gh-icon" src='_static/github.svg' alt="Visit the project on GitHub"/>
           </a>
@@ -81,12 +82,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="known-issues">
-<h1>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline"></a></h1>
-<p>Here is a list of known issues with the current code.</p>
+  <section id="software-conventions">
+<h1>Software Conventions<a class="headerlink" href="#software-conventions" title="Permalink to this headline"></a></h1>
+<p>principia-materia (PM) follows a variety of coding conventions and practices.</p>
 <ol class="arabic simple">
-<li><p>The full symmetry code might fail on some systems including BCC structure.</p></li>
-<li><p>Currently the code only works for symmorphic space groups.</p></li>
+<li><p>Python code style is guided by <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>, though there are
+various deviations (e.g. 2 space indentations, etc).</p></li>
+<li><p>For command line options, we are rigidly following the <a class="reference external" href="https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html">GNU extension</a> of the POSIX standard.</p></li>
 </ol>
 </section>
 
@@ -94,7 +96,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="report_issues.html" class="btn btn-neutral float-left" title="Reporting Issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documentation/contents.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
