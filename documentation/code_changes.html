@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Examples &mdash; Principia Materia  documentation</title>
+  <title>Proposed changes to PM base code &mdash; Principia Materia  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Aluminum Example" href="al.html" />
-    <link rel="prev" title="Proposed changes to PM base code" href="../documentation/code_changes.html" /> 
+    <link rel="next" title="Examples" href="../examples/contents.html" />
+    <link rel="prev" title="Command Line Interfaces" href="cli_summary.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,11 +45,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conventions.html">Software Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../documentation/contents.html">Documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="al.html">Aluminum Example</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="contents.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="crystal_structure.html">Entering Crystal Structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_id.html">Compute Irreducible Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compute_thermal.html">Compute Phonon Linewidth and Thermal Conductivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation_group.html">Translation Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="representation.html">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonon_and_interactions.html">Phonons and their interactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cli_summary.html">Command Line Interfaces</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Proposed changes to PM base code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#array-io-py">array_io.py</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/contents.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ci.html">Continuous Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_doc/principia_materia.html">API References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../report_issues.html">Reporting Issues</a></li>
@@ -69,9 +81,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Examples</li>
+          <li><a href="contents.html">Documentation</a> &raquo;</li>
+      <li>Proposed changes to PM base code</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/examples/contents.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/documentation/code_changes.rst.txt" rel="nofollow"> View page source</a>
           <a href="https://github.com/marianettigroup/principia-materia" style="padding-top: 0px; padding-bottom: 0px;">
             <img class="gh-icon" src='../_static/github.svg' alt="Visit the project on GitHub"/>
           </a>
@@ -85,24 +98,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="examples">
-<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h1>
-<p>Here an array of examples on a variety of materials are demonstrated to showcase the usage of the package.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="al.html">Aluminum Example</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <section id="proposed-changes-to-pm-base-code">
+<h1>Proposed changes to PM base code<a class="headerlink" href="#proposed-changes-to-pm-base-code" title="Permalink to this headline"></a></h1>
+<p>Here we summarize any proposed changes to the code, which includes anything from trivial renaming
+to major structural changes.</p>
+<section id="array-io-py">
+<h2>array_io.py<a class="headerlink" href="#array-io-py" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>The function <strong>parse_array</strong> must be named more appropriately. While I understand that this is sort of kitchen
+sink function, taking in various data types and converting to a specified type, the name should reflect that.
+At best, the current name is misleading.</p></li>
+</ol>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../documentation/code_changes.html" class="btn btn-neutral float-left" title="Proposed changes to PM base code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="al.html" class="btn btn-neutral float-right" title="Aluminum Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cli_summary.html" class="btn btn-neutral float-left" title="Command Line Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../examples/contents.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

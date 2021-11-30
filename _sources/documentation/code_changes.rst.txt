@@ -1,0 +1,13 @@
+Proposed changes to PM base code
+--------------------------------
+
+Here we summarize any proposed changes to the code, which includes anything from trivial renaming
+to major structural changes.
+
+
+array_io.py
+=====================
+
+1. The function **parse_array** must be named more appropriately. While I understand that this is sort of kitchen
+   sink function, taking in various data types and converting to a specified type, the name should reflect that.
+   At best, the current name is misleading.
