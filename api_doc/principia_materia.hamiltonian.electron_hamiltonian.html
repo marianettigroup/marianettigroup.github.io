@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="principia_materia.hamiltonian.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-principia_materia.hamiltonian">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
@@ -104,160 +104,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-principia_materia.hamiltonian.electron_hamiltonian">
-<span id="principia-materia-hamiltonian-electron-hamiltonian-module"></span><h1>principia_materia.hamiltonian.electron_hamiltonian module<a class="headerlink" href="#module-principia_materia.hamiltonian.electron_hamiltonian" title="Permalink to this headline"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.electron_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">ElectronHamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nspin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nelect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fermi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eV'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="principia_materia.hamiltonian.hamiltonian.html#principia_materia.hamiltonian.hamiltonian.Hamiltonian" title="principia_materia.hamiltonian.hamiltonian.Hamiltonian"><code class="xref py py-class docutils literal notranslate"><span class="pre">principia_materia.hamiltonian.hamiltonian.Hamiltonian</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>nelect</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – Number of valence electrons.</p></li>
-<li><p><strong>fermi</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – Fermy energy, in unit of eV.</p></li>
-<li><p><strong>ncor</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – Number of correlated orbitals.</p></li>
-<li><p><strong>U</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 0</em>) – The Coulumb hamiltonian term U.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.diagonalize_hamiltonians">
-<span class="sig-name descname"><span class="pre">diagonalize_hamiltonians</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonians_matrices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UPLO</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'L'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.diagonalize_hamiltonians" title="Permalink to this definition"></a></dt>
-<dd><p>Diagonalize and compute the eigenvalues hamiltonians in reciprocal space.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><ul class="simple">
-<li><p><strong>eigenvalues</strong> (<em>array of float, shape(N, nspin, norbitals)</em>)</p></li>
-<li><p><strong>eigenvectors</strong> (<em>array of float, shape(N, nspin, norbitals, norbitals)</em>)</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_embeded_self_energy">
-<span class="sig-name descname"><span class="pre">get_embeded_self_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_embeded_self_energy" title="Permalink to this definition"></a></dt>
-<dd><p>Embed the self-energy minus the dc in a matrix the size of the Hamiltonian.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_fermi_energy">
-<span class="sig-name descname"><span class="pre">get_fermi_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_fermi_energy" title="Permalink to this definition"></a></dt>
-<dd><p>Get Fermi energy.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>fermi</strong> – The Fermi energy.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_hamiltonian_matrices_at_kpoints">
-<span class="sig-name descname"><span class="pre">get_hamiltonian_matrices_at_kpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_hamiltonian_matrices_at_kpoints" title="Permalink to this definition"></a></dt>
-<dd><p>Get hamiltonian matrices at k-points</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kpoints</strong> (<em>array of float</em><em> or </em><a class="reference internal" href="principia_materia.mathematics.new_fraction.html#principia_materia.mathematics.new_fraction.Fraction" title="principia_materia.mathematics.new_fraction.Fraction"><em>Fraction</em></a><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>) or </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>dim</em><em>)</em>) – k-points.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>hamiltonians_matrices</strong> – Interaction matrices.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>array of complex, shape(norbitals, norbitals) or shape(N, norbitals, norbitals)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_state">
-<span class="sig-name descname"><span class="pre">get_state</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_state" title="Permalink to this definition"></a></dt>
-<dd><p>Get insulator/metal state of the Hamiltonian.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_total_energy">
-<span class="sig-name descname"><span class="pre">get_total_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.get_total_energy" title="Permalink to this definition"></a></dt>
-<dd><p>Get the total energy of the Hamiltonian.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.hartree_fock">
-<span class="sig-name descname"><span class="pre">hartree_fock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nscf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perturb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.hartree_fock" title="Permalink to this definition"></a></dt>
-<dd><p>Hartree Fock.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_density_matrix">
-<span class="sig-name descname"><span class="pre">set_density_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_density_matrix" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the density matrix of the Hamiltonian.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_fermi_energy">
-<span class="sig-name descname"><span class="pre">set_fermi_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raise_exception</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_fermi_energy" title="Permalink to this definition"></a></dt>
-<dd><p>Compute Fermi energy with binary search and tetrahedron method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>replace</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – Re-compute Fermi energy when attribute <code class="docutils literal notranslate"><span class="pre">_fermi</span></code> is not None.</p></li>
-<li><p><strong>maxiter</strong> (<em>int</em><em>, </em><em>optional</em><em>, </em><em>default to 200</em>) – The maximum number of iterations to search for the Fermi energy.</p></li>
-<li><p><strong>raise_exception</strong> (<em>bool</em><em>, </em><em>optional</em><em>, </em><em>default to False</em>) – Whether to raise an exception when the maximum iteration
-is reached before the error tolerence is reached.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_hamiltonian">
-<span class="sig-name descname"><span class="pre">set_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_hamiltonian" title="Permalink to this definition"></a></dt>
-<dd><p>Set electron hamiltonian.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hamiltonian</strong> (<a class="reference internal" href="principia_materia.hamiltonian.model_hamiltonian.html#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian" title="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian"><em>ModelHamiltonian</em></a>) – ModelHamiltonian object.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian._hamiltonian">
-<span class="sig-name descname"><span class="pre">_hamiltonian</span></span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian._hamiltonian" title="Permalink to this definition"></a></dt>
-<dd><p>ModelHamiltonian object.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="principia_materia.hamiltonian.model_hamiltonian.html#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian" title="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian">ModelHamiltonian</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_nd">
-<span class="sig-name descname"><span class="pre">set_nd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_nd" title="Permalink to this definition"></a></dt>
-<dd><p>Adjust number d-electrons.</p>
-<p>Adjust the double-counting to get the desired number of d-electrons while
-maintaining the proper density. This algo creates a a scalar function which
-computes nd for a given dc while always adjusting the fermi energy to give
-the correct density. This function is then manually bounded and then sent
-to brentq in order to find the root.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_self_energy">
-<span class="sig-name descname"><span class="pre">set_self_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self_energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fermi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_self_energy" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_total_energy">
-<span class="sig-name descname"><span class="pre">set_total_energy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.electron_hamiltonian.ElectronHamiltonian.set_total_energy" title="Permalink to this definition"></a></dt>
-<dd><p>Compute the total energy of the Hamiltonian with tetrahedron method.</p>
-</dd></dl>
-
-</dd></dl>
-
+  <section id="principia-materia-hamiltonian-electron-hamiltonian-module">
+<h1>principia_materia.hamiltonian.electron_hamiltonian module<a class="headerlink" href="#principia-materia-hamiltonian-electron-hamiltonian-module" title="Permalink to this headline"></a></h1>
 </section>
 
 
@@ -271,7 +119,7 @@ to brentq in order to find the root.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Marianetti Group.</p>
+    <p>&#169; Copyright 2021 - 2022, Marianetti Group.</p>
   </div>
 
    

@@ -131,41 +131,41 @@ Here we demonstrate a recommended workflow to execute our LID approach at second
 <p>First we create a file <code class="docutils literal notranslate"><span class="pre">structure.yml</span></code> describing the structure of NaCl:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># CrystalFTG</span>
-<span class="nt">vec</span><span class="p">:</span>
-  <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">],</span>
-   <span class="p p-Indicator">[</span> <span class="nv">2.83000729</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">],</span>
-   <span class="p p-Indicator">[</span> <span class="nv">2.83000729</span><span class="p p-Indicator">,</span>  <span class="nv">2.83000729</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">]]</span>
-<span class="nt">atoms</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Na</span><span class="p">:</span>
-      <span class="p p-Indicator">[[</span> <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.00000000</span><span class="p p-Indicator">]]</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Cl</span><span class="p">:</span>
-      <span class="p p-Indicator">[[</span> <span class="nv">0.50000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.50000000</span><span class="p p-Indicator">,</span>  <span class="nv">0.50000000</span><span class="p p-Indicator">]]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># CrystalFTG</span><span class="w"></span>
+<span class="nt">vec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">[[</span><span class="w"> </span><span class="nv">0.00000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">2.83000729</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">2.83000729</span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">2.83000729</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.00000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">2.83000729</span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">2.83000729</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">2.83000729</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.00000000</span><span class="p p-Indicator">]]</span><span class="w"></span>
+<span class="nt">atoms</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Na</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">[[</span><span class="w"> </span><span class="nv">0.00000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.00000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.00000000</span><span class="p p-Indicator">]]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Cl</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">[[</span><span class="w"> </span><span class="nv">0.50000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.50000000</span><span class="p p-Indicator">,</span><span class="w">  </span><span class="nv">0.50000000</span><span class="p p-Indicator">]]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>Then, with this structure and the point group of NaCl <em>Oh</em>, we can write the minimal configuration file, named <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>, to execute the LID approach on <span class="math notranslate nohighlight">\(2 \times 2 \times 2\)</span> mesh:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="s">&#39;structure.yml&#39;</span>
-<span class="nt">supa</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-  <span class="no">2 0 0</span>
-  <span class="no">0 2 0</span>
-  <span class="no">0 0 2</span>
-<span class="nt">pg</span><span class="p">:</span> <span class="s">&#39;Oh&#39;</span>
-<span class="nt">order</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">full_symmetry</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="nt">delta</span><span class="p">:</span> <span class="p p-Indicator">[</span> <span class="nv">0.02</span><span class="p p-Indicator">,</span> <span class="nv">0.03</span><span class="p p-Indicator">,</span> <span class="nv">0.04</span><span class="p p-Indicator">]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;structure.yml&#39;</span><span class="w"></span>
+<span class="nt">supa</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">  </span><span class="no">2 0 0</span><span class="w"></span>
+<span class="w">  </span><span class="no">0 2 0</span><span class="w"></span>
+<span class="w">  </span><span class="no">0 0 2</span><span class="w"></span>
+<span class="nt">pg</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Oh&#39;</span><span class="w"></span>
+<span class="nt">order</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="nt">full_symmetry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span><span class="w"></span>
+<span class="nt">delta</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">0.02</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.03</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.04</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 <p>There are numerous parameters which have default settings that can be changed, and these can be
 added to the config.yml file listed above:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">fdtype</span><span class="p">:</span> <span class="s">&#39;c&#39;</span>
-<span class="nt">root_directory</span><span class="p">:</span> <span class="s">&#39;.&#39;</span>
-<span class="nt">database</span><span class="p">:</span> <span class="s">&#39;database.db&#39;</span>
-<span class="nt">db_type</span><span class="p">:</span> <span class="s">&#39;sqlite&#39;</span>
-<span class="nt">db_table</span><span class="p">:</span> <span class="s">&#39;lid_phonon&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">fdtype</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="w"></span>
+<span class="nt">root_directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="w"></span>
+<span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;database.db&#39;</span><span class="w"></span>
+<span class="nt">db_type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;sqlite&#39;</span><span class="w"></span>
+<span class="nt">db_table</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lid_phonon&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>With the configuration file we can initiate the pre-processing step which will execute the symmetry analysis and create the jobs that need to be computed with
@@ -252,16 +252,16 @@ with <code class="docutils literal notranslate"><span class="pre">pm-bid</span><
 <p>Let’s continue the NaCl example and first prepare the configuration file <code class="docutils literal notranslate"><span class="pre">phonon_config.yml</span></code> for computing the phonon dispersion and DOS:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">phonon_config.yml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span>
-<span class="nt">band_label</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">X</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">L</span>
-<span class="nt">mesh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20 20 20</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">band</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="nt">band_label</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">X</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L</span><span class="w"></span>
+<span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20 20 20</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -301,7 +301,7 @@ with <code class="docutils literal notranslate"><span class="pre">pm-bid</span><
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Marianetti Group.</p>
+    <p>&#169; Copyright 2021 - 2022, Marianetti Group.</p>
   </div>
 
    

@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="principia_materia.hamiltonian.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-principia_materia.hamiltonian">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
@@ -104,179 +104,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-principia_materia.hamiltonian.hamiltonian">
-<span id="principia-materia-hamiltonian-hamiltonian-module"></span><h1>principia_materia.hamiltonian.hamiltonian module<a class="headerlink" href="#module-principia_materia.hamiltonian.hamiltonian" title="Permalink to this headline"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.hamiltonian.</span></span><span class="sig-name descname"><span class="pre">Hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'C1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nspin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'eV'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>The Hamiltonian of a system.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.compute_DOS">
-<span class="sig-name descname"><span class="pre">compute_DOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_cdos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.compute_DOS" title="Permalink to this definition"></a></dt>
-<dd><p>Compute density of states for energies between the minimum and maximum values of eigenvalues.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nbins</strong> (<em>int</em>) – The number of energies to evaluate between the minimum and maximum eigenvalues.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian._dos">
-<span class="sig-name descname"><span class="pre">_dos</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian._dos" title="Permalink to this definition"></a></dt>
-<dd><p>Density of states.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>array of float, shape(nbins, nspins)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian._cdos">
-<span class="sig-name descname"><span class="pre">_cdos</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian._cdos" title="Permalink to this definition"></a></dt>
-<dd><p>Cumulative density of states.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>array of float, shape(nbins, nspins)</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.compute_PDOS">
-<span class="sig-name descname"><span class="pre">compute_PDOS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbins</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_cpdos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.compute_PDOS" title="Permalink to this definition"></a></dt>
-<dd><p>Compute partial density of states for energies between the minimum and maximum values of eigenvalues.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nbins</strong> (<em>int</em>) – The number of energies to evaluate between the minimum and maximum eigenvalues.</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian._pdos">
-<span class="sig-name descname"><span class="pre">_pdos</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian._pdos" title="Permalink to this definition"></a></dt>
-<dd><p>Partial density of states.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>array of float, shape(nbins, nspins, norbitals)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian._cpdos">
-<span class="sig-name descname"><span class="pre">_cpdos</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian._cpdos" title="Permalink to this definition"></a></dt>
-<dd><p>Cumulative partial density of states.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>array of float, shape(nbins, nspins, norbitals)</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.decimal">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">decimal</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.decimal" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.diagonalize_hamiltonians">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">diagonalize_hamiltonians</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonians_matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.diagonalize_hamiltonians" title="Permalink to this definition"></a></dt>
-<dd><p>Diagonalize hamiltonians in reciprocal space.</p>
-<p>In terms of electrons, it’s computing the eigenvalues of the hamiltonians.
-In terms of phonons, it’s compute the phonon frequencies of dynamic matrices.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><ul class="simple">
-<li><p><strong>eigenvalues</strong> (<em>array of float, shape(N, nspin, norbitals)</em>)</p></li>
-<li><p><strong>eigenvectors</strong> (<em>array of float, shape(N, nspin, norbitals, norbitals)</em>)</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.get_hamiltonian_matrices_at_kpoints">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_hamiltonian_matrices_at_kpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.get_hamiltonian_matrices_at_kpoints" title="Permalink to this definition"></a></dt>
-<dd><p>Get hamiltonian matrices at k-points</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>kpoints</strong> (<em>array of float</em><em> or </em><a class="reference internal" href="principia_materia.mathematics.new_fraction.html#principia_materia.mathematics.new_fraction.Fraction" title="principia_materia.mathematics.new_fraction.Fraction"><em>Fraction</em></a><em>, </em><em>shape</em><em>(</em><em>dim</em><em>, </em><em>) or </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>dim</em><em>)</em>) – k-points.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>hamiltonians_matrices</strong> – Interaction matrices.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>array of complex, shape(norbitals, norbitals) or shape(N, norbitals, norbitals)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.is_kpoints_from_mesh">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_kpoints_from_mesh</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.is_kpoints_from_mesh" title="Permalink to this definition"></a></dt>
-<dd><p>Check if the k-points attribute matches the k-point mesh generated from self.mesh.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>match</strong> – Whether the k-points attribute matches the k-point mesh.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.nspin">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nspin</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.nspin" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_charmblochrep">
-<span class="sig-name descname"><span class="pre">set_charmblochrep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_charmblochrep" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_eigenvalues">
-<span class="sig-name descname"><span class="pre">set_eigenvalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_eigenvalues" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hamiltonian</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian_at_kpoints">
-<span class="sig-name descname"><span class="pre">set_hamiltonian_at_kpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian_at_kpoints" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian_from_mesh">
-<span class="sig-name descname"><span class="pre">set_hamiltonian_from_mesh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_hamiltonian_from_mesh" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_tetrahedra">
-<span class="sig-name descname"><span class="pre">set_tetrahedra</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.set_tetrahedra" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.spin">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spin</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.spin" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="principia_materia.hamiltonian.hamiltonian.Hamiltonian.units">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#principia_materia.hamiltonian.hamiltonian.Hamiltonian.units" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+  <section id="principia-materia-hamiltonian-hamiltonian-module">
+<h1>principia_materia.hamiltonian.hamiltonian module<a class="headerlink" href="#principia-materia-hamiltonian-hamiltonian-module" title="Permalink to this headline"></a></h1>
 </section>
 
 
@@ -290,7 +119,7 @@ In terms of phonons, it’s compute the phonon frequencies of dynamic matrices.<
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Marianetti Group.</p>
+    <p>&#169; Copyright 2021 - 2022, Marianetti Group.</p>
   </div>
 
    

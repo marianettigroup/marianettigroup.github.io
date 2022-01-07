@@ -110,19 +110,19 @@ we can predict the phonon linewidth and thermal conductivity using perturbation 
 <p>First, we need to prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> for the <code class="docutils literal notranslate"><span class="pre">pm-conductivity</span></code> command:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.yml</span>
-<span class="nt">load_fi2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span>
-<span class="nt">load_fi3</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span>
-<span class="nt">mesh</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">]</span>
-<span class="nt">band</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span>
-  <span class="p p-Indicator">-</span> <span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span>
-<span class="nt">band_label</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">X</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">L</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">structure.yml</span><span class="w"></span>
+<span class="nt">load_fi2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span><span class="w"></span>
+<span class="nt">load_fi3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span><span class="w"></span>
+<span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="nt">band</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;-1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">0&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;1/2</span><span class="nv"> </span><span class="s">1/2</span><span class="nv"> </span><span class="s">1/2&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="nt">band_label</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">X</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$\Gamma$</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">L</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -145,10 +145,10 @@ to the mesh of <span class="math notranslate nohighlight">\(11\hat{\mathbf{1}}\)
 <p>Using the same NaCl example, we can prepare a configuration file <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> similar to the one above:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">config.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.yml</span>
-<span class="nt">load_fi2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span>
-<span class="nt">load_fi3</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span>
-<span class="nt">mesh</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">,</span> <span class="nv">11</span><span class="p p-Indicator">]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">structure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">structure.yml</span><span class="w"></span>
+<span class="nt">load_fi2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fi_order2.hdf5</span><span class="w"></span>
+<span class="nt">load_fi3</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fi_order3.hdf5</span><span class="w"></span>
+<span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">11</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">11</span><span class="p p-Indicator">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -170,7 +170,7 @@ to the mesh of <span class="math notranslate nohighlight">\(11\hat{\mathbf{1}}\)
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Marianetti Group.</p>
+    <p>&#169; Copyright 2021 - 2022, Marianetti Group.</p>
   </div>
 
    

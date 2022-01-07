@@ -104,16 +104,16 @@ are <strong>vec</strong> and <strong>atoms</strong>, which will contain the latt
 Considering the flourite structure, the most straightforward yaml file would be:</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vec</span><span class="p">:</span>
-  <span class="p p-Indicator">[[</span><span class="nv">0.000000</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">],</span>
-   <span class="p p-Indicator">[</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">0.000000</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">],</span>
-   <span class="p p-Indicator">[</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">0.000000</span><span class="p p-Indicator">]]</span>
-<span class="nt">atoms</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Ca</span><span class="p">:</span>
-     <span class="p p-Indicator">[[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]]</span>
-  <span class="p p-Indicator">-</span> <span class="nt">F</span><span class="p">:</span>
-     <span class="p p-Indicator">[[</span><span class="nv">0.25</span><span class="p p-Indicator">,</span><span class="nv">0.25</span><span class="p p-Indicator">,</span><span class="nv">0.25</span><span class="p p-Indicator">],</span>
-      <span class="p p-Indicator">[</span><span class="nv">0.75</span><span class="p p-Indicator">,</span><span class="nv">0.75</span><span class="p p-Indicator">,</span><span class="nv">0.75</span><span class="p p-Indicator">]]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">vec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">[[</span><span class="nv">0.000000</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">[</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">0.000000</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">[</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">2.764309</span><span class="p p-Indicator">,</span><span class="nv">0.000000</span><span class="p p-Indicator">]]</span><span class="w"></span>
+<span class="nt">atoms</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ca</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">[[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="nv">0</span><span class="p p-Indicator">]]</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">F</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="p p-Indicator">[[</span><span class="nv">0.25</span><span class="p p-Indicator">,</span><span class="nv">0.25</span><span class="p p-Indicator">,</span><span class="nv">0.25</span><span class="p p-Indicator">],</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">[</span><span class="nv">0.75</span><span class="p p-Indicator">,</span><span class="nv">0.75</span><span class="p p-Indicator">,</span><span class="nv">0.75</span><span class="p p-Indicator">]]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -123,17 +123,17 @@ parser (see parse_array if interested in the details). Therefore, there are many
 options for entering a matrix as a string. For example, consider:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.764309</span>
-<span class="nt">vec</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-   <span class="no">0 1 1</span>
-   <span class="no">1 0 1</span>
-   <span class="no">1 1 0</span>
-<span class="nt">atoms</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Ca</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-     <span class="no">0 0 0</span>
-  <span class="p p-Indicator">-</span> <span class="nt">F</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-     <span class="no">1/4 1/4 1/4</span>
-     <span class="no">3/4 3/4 3/4</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.764309</span><span class="w"></span>
+<span class="nt">vec</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">   </span><span class="no">0 1 1</span><span class="w"></span>
+<span class="w">   </span><span class="no">1 0 1</span><span class="w"></span>
+<span class="w">   </span><span class="no">1 1 0</span><span class="w"></span>
+<span class="nt">atoms</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ca</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">     </span><span class="no">0 0 0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">F</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">     </span><span class="no">1/4 1/4 1/4</span><span class="w"></span>
+<span class="w">     </span><span class="no">3/4 3/4 3/4</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -145,11 +145,11 @@ delimiters (i.e. spaces and newlines), which tells the code to form a matrix.
 One of the more compact ways to achieve the same input files as above is:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-number"><span class="caption-text">structure.yml</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.764309</span>
-<span class="nt">vec</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0 1 1 ; 1 0 1 ; 1 1 0</span>
-<span class="nt">atoms</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Ca</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0 0 0</span>
-  <span class="p p-Indicator">-</span> <span class="nt">F</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1/4 1/4 1/4 ; 3/4 3/4 3/4</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.764309</span><span class="w"></span>
+<span class="nt">vec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 1 1 ; 1 0 1 ; 1 1 0</span><span class="w"></span>
+<span class="nt">atoms</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ca</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 0 0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">F</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1/4 1/4 1/4 ; 3/4 3/4 3/4</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -157,14 +157,14 @@ One of the more compact ways to achieve the same input files as above is:</p>
 <p class="admonition-title">Note</p>
 <p>In the case of syntax error in YAML file, a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code> will be thrown indicating the an error has
 occurred during the YAML loading process. For example, with the following text as YAML input:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.764309</span>
-<span class="nt">vec</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-   <span class="no">0 1 1 ; 1 0 1 ; 1 1 0</span>
-<span class="nt">atoms</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">Ca</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="l l-Scalar l-Scalar-Plain">0 0 0</span>
-  <span class="p p-Indicator">-</span> <span class="nt">F</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-    <span class="l l-Scalar l-Scalar-Plain">1/4 1/4 1/4 ; 3/4 3/4 3/4</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.764309</span><span class="w"></span>
+<span class="nt">vec</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">   </span><span class="no">0 1 1 ; 1 0 1 ; 1 1 0</span><span class="w"></span>
+<span class="nt">atoms</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ca</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">0 0 0</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">F</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">1/4 1/4 1/4 ; 3/4 3/4 3/4</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The following error message will appear:</p>
@@ -189,7 +189,7 @@ occurred during the YAML loading process. For example, with the following text a
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Marianetti Group.</p>
+    <p>&#169; Copyright 2021 - 2022, Marianetti Group.</p>
   </div>
 
    
