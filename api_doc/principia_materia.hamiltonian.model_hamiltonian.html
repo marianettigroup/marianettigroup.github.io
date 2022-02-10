@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.representation.html">principia_materia.representation package</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="principia_materia.hamiltonian.html">principia_materia.hamiltonian package</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="principia_materia.hamiltonian.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="principia_materia.hamiltonian.html#module-principia_materia.hamiltonian">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="principia_materia.io_interface.html">principia_materia.io_interface package</a></li>
@@ -104,8 +104,84 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="principia-materia-hamiltonian-model-hamiltonian-module">
-<h1>principia_materia.hamiltonian.model_hamiltonian module<a class="headerlink" href="#principia-materia-hamiltonian-model-hamiltonian-module" title="Permalink to this headline"></a></h1>
+  <section id="module-principia_materia.hamiltonian.model_hamiltonian">
+<span id="principia-materia-hamiltonian-model-hamiltonian-module"></span><h1>principia_materia.hamiltonian.model_hamiltonian module<a class="headerlink" href="#module-principia_materia.hamiltonian.model_hamiltonian" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">ModelHamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.from_dict">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ftmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.from_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.get_hamiltonian_at_kpoint">
+<span class="sig-name descname"><span class="pre">get_hamiltonian_at_kpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kpoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.get_hamiltonian_at_kpoint" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.hamiltonian_matrices">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hamiltonian_matrices</span></span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.hamiltonian_matrices" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.nortbials">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nortbials</span></span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.nortbials" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.set_hamiltonian">
+<span class="sig-name descname"><span class="pre">set_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tpoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hamiltonian_matrices</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.set_hamiltonian" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.tpoints">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tpoints</span></span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.ModelHamiltonian.tpoints" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.format_hamiltonian_to_yaml">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">format_hamiltonian_to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.format_hamiltonian_to_yaml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.get_ModelHamiltonian_hdf5_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">get_ModelHamiltonian_hdf5_wrapper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.get_ModelHamiltonian_hdf5_wrapper" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.get_ModelHamiltonian_yaml_wrapper">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">get_ModelHamiltonian_yaml_wrapper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.get_ModelHamiltonian_yaml_wrapper" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.get_modelhamiltonian_from_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">get_modelhamiltonian_from_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h5file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.get_modelhamiltonian_from_hdf5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.get_modelhamiltonian_from_yaml">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">get_modelhamiltonian_from_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.get_modelhamiltonian_from_yaml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.load_hamiltonian">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">load_hamiltonian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.load_hamiltonian" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.save_modelhamiltonian_to_hdf5">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">save_modelhamiltonian_to_hdf5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h5file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'model_hamiltonian.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.save_modelhamiltonian_to_hdf5" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.hamiltonian.model_hamiltonian.save_modelhamiltonian_to_yaml">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.hamiltonian.model_hamiltonian.</span></span><span class="sig-name descname"><span class="pre">save_modelhamiltonian_to_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'model_hamiltonian.hdf5'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.hamiltonian.model_hamiltonian.save_modelhamiltonian_to_yaml" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 
 

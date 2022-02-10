@@ -152,7 +152,17 @@ greater than 2.</p></li>
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.io_interface.get_compute_engine_map">
 <span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.</span></span><span class="sig-name descname"><span class="pre">get_compute_engine_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.get_compute_engine_map" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Load First-Principle Interfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>compute_engine_map</strong> – A dictionary containing the available first-principle interfaces in the form of
+subclasses of ComputeJob.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="principia_materia.io_interface.indent">
@@ -166,6 +176,23 @@ greater than 2.</p></li>
 <li><p><strong>prefix</strong> (<em>str</em><em> or </em><em>int</em><em>, </em><em>optional</em><em>, </em><em>default to &quot;  &quot;</em>) – The indentation, if type is str, prepend the prefix to each line,
 if type is int, prepend the amount of spaces to each line.</p></li>
 <li><p><strong>initial_indent</strong> (<em>str</em><em>, </em><em>optional</em><em>, </em><em>default to None</em>) – If not None, prepend the input string to the first line of text.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="principia_materia.io_interface.jobs_series_to_jobs_db">
+<span class="sig-prename descclassname"><span class="pre">principia_materia.io_interface.</span></span><span class="sig-name descname"><span class="pre">jobs_series_to_jobs_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobs_db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jobs_series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#principia_materia.io_interface.jobs_series_to_jobs_db" title="Permalink to this definition"></a></dt>
+<dd><p>Read Jobs in from ComputeJobSeries and store them into database with JobsDB.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobs_db</strong> (<a class="reference internal" href="principia_materia.io_interface.jobs_db.html#principia_materia.io_interface.jobs_db.JobsDB" title="principia_materia.io_interface.jobs_db.JobsDB"><em>JobsDB</em></a>) – The interface of the database for storing the jobs.</p></li>
+<li><p><strong>jobs_series</strong> (<a class="reference internal" href="principia_materia.io_interface.compute_job_series.html#principia_materia.io_interface.compute_job_series.ComputeJobSeries" title="principia_materia.io_interface.compute_job_series.ComputeJobSeries"><em>ComputeJobSeries</em></a>) – The interface to the job series for reading the jobs.</p></li>
+<li><p><strong>search_conditions</strong> (<em>list</em><em>, </em><em>optional</em>) – Additional search conditions for filtering the jobs.</p></li>
+<li><p><strong>update</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, only read and store the jobs that haven’t been read in before.
+If False, overwrite the data already in the database.</p></li>
 </ul>
 </dd>
 </dl>
