@@ -50,6 +50,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Aluminum Example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#compute-phonon-with-hs-bid">Compute phonon with HS-BID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plot-phonon-band-structure-and-dos">Plot phonon band structure and DOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-quantum-espresso">Working with Quantum-ESPRESSO</a></li>
 </ul>
 </li>
 </ul>
@@ -153,7 +154,8 @@ These jobs we be saved in the database <code class="docutils literal notranslate
   --job-config-path ../../data/dft_files --root-directory jobs-to-run
 </pre></div>
 </div>
-<p>After the input files are generated, we can execute VASP inside the directories of the individual jobs.</p>
+<p>Where <code class="docutils literal notranslate"><span class="pre">../../data/dft_files</span></code> stores the template input files including <code class="docutils literal notranslate"><span class="pre">INCAR</span></code>, <code class="docutils literal notranslate"><span class="pre">POTCAR</span></code> and <code class="docutils literal notranslate"><span class="pre">KPOINTS</span></code>.
+After the input files are generated, we can execute VASP inside the directories of the individual jobs.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
 <li><p>When the first principle calculations are finished. The following command can parse out the results of the calculations
@@ -220,6 +222,56 @@ and store them into the database we created.</p></li>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Phonon band structure and DOS of Al.</span><a class="headerlink" href="#fig-exp-al-phonon" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
+</section>
+<section id="working-with-quantum-espresso">
+<h2>Working with Quantum-ESPRESSO<a class="headerlink" href="#working-with-quantum-espresso" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>If in this case we are working with Quantum-ESPRESSO (QE) instead of VASP, first we will need to create a template QE input file.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number"><span class="caption-text">NaCl.scf.in</span><a class="headerlink" href="#id4" title="Permalink to this code"></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">&amp;</span><span class="n">control</span>
+    <span class="n">calculation</span> <span class="o">=</span> <span class="s1">&#39;scf&#39;</span>
+    <span class="n">tprnfor</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+    <span class="n">tstress</span> <span class="o">=</span> <span class="o">.</span><span class="n">true</span><span class="o">.</span>
+    <span class="n">pseudo_dir</span> <span class="o">=</span> <span class="s1">&#39;pseudo/&#39;</span>
+    <span class="n">restart_mode</span><span class="o">=</span><span class="s1">&#39;from_scratch&#39;</span><span class="p">,</span>
+    <span class="n">outdir</span><span class="o">=</span><span class="s1">&#39;tmp&#39;</span>
+ <span class="o">/</span>
+ <span class="o">&amp;</span><span class="n">system</span>
+    <span class="n">ibrav</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">nat</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">ntyp</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">ecutwfc</span> <span class="o">=</span> <span class="mf">60.0</span>
+ <span class="o">/</span>
+ <span class="o">&amp;</span><span class="n">electrons</span>
+    <span class="n">diagonalization</span> <span class="o">=</span> <span class="s1">&#39;david&#39;</span>
+    <span class="n">conv_thr</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">d</span><span class="o">-</span><span class="mi">8</span>
+ <span class="o">/</span>
+<span class="n">ATOMIC_SPECIES</span>
+ <span class="n">Al</span>  <span class="mf">26.981539</span> <span class="n">Al</span><span class="o">.</span><span class="n">pbe</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="n">kjpaw_psl</span><span class="mf">.1.0.0</span><span class="o">.</span><span class="n">UPF</span>
+<span class="n">ATOMIC_POSITIONS</span> <span class="n">crystal</span>
+ <span class="n">Al</span>   <span class="mf">0.0000000000000000</span>  <span class="mf">0.0000000000000000</span>  <span class="mf">0.0000000000000000</span>
+<span class="n">CELL_PARAMETERS</span> <span class="n">angstrom</span>
+  <span class="mf">0.00000000</span>   <span class="mf">1.99208958</span>   <span class="mf">1.99208958</span>
+  <span class="mf">1.99208958</span>   <span class="mf">0.00000000</span>   <span class="mf">1.99208958</span>
+  <span class="mf">1.99208958</span>   <span class="mf">1.99208958</span>   <span class="mf">0.00000000</span>
+<span class="n">K_POINTS</span> <span class="n">automatic</span>
+  <span class="mi">20</span> <span class="mi">20</span> <span class="mi">20</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Then we create the input files for QE calculations. In the case of QE the option <code class="docutils literal notranslate"><span class="pre">--job-config-path</span></code> expects the path to the above
+template QE input file (The data in <code class="docutils literal notranslate"><span class="pre">nat</span></code>, <code class="docutils literal notranslate"><span class="pre">ATOMIC_POSITIONS</span></code>, <code class="docutils literal notranslate"><span class="pre">CELL_PARAMETERS</span></code> and <code class="docutils literal notranslate"><span class="pre">K_POINTS</span></code> of the template file will
+be replaced with the configurations of the jobs).</p></li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pm-jobs --config config.yml --create --engine qe --save-config jobs_config.yml <span class="se">\</span>
+  --job-config-path NaCl.scf.in --root-directory jobs-to-run
+</pre></div>
+</div>
+<p>After the input files are created the static QE calculations can be executed and the remaining steps are the same as before.</p>
+</div></blockquote>
 </section>
 </section>
 

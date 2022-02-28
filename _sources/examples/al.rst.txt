@@ -61,6 +61,7 @@ Compute phonon with HS-BID
       pm-jobs --config config.yml --create --engine vasp --save-config jobs_config.yml \
         --job-config-path ../../data/dft_files --root-directory jobs-to-run
 
+  Where ``../../data/dft_files`` stores the template input files including ``INCAR``, ``POTCAR`` and ``KPOINTS``.
   After the input files are generated, we can execute VASP inside the directories of the individual jobs.
 
 3. When the first principle calculations are finished. The following command can parse out the results of the calculations
@@ -118,3 +119,52 @@ Plot phonon band structure and DOS
   :name: fig-exp-al-phonon
 
   Phonon band structure and DOS of Al.
+
+
+Working with Quantum-ESPRESSO
+-----------------------------
+
+1. If in this case we are working with Quantum-ESPRESSO (QE) instead of VASP, first we will need to create a template QE input file.
+
+   .. code-block::
+      :caption: NaCl.scf.in
+
+       &control
+          calculation = 'scf'
+          tprnfor = .true.
+          tstress = .true.
+          pseudo_dir = 'pseudo/'
+          restart_mode='from_scratch',
+          outdir='tmp'
+       /
+       &system
+          ibrav = 0
+          nat = 1
+          ntyp = 1
+          ecutwfc = 60.0
+       /
+       &electrons
+          diagonalization = 'david'
+          conv_thr = 1.0d-8
+       /
+      ATOMIC_SPECIES
+       Al  26.981539 Al.pbe-n-kjpaw_psl.1.0.0.UPF
+      ATOMIC_POSITIONS crystal
+       Al   0.0000000000000000  0.0000000000000000  0.0000000000000000
+      CELL_PARAMETERS angstrom
+        0.00000000   1.99208958   1.99208958
+        1.99208958   0.00000000   1.99208958
+        1.99208958   1.99208958   0.00000000
+      K_POINTS automatic
+        20 20 20 0 0 0
+
+2. Then we create the input files for QE calculations. In the case of QE the option ``--job-config-path`` expects the path to the above
+   template QE input file (The data in ``nat``, ``ATOMIC_POSITIONS``, ``CELL_PARAMETERS`` and ``K_POINTS`` of the template file will
+   be replaced with the configurations of the jobs).
+
+  .. code-block:: bash
+
+      pm-jobs --config config.yml --create --engine qe --save-config jobs_config.yml \
+        --job-config-path NaCl.scf.in --root-directory jobs-to-run
+
+  After the input files are created the static QE calculations can be executed and the remaining steps are the same as before.
