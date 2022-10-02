@@ -1,7 +1,0 @@
-API Documentations
-===================
-
-.. toctree::
-   :maxdepth: 4
-
-   principia_materia

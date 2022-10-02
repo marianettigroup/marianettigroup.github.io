@@ -1,7 +1,0 @@
-principia\_materia.representation.shift\_mode module
-====================================================
-
-.. automodule:: principia_materia.representation.shift_mode
-   :members:
-   :undoc-members:
-   :show-inheritance:

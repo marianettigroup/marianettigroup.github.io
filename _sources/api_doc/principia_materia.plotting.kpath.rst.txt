@@ -1,7 +1,0 @@
-principia\_materia.plotting.kpath module
-========================================
-
-.. automodule:: principia_materia.plotting.kpath
-   :members:
-   :undoc-members:
-   :show-inheritance:

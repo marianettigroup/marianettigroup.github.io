@@ -1,9 +1,0 @@
-Known Issues
-=============
-
-Here is a list of known issues with the current code.
-
-
-#. The full symmetry code might fail on some systems including BCC structure.
-
-#. Currently the code only works for symmorphic space groups.

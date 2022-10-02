@@ -1,7 +1,0 @@
-principia\_materia.utils.text\_file\_search module
-==================================================
-
-.. automodule:: principia_materia.utils.text_file_search
-   :members:
-   :undoc-members:
-   :show-inheritance:

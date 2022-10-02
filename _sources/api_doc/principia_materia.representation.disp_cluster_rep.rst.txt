@@ -1,7 +1,0 @@
-principia\_materia.representation.disp\_cluster\_rep module
-===========================================================
-
-.. automodule:: principia_materia.representation.disp_cluster_rep
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-principia\_materia.representation.single\_tensor\_rep module
-============================================================
-
-.. automodule:: principia_materia.representation.single_tensor_rep
-   :members:
-   :undoc-members:
-   :show-inheritance:

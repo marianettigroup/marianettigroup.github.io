@@ -1,7 +1,0 @@
-principia\_materia.io\_interface.vasp module
-============================================
-
-.. automodule:: principia_materia.io_interface.vasp
-   :members:
-   :undoc-members:
-   :show-inheritance:

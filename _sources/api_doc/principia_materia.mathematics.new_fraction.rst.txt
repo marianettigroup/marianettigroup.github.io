@@ -1,7 +1,0 @@
-principia\_materia.mathematics.new\_fraction module
-===================================================
-
-.. automodule:: principia_materia.mathematics.new_fraction
-   :members:
-   :undoc-members:
-   :show-inheritance:

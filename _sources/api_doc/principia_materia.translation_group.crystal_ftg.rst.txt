@@ -1,7 +1,0 @@
-principia\_materia.translation\_group.crystal\_ftg module
-=========================================================
-
-.. automodule:: principia_materia.translation_group.crystal_ftg
-   :members:
-   :undoc-members:
-   :show-inheritance:

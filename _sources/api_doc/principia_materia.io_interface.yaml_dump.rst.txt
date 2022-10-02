@@ -1,7 +1,0 @@
-principia\_materia.io\_interface.yaml\_dump module
-==================================================
-
-.. automodule:: principia_materia.io_interface.yaml_dump
-   :members:
-   :undoc-members:
-   :show-inheritance:

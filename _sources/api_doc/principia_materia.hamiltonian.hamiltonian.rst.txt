@@ -1,7 +1,0 @@
-principia\_materia.hamiltonian.hamiltonian module
-=================================================
-
-.. automodule:: principia_materia.hamiltonian.hamiltonian
-   :members:
-   :undoc-members:
-   :show-inheritance:

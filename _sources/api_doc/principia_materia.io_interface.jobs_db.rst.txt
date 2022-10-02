@@ -1,7 +1,0 @@
-principia\_materia.io\_interface.jobs\_db module
-================================================
-
-.. automodule:: principia_materia.io_interface.jobs_db
-   :members:
-   :undoc-members:
-   :show-inheritance:

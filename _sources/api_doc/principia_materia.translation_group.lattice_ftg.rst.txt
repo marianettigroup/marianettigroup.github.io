@@ -1,7 +1,0 @@
-principia\_materia.translation\_group.lattice\_ftg module
-=========================================================
-
-.. automodule:: principia_materia.translation_group.lattice_ftg
-   :members:
-   :undoc-members:
-   :show-inheritance:

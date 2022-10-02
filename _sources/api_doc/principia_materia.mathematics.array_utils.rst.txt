@@ -1,7 +1,0 @@
-principia\_materia.mathematics.array\_utils module
-==================================================
-
-.. automodule:: principia_materia.mathematics.array_utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

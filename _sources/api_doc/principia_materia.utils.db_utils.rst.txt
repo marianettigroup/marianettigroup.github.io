@@ -1,7 +1,0 @@
-principia\_materia.utils.db\_utils module
-=========================================
-
-.. automodule:: principia_materia.utils.db_utils
-   :members:
-   :undoc-members:
-   :show-inheritance:

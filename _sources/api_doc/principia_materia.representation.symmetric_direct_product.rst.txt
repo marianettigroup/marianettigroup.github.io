@@ -1,7 +1,0 @@
-principia\_materia.representation.symmetric\_direct\_product module
-===================================================================
-
-.. automodule:: principia_materia.representation.symmetric_direct_product
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-principia\_materia.constants.periodic\_table module
-===================================================
-
-.. automodule:: principia_materia.constants.periodic_table
-   :members:
-   :undoc-members:
-   :show-inheritance:

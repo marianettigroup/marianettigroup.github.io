@@ -1,7 +1,0 @@
-principia\_materia.phonon\_id.finite\_displacements module
-==========================================================
-
-.. automodule:: principia_materia.phonon_id.finite_displacements
-   :members:
-   :undoc-members:
-   :show-inheritance:

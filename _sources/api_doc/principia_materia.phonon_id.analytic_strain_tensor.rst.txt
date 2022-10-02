@@ -1,7 +1,0 @@
-principia\_materia.phonon\_id.analytic\_strain\_tensor module
-=============================================================
-
-.. automodule:: principia_materia.phonon_id.analytic_strain_tensor
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-principia\_materia.io\_interface.qpoints\_io module
-===================================================
-
-.. automodule:: principia_materia.io_interface.qpoints_io
-   :members:
-   :undoc-members:
-   :show-inheritance:

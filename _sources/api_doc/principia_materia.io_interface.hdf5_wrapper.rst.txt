@@ -1,7 +1,0 @@
-principia\_materia.io\_interface.hdf5\_wrapper module
-=====================================================
-
-.. automodule:: principia_materia.io_interface.hdf5_wrapper
-   :members:
-   :undoc-members:
-   :show-inheritance:

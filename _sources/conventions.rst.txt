@@ -1,9 +1,0 @@
-Software Conventions
-====================
-
-principia-materia (PM) follows a variety of coding conventions and practices.
-
-1. Python code style is guided by `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_, though there are
-   various deviations (e.g. 2 space indentations, etc).
-
-2. For command line options, we are rigidly following the `GNU extension <https://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html>`_ of the POSIX standard.

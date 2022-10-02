@@ -1,7 +1,0 @@
-principia\_materia.constants.point\_group\_notation\_table module
-=================================================================
-
-.. automodule:: principia_materia.constants.point_group_notation_table
-   :members:
-   :undoc-members:
-   :show-inheritance:

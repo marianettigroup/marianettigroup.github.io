@@ -1,7 +1,0 @@
-principia\_materia.phonon\_id.frozen\_phonons module
-====================================================
-
-.. automodule:: principia_materia.phonon_id.frozen_phonons
-   :members:
-   :undoc-members:
-   :show-inheritance:

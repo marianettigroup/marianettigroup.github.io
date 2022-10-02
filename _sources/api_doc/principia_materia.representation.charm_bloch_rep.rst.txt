@@ -1,7 +1,0 @@
-principia\_materia.representation.charm\_bloch\_rep module
-==========================================================
-
-.. automodule:: principia_materia.representation.charm_bloch_rep
-   :members:
-   :undoc-members:
-   :show-inheritance:
