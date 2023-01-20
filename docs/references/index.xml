@@ -6202,7 +6202,7 @@ number of displacement vectors.&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h4 id="set_resultsjob_handler-data_type-prefixnone-fill00-config_filefinite_displacementsyml">set_results(job_handler, data_type, prefix=None, fill=0.0, config_file=&amp;lsquo;finite_displacements.yml&amp;rsquo;)&lt;/h4>
+&lt;h4 id="set_resultsjob_handler-data_type-prefixnone-fill00-skip_zerofalse-config_filefinite_displacementsyml">set_results(job_handler, data_type, prefix=None, fill=0.0, skip_zero=False, config_file=&amp;lsquo;finite_displacements.yml&amp;rsquo;)&lt;/h4>
 &lt;p>Collect computation results and compute finite displacements.&lt;/p>
 &lt;ul>
 &lt;li>
