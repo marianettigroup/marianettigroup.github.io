@@ -142,6 +142,46 @@ in cubic SrTiO\(_3\). We will use &lt;strong>pm-prototype-xtal&lt;/strong> to ge
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 0.0000 0.7071 0.0000 0.7071 0.0000 0.0000 0.0000 0.0000 0.0000
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 0.0000 0.0000 0.0000 0.0000 0.0000 0.7071 0.0000 0.7071 0.0000
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 0.0000 0.0000 0.7071 0.0000 0.0000 0.0000 0.7071 0.0000 0.0000
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Products of Irreducible Representations</title><link>https://marianettigroup.github.io/docs/functionality/irrep-product/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/docs/functionality/irrep-product/</guid><description>
+&lt;p>A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pm-irrep-product --point-group Oh --irreps T2g,T2g
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># T2gxT2g = A1g+Eg+T1g+T2g &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The composition of a &lt;em>symmetric&lt;/em> product is obtained as&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pm-irrep-product --point-group Oh --irreps T2g,T2g --symmetric
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># [T2gxT2g] = A1g+Eg+T2g&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>An arbitrary number of irreps can be handled&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pm-irrep-product --point-group Oh --irreps T2g,T2g,Eg,Eg,A2g
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># T2gxT2gxEgxEgxA2g = 2A1g+2A2g+4Eg+4T1g+4T2g&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Another important task is constructing the irreducible representation vectors of the product
+representation in terms of the rows of the original irreducible representations.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pm-irrep-product --point-group Oh --irreps Eg,Eg --print-vectors
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># EgxEg = A1g+A2g+Eg&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># irr Eg.0xEg.0 Eg.0xEg.1 Eg.1xEg.0 Eg.1xEg.1 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># A1g 0.7071 0.0 0.0 0.7071 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># A2g 0.0 0.7071 -0.7071 0.0 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Eg.0 0.0 0.7071 0.7071 0.0 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Eg.1 0.7071 0.0 0.0 -0.7071 &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The same can be done for the symmetric product&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pm-irrep-product --point-group Oh --irreps Eg,Eg --print-vectors --symmetric
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># output &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># [EgxEg] = A1g+Eg&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># irr Eg.0xEg.0 Eg.0xEg.1 Eg.1xEg.1 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># A1g 0.7071 0.0 0.7071 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Eg.0 0.0 1.0 0.0 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># Eg.1 0.7071 0.0 -0.7071&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Docs: Compute Irreducible Derivative</title><link>https://marianettigroup.github.io/docs/functionality/compute-id/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/docs/functionality/compute-id/</guid><description>
 &lt;p>Within this package we can compute irreducible derivatives of phonons and phonon interactions at a given order with either LID or BID approach.
 The theory behind these approaches are described in the following paper:&lt;/p>
