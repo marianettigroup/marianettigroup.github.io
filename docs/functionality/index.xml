@@ -6,48 +6,15 @@ one entry to the console_scripts as&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pm&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">lid&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#000">principia_materia&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">cli&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">lid_cli&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#000">main&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">...&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pm&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">periodica&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#000">principia_materia&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">cli&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">periodica_cli&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#000">main&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Additionally, we would add the executable &lt;code>pm-periodica&lt;/code> to &lt;code>pm-completion.sh&lt;/code> as&lt;/p></description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;p>Here we document all input tags that may be used with command line scripts, and these
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Additionally, we would add the executable &lt;code>pm-periodica&lt;/code> to &lt;code>pm-completion.sh&lt;/code> as&lt;/p></description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="types-of-tags">Types of tags&lt;a class="td-heading-self-link" href="#types-of-tags" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Here we document all input tags that may be used with command line scripts, and these
 are broken into two categories: primary and secondary. Primary variables are used
-across multiple scripts, while secondary variables are specific
+across multiple scripts and are not context specific, while secondary variables are specific
 to a single script.&lt;/p>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: left">Name&lt;/th>
- &lt;th style="text-align: left">Description&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: left">lattice_vectors&lt;/td>
- &lt;td style="text-align: left">Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">basis_atoms&lt;/td>
- &lt;td style="text-align: left">Basis atoms of crystal structure.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">supercell&lt;/td>
- &lt;td style="text-align: left">A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">axial_strain&lt;/td>
- &lt;td style="text-align: left">A vector of three floats which specifies the axial strain.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">strain&lt;/td>
- &lt;td style="text-align: left">A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">point_group&lt;/td>
- &lt;td style="text-align: left">A string specifying the point group in Schoenfiles notation.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">orthogonal_transformation&lt;/td>
- &lt;td style="text-align: left">A NxN orthogonal matrix.&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table></description></item><item><title>Crystal Structure</title><link>https://example.docsy.dev/docs/functionality/xtal-structure/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/xtal-structure/</guid><description>&lt;p>For many different tasks performed in the PM suite, a crystal structure, or
+&lt;h2 id="tags-with-vector-or-matrix-values">Tags with vector or matrix values&lt;a class="td-heading-self-link" href="#tags-with-vector-or-matrix-values" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>Many variables will be vectors or matrices, and all such variables will
+be processed by our text parser. Below are several examples which illustrate
+the variety of different ways that vectors may be input.&lt;/p></description></item><item><title>Crystal Structure</title><link>https://example.docsy.dev/docs/functionality/xtal-structure/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/xtal-structure/</guid><description>&lt;p>For many different tasks performed in the PM suite, a crystal structure, or
 some component of a crystal structure, must be provided to the code. Most
 likely, this will be done using a yaml input file, and the two required key words
 are &lt;strong>vec&lt;/strong> and &lt;strong>atoms&lt;/strong>, which will contain the lattice vectors and the basis atoms, respectively.
