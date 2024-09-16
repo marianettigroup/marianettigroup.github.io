@@ -6,11 +6,98 @@ one entry to the console_scripts as&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pm&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">lid&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#000">principia_materia&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">cli&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">lid_cli&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#000">main&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">...&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pm&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">periodica&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#000">principia_materia&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">cli&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">periodica_cli&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#000">main&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Additionally, we would add the executable &lt;code>pm-periodica&lt;/code> to &lt;code>pm-completion.sh&lt;/code> as&lt;/p></description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="types-of-tags">Types of tags&lt;a class="td-heading-self-link" href="#types-of-tags" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;p>Here we document all input tags that may be used with command line scripts, and these
-are broken into two categories: primary and secondary. Primary variables are used
-across multiple scripts and are not context specific, while secondary variables are specific
-to a single script.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Additionally, we would add the executable &lt;code>pm-periodica&lt;/code> to &lt;code>pm-completion.sh&lt;/code> as&lt;/p></description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags">List of Input Tags&lt;a class="td-heading-self-link" href="#list-of-input-tags" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;p>&lt;a href="#lattice_vectors">lattice_vectors,&lt;/a>
+&lt;a href="#basis_atoms">basis_atoms,&lt;/a>&lt;/p>
+&lt;h3 id="lattice_vectors">lattice_vectors&lt;a class="td-heading-self-link" href="#lattice_vectors" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;p>Testing 1 2 3&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">&lt;/th>
+ &lt;th style="text-align: left">&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;em>type:&lt;/em>&lt;/td>
+ &lt;td style="text-align: left">real, matrix&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;em>dimension:&lt;/em>&lt;/td>
+ &lt;td style="text-align: left">3x3&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;em>scripts:&lt;/em>&lt;/td>
+ &lt;td style="text-align: left">xx, yy&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;em>type:&lt;/em> matrix&lt;/p>
+&lt;p>&lt;em>dimension:&lt;/em> 3x3&lt;/p>
+&lt;h3 id="basis_atoms">basis_atoms&lt;a class="td-heading-self-link" href="#basis_atoms" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">Name&lt;/th>
+ &lt;th style="text-align: left">Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">lattice_vectors&lt;/td>
+ &lt;td style="text-align: left">Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">basis_atoms&lt;/td>
+ &lt;td style="text-align: left">Basis atoms of crystal structure.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">supa&lt;/td>
+ &lt;td style="text-align: left">A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">axial_strain&lt;/td>
+ &lt;td style="text-align: left">A vector of three floats which specifies the axial strain.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">strain&lt;/td>
+ &lt;td style="text-align: left">A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">point_group&lt;/td>
+ &lt;td style="text-align: left">A string specifying the point group in Schoenfiles notation.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">kpoint&lt;/td>
+ &lt;td style="text-align: left">A three dimensional vector specifying a kpoint.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">qpoint&lt;/td>
+ &lt;td style="text-align: left">A three dimensional vector specifying a qpoint.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">kpoint_mesh&lt;/td>
+ &lt;td style="text-align: left">A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">qpoint_mesh&lt;/td>
+ &lt;td style="text-align: left">A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">kpoint_path&lt;/td>
+ &lt;td style="text-align: left">A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">qpoint_path&lt;/td>
+ &lt;td style="text-align: left">A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">force_constants&lt;/td>
+ &lt;td style="text-align: left">A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
 &lt;h2 id="tags-with-vector-or-matrix-values">Tags with vector or matrix values&lt;a class="td-heading-self-link" href="#tags-with-vector-or-matrix-values" aria-label="Heading self-link">&lt;/a>&lt;/h2>
 &lt;p>Many variables will be vectors or matrices, and all such variables will
 be processed by our text parser. Below are several examples which illustrate
