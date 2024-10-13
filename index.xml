@@ -111,7 +111,7 @@ is naturally characterized by a supercell \(\hat{S}_{BZ}\), and LatticeFTG deriv
 Finding all translation points within a given supercell is a key task.
 Similarly,
 another key task is finding all the k-points commensurate with a given FTG, but this is
-currently execute in the separate kpoints class.&lt;/p></description></item><item><title>Data Aggregator</title><link>https://example.docsy.dev/docs/data_management/data-wrapper/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/data-wrapper/</guid><description>&lt;p>Like many python-based application, PM will need to take input data from the
+currently execute in the separate kpoints class.&lt;/p></description></item><item><title>Data Aggregator</title><link>https://example.docsy.dev/docs/data_management/data_aggregator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/data_aggregator/</guid><description>&lt;p>Like many python-based application, PM will need to take input data from the
 command line and or YAML input files. A mechanism is needed to characterize
 the data, enforce the data type of the input data, and possibly do some
 preprocessing of the data. Data Aggregator handles these tasks.&lt;/p>
