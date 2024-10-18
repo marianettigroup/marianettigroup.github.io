@@ -15,22 +15,22 @@ one entry to the console_scripts as&lt;/p>
 &lt;table>
  &lt;thead>
  &lt;tr>
- &lt;th style="text-align: left">&lt;/th>
- &lt;th style="text-align: left">&lt;/th>
+ &lt;th>&lt;/th>
+ &lt;th>&lt;/th>
  &lt;/tr>
  &lt;/thead>
  &lt;tbody>
  &lt;tr>
- &lt;td style="text-align: left">&lt;em>type:&lt;/em>&lt;/td>
- &lt;td style="text-align: left">real, matrix&lt;/td>
+ &lt;td>&lt;em>type:&lt;/em>&lt;/td>
+ &lt;td>real, matrix&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">&lt;em>dimension:&lt;/em>&lt;/td>
- &lt;td style="text-align: left">3x3&lt;/td>
+ &lt;td>&lt;em>dimension:&lt;/em>&lt;/td>
+ &lt;td>3x3&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">&lt;em>scripts:&lt;/em>&lt;/td>
- &lt;td style="text-align: left">xx, yy&lt;/td>
+ &lt;td>&lt;em>scripts:&lt;/em>&lt;/td>
+ &lt;td>xx, yy&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
@@ -40,62 +40,62 @@ one entry to the console_scripts as&lt;/p>
 &lt;table>
  &lt;thead>
  &lt;tr>
- &lt;th style="text-align: left">Name&lt;/th>
- &lt;th style="text-align: left">Description&lt;/th>
+ &lt;th>Name&lt;/th>
+ &lt;th>Description&lt;/th>
  &lt;/tr>
  &lt;/thead>
  &lt;tbody>
  &lt;tr>
- &lt;td style="text-align: left">lattice_vectors&lt;/td>
- &lt;td style="text-align: left">Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td>
+ &lt;td>lattice_vectors&lt;/td>
+ &lt;td>Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">basis_atoms&lt;/td>
- &lt;td style="text-align: left">Basis atoms of crystal structure.&lt;/td>
+ &lt;td>basis_atoms&lt;/td>
+ &lt;td>Basis atoms of crystal structure.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">supa&lt;/td>
- &lt;td style="text-align: left">A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td>
+ &lt;td>supa&lt;/td>
+ &lt;td>A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">axial_strain&lt;/td>
- &lt;td style="text-align: left">A vector of three floats which specifies the axial strain.&lt;/td>
+ &lt;td>axial_strain&lt;/td>
+ &lt;td>A vector of three floats which specifies the axial strain.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">strain&lt;/td>
- &lt;td style="text-align: left">A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td>
+ &lt;td>strain&lt;/td>
+ &lt;td>A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">point_group&lt;/td>
- &lt;td style="text-align: left">A string specifying the point group in Schoenfiles notation.&lt;/td>
+ &lt;td>point_group&lt;/td>
+ &lt;td>A string specifying the point group in Schoenfiles notation.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">kpoint&lt;/td>
- &lt;td style="text-align: left">A three dimensional vector specifying a kpoint.&lt;/td>
+ &lt;td>kpoint&lt;/td>
+ &lt;td>A three dimensional vector specifying a kpoint.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">qpoint&lt;/td>
- &lt;td style="text-align: left">A three dimensional vector specifying a qpoint.&lt;/td>
+ &lt;td>qpoint&lt;/td>
+ &lt;td>A three dimensional vector specifying a qpoint.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">kpoint_mesh&lt;/td>
- &lt;td style="text-align: left">A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td>
+ &lt;td>kpoint_mesh&lt;/td>
+ &lt;td>A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">qpoint_mesh&lt;/td>
- &lt;td style="text-align: left">A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td>
+ &lt;td>qpoint_mesh&lt;/td>
+ &lt;td>A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">kpoint_path&lt;/td>
- &lt;td style="text-align: left">A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td>
+ &lt;td>kpoint_path&lt;/td>
+ &lt;td>A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">qpoint_path&lt;/td>
- &lt;td style="text-align: left">A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td>
+ &lt;td>qpoint_path&lt;/td>
+ &lt;td>A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td style="text-align: left">force_constants&lt;/td>
- &lt;td style="text-align: left">A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td>
+ &lt;td>force_constants&lt;/td>
+ &lt;td>A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
