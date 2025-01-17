@@ -335,23 +335,18 @@ to condense by treating the nuclear motion as classical:</p><div class=highlight
 </span></span><span style=display:flex><span>---------
 </span></span><span style=display:flex><span>T1u     -0.0023 -0.0023 -0.0023
 </span></span><span style=display:flex><span>T2u     <span style=color:#0000cf;font-weight:700>0</span>       <span style=color:#0000cf;font-weight:700>0</span>       <span style=color:#0000cf;font-weight:700>0</span>
-</span></span></code></pre></div></div><div class=td-content style=page-break-before:always><h1 id=pg-999ab15b9fb22a8746fb741fa7018b3b>4.5 - Products of Irreducible Representations</h1><div class=lead>Perform direct products and symmetric direct products of irreps.</div><p>A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g
+</span></span></code></pre></div></div><div class=td-content style=page-break-before:always><h1 id=pg-999ab15b9fb22a8746fb741fa7018b3b>4.5 - Products of Irreducible Representations</h1><div class=lead>Perform direct products and symmetric direct products of irreps.</div><p>A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># T2gxT2g  = A1g+Eg+T1g+T2g </span>
-</span></span></code></pre></div><p>The composition of a <em>symmetric</em> product is obtained as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g --symmetric 
+</span></span></code></pre></div><p>The composition of a <em>symmetric</em> product is obtained as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g --symmetric 
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># [T2gxT2g] = A1g+Eg+T2g</span>
-</span></span></code></pre></div><p>An arbitrary number of irreps can be handled</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g,Eg,Eg,A2g
+</span></span></code></pre></div><p>An arbitrary number of irreps can be handled</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g,Eg,Eg,A2g
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># T2gxT2gxEgxEgxA2g  = 2A1g+2A2g+4Eg+4T1g+4T2g</span>
 </span></span></code></pre></div><p>Another important task is constructing the irreducible representation vectors of the product
-representation in terms of the rows of the original irreducible representations.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  
+representation in terms of the rows of the original irreducible representations.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output</span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#  EgxEg  = A1g+A2g+Eg</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># </span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># irr   Eg.0xEg.0  Eg.0xEg.1  Eg.1xEg.0  Eg.1xEg.1  </span>
@@ -359,10 +354,8 @@ representation in terms of the rows of the original irreducible representations.
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># A2g   0.0        0.7071     -0.7071    0.0        </span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># Eg.0  0.0        0.7071     0.7071     0.0        </span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># Eg.1  0.7071     0.0        0.0        -0.7071 </span>
-</span></span></code></pre></div><p>The same can be done for the symmetric product</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  --symmetric 
+</span></span></code></pre></div><p>The same can be done for the symmetric product</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  --symmetric 
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output </span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># [EgxEg] = A1g+Eg</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># irr   Eg.0xEg.0  Eg.0xEg.1  Eg.1xEg.1  </span>
@@ -372,8 +365,6 @@ representation in terms of the rows of the original irreducible representations.
 </span></span></code></pre></div><p>It might also be useful to print out the transpose of the results, which can be
 done with the <strong>print-transpose</strong> flag:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  --symmetric --print-transpose 
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output</span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># [EgxEg] = A1g+Eg</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#           A1g     Eg.0    Eg.1    </span>
@@ -384,8 +375,6 @@ done with the <strong>print-transpose</strong> flag:</p><div class=highlight><pr
 the flag <strong>only-print-identity</strong> will only print identity representations
 and will prune out any basis vectors that are not contained in the product:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ pm-irr_rep_product --point-group Oh --irr-reps Eg,Eg  --print-irr-vectors  --symmetric --only-print-identity 
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># output </span>
-</span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># </span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># [EgxEg] = A1g+Eg</span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic># </span>
 </span></span><span style=display:flex><span><span style=color:#8f5902;font-style:italic>#     Eg.0xEg.0 Eg.1xEg.1 </span>
