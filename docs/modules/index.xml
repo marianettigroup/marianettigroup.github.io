@@ -19,25 +19,25 @@ Similarly,
 another key task is finding all the k-points commensurate with a given FTG, but this is
 currently execute in the separate kpoints class.&lt;/p></description></item><item><title>Symmetry</title><link>https://example.docsy.dev/docs/modules/symmetry/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/symmetry/</guid><description>&lt;p>Here we encode all information about the crystallographic point groups. In the near future, we will add space
 group information here as well.&lt;/p>
-&lt;h2 id="cornwell_group_matrices">Cornwell_group_matrices&lt;a class="td-heading-self-link" href="#cornwell_group_matrices" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="cornwell_point_group">Cornwell_point_group&lt;a class="td-heading-self-link" href="#cornwell_point_group" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="pointgroup">PointGroup&lt;a class="td-heading-self-link" href="#pointgroup" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="get_little_group">get_little_group&lt;a class="td-heading-self-link" href="#get_little_group" aria-label="Heading self-link">&lt;/a>&lt;/h2></description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p>This module contains all classes relevant to building a representation of a group,
+&lt;h2 id="cornwell_group_matrices">Cornwell_group_matrices&lt;/h2>
+&lt;h2 id="cornwell_point_group">Cornwell_point_group&lt;/h2>
+&lt;h2 id="pointgroup">PointGroup&lt;/h2>
+&lt;h2 id="get_little_group">get_little_group&lt;/h2></description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p>This module contains all classes relevant to building a representation of a group,
 finding the composition in terms of irreducible representations, and building irreducible
 vectors.&lt;/p>
-&lt;h2 id="baserepresentation">BaseRepresentation&lt;a class="td-heading-self-link" href="#baserepresentation" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="charmblochrep">CharmBlochRep&lt;a class="td-heading-self-link" href="#charmblochrep" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="shiftmode">ShiftMode&lt;a class="td-heading-self-link" href="#shiftmode" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="clusterrep">ClusterRep&lt;a class="td-heading-self-link" href="#clusterrep" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="dispclusterrep">DispClusterRep&lt;a class="td-heading-self-link" href="#dispclusterrep" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="singletensorrep">SingleTensorRep&lt;a class="td-heading-self-link" href="#singletensorrep" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="directproduct">DirectProduct&lt;a class="td-heading-self-link" href="#directproduct" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="symmetricdirectproduct">SymmetricDirectProduct&lt;a class="td-heading-self-link" href="#symmetricdirectproduct" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="starcharmblochrep-and-stars">StarCharmBlochRep and Stars&lt;a class="td-heading-self-link" href="#starcharmblochrep-and-stars" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="productofqirreps">ProductofQIrreps&lt;a class="td-heading-self-link" href="#productofqirreps" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="symmetricproductofqirreps">SymmetricProductofQIrreps&lt;a class="td-heading-self-link" href="#symmetricproductofqirreps" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="qstarrep">QStarRep&lt;a class="td-heading-self-link" href="#qstarrep" aria-label="Heading self-link">&lt;/a>&lt;/h2>
-&lt;h2 id="symmetricqstarrep">SymmetricQStarRep&lt;a class="td-heading-self-link" href="#symmetricqstarrep" aria-label="Heading self-link">&lt;/a>&lt;/h2></description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p>Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
+&lt;h2 id="baserepresentation">BaseRepresentation&lt;/h2>
+&lt;h2 id="charmblochrep">CharmBlochRep&lt;/h2>
+&lt;h2 id="shiftmode">ShiftMode&lt;/h2>
+&lt;h2 id="clusterrep">ClusterRep&lt;/h2>
+&lt;h2 id="dispclusterrep">DispClusterRep&lt;/h2>
+&lt;h2 id="singletensorrep">SingleTensorRep&lt;/h2>
+&lt;h2 id="directproduct">DirectProduct&lt;/h2>
+&lt;h2 id="symmetricdirectproduct">SymmetricDirectProduct&lt;/h2>
+&lt;h2 id="starcharmblochrep-and-stars">StarCharmBlochRep and Stars&lt;/h2>
+&lt;h2 id="productofqirreps">ProductofQIrreps&lt;/h2>
+&lt;h2 id="symmetricproductofqirreps">SymmetricProductofQIrreps&lt;/h2>
+&lt;h2 id="qstarrep">QStarRep&lt;/h2>
+&lt;h2 id="symmetricqstarrep">SymmetricQStarRep&lt;/h2></description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p>Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
 all the tasks associated with performing finite difference. Here we give some examples to illustrate
 the key features.&lt;/p>
 &lt;p>Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives

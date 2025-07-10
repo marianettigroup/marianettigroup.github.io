@@ -3,7 +3,7 @@ command line and or YAML input files. A mechanism is needed to characterize
 the data, enforce the data type of the input data, and possibly do some
 preprocessing of the data. Data Aggregator (DA) handles these tasks.
 DA uses &lt;em>descriptors&lt;/em> to encode the properties of a collection of data.&lt;/p>
-&lt;h2 id="descriptors">Descriptors&lt;a class="td-heading-self-link" href="#descriptors" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;h2 id="descriptors">Descriptors&lt;/h2>
 &lt;p>Input data is characterized by descriptors. A descriptor describes a set of data
 associated with some entity, which is normally a class or a script.
 The descriptor will normally be named by the class or command line interface

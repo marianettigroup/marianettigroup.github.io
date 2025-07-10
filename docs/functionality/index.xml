@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Command Line Functionality on Principia Materia</title><link>https://example.docsy.dev/docs/functionality/</link><description>Recent content in Command Line Functionality on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/docs/functionality/index.xml" rel="self" type="application/rss+xml"/><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags">List of Input Tags&lt;a class="td-heading-self-link" href="#list-of-input-tags" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Command Line Functionality on Principia Materia</title><link>https://example.docsy.dev/docs/functionality/</link><description>Recent content in Command Line Functionality on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/docs/functionality/index.xml" rel="self" type="application/rss+xml"/><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags">List of Input Tags&lt;/h2>
 &lt;p>&lt;a href="#lattice_vectors">lattice_vectors,&lt;/a>
 &lt;a href="#basis_atoms">basis_atoms,&lt;/a>&lt;/p>
-&lt;h3 id="lattice_vectors">lattice_vectors&lt;a class="td-heading-self-link" href="#lattice_vectors" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;h3 id="lattice_vectors">lattice_vectors&lt;/h3>
 &lt;p>Testing 1 2 3&lt;/p>
 &lt;table>
  &lt;thead>
@@ -27,7 +27,7 @@
 &lt;/table>
 &lt;p>&lt;em>type:&lt;/em> matrix&lt;/p>
 &lt;p>&lt;em>dimension:&lt;/em> 3x3&lt;/p>
-&lt;h3 id="basis_atoms">basis_atoms&lt;a class="td-heading-self-link" href="#basis_atoms" aria-label="Heading self-link">&lt;/a>&lt;/h3>
+&lt;h3 id="basis_atoms">basis_atoms&lt;/h3>
 &lt;table>
  &lt;thead>
  &lt;tr>
@@ -90,7 +90,7 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;h2 id="tags-with-vector-or-matrix-values">Tags with vector or matrix values&lt;a class="td-heading-self-link" href="#tags-with-vector-or-matrix-values" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;h2 id="tags-with-vector-or-matrix-values">Tags with vector or matrix values&lt;/h2>
 &lt;p>Many variables will be vectors or matrices, and all such variables will
 be processed by our text parser. Below are several examples which illustrate
 the variety of different ways that vectors may be input.&lt;/p></description></item><item><title>Crystal Structure</title><link>https://example.docsy.dev/docs/functionality/xtal-structure/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/xtal-structure/</guid><description>&lt;p>For many different tasks performed in the PM suite, a crystal structure, or
@@ -156,6 +156,6 @@ The theory behind these approaches are described in the following paper:&lt;/p>
 and the second and third order force constants may then be used
 to predict the phonon linewidth using perturbation theory. The phonons and the linewidths can then be used
 to computed thermal conductivity with the relaxation time approximation.&lt;/p>
-&lt;h2 id="phonon-linewidth">Phonon Linewidth&lt;a class="td-heading-self-link" href="#phonon-linewidth" aria-label="Heading self-link">&lt;/a>&lt;/h2>
+&lt;h2 id="phonon-linewidth">Phonon Linewidth&lt;/h2>
 &lt;p>Here we continue the NaCl example from &lt;a href="../compute-id">before&lt;/a>.&lt;/p>
 &lt;p>First, we need to prepare a configuration file &lt;code>config.yml&lt;/code> for the &lt;code>pm-conductivity&lt;/code> command:&lt;/p></description></item></channel></rss>
