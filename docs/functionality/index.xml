@@ -160,16 +160,22 @@ to computed thermal conductivity with the relaxation time approximation.&lt;/p>
 &lt;p>Here we continue the NaCl example from &lt;a href="../compute-id">before&lt;/a>.&lt;/p>
 &lt;p>First, we need to prepare a configuration file &lt;code>config.yml&lt;/code> for the &lt;code>pm-conductivity&lt;/code> command:&lt;/p></description></item><item><title>pm-convert-id-main-to-dev</title><link>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p>In order to extract the needed information from the main branch, checkout a branch
 that has the relevant scripts to dump the output.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># checout the relevant branch from github remote&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># checout the relevant offshoot of main branch from github remote&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ git checkout dev/output_scripts
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># from the top level, reinstall to access needed cli&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ pip install -e .
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Locate the irreducible derivative file that needs to be converted, and then run
-the following script.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-convert-id-hdf5-to-yaml irreducible_derivatives.hdf5
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># --&amp;gt; irr_deriv_and_basis_main.hdf5&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Returning to the development branch (&lt;em>dev/only_phonons&lt;/em>), the generated file &lt;em>irr_deriv_and_basis_main.hdf5&lt;/em>
-is read by a script which will rotate the irreducible derivatives and output
-them in the relevant format.&lt;/p></description></item></channel></rss>
+the following script.&lt;/p></description></item><item><title>pm-phonons-via-irr-derivatives</title><link>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</guid><description>&lt;p>The following tags are required:&lt;/p>
+&lt;ol>
+&lt;li>point_group&lt;/li>
+&lt;li>lattice_vectors&lt;/li>
+&lt;li>basis_atoms&lt;/li>
+&lt;li>quadratic_irr_derivatives&lt;/li>
+&lt;/ol>
+&lt;p>If there are complex irreducible derivatives, the imaginary part
+must be provided by the tag &lt;em>quadratic_irr_derivatives_imaginary&lt;/em>.
+The code will print out a summary of the irreducible derivatives with
+varying levels of verbosity.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-phonons-via-irr-derivatives -i input.yaml --print-summary --verbosity long
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are several levels of verbosity that can be seen via tab completion.&lt;/p></description></item></channel></rss>
