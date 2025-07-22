@@ -174,15 +174,7 @@ vectors.&lt;/p>
 &lt;h2 id="productofqirreps">ProductofQIrreps&lt;/h2>
 &lt;h2 id="symmetricproductofqirreps">SymmetricProductofQIrreps&lt;/h2>
 &lt;h2 id="qstarrep">QStarRep&lt;/h2>
-&lt;h2 id="symmetricqstarrep">SymmetricQStarRep&lt;/h2></description></item><item><title>hdf5</title><link>https://example.docsy.dev/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/hdf5/</guid><description/></item><item><title>Compute Irreducible Derivative</title><link>https://example.docsy.dev/docs/functionality/compute-id/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/compute-id/</guid><description>&lt;p>Within this package we can compute irreducible derivatives of phonons and phonon interactions at a given order with either LID or BID approach.
-The theory behind these approaches are described in the following paper:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://doi.org/10.1103/PhysRevB.100.014303">L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019)&lt;/a>.&lt;/li>
-&lt;/ul>
-&lt;p>Specifically, we can execute the LID, SS-BID and HS-BID approaches from the command line using the following commands:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;code>pm-lid-mesh&lt;/code>: compute irreducible derivatives of a given FTG and order using LID method;&lt;/p></description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p>Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
+&lt;h2 id="symmetricqstarrep">SymmetricQStarRep&lt;/h2></description></item><item><title>hdf5</title><link>https://example.docsy.dev/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/hdf5/</guid><description/></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p>Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
 all the tasks associated with performing finite difference. Here we give some examples to illustrate
 the key features.&lt;/p>
 &lt;p>Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives

@@ -125,15 +125,7 @@ in cubic SrTiO\(_3\). We will use &lt;strong>pm-prototype-xtal&lt;/strong> to ge
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># T2gxT2gxEgxEgxA2g = 2A1g+2A2g+4Eg+4T1g+4T2g&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Another important task is constructing the irreducible representation vectors of the product
-representation in terms of the rows of the original irreducible representations.&lt;/p></description></item><item><title>Compute Irreducible Derivative</title><link>https://example.docsy.dev/docs/functionality/compute-id/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/compute-id/</guid><description>&lt;p>Within this package we can compute irreducible derivatives of phonons and phonon interactions at a given order with either LID or BID approach.
-The theory behind these approaches are described in the following paper:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://doi.org/10.1103/PhysRevB.100.014303">L. Fu, M. Kornbluth, Z. Cheng, and C. A. Marianetti, Phys. Rev. B 100, 014303 (2019)&lt;/a>.&lt;/li>
-&lt;/ul>
-&lt;p>Specifically, we can execute the LID, SS-BID and HS-BID approaches from the command line using the following commands:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;code>pm-lid-mesh&lt;/code>: compute irreducible derivatives of a given FTG and order using LID method;&lt;/p></description></item><item><title>pm-convert-id-main-to-dev</title><link>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p>In order to extract the needed information from the main branch, checkout a branch
+representation in terms of the rows of the original irreducible representations.&lt;/p></description></item><item><title>pm-convert-id-main-to-dev</title><link>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p>In order to extract the needed information from the main branch, checkout a branch
 that has the relevant scripts to dump the output.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># checout the relevant offshoot of main branch from github remote&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ git checkout dev/output_scripts
