@@ -134,8 +134,8 @@ group information here as well.&lt;/p>
 &lt;h2 id="cornwell_group_matrices">Cornwell_group_matrices&lt;/h2>
 &lt;h2 id="cornwell_point_group">Cornwell_point_group&lt;/h2>
 &lt;h2 id="pointgroup">PointGroup&lt;/h2>
-&lt;h2 id="get_little_group">get_little_group&lt;/h2></description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals and Irreducible Derivatives</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p>In order to test out the code, it is useful to have sample crystals, irreducible
-derivatives, and other data. At present, there is a script called
+&lt;h2 id="get_little_group">get_little_group&lt;/h2></description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p>In order to test out the code, it is useful to have sample crystals.
+At present, there is a script called
 &lt;em>pm-prototype-xtal&lt;/em> which contains such data, and the information can be seen
 via tab completely &lt;em>print-attribute&lt;/em>. This is only meant to be temporary
 until we have a more polished solution.&lt;/p>
@@ -154,7 +154,7 @@ until we have a more polished solution.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are also irreducible derivatives, which start with the prefix &lt;em>id_&lt;/em>.&lt;/p></description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p>This module contains all classes relevant to building a representation of a group,
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p>This module contains all classes relevant to building a representation of a group,
 finding the composition in terms of irreducible representations, and building irreducible
 vectors.&lt;/p>
 &lt;h2 id="baserepresentation">BaseRepresentation&lt;/h2>

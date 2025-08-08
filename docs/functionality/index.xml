@@ -100,8 +100,8 @@ PM has an array parser which allows substantial flexibility to facilitate this
 &lt;p>Consider entering the lattice vectors tag. All of the below are valid syntax.
 The parser excepts delimiters: &lt;strong>line break&lt;/strong>, &lt;strong>semi-colon&lt;/strong>, &lt;strong>comma&lt;/strong>, &lt;strong>space&lt;/strong>,
 where line break takes highest position. If only one delimiter is present, the
-result will be a vector, while two delimiters yields a matrix, etc.&lt;/p></description></item><item><title>Prototype Crystals and Irreducible Derivatives</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p>In order to test out the code, it is useful to have sample crystals, irreducible
-derivatives, and other data. At present, there is a script called
+result will be a vector, while two delimiters yields a matrix, etc.&lt;/p></description></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p>In order to test out the code, it is useful to have sample crystals.
+At present, there is a script called
 &lt;em>pm-prototype-xtal&lt;/em> which contains such data, and the information can be seen
 via tab completely &lt;em>print-attribute&lt;/em>. This is only meant to be temporary
 until we have a more polished solution.&lt;/p>
@@ -120,7 +120,7 @@ until we have a more polished solution.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are also irreducible derivatives, which start with the prefix &lt;em>id_&lt;/em>.&lt;/p></description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p>Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p>Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
 of the little group using the script &lt;strong>pm-disp-qrep&lt;/strong>. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
 in cubic SrTiO\(_3\). We will use &lt;strong>pm-prototype-xtal&lt;/strong> to generate the crystal structure file.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
