@@ -1,109 +1,115 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Principia Materia</title><link>https://example.docsy.dev/</link><description>Recent content on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Command line interface</title><link>https://example.docsy.dev/docs/modules/cli/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/cli/</guid><description>&lt;p>All command line script for PM are stored in the &lt;code>cli&lt;/code> module, end with the suffix &lt;code>_cli&lt;/code>,
-and are a class named &lt;code>CommandLine&lt;/code> which derives from &lt;code>BaseCommandLine&lt;/code>.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Principia Materia</title><link>https://example.docsy.dev/</link><description>Recent content on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Command line interface</title><link>https://example.docsy.dev/docs/modules/cli/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/cli/</guid><description>&lt;p&gt;All command line script for PM are stored in the &lt;code&gt;cli&lt;/code&gt; module, end with the suffix &lt;code&gt;_cli&lt;/code&gt;,
+and are a class named &lt;code&gt;CommandLine&lt;/code&gt; which derives from &lt;code&gt;BaseCommandLine&lt;/code&gt;.
 In order to register a new cli, the script must be added to
-the &lt;code>setup.cfg&lt;/code> file. Consider the example &lt;code>irr_rep_prod_cli.py&lt;/code>: there is
-an entry in the console_scripts&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># setup.cfg file&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#000">console_scripts&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#000">pm&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">-&lt;/span>&lt;span style="color:#000">irr_rep_product&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span> &lt;span style="color:#000">principia_materia&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">cli&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">irr_rep_product_cli&lt;/span>&lt;span style="color:#000;font-weight:bold">:&lt;/span>&lt;span style="color:#000">CommandLine&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">main&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>After updating the file, you must run &lt;code>pip installi .&lt;/code> or &lt;code>pip install -e .&lt;/code> to make
+the &lt;code&gt;setup.cfg&lt;/code&gt; file. Consider the example &lt;code&gt;irr_rep_prod_cli.py&lt;/code&gt;: there is
+an entry in the console_scripts&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# setup.cfg file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000"&gt;console_scripts&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#000"&gt;pm&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;-&lt;/span&gt;&lt;span style="color:#000"&gt;irr_rep_product&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt; &lt;span style="color:#000"&gt;principia_materia&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;cli&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;irr_rep_product_cli&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt;&lt;span style="color:#000"&gt;CommandLine&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After updating the file, you must run &lt;code&gt;pip installi .&lt;/code&gt; or &lt;code&gt;pip install -e .&lt;/code&gt; to make
 the changes take effect. You also may need to restart your virtual environment for
-tab completion to be updated.&lt;/p></description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags">List of Input Tags&lt;/h2>
-&lt;p>&lt;a href="#lattice_vectors">lattice_vectors,&lt;/a>
-&lt;a href="#basis_atoms">basis_atoms,&lt;/a>&lt;/p>
-&lt;h3 id="lattice_vectors">lattice_vectors&lt;/h3>
-&lt;p>Testing 1 2 3&lt;/p>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th>&lt;/th>
- &lt;th>&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td>&lt;em>type:&lt;/em>&lt;/td>
- &lt;td>real, matrix&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&lt;em>dimension:&lt;/em>&lt;/td>
- &lt;td>3x3&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&lt;em>scripts:&lt;/em>&lt;/td>
- &lt;td>xx, yy&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;p>&lt;em>type:&lt;/em> matrix&lt;/p>
-&lt;p>&lt;em>dimension:&lt;/em> 3x3&lt;/p>
-&lt;h3 id="basis_atoms">basis_atoms&lt;/h3>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th>Name&lt;/th>
- &lt;th>Description&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td>lattice_vectors&lt;/td>
- &lt;td>Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>basis_atoms&lt;/td>
- &lt;td>Basis atoms of crystal structure.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>supa&lt;/td>
- &lt;td>A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>axial_strain&lt;/td>
- &lt;td>A vector of three floats which specifies the axial strain.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>strain&lt;/td>
- &lt;td>A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>point_group&lt;/td>
- &lt;td>A string specifying the point group in Schoenfiles notation.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>kpoint&lt;/td>
- &lt;td>A three dimensional vector specifying a kpoint.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>qpoint&lt;/td>
- &lt;td>A three dimensional vector specifying a qpoint.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>kpoint_mesh&lt;/td>
- &lt;td>A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>qpoint_mesh&lt;/td>
- &lt;td>A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>kpoint_path&lt;/td>
- &lt;td>A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>qpoint_path&lt;/td>
- &lt;td>A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>force_constants&lt;/td>
- &lt;td>A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h2 id="tags-with-vector-or-matrix-values">Tags with vector or matrix values&lt;/h2>
-&lt;p>Many variables will be vectors or matrices, and all such variables will
+tab completion to be updated.&lt;/p&gt;</description></item><item><title>General Information for CLI</title><link>https://example.docsy.dev/docs/functionality/general_information/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/general_information/</guid><description>&lt;p&gt;PM has a collection of command line interfaces (CLI) for performing tasks.
+For the most part, a given CLI is associated with a class within PM,
+though there are CLI&amp;rsquo;s that rely on multiple classes.&lt;/p&gt;
+&lt;p&gt;Each CLI starts with the prefix &lt;code&gt;pm-&lt;/code&gt;, followed by some descriptive word,
+such as &lt;code&gt;pm-lattice&lt;/code&gt;, &lt;code&gt;pm-crystal&lt;/code&gt;, etc. Assuming that the python module
+argcomplete has been installed and set up, all CLI options can be seen
+by typing the command name followed by &lt;code&gt;-&lt;/code&gt; and pressing tab twice.&lt;/p&gt;</description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags"&gt;List of Input Tags&lt;/h2&gt;
+&lt;p&gt;&lt;a href="#lattice_vectors"&gt;lattice_vectors,&lt;/a&gt;
+&lt;a href="#basis_atoms"&gt;basis_atoms,&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="lattice_vectors"&gt;lattice_vectors&lt;/h3&gt;
+&lt;p&gt;Testing 1 2 3&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;type:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;real, matrix&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;dimension:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;3x3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;scripts:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;xx, yy&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;type:&lt;/em&gt; matrix&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;dimension:&lt;/em&gt; 3x3&lt;/p&gt;
+&lt;h3 id="basis_atoms"&gt;basis_atoms&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Name&lt;/th&gt;
+ &lt;th&gt;Description&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;lattice_vectors&lt;/td&gt;
+ &lt;td&gt;Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;basis_atoms&lt;/td&gt;
+ &lt;td&gt;Basis atoms of crystal structure.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;supa&lt;/td&gt;
+ &lt;td&gt;A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;axial_strain&lt;/td&gt;
+ &lt;td&gt;A vector of three floats which specifies the axial strain.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;strain&lt;/td&gt;
+ &lt;td&gt;A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;point_group&lt;/td&gt;
+ &lt;td&gt;A string specifying the point group in Schoenfiles notation.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint&lt;/td&gt;
+ &lt;td&gt;A three dimensional vector specifying a kpoint.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint&lt;/td&gt;
+ &lt;td&gt;A three dimensional vector specifying a qpoint.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint_mesh&lt;/td&gt;
+ &lt;td&gt;A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint_mesh&lt;/td&gt;
+ &lt;td&gt;A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint_path&lt;/td&gt;
+ &lt;td&gt;A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint_path&lt;/td&gt;
+ &lt;td&gt;A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;force_constants&lt;/td&gt;
+ &lt;td&gt;A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="tags-with-vector-or-matrix-values"&gt;Tags with vector or matrix values&lt;/h2&gt;
+&lt;p&gt;Many variables will be vectors or matrices, and all such variables will
 be processed by our text parser. Below are several examples which illustrate
-the variety of different ways that vectors may be input.&lt;/p></description></item><item><title>Translation Group</title><link>https://example.docsy.dev/docs/modules/translation-group/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/translation-group/</guid><description>&lt;p>When performing calculations, we need to use various properties of both the infinite translation group (Lattice)
+the variety of different ways that vectors may be input.&lt;/p&gt;</description></item><item><title>Translation Group</title><link>https://example.docsy.dev/docs/modules/translation-group/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/translation-group/</guid><description>&lt;p&gt;When performing calculations, we need to use various properties of both the infinite translation group (Lattice)
 and the finite translation group (LatticeFTG).
 The infinite translation group contains the lattice vectors, and computes various information from them
 (e.g. vector lengths and angles, volume, reciprocal lattice, etc).
@@ -112,131 +118,133 @@ is naturally characterized by a supercell \(\hat{S}_{BZ}\), and LatticeFTG deriv
 Finding all translation points within a given supercell is a key task.
 Similarly,
 another key task is finding all the k-points commensurate with a given FTG, but this is
-currently execute in the separate kpoints class.&lt;/p></description></item><item><title>Data Aggregator</title><link>https://example.docsy.dev/docs/data_management/data_aggregator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/data_aggregator/</guid><description>&lt;p>Like many python-based application, PM will need to take input data from the
+currently execute in the separate kpoints class.&lt;/p&gt;</description></item><item><title>Data Aggregator</title><link>https://example.docsy.dev/docs/data_management/data_aggregator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/data_aggregator/</guid><description>&lt;p&gt;Like many python-based application, PM will need to take input data from the
 command line and or YAML input files. A mechanism is needed to characterize
 the data, enforce the data type of the input data, and possibly do some
 preprocessing of the data. Data Aggregator (DA) handles these tasks.
-DA uses &lt;em>descriptors&lt;/em> to encode the properties of a collection of data.&lt;/p>
-&lt;h2 id="descriptors">Descriptors&lt;/h2>
-&lt;p>Input data is characterized by descriptors. A descriptor describes a set of data
+DA uses &lt;em&gt;descriptors&lt;/em&gt; to encode the properties of a collection of data.&lt;/p&gt;
+&lt;h2 id="descriptors"&gt;Descriptors&lt;/h2&gt;
+&lt;p&gt;Input data is characterized by descriptors. A descriptor describes a set of data
 associated with some entity, which is normally a class or a script.
 The descriptor will normally be named by the class or command line interface
 they correspond to. Below we document the general structure of a descriptor
-named descriptor_name.&lt;/p></description></item><item><title>Array Parser</title><link>https://example.docsy.dev/docs/functionality/array-parser/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/array-parser/</guid><description>&lt;p>For many different tasks performed in the PM suite, a vector or matrix must be
+named descriptor_name.&lt;/p&gt;</description></item><item><title>Array Parser</title><link>https://example.docsy.dev/docs/functionality/array-parser/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/array-parser/</guid><description>&lt;p&gt;For many different tasks performed in the PM suite, a vector or matrix must be
 provided at the command line or in a yaml file.
 PM has an array parser which allows substantial flexibility to facilitate this
-(see parse_array if interested in the details).&lt;/p>
-&lt;p>Consider entering the lattice vectors tag. All of the below are valid syntax.
-The parser excepts delimiters: &lt;strong>line break&lt;/strong>, &lt;strong>semi-colon&lt;/strong>, &lt;strong>comma&lt;/strong>, &lt;strong>space&lt;/strong>,
+(see parse_array if interested in the details).&lt;/p&gt;
+&lt;p&gt;Consider entering the lattice vectors tag. All of the below are valid syntax.
+The parser excepts delimiters: &lt;strong&gt;line break&lt;/strong&gt;, &lt;strong&gt;semi-colon&lt;/strong&gt;, &lt;strong&gt;comma&lt;/strong&gt;, &lt;strong&gt;space&lt;/strong&gt;,
 where line break takes highest position. If only one delimiter is present, the
-result will be a vector, while two delimiters yields a matrix, etc.&lt;/p></description></item><item><title>Symmetry</title><link>https://example.docsy.dev/docs/modules/symmetry/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/symmetry/</guid><description>&lt;p>Here we encode all information about the crystallographic point groups. In the near future, we will add space
-group information here as well.&lt;/p>
-&lt;h2 id="cornwell_group_matrices">Cornwell_group_matrices&lt;/h2>
-&lt;h2 id="cornwell_point_group">Cornwell_point_group&lt;/h2>
-&lt;h2 id="pointgroup">PointGroup&lt;/h2>
-&lt;h2 id="get_little_group">get_little_group&lt;/h2></description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p>In order to test out the code, it is useful to have sample crystals.
+result will be a vector, while two delimiters yields a matrix, etc.&lt;/p&gt;</description></item><item><title>Symmetry</title><link>https://example.docsy.dev/docs/modules/symmetry/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/symmetry/</guid><description>&lt;p&gt;Here we encode all information about the crystallographic point groups. In the near future, we will add space
+group information here as well.&lt;/p&gt;
+&lt;h2 id="cornwell_group_matrices"&gt;Cornwell_group_matrices&lt;/h2&gt;
+&lt;h2 id="cornwell_point_group"&gt;Cornwell_point_group&lt;/h2&gt;
+&lt;h2 id="pointgroup"&gt;PointGroup&lt;/h2&gt;
+&lt;h2 id="get_little_group"&gt;get_little_group&lt;/h2&gt;</description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p&gt;In order to test out the code, it is useful to have sample crystals.
 At present, there is a script called
-&lt;em>pm-prototype-xtal&lt;/em> which contains such data, and the information can be seen
-via tab completely &lt;em>print-attribute&lt;/em>. This is only meant to be temporary
-until we have a more polished solution.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-prototype-xtal --print-attribute perovskite
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>lattice_vectors:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 3.91300000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 3.91300000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.00000000, 3.91300000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>basis_atoms:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Sr: 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 0.50000000, 0.50000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Ti: 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 0.00000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> O: 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[[&lt;/span> 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span> 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold">]]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p>This module contains all classes relevant to building a representation of a group,
+&lt;em&gt;pm-prototype-xtal&lt;/em&gt; which contains such data, and the information can be seen
+via tab completely &lt;em&gt;print-attribute&lt;/em&gt;. This is only meant to be temporary
+until we have a more polished solution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-prototype-xtal --print-attribute perovskite
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lattice_vectors:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 3.91300000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 3.91300000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.00000000, 3.91300000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;basis_atoms:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Sr: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.50000000, 0.50000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Ti: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.00000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; O: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p&gt;This module contains all classes relevant to building a representation of a group,
 finding the composition in terms of irreducible representations, and building irreducible
-vectors.&lt;/p>
-&lt;h2 id="baserepresentation">BaseRepresentation&lt;/h2>
-&lt;h2 id="charmblochrep">CharmBlochRep&lt;/h2>
-&lt;h2 id="shiftmode">ShiftMode&lt;/h2>
-&lt;h2 id="clusterrep">ClusterRep&lt;/h2>
-&lt;h2 id="dispclusterrep">DispClusterRep&lt;/h2>
-&lt;h2 id="singletensorrep">SingleTensorRep&lt;/h2>
-&lt;h2 id="directproduct">DirectProduct&lt;/h2>
-&lt;h2 id="symmetricdirectproduct">SymmetricDirectProduct&lt;/h2>
-&lt;h2 id="starcharmblochrep-and-stars">StarCharmBlochRep and Stars&lt;/h2>
-&lt;h2 id="productofqirreps">ProductofQIrreps&lt;/h2>
-&lt;h2 id="symmetricproductofqirreps">SymmetricProductofQIrreps&lt;/h2>
-&lt;h2 id="qstarrep">QStarRep&lt;/h2>
-&lt;h2 id="symmetricqstarrep">SymmetricQStarRep&lt;/h2></description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p>Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
-of the little group using the script &lt;strong>pm-disp-qrep&lt;/strong>. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
-in cubic SrTiO\(_3\). We will use &lt;strong>pm-prototype-xtal&lt;/strong> to generate the crystal structure file.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Printing out the irreducible representations, we have&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-orbit-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;Sr&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>0&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A2u
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;Ti&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>0&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A1g
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;O&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span>, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>0, 1, 2&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T1u
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can also print out the irreducible representation vectors.&lt;/p></description></item><item><title>hdf5</title><link>https://example.docsy.dev/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/hdf5/</guid><description/></item><item><title>Symmetrizing displacements in Crystal</title><link>https://example.docsy.dev/docs/functionality/pm-disp-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-disp-qrep/</guid><description>&lt;p>Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
-of the little group using the script &lt;strong>pm-disp-qrep&lt;/strong>. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
-in cubic SrTiO\(_3\). We will use &lt;strong>pm-prototype-xtal&lt;/strong> to generate the crystal structure file.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Printing out the irreducible representations, we have&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-disp-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;Sr&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>0&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T2g
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;Ti&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>1&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T1u
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">(&lt;/span>&lt;span style="color:#4e9a06">&amp;#39;O&amp;#39;&lt;/span>, 0&lt;span style="color:#ce5c00;font-weight:bold">)&lt;/span> &lt;span style="color:#ce5c00;font-weight:bold">[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span> &lt;span style="color:#0000cf;font-weight:bold">3&lt;/span> 4&lt;span style="color:#ce5c00;font-weight:bold">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A1g+Eg+T1g+T2g
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can also print out the irreducible representation vectors.&lt;/p></description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p>Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
+vectors.&lt;/p&gt;
+&lt;h2 id="baserepresentation"&gt;BaseRepresentation&lt;/h2&gt;
+&lt;h2 id="charmblochrep"&gt;CharmBlochRep&lt;/h2&gt;
+&lt;h2 id="shiftmode"&gt;ShiftMode&lt;/h2&gt;
+&lt;h2 id="clusterrep"&gt;ClusterRep&lt;/h2&gt;
+&lt;h2 id="dispclusterrep"&gt;DispClusterRep&lt;/h2&gt;
+&lt;h2 id="singletensorrep"&gt;SingleTensorRep&lt;/h2&gt;
+&lt;h2 id="directproduct"&gt;DirectProduct&lt;/h2&gt;
+&lt;h2 id="symmetricdirectproduct"&gt;SymmetricDirectProduct&lt;/h2&gt;
+&lt;h2 id="starcharmblochrep-and-stars"&gt;StarCharmBlochRep and Stars&lt;/h2&gt;
+&lt;h2 id="productofqirreps"&gt;ProductofQIrreps&lt;/h2&gt;
+&lt;h2 id="symmetricproductofqirreps"&gt;SymmetricProductofQIrreps&lt;/h2&gt;
+&lt;h2 id="qstarrep"&gt;QStarRep&lt;/h2&gt;
+&lt;h2 id="symmetricqstarrep"&gt;SymmetricQStarRep&lt;/h2&gt;</description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+of the little group using the script &lt;strong&gt;pm-disp-qrep&lt;/strong&gt;. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
+in cubic SrTiO\(_3\). We will use &lt;strong&gt;pm-prototype-xtal&lt;/strong&gt; to generate the crystal structure file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Printing out the irreducible representations, we have&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-orbit-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Sr&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A2u
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Ti&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A1g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0, 1, 2&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T1u
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can also print out the irreducible representation vectors.&lt;/p&gt;</description></item><item><title>hdf5</title><link>https://example.docsy.dev/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/hdf5/</guid><description/></item><item><title>Symmetrizing displacements in Crystal</title><link>https://example.docsy.dev/docs/functionality/pm-disp-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-disp-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+of the little group using the script &lt;strong&gt;pm-disp-qrep&lt;/strong&gt;. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
+in cubic SrTiO\(_3\). We will use &lt;strong&gt;pm-prototype-xtal&lt;/strong&gt; to generate the crystal structure file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Printing out the irreducible representations, we have&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-disp-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Sr&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Ti&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;1&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T1u
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt; &lt;span style="color:#0000cf;font-weight:bold"&gt;3&lt;/span&gt; 4&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A1g+Eg+T1g+T2g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can also print out the irreducible representation vectors.&lt;/p&gt;</description></item><item><title>Crystal structure</title><link>https://example.docsy.dev/docs/functionality/pm-crystal/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-crystal/</guid><description>&lt;p&gt;Interfaces to Crystal class.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-prototype-xtal --print-attribute perovskite &lt;span style="color:#000;font-weight:bold"&gt;|&lt;/span&gt; pm-crystal -i -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p&gt;Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
 all the tasks associated with performing finite difference. Here we give some examples to illustrate
-the key features.&lt;/p>
-&lt;p>Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives
+the key features.&lt;/p&gt;
+&lt;p&gt;Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives
 to second order.
-Begin by instantiating the class:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#204a87;font-weight:bold">from&lt;/span> &lt;span style="color:#000">principia_materia.finite_difference.finite_difference_np&lt;/span> &lt;span style="color:#204a87;font-weight:bold">import&lt;/span> &lt;span style="color:#000">FiniteDifferenceNP&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#000">fd&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000">FiniteDifferenceNP&lt;/span>&lt;span style="color:#000;font-weight:bold">()&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Set all the derivatives to be evaluated:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#000">fd&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">.&lt;/span>&lt;span style="color:#000">set_deriv&lt;/span>&lt;span style="color:#000;font-weight:bold">(&lt;/span>&lt;span style="color:#000">varset&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">0&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">0&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">0&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">]],&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ce5c00;font-weight:bold">...&lt;/span> &lt;span style="color:#000">ordset&lt;/span>&lt;span style="color:#ce5c00;font-weight:bold">=&lt;/span>&lt;span style="color:#000;font-weight:bold">[[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">2&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">],[&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">,&lt;/span>&lt;span style="color:#0000cf;font-weight:bold">1&lt;/span>&lt;span style="color:#000;font-weight:bold">]])&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Set the deltas to be the same for all variables and setup the finite
-difference amplitudes:&lt;/p></description></item><item><title>Products of Irreducible Representations</title><link>https://example.docsy.dev/docs/functionality/irrep-product/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/irrep-product/</guid><description>&lt;p>A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># T2gxT2g = A1g+Eg+T1g+T2g &lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The composition of a &lt;em>symmetric&lt;/em> product is obtained as&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g --symmetric 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># [T2gxT2g] = A1g+Eg+T2g&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>An arbitrary number of irreps can be handled&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g,Eg,Eg,A2g
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># T2gxT2gxEgxEgxA2g = 2A1g+2A2g+4Eg+4T1g+4T2g&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Another important task is constructing the irreducible representation vectors of the product
-representation in terms of the rows of the original irreducible representations.&lt;/p></description></item><item><title>pm-convert-id-main-to-dev</title><link>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p>In order to extract the needed information from the main branch, checkout a branch
-that has the relevant scripts to dump the output.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># checout the relevant offshoot of main branch from github remote&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ git checkout dev/output_scripts
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8f5902;font-style:italic"># from the top level, reinstall to access needed cli&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ pip install -e .
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Locate the irreducible derivative file that needs to be converted, and then run
-the following script.&lt;/p></description></item><item><title>pm-phonons-via-irr-derivatives</title><link>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</guid><description>&lt;p>The following tags are required:&lt;/p>
-&lt;ol>
-&lt;li>point_group&lt;/li>
-&lt;li>lattice_vectors&lt;/li>
-&lt;li>basis_atoms&lt;/li>
-&lt;li>quadratic_irr_derivatives&lt;/li>
-&lt;/ol>
-&lt;p>If there are complex irreducible derivatives, the imaginary part
-must be provided by the tag &lt;em>quadratic_irr_derivatives_imaginary&lt;/em>.
+Begin by instantiating the class:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;from&lt;/span&gt; &lt;span style="color:#000"&gt;principia_materia.finite_difference.finite_difference_np&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;import&lt;/span&gt; &lt;span style="color:#000"&gt;FiniteDifferenceNP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#000"&gt;fd&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000"&gt;FiniteDifferenceNP&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set all the derivatives to be evaluated:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#000"&gt;fd&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;set_deriv&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#000"&gt;varset&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;...&lt;/span&gt; &lt;span style="color:#000"&gt;ordset&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set the deltas to be the same for all variables and setup the finite
+difference amplitudes:&lt;/p&gt;</description></item><item><title>Products of Irreducible Representations</title><link>https://example.docsy.dev/docs/functionality/irrep-product/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/irrep-product/</guid><description>&lt;p&gt;A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# T2gxT2g = A1g+Eg+T1g+T2g &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The composition of a &lt;em&gt;symmetric&lt;/em&gt; product is obtained as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g --symmetric 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# [T2gxT2g] = A1g+Eg+T2g&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;An arbitrary number of irreps can be handled&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-irr_rep_product --point-group Oh --irr-reps T2g,T2g,Eg,Eg,A2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# T2gxT2gxEgxEgxA2g = 2A1g+2A2g+4Eg+4T1g+4T2g&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Another important task is constructing the irreducible representation vectors of the product
+representation in terms of the rows of the original irreducible representations.&lt;/p&gt;</description></item><item><title>pm-convert-id-main-to-dev</title><link>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p&gt;In order to extract the needed information from the main branch, checkout a branch
+that has the relevant scripts to dump the output.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# checout the relevant offshoot of main branch from github remote&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ git checkout dev/output_scripts
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# from the top level, reinstall to access needed cli&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pip install -e .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Locate the irreducible derivative file that needs to be converted, and then run
+the following script.&lt;/p&gt;</description></item><item><title>pm-phonons-via-irr-derivatives</title><link>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-phonons-via-irr-derivatives/</guid><description>&lt;p&gt;The following tags are required:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;point_group&lt;/li&gt;
+&lt;li&gt;lattice_vectors&lt;/li&gt;
+&lt;li&gt;basis_atoms&lt;/li&gt;
+&lt;li&gt;quadratic_irr_derivatives&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If there are complex irreducible derivatives, the imaginary part
+must be provided by the tag &lt;em&gt;quadratic_irr_derivatives_imaginary&lt;/em&gt;.
 The code will print out a summary of the irreducible derivatives with
-varying levels of verbosity.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ pm-phonons-via-irr-derivatives -i input.yaml --print-summary --verbosity long
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>There are several levels of verbosity that can be seen via tab completion.&lt;/p></description></item><item><title>Search Results</title><link>https://example.docsy.dev/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/search/</guid><description/></item></channel></rss>
+varying levels of verbosity.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-phonons-via-irr-derivatives -i input.yaml --print-summary --verbosity long
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are several levels of verbosity that can be seen via tab completion.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://example.docsy.dev/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/search/</guid><description/></item></channel></rss>
