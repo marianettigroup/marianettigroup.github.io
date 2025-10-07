@@ -10,11 +10,13 @@ an entry in the console_scripts&lt;/p&gt;
 the changes take effect. You also may need to restart your virtual environment for
 tab completion to be updated.&lt;/p&gt;</description></item><item><title>General Information for CLI</title><link>https://example.docsy.dev/docs/functionality/general_information/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/general_information/</guid><description>&lt;p&gt;PM has a collection of command line interfaces (CLI) for performing tasks.
 For the most part, a given CLI is associated with a class within PM,
-though there are CLI&amp;rsquo;s that rely on multiple classes.&lt;/p&gt;
+though there are CLI&amp;rsquo;s that rely on multiple classes. As outlined below,
+basic documentation about all commands can be obtained at the command line,
+and therefore this website only provides individualized attention to
+selected CLI&amp;rsquo;s which are nontrivial.&lt;/p&gt;
 &lt;p&gt;Each CLI starts with the prefix &lt;code&gt;pm-&lt;/code&gt;, followed by some descriptive word,
-such as &lt;code&gt;pm-lattice&lt;/code&gt;, &lt;code&gt;pm-crystal&lt;/code&gt;, etc. Assuming that the python module
-argcomplete has been installed and set up, all CLI options can be seen
-by typing the command name followed by &lt;code&gt;-&lt;/code&gt; and pressing tab twice.&lt;/p&gt;</description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags"&gt;List of Input Tags&lt;/h2&gt;
+such as &lt;code&gt;pm-lattice&lt;/code&gt;, &lt;code&gt;pm-crystal&lt;/code&gt;, etc. All PM CLI&amp;rsquo;s can be seen via
+tab completion&lt;/p&gt;</description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags"&gt;List of Input Tags&lt;/h2&gt;
 &lt;p&gt;&lt;a href="#lattice_vectors"&gt;lattice_vectors,&lt;/a&gt;
 &lt;a href="#basis_atoms"&gt;basis_atoms,&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="lattice_vectors"&gt;lattice_vectors&lt;/h3&gt;
