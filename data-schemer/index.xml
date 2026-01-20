@@ -3,7 +3,19 @@ This is especially important for command-line tools, configuration files, and li
 &lt;p&gt;The numeric coercion utilities live in &lt;code&gt;coerce_numbers.py&lt;/code&gt; and can be used directly, or indirectly through schema-driven workflows.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="the-core-idea"&gt;The core idea&lt;/h2&gt;
-&lt;p&gt;The coercion utilities take &lt;strong&gt;loosely structured numeric text&lt;/strong&gt; and turn it into:&lt;/p&gt;</description></item><item><title>Install</title><link>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</guid><description>&lt;p&gt;DataSchemer can be installed using pip.
+&lt;p&gt;The coercion utilities take &lt;strong&gt;loosely structured numeric text&lt;/strong&gt; and turn it into:&lt;/p&gt;</description></item><item><title>Rendering data</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/render-data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/render-data/</guid><description>&lt;p&gt;DataSchemer includes small, focused utilities for &lt;strong&gt;rendering Python data into readable, YAML-compatible text&lt;/strong&gt;.
+These tools are intended for &lt;em&gt;human-facing output&lt;/em&gt;: command-line tools, reports, and snippets that users may want to copy directly into configuration files.&lt;/p&gt;
+&lt;p&gt;The rendering utilities live in &lt;code&gt;render_data.py&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;They are &lt;strong&gt;not&lt;/strong&gt; a full serialization system. Instead, they provide:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;stable, predictable formatting&lt;/li&gt;
+&lt;li&gt;readable alignment for numeric data&lt;/li&gt;
+&lt;li&gt;minimal YAML-compatible syntax&lt;/li&gt;
+&lt;li&gt;no implicit I/O or file handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="design-goals"&gt;Design goals&lt;/h2&gt;
+&lt;p&gt;The rendering layer is intentionally conservative.&lt;/p&gt;</description></item><item><title>Install</title><link>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</guid><description>&lt;p&gt;DataSchemer can be installed using pip.
 Very soon, you will be able to install from PyPI
 using&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install data-schemer
@@ -59,32 +71,4 @@ print(cli.data)
 &lt;pre&gt;&lt;code&gt;python tool.py --a 2 --b 3.5
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="yaml-input-files"&gt;YAML input files&lt;/h2&gt;
-&lt;p&gt;If your schema defines an &lt;code&gt;input_files&lt;/code&gt; variable of type &lt;code&gt;string-list&lt;/code&gt;, the CLI can merge YAML files before applying CLI overrides.&lt;/p&gt;</description></item><item><title>render data</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/render-data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/render-data/</guid><description>&lt;p&gt;DataSchemer provides small utilities for formatting data as YAML-parsable text.&lt;/p&gt;
-&lt;p&gt;These functions live in &lt;code&gt;render_data.py&lt;/code&gt;. The goal is not full YAML serialization, but stable, readable output suitable for copy-paste into configuration files.&lt;/p&gt;
-&lt;h2 id="example"&gt;Example&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;from data_schemer.render_data import format_data
-import numpy as np
-
-data = {
- &amp;quot;positions&amp;quot;: np.array([
- [0.5, 0.5, 0.5],
- [0.0, 0.0, 0.0],
- [0.5, 0.0, 0.0],
- ])
-}
-
-print(format_data(data))
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Produces output like:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;positions:
- [[ 0.5, 0.5, 0.5 ],
- [ 0 , 0 , 0 ],
- [ 0.5, 0 , 0 ]]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="notes"&gt;Notes&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Arrays are formatted for readability rather than compactness.&lt;/li&gt;
-&lt;li&gt;Floating-point values are trimmed and aligned.&lt;/li&gt;
-&lt;li&gt;Output is YAML-compatible but intentionally minimal.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For full serialization and round-tripping, use standard YAML libraries.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://marianettigroup.github.io/data-schemer/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/search/</guid><description/></item></channel></rss>
+&lt;p&gt;If your schema defines an &lt;code&gt;input_files&lt;/code&gt; variable of type &lt;code&gt;string-list&lt;/code&gt;, the CLI can merge YAML files before applying CLI overrides.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://marianettigroup.github.io/data-schemer/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/search/</guid><description/></item></channel></rss>
