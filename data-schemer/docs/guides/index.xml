@@ -1,23 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guides on Data Schemer</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/</link><description>Recent content in Guides on Data Schemer</description><generator>Hugo</generator><language>en</language><atom:link href="https://marianettigroup.github.io/data-schemer/docs/guides/index.xml" rel="self" type="application/rss+xml"/><item><title>Coercing numbers</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/coerce-numbers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/coerce-numbers/</guid><description>&lt;p&gt;DataSchemer includes utilities for converting loosely structured numeric input (strings, expressions, and simple matrices) into structured Python data.&lt;/p&gt;
-&lt;p&gt;These tools live in &lt;code&gt;coerce_numbers.py&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id="import"&gt;Import&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;from data_schemer.coerce_numbers import coerce_number_list_with_substitutions
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="scalars-and-expressions"&gt;Scalars and expressions&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;coerce_number_list_with_substitutions(&amp;quot;1/2&amp;quot;, dtype=float)
-# -&amp;gt; [0.5]
-
-coerce_number_list_with_substitutions(&amp;quot;3*4 + 1&amp;quot;, dtype=int)
-# -&amp;gt; [13]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Supported syntax includes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;+&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt;, &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;exponent notation (&lt;code&gt;1e-3&lt;/code&gt;, &lt;code&gt;2E+4&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;square roots via &lt;code&gt;rN&lt;/code&gt; (e.g. &lt;code&gt;r2&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="separators-and-matrices"&gt;Separators and matrices&lt;/h2&gt;
-&lt;p&gt;Input can contain multiple values and matrices using common separators:&lt;/p&gt;</description></item><item><title>SchemaProjector</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</guid><description>&lt;p&gt;&lt;code&gt;SchemaProjector&lt;/code&gt; is the core validation and typing engine of DataSchemer.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Guides on Data Schemer</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/</link><description>Recent content in Guides on Data Schemer</description><generator>Hugo</generator><language>en</language><atom:link href="https://marianettigroup.github.io/data-schemer/docs/guides/index.xml" rel="self" type="application/rss+xml"/><item><title>Coercing numbers</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/coerce-numbers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/coerce-numbers/</guid><description>&lt;p&gt;DataSchemer is designed to accept &lt;em&gt;human-friendly numeric input&lt;/em&gt; and reliably convert it into structured Python data.
+This is especially important for command-line tools, configuration files, and lightweight data formats, where users naturally write numbers as text, expressions, or simple tables.&lt;/p&gt;
+&lt;p&gt;The numeric coercion utilities live in &lt;code&gt;coerce_numbers.py&lt;/code&gt; and can be used directly, or indirectly through schema-driven workflows.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="the-core-idea"&gt;The core idea&lt;/h2&gt;
+&lt;p&gt;The coercion utilities take &lt;strong&gt;loosely structured numeric text&lt;/strong&gt; and turn it into:&lt;/p&gt;</description></item><item><title>SchemaProjector</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</guid><description>&lt;p&gt;&lt;code&gt;SchemaProjector&lt;/code&gt; is the core validation and typing engine of DataSchemer.&lt;/p&gt;
 &lt;p&gt;It takes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;a schema definition&lt;/li&gt;
