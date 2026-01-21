@@ -25,50 +25,58 @@ The install using pip, preferably using editable mode.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>SchemaProjector</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</guid><description>&lt;p&gt;&lt;code&gt;SchemaProjector&lt;/code&gt; is the core validation and typing engine of DataSchemer.&lt;/p&gt;
 &lt;p&gt;It takes:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;a schema definition&lt;/li&gt;
-&lt;li&gt;raw input data&lt;/li&gt;
+&lt;li&gt;a schema definition (a dictionary)&lt;/li&gt;
+&lt;li&gt;raw input data (a dictionary, often containing strings or loosely typed values)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;and produces validated, typed Python data. Validation happens during construction.&lt;/p&gt;
+&lt;p&gt;and produces validated, typed Python data.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Validation happens during construction&lt;/strong&gt;: if anything is missing, unknown, or invalid, &lt;code&gt;SchemaProjector(...)&lt;/code&gt; raises a DataSchemer user-facing exception.&lt;/p&gt;
+&lt;p&gt;This page documents the &lt;em&gt;behavior that exists in the current implementation&lt;/em&gt;.&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id="basic-example"&gt;Basic example&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;from data_schemer.schema_projector import SchemaProjector
-
-schema = {
- &amp;quot;variables&amp;quot;: {
- &amp;quot;a&amp;quot;: {&amp;quot;type&amp;quot;: &amp;quot;int&amp;quot;, &amp;quot;optional&amp;quot;: False},
- &amp;quot;b&amp;quot;: {&amp;quot;type&amp;quot;: &amp;quot;float&amp;quot;, &amp;quot;optional&amp;quot;: False},
- }
-}
-
-raw = {&amp;quot;a&amp;quot;: &amp;quot;1&amp;quot;, &amp;quot;b&amp;quot;: &amp;quot;2.5&amp;quot;}
-p = SchemaProjector(schema, raw)
-
-assert p.data[&amp;quot;a&amp;quot;] == 1
-assert p.data[&amp;quot;b&amp;quot;] == 2.5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="single-vs-multi-schema-definitions"&gt;Single vs multi-schema definitions&lt;/h2&gt;
-&lt;h3 id="single-schema-no-name"&gt;Single schema (no name)&lt;/h3&gt;
-&lt;p&gt;If the schema contains a top-level &lt;code&gt;variables&lt;/code&gt; key, it is treated as a single schema and given the default name &lt;code&gt;&amp;quot;default&amp;quot;&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>SchemaCommandLine</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-command-line/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-command-line/</guid><description>&lt;p&gt;&lt;code&gt;SchemaCommandLine&lt;/code&gt; generates a command-line interface directly from a schema.&lt;/p&gt;
-&lt;p&gt;It builds:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#204a87;font-weight:bold"&gt;from&lt;/span&gt; &lt;span style="color:#000"&gt;data_schemer.schema_projector&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;import&lt;/span&gt; &lt;span style="color:#000"&gt;SchemaProjector&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000"&gt;schema&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;variables&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;int&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;optional&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;False&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;float&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;optional&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;False&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#000;font-weight:bold"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000;font-weight:bold"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000"&gt;raw&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;2.5&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000"&gt;p&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt; &lt;span style="color:#000"&gt;SchemaProjector&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#000"&gt;schema&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt; &lt;span style="color:#000"&gt;raw&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#204a87;font-weight:bold"&gt;assert&lt;/span&gt; &lt;span style="color:#000"&gt;p&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;data&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#34;a&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;==&lt;/span&gt; &lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#204a87;font-weight:bold"&gt;assert&lt;/span&gt; &lt;span style="color:#000"&gt;p&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;data&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#34;b&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;==&lt;/span&gt; &lt;span style="color:#0000cf;font-weight:bold"&gt;2.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="validation-model"&gt;Validation model&lt;/h2&gt;
+&lt;h3 id="required-vs-optional"&gt;Required vs optional&lt;/h3&gt;
+&lt;p&gt;In DataSchemer, &lt;strong&gt;variables are required by default&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>SchemaCommandLine</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-command-line/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-command-line/</guid><description>&lt;p&gt;&lt;code&gt;SchemaCommandLine&lt;/code&gt; is DataSchemer’s schema-driven command-line engine.&lt;/p&gt;
+&lt;p&gt;It combines:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;argparse&lt;/code&gt; options&lt;/li&gt;
-&lt;li&gt;schema-driven validation via &lt;code&gt;SchemaProjector&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;optional object instantiation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;argparse&lt;/strong&gt; parsing (including optional argcomplete tab-completion)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;YAML input files&lt;/strong&gt; (optional)&lt;/li&gt;
+&lt;li&gt;an optional &lt;strong&gt;required positional file&lt;/strong&gt; (per-command metadata)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SchemaProjector&lt;/strong&gt; validation and typing&lt;/li&gt;
+&lt;li&gt;optional &lt;strong&gt;object instantiation&lt;/strong&gt; (&lt;code&gt;target_class&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;and an optional &lt;strong&gt;print-attribute&lt;/strong&gt; facility for introspecting results&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="basic-cli"&gt;Basic CLI&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;from data_schemer.schema_command_line import SchemaCommandLine
-
-schema = {
- &amp;quot;variables&amp;quot;: {
- &amp;quot;a&amp;quot;: {&amp;quot;type&amp;quot;: &amp;quot;int&amp;quot;, &amp;quot;optional&amp;quot;: False},
- &amp;quot;b&amp;quot;: {&amp;quot;type&amp;quot;: &amp;quot;float&amp;quot;, &amp;quot;optional&amp;quot;: False},
- }
-}
-
-cli = SchemaCommandLine(schema)
-print(cli.data)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Usage:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python tool.py --a 2 --b 3.5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="yaml-input-files"&gt;YAML input files&lt;/h2&gt;
-&lt;p&gt;If your schema defines an &lt;code&gt;input_files&lt;/code&gt; variable of type &lt;code&gt;string-list&lt;/code&gt;, the CLI can merge YAML files before applying CLI overrides.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://marianettigroup.github.io/data-schemer/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/search/</guid><description/></item></channel></rss>
+&lt;p&gt;Where &lt;code&gt;SchemaProjector&lt;/code&gt; is the &lt;em&gt;typing/validation core&lt;/em&gt;, &lt;code&gt;SchemaCommandLine&lt;/code&gt; is the &lt;strong&gt;CLI orchestration layer&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="high-level-flow"&gt;High-level flow&lt;/h2&gt;
+&lt;p&gt;When you construct a &lt;code&gt;SchemaCommandLine&lt;/code&gt;, it performs all work immediately:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Resolve schema form/name (&lt;code&gt;normalize_schema_inputs&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Resolve &lt;code&gt;print_attribute&lt;/code&gt; configuration (with inheritance)&lt;/li&gt;
+&lt;li&gt;Build schema variables (including inheritance/copy/update/delete)&lt;/li&gt;
+&lt;li&gt;Build an argparse parser from schema variables&lt;/li&gt;
+&lt;li&gt;Parse CLI args (strictly; &lt;code&gt;allow_abbrev=False&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Optionally load YAML input files&lt;/li&gt;
+&lt;li&gt;Optionally read a required positional file (and optionally parse it as YAML)&lt;/li&gt;
+&lt;li&gt;Merge all data sources into a single raw input mapping&lt;/li&gt;
+&lt;li&gt;Validate and type the data via &lt;code&gt;SchemaProjector&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Optionally instantiate &lt;code&gt;target_class&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;_operations()&lt;/code&gt; (override point for custom logic)&lt;/li&gt;
+&lt;li&gt;Optionally print attributes requested via &lt;code&gt;--print-attribute&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This “do everything in &lt;code&gt;__init__&lt;/code&gt;” approach keeps the class simple to embed:
+construct it once and you either get a successful run or a structured user error.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://marianettigroup.github.io/data-schemer/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/search/</guid><description/></item></channel></rss>
