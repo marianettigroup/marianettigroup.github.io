@@ -7,27 +7,7 @@ is naturally characterized by a supercell \(\hat{S}_{BZ}\), and LatticeFTG deriv
 Finding all translation points within a given supercell is a key task.
 Similarly,
 another key task is finding all the k-points commensurate with a given FTG, but this is
-currently execute in the separate kpoints class.&lt;/p&gt;</description></item><item><title>Symmetry</title><link>https://example.docsy.dev/docs/modules/symmetry/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/symmetry/</guid><description>&lt;p&gt;Here we encode all information about the crystallographic point groups. In the near future, we will add space
-group information here as well.&lt;/p&gt;
-&lt;h2 id="cornwell_group_matrices"&gt;Cornwell_group_matrices&lt;/h2&gt;
-&lt;h2 id="cornwell_point_group"&gt;Cornwell_point_group&lt;/h2&gt;
-&lt;h2 id="pointgroup"&gt;PointGroup&lt;/h2&gt;
-&lt;h2 id="get_little_group"&gt;get_little_group&lt;/h2&gt;</description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p&gt;This module contains all classes relevant to building a representation of a group,
-finding the composition in terms of irreducible representations, and building irreducible
-vectors.&lt;/p&gt;
-&lt;h2 id="baserepresentation"&gt;BaseRepresentation&lt;/h2&gt;
-&lt;h2 id="charmblochrep"&gt;CharmBlochRep&lt;/h2&gt;
-&lt;h2 id="shiftmode"&gt;ShiftMode&lt;/h2&gt;
-&lt;h2 id="clusterrep"&gt;ClusterRep&lt;/h2&gt;
-&lt;h2 id="dispclusterrep"&gt;DispClusterRep&lt;/h2&gt;
-&lt;h2 id="singletensorrep"&gt;SingleTensorRep&lt;/h2&gt;
-&lt;h2 id="directproduct"&gt;DirectProduct&lt;/h2&gt;
-&lt;h2 id="symmetricdirectproduct"&gt;SymmetricDirectProduct&lt;/h2&gt;
-&lt;h2 id="starcharmblochrep-and-stars"&gt;StarCharmBlochRep and Stars&lt;/h2&gt;
-&lt;h2 id="productofqirreps"&gt;ProductofQIrreps&lt;/h2&gt;
-&lt;h2 id="symmetricproductofqirreps"&gt;SymmetricProductofQIrreps&lt;/h2&gt;
-&lt;h2 id="qstarrep"&gt;QStarRep&lt;/h2&gt;
-&lt;h2 id="symmetricqstarrep"&gt;SymmetricQStarRep&lt;/h2&gt;</description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p&gt;Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
+currently execute in the separate kpoints class.&lt;/p&gt;</description></item><item><title>Finite Difference</title><link>https://example.docsy.dev/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/finite-difference/</guid><description>&lt;p&gt;Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
 all the tasks associated with performing finite difference. Here we give some examples to illustrate
 the key features.&lt;/p&gt;
 &lt;p&gt;Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives

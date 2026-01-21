@@ -127,12 +127,7 @@ PM has an array parser which allows substantial flexibility to facilitate this
 &lt;p&gt;Consider entering the lattice vectors tag. All of the below are valid syntax.
 The parser excepts delimiters: &lt;strong&gt;line break&lt;/strong&gt;, &lt;strong&gt;semi-colon&lt;/strong&gt;, &lt;strong&gt;comma&lt;/strong&gt;, &lt;strong&gt;space&lt;/strong&gt;,
 where line break takes highest position. If only one delimiter is present, the
-result will be a vector, while two delimiters yields a matrix, etc.&lt;/p&gt;</description></item><item><title>Symmetry</title><link>https://example.docsy.dev/docs/modules/symmetry/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/symmetry/</guid><description>&lt;p&gt;Here we encode all information about the crystallographic point groups. In the near future, we will add space
-group information here as well.&lt;/p&gt;
-&lt;h2 id="cornwell_group_matrices"&gt;Cornwell_group_matrices&lt;/h2&gt;
-&lt;h2 id="cornwell_point_group"&gt;Cornwell_point_group&lt;/h2&gt;
-&lt;h2 id="pointgroup"&gt;PointGroup&lt;/h2&gt;
-&lt;h2 id="get_little_group"&gt;get_little_group&lt;/h2&gt;</description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p&gt;In order to test out the code, it is useful to have sample crystals.
+result will be a vector, while two delimiters yields a matrix, etc.&lt;/p&gt;</description></item><item><title>Database</title><link>https://example.docsy.dev/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://example.docsy.dev/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/prototype-examples/</guid><description>&lt;p&gt;In order to test out the code, it is useful to have sample crystals.
 At present, there is a script called
 &lt;em&gt;pm-prototype-xtal&lt;/em&gt; which contains such data, and the information can be seen
 via tab completely &lt;em&gt;print-attribute&lt;/em&gt;. This is only meant to be temporary
@@ -152,22 +147,7 @@ until we have a more polished solution.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Representation</title><link>https://example.docsy.dev/docs/modules/representation/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/modules/representation/</guid><description>&lt;p&gt;This module contains all classes relevant to building a representation of a group,
-finding the composition in terms of irreducible representations, and building irreducible
-vectors.&lt;/p&gt;
-&lt;h2 id="baserepresentation"&gt;BaseRepresentation&lt;/h2&gt;
-&lt;h2 id="charmblochrep"&gt;CharmBlochRep&lt;/h2&gt;
-&lt;h2 id="shiftmode"&gt;ShiftMode&lt;/h2&gt;
-&lt;h2 id="clusterrep"&gt;ClusterRep&lt;/h2&gt;
-&lt;h2 id="dispclusterrep"&gt;DispClusterRep&lt;/h2&gt;
-&lt;h2 id="singletensorrep"&gt;SingleTensorRep&lt;/h2&gt;
-&lt;h2 id="directproduct"&gt;DirectProduct&lt;/h2&gt;
-&lt;h2 id="symmetricdirectproduct"&gt;SymmetricDirectProduct&lt;/h2&gt;
-&lt;h2 id="starcharmblochrep-and-stars"&gt;StarCharmBlochRep and Stars&lt;/h2&gt;
-&lt;h2 id="productofqirreps"&gt;ProductofQIrreps&lt;/h2&gt;
-&lt;h2 id="symmetricproductofqirreps"&gt;SymmetricProductofQIrreps&lt;/h2&gt;
-&lt;h2 id="qstarrep"&gt;QStarRep&lt;/h2&gt;
-&lt;h2 id="symmetricqstarrep"&gt;SymmetricQStarRep&lt;/h2&gt;</description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Symmetrizing atoms in crytal</title><link>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
 of the little group using the script &lt;strong&gt;pm-disp-qrep&lt;/strong&gt;. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
 in cubic SrTiO\(_3\). We will use &lt;strong&gt;pm-prototype-xtal&lt;/strong&gt; to generate the crystal structure file.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm-prototype-xtal --perovskite &amp;gt; xtal.yml
