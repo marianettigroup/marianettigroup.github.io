@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Principia Materia</title><link>https://example.docsy.dev/</link><description>Recent content on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>General Information for CLI</title><link>https://example.docsy.dev/docs/functionality/general_information/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/general_information/</guid><description>&lt;p&gt;PM has a collection of command line interfaces (CLI) for performing tasks.
-For the most part, a given CLI is associated with a class within PM,
-though there are CLI&amp;rsquo;s that rely on multiple classes. As outlined below,
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Principia Materia</title><link>https://example.docsy.dev/</link><description>Recent content on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://example.docsy.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>General Information for CLI</title><link>https://example.docsy.dev/docs/functionality/general_information/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/general_information/</guid><description>&lt;p&gt;PM has a command line interface (CLI), named &lt;code&gt;pm&lt;/code&gt;, to access the various capabilities PM,
+generated using PM&amp;rsquo;s &lt;a href="https://marianettigroup.github.io/data-schemer/"&gt;DataSchemer&lt;/a&gt; package.
+For the most part, a given CLI option is associated with a class within PM.
+As outlined below,
 basic documentation about all commands can be obtained at the command line,
 and therefore this website only provides individualized attention to
-selected CLI&amp;rsquo;s which are nontrivial.&lt;/p&gt;
-&lt;p&gt;Each CLI starts with the prefix &lt;code&gt;pm-&lt;/code&gt;, followed by some descriptive word,
-such as &lt;code&gt;pm-lattice&lt;/code&gt;, &lt;code&gt;pm-crystal&lt;/code&gt;, etc. All PM CLI&amp;rsquo;s can be seen via
+selected CLI options which are nontrivial.&lt;/p&gt;
+&lt;p&gt;The CLI is called &lt;code&gt;pm&lt;/code&gt;, and should be followed by a command tag,
+such as &lt;code&gt;pm lattice&lt;/code&gt;, &lt;code&gt;pm crystal&lt;/code&gt;, etc. All CLI commands can be seen
+by using &lt;code&gt;pm -h&lt;/code&gt; or via
 tab completion&lt;/p&gt;</description></item><item><title>Input tags</title><link>https://example.docsy.dev/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://example.docsy.dev/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags"&gt;List of Input Tags&lt;/h2&gt;
 &lt;p&gt;&lt;a href="#lattice_vectors"&gt;lattice_vectors,&lt;/a&gt;
 &lt;a href="#basis_atoms"&gt;basis_atoms,&lt;/a&gt;&lt;/p&gt;
