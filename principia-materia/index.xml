@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Principia Materia</title><link>https://marianettigroup.github.io/principia-materia/</link><description>Recent content on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://marianettigroup.github.io/principia-materia/index.xml" rel="self" type="application/rss+xml"/><item><title>General Information for CLI</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/general_information/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/general_information/</guid><description>&lt;p&gt;PM has a command line interface (CLI), named &lt;code&gt;pm&lt;/code&gt;, to access the various capabilities PM,
+generated using PM&amp;rsquo;s &lt;a href="https://marianettigroup.github.io/data-schemer/"&gt;DataSchemer&lt;/a&gt; package.
+For the most part, a given CLI option is associated with a class within PM.
+As outlined below,
+basic documentation about all commands can be obtained at the command line,
+and therefore this website only provides individualized attention to
+selected CLI options which are nontrivial.&lt;/p&gt;
+&lt;p&gt;The CLI is called &lt;code&gt;pm&lt;/code&gt;, and should be followed by a command tag,
+such as &lt;code&gt;pm lattice&lt;/code&gt;, &lt;code&gt;pm crystal&lt;/code&gt;, etc. All CLI commands can be seen
+by using &lt;code&gt;pm -h&lt;/code&gt; or via
+tab completion&lt;/p&gt;</description></item><item><title>Input tags</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/input_tags/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/input_tags/</guid><description>&lt;h2 id="list-of-input-tags"&gt;List of Input Tags&lt;/h2&gt;
+&lt;p&gt;&lt;a href="#lattice_vectors"&gt;lattice_vectors,&lt;/a&gt;
+&lt;a href="#basis_atoms"&gt;basis_atoms,&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="lattice_vectors"&gt;lattice_vectors&lt;/h3&gt;
+&lt;p&gt;Testing 1 2 3&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;type:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;real, matrix&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;dimension:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;3x3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;em&gt;scripts:&lt;/em&gt;&lt;/td&gt;
+ &lt;td&gt;xx, yy&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;em&gt;type:&lt;/em&gt; matrix&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;dimension:&lt;/em&gt; 3x3&lt;/p&gt;
+&lt;h3 id="basis_atoms"&gt;basis_atoms&lt;/h3&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Name&lt;/th&gt;
+ &lt;th&gt;Description&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;lattice_vectors&lt;/td&gt;
+ &lt;td&gt;Lattice vectors in three dimensions, specified by a row-stacked 3x3 matrix.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;basis_atoms&lt;/td&gt;
+ &lt;td&gt;Basis atoms of crystal structure.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;supa&lt;/td&gt;
+ &lt;td&gt;A matrix of integers which left multiplies lattice_vectors to create a superlattice.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;axial_strain&lt;/td&gt;
+ &lt;td&gt;A vector of three floats which specifies the axial strain.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;strain&lt;/td&gt;
+ &lt;td&gt;A 3x3 real, symmetric matrix which specifies a general state of strain.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;point_group&lt;/td&gt;
+ &lt;td&gt;A string specifying the point group in Schoenfiles notation.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint&lt;/td&gt;
+ &lt;td&gt;A three dimensional vector specifying a kpoint.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint&lt;/td&gt;
+ &lt;td&gt;A three dimensional vector specifying a qpoint.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint_mesh&lt;/td&gt;
+ &lt;td&gt;A vector of three integers, specifying the kpoint mesh for electrons.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint_mesh&lt;/td&gt;
+ &lt;td&gt;A vector of three integers, specifying the qpoint mesh for phonons.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;kpoint_path&lt;/td&gt;
+ &lt;td&gt;A row stacked matrix of kpoints used to create a path through the BZ for plotting electronic bands.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;qpoint_path&lt;/td&gt;
+ &lt;td&gt;A row stacked matrix of qpoints used to create a path through the BZ for plotting phononic bands.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;force_constants&lt;/td&gt;
+ &lt;td&gt;A dictionary with keys being three dimensional vectors and values being NxN matrices, where N is the number of degrees of freedom in the unit cell.&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="tags-with-vector-or-matrix-values"&gt;Tags with vector or matrix values&lt;/h2&gt;
+&lt;p&gt;Many variables will be vectors or matrices, and all such variables will
+be processed by our text parser. Below are several examples which illustrate
+the variety of different ways that vectors may be input.&lt;/p&gt;</description></item><item><title>Translation Group</title><link>https://marianettigroup.github.io/principia-materia/docs/modules/translation-group/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/modules/translation-group/</guid><description>&lt;p&gt;When performing calculations, we need to use various properties of both the infinite translation group (Lattice)
+and the finite translation group (LatticeFTG).
+The infinite translation group contains the lattice vectors, and computes various information from them
+(e.g. vector lengths and angles, volume, reciprocal lattice, etc).
+The FTG
+is naturally characterized by a supercell \(\hat{S}_{BZ}\), and LatticeFTG derives from Lattice.
+Finding all translation points within a given supercell is a key task.
+Similarly,
+another key task is finding all the k-points commensurate with a given FTG, but this is
+currently execute in the separate kpoints class.&lt;/p&gt;</description></item><item><title>Data Aggregator</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/data_aggregator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/data_aggregator/</guid><description>&lt;p&gt;Like many python-based application, PM will need to take input data from the
+command line and or YAML input files. A mechanism is needed to characterize
+the data, enforce the data type of the input data, and possibly do some
+preprocessing of the data. Data Aggregator (DA) handles these tasks.
+DA uses &lt;em&gt;descriptors&lt;/em&gt; to encode the properties of a collection of data.&lt;/p&gt;
+&lt;h2 id="descriptors"&gt;Descriptors&lt;/h2&gt;
+&lt;p&gt;Input data is characterized by descriptors. A descriptor describes a set of data
+associated with some entity, which is normally a class or a script.
+The descriptor will normally be named by the class or command line interface
+they correspond to. Below we document the general structure of a descriptor
+named descriptor_name.&lt;/p&gt;</description></item><item><title>Array Parser</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/array-parser/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/array-parser/</guid><description>&lt;p&gt;For many different tasks performed in the PM suite, a vector or matrix must be
+provided at the command line or in a yaml file.
+PM has an input parser which allows substantial flexibility to facilitate this
+(see PM&amp;rsquo;s &lt;a href="https://marianettigroup.github.io/data-schemer/"&gt;DataSchemer&lt;/a&gt; package if interested in the details).&lt;/p&gt;
+&lt;p&gt;Consider entering the lattice vectors tag. All of the below are valid syntax.
+The parser expects delimiters: &lt;strong&gt;line break&lt;/strong&gt;, &lt;strong&gt;semi-colon&lt;/strong&gt;, &lt;strong&gt;comma&lt;/strong&gt;, &lt;strong&gt;space&lt;/strong&gt;,
+where line break takes highest position. If only one delimiter is present, the
+result will be a vector, while two delimiters yields a matrix, etc.&lt;/p&gt;</description></item><item><title>Database</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/database/</guid><description/></item><item><title>Prototype Crystals</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/prototype-examples/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/prototype-examples/</guid><description>&lt;p&gt;In order to test out the code, it is useful to have sample crystals.
+At present, there is a command
+&lt;em&gt;pm prototype-xtal&lt;/em&gt; which contains such data, and the information can be seen
+via tab completing &lt;em&gt;print-attribute&lt;/em&gt;. This is only meant to be temporary
+until we have a more polished solution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm prototype-xtal --print-attribute perovskite
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;lattice_vectors:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 3.91300000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 3.91300000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.00000000, 3.91300000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;basis_atoms:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Sr: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.50000000, 0.50000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Ti: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.00000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; O: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[[&lt;/span&gt; 0.50000000, 0.00000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.50000000, 0.00000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt; 0.00000000, 0.00000000, 0.50000000&lt;span style="color:#ce5c00;font-weight:bold"&gt;]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Symmetrizing atoms in crytal</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-orbit-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-orbit-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+of the little group using the script &lt;strong&gt;pm disp-qrep&lt;/strong&gt;. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
+in cubic SrTiO\(_3\). We will use &lt;strong&gt;pm prototype-xtal&lt;/strong&gt; to generate the crystal structure file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm prototype-xtal --perovskite &amp;gt; xtal.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Printing out the irreducible representations, we have&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm orbit-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Sr&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A2u
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Ti&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A1g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Orbit Key: &lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt;, Atom Index: &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0, 1, 2&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T1u
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can also print out the irreducible representation vectors.&lt;/p&gt;</description></item><item><title>hdf5</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/hdf5/</guid><description/></item><item><title>Symmetrizing displacements in Crystal</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-disp-qrep/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-disp-qrep/</guid><description>&lt;p&gt;Here we illustrate how to symmtrize displacements at a given q-point according to irreducible representations
+of the little group using the script &lt;strong&gt;pm disp-qrep&lt;/strong&gt;. Take the example of \(\bm{q}=(\frac{1}{2},\frac{1}{2},\frac{1}{2})\)
+in cubic SrTiO\(_3\). We will use &lt;strong&gt;pm prototype-xtal&lt;/strong&gt; to generate the crystal structure file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm prototype-xtal --perovskite &amp;gt; xtal.yml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Printing out the irreducible representations, we have&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm disp-qrep -i xtal.yml --point-group Oh --qpoint 1/2,1/2,1/2 --print-irr-reps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Sr&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;0&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;Ti&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;1&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T1u
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#4e9a06"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;, 0&lt;span style="color:#ce5c00;font-weight:bold"&gt;)&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt; &lt;span style="color:#0000cf;font-weight:bold"&gt;3&lt;/span&gt; 4&lt;span style="color:#ce5c00;font-weight:bold"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;A1g+Eg+T1g+T2g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We can also print out the irreducible representation vectors.&lt;/p&gt;</description></item><item><title>Crystal structure</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-crystal/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-crystal/</guid><description>&lt;p&gt;Interfaces to Crystal class.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm prototype-xtal --print-attribute perovskite &lt;span style="color:#000;font-weight:bold"&gt;|&lt;/span&gt; pm crystal -i -
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Finite Difference</title><link>https://marianettigroup.github.io/principia-materia/docs/modules/finite-difference/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/modules/finite-difference/</guid><description>&lt;p&gt;Finite difference is used to compute phonons and phonon interactions in PM, and this module isolates
+all the tasks associated with performing finite difference. Here we give some examples to illustrate
+the key features.&lt;/p&gt;
+&lt;p&gt;Let us consider a potential with three variables, labeled 0, 1, 2, and set up all derivatives
+to second order.
+Begin by instantiating the class:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;from&lt;/span&gt; &lt;span style="color:#000"&gt;principia_materia.finite_difference.finite_difference_np&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;import&lt;/span&gt; &lt;span style="color:#000"&gt;FiniteDifferenceNP&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#000"&gt;fd&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000"&gt;FiniteDifferenceNP&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set all the derivatives to be evaluated:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#000"&gt;fd&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;.&lt;/span&gt;&lt;span style="color:#000"&gt;set_deriv&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;(&lt;/span&gt;&lt;span style="color:#000"&gt;varset&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;0&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;...&lt;/span&gt; &lt;span style="color:#000"&gt;ordset&lt;/span&gt;&lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;[[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;2&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;],[&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;,&lt;/span&gt;&lt;span style="color:#0000cf;font-weight:bold"&gt;1&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;]])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Set the deltas to be the same for all variables and setup the finite
+difference amplitudes:&lt;/p&gt;</description></item><item><title>Products of Irreducible Representations</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/irrep-product/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/irrep-product/</guid><description>&lt;p&gt;A common group theoretical task is the direct product or symmetric direct product of irreducible representations. The composition of a product is obtained as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm irr_rep_product --point-group Oh --irr-reps T2g,T2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# T2gxT2g = A1g+Eg+T1g+T2g &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The composition of a &lt;em&gt;symmetric&lt;/em&gt; product is obtained as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm irr_rep_product --point-group Oh --irr-reps T2g,T2g --symmetric 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# [T2gxT2g] = A1g+Eg+T2g&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;An arbitrary number of irreps can be handled&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm irr_rep_product --point-group Oh --irr-reps T2g,T2g,Eg,Eg,A2g
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# T2gxT2gxEgxEgxA2g = 2A1g+2A2g+4Eg+4T1g+4T2g&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Another important task is constructing the irreducible representation vectors of the product
+representation in terms of the rows of the original irreducible representations.&lt;/p&gt;</description></item><item><title>pm convert-id-main-to-dev</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-convert-id-main-to-dev/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-convert-id-main-to-dev/</guid><description>&lt;p&gt;In order to extract the needed information from the main branch, checkout a branch
+that has the relevant scripts to dump the output.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# checout the relevant offshoot of main branch from github remote&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ git checkout dev/output_scripts
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#8f5902;font-style:italic"&gt;# from the top level, reinstall to access needed cli&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pip install -e .
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Locate the irreducible derivative file that needs to be converted, and then run
+the following script.&lt;/p&gt;</description></item><item><title>pm phonons-via-irr-derivatives</title><link>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-phonons-via-irr-derivatives/</link><pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/functionality/pm-phonons-via-irr-derivatives/</guid><description>&lt;p&gt;The following tags are required:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;point_group&lt;/li&gt;
+&lt;li&gt;lattice_vectors&lt;/li&gt;
+&lt;li&gt;basis_atoms&lt;/li&gt;
+&lt;li&gt;quadratic_irr_derivatives&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If there are complex irreducible derivatives, the imaginary part
+must be provided by the tag &lt;em&gt;quadratic_irr_derivatives_imaginary&lt;/em&gt;.
+The code will print out a summary of the irreducible derivatives with
+varying levels of verbosity.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ pm phonons-via-irr-derivatives -i input.yaml --print-summary --verbosity long
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are several levels of verbosity that can be seen via tab completion.&lt;/p&gt;</description></item><item><title>Search Results</title><link>https://marianettigroup.github.io/principia-materia/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/search/</guid><description/></item></channel></rss>

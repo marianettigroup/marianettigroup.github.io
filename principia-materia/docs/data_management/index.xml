@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Data Management on Principia Materia</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/</link><description>Recent content in Data Management on Principia Materia</description><generator>Hugo</generator><language>en</language><atom:link href="https://marianettigroup.github.io/principia-materia/docs/data_management/index.xml" rel="self" type="application/rss+xml"/><item><title>Data Aggregator</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/data_aggregator/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/data_aggregator/</guid><description>&lt;p&gt;Like many python-based application, PM will need to take input data from the
+command line and or YAML input files. A mechanism is needed to characterize
+the data, enforce the data type of the input data, and possibly do some
+preprocessing of the data. Data Aggregator (DA) handles these tasks.
+DA uses &lt;em&gt;descriptors&lt;/em&gt; to encode the properties of a collection of data.&lt;/p&gt;
+&lt;h2 id="descriptors"&gt;Descriptors&lt;/h2&gt;
+&lt;p&gt;Input data is characterized by descriptors. A descriptor describes a set of data
+associated with some entity, which is normally a class or a script.
+The descriptor will normally be named by the class or command line interface
+they correspond to. Below we document the general structure of a descriptor
+named descriptor_name.&lt;/p&gt;</description></item><item><title>Database</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/database/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/database/</guid><description/></item><item><title>hdf5</title><link>https://marianettigroup.github.io/principia-materia/docs/data_management/hdf5/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/principia-materia/docs/data_management/hdf5/</guid><description/></item></channel></rss>
