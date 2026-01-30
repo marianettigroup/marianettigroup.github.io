@@ -18,10 +18,10 @@ These tools are intended for &lt;em&gt;human-facing output&lt;/em&gt;: command-l
 &lt;p&gt;The rendering layer is intentionally conservative.&lt;/p&gt;</description></item><item><title>Install</title><link>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/getting-started/install/</guid><description>&lt;p&gt;DataSchemer can be installed using pip.
 Very soon, you will be able to install from PyPI
 using&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install data-schemer
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install data-schemer
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Until then, clone the repo &lt;a href="https://github.com/marianettigroup/data-schemer"&gt;https://github.com/marianettigroup/data-schemer&lt;/a&gt; .
 The install using pip, preferably using editable mode.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install -e .
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install -e .
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>SchemaProjector</title><link>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://marianettigroup.github.io/data-schemer/docs/guides/schema-projector/</guid><description>&lt;p&gt;&lt;code&gt;SchemaProjector&lt;/code&gt; is the core validation and typing engine of DataSchemer.&lt;/p&gt;
 &lt;p&gt;It takes:&lt;/p&gt;
 &lt;ul&gt;
@@ -33,7 +33,7 @@ The install using pip, preferably using editable mode.&lt;/p&gt;
 &lt;p&gt;This page documents the &lt;em&gt;behavior that exists in the current implementation&lt;/em&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="basic-example"&gt;Basic example&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#204a87;font-weight:bold"&gt;from&lt;/span&gt; &lt;span style="color:#000"&gt;data_schemer.schema_projector&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;import&lt;/span&gt; &lt;span style="color:#000"&gt;SchemaProjector&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#204a87;font-weight:bold"&gt;from&lt;/span&gt; &lt;span style="color:#000"&gt;data_schemer.schema_projector&lt;/span&gt; &lt;span style="color:#204a87;font-weight:bold"&gt;import&lt;/span&gt; &lt;span style="color:#000"&gt;SchemaProjector&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#000"&gt;schema&lt;/span&gt; &lt;span style="color:#ce5c00;font-weight:bold"&gt;=&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#4e9a06"&gt;&amp;#34;variables&amp;#34;&lt;/span&gt;&lt;span style="color:#000;font-weight:bold"&gt;:&lt;/span&gt; &lt;span style="color:#000;font-weight:bold"&gt;{&lt;/span&gt;
