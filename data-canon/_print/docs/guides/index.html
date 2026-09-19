@@ -16,16 +16,16 @@ before being passed to the canonical parser.</p><div class=highlight><pre tabind
 </span></span><span style=display:flex><span>      ↓
 </span></span><span style=display:flex><span>Data Skeleton
 </span></span></code></pre></div><p>Like <code>parse()</code>, <code>augmented_parse()</code> always returns a Data Skeleton.</p><p>The augmented parser currently provides three independent features:</p><ul><li>general substitutions,</li><li>mathematical substitutions,</li><li>List Shorthand.</li></ul><p>These features may be used independently or composed within the same input.</p><hr><h2 id=general-substitutions>General Substitutions</h2><p>General substitutions associate a name with any <strong>valid DataCanon type</strong>, and
-the corresponding name within a DataCanon string is subsequently replaced.
+the corresponding name within a DataCanon text is subsequently replaced.
 There are both <em>internal</em> and <em>external</em> substitutions. We begin be addressing
-the former, which are defined at the beginning of the DataCanon string,
+the former, which are defined at the beginning of the DataCanon text,
 separated by a <code>|</code>.
 For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>species=&#34;Sr&#34; position=[0.5, 0.5, 0.5] |
 </span></span><span style=display:flex><span>{
 </span></span><span style=display:flex><span>  &#34;species&#34;: species,
 </span></span><span style=display:flex><span>  &#34;position&#34;: position
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>where the equals sign is used to assign a name to a valid DataCanon string
+</span></span></code></pre></div><p>where the equals sign is used to assign a name to a valid DataCanon text
 and
 the <code>|</code> separates local substitution definitions from the document in which
 they are used. After substitution, the canonical parser receives</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{
@@ -76,6 +76,54 @@ definition may therefore use a globally supplied value:</p><div class=highlight>
 </span></span></code></pre></div><p>which ultimately supplies the canonical parser with</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{&#34;x&#34;: 1/2 * sqrt(3)}
 </span></span></code></pre></div><p>A local definition may not redefine a global substitution with the same name.
 Such a conflict is rejected explicitly.</p><p>After substitution, the names have no semantic existence in DataCanon. They
-are solely a convenience for human-authored augmented input.</p></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
+are solely a convenience for human-authored augmented input.</p><h2 id=mathematical-substitutions>Mathematical Substitutions</h2><p>Mathematical substitutions extend the substitution mechanism for values that
+are naturally scaled by a number.</p><p>The built-in example is the identity matrix <code>I</code>,
+which represents</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+</span></span></code></pre></div><p>Unlike a general substitution, a mathematical substitution may be preceded
+directly by an integer or floating-point multiplier:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2I    or   1.89I   or   2e3I
+</span></span></code></pre></div><p>The case of <code>1.89I</code> yields</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>array([[1.89, 0.0, 0.0],
+</span></span><span style=display:flex><span>       [0.0, 1.89, 0.0],
+</span></span><span style=display:flex><span>       [0.0, 0.0, 1.89]])
+</span></span></code></pre></div><p>The multiplier and substitution name must be adjacent. Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2I    →    valid augmented input
+</span></span><span style=display:flex><span>2 I   →  invalid augmented input
+</span></span></code></pre></div><p>It must be emphasized that <strong>mathematical substitutions are not DataCanon arithmetic</strong>.
+The notation
+<code>2I</code>
+does not introduce multiplication into the canonical DataCanon language.
+Instead, the augmented parser recognizes the mathematical substitution,
+converts the substitution value and multiplier to their corresponding Python
+objects, performs ordinary Python multiplication, and converts the result back
+to a Data Skeleton.
+The meaning of multiplication is therefore determined by the Python types
+involved rather than by DataCanon (see further examples below).</p><h3 id=mathematical-substitutions-within-documents>Mathematical substitutions within documents</h3><p>As in the case of a general substitution, the mathematical substitution
+can be used anywhere in a augmented DataCanon text, such as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  &#34;primitive&#34;: I,
+</span></span><span style=display:flex><span>  &#34;supercell&#34;: 2I,
+</span></span><span style=display:flex><span>  &#34;strained&#34;: 1.89I,
+</span></span><span style=display:flex><span>  &#34;two_matrices&#34;:    [I, 2I]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=custom-mathematical-substitutions>Custom mathematical substitutions</h3><p>Applications may supply additional mathematical substitutions through
+<code>augmented_parse()</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>skeleton</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>augmented_parse</span><span style=color:#000;font-weight:700>(</span>
+</span></span><span style=display:flex><span>  <span style=color:#4e9a06>&#39;{&#34;matrix&#34;: 2M}&#39;</span><span style=color:#000;font-weight:700>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#000>mathematical_substitutions</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#000;font-weight:700>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#4e9a06>&#39;M&#39;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#39;array([[0, 1], [1, 0]])&#39;</span><span style=color:#000;font-weight:700>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#000;font-weight:700>},</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>)</span>
+</span></span></code></pre></div><p>As with general substitutions, the supplied value must be valid DataCanon.</p><p>Mathematical substitutions should be used only when scaling the corresponding
+semantic object has a clear meaning in the target language. DataCanon itself
+does not define multiplication between semantic types.
+For example, consider a mathematical substitution whose
+value is a DataCanon List:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>skeleton</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>augmented_parse</span><span style=color:#000;font-weight:700>(</span>
+</span></span><span style=display:flex><span>  <span style=color:#4e9a06>&#39;{&#34;value&#34;: 2X}&#39;</span><span style=color:#000;font-weight:700>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#000>mathematical_substitutions</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#000;font-weight:700>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#4e9a06>&#39;X&#39;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#39;[1, 2, 3]&#39;</span><span style=color:#000;font-weight:700>,</span>
+</span></span><span style=display:flex><span>  <span style=color:#000;font-weight:700>},</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>)</span>
+</span></span></code></pre></div><p>The DataCanon List
+<code>[1, 2, 3]</code>
+is lowered to a Python <code>list</code>. Python therefore interprets <code>2X</code> using ordinary
+list multiplication, producing</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{&#34;value&#34;: [1, 2, 3, 1, 2, 3] }
+</span></span></code></pre></div><p>DataCanon assigns no special meaning to either operation. Mathematical
+substitution deliberately delegates multiplication to the native Python type.</p></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
 2018&ndash;2026
 <span class=td-footer__authors>Docsy Authors | <a href=https://creativecommons.org/licenses/by/4.0>CC BY 4.0</a> |</span></span><span class=td-footer__all_rights_reserved>All Rights Reserved</span><span class=ms-2><a href=https://policies.google.com/privacy target=_blank rel=noopener>Privacy Policy</a></span></div></div></div></footer></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css integrity="sha512-r2+FkHzf1u0+SQbZOoIz2RxWOIWfdEzRuYybGjzKq18jG9zaSfEy9s3+jMqG/zPtRor/q4qaUCYQpmSjTw8M+g==" crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js integrity="sha512-INps9zQ2GUEMCQD7xiZQbGUVnqnzEvlynVy6eqcTcHN4+aQiLo9/uaQqckDpdJ8Zm3M0QBs+Pktg4pz0kEklUg==" crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF+NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w==" crossorigin=anonymous onload=renderMathInElement(document.body,null)></script><script src=/data-canon/js/main.min.d287f9c9849d645c20f888fba75206253abddb674477c502feb0622e3b85cab0.js integrity="sha256-0of5yYSdZFwg+Ij7p1IGJTq922dEd8UC/rBiLjuFyrA=" crossorigin=anonymous></script><script defer src=/data-canon/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/data-canon/js/tabpane-persist.js></script></body></html>
