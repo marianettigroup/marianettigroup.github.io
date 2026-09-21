@@ -627,12 +627,10 @@ relationships between distinct DataCanon Values are outside the DataCanon
 specification.</p><p>The <code>*</code> and <code>+</code> characters appearing in Coefficient syntax do not define
 general arithmetic operators. They are structural components of that semantic
 type.</p><hr><h1 id=terminology>Terminology</h1><p>The following terms are used throughout this specification.</p><p><strong>DataCanon semantic type</strong>
-One of the data types defined by the DataCanon specification, such as Integer,
-Float, Fraction, Coefficient, List, or Mapping. Composite semantic types may
-recursively contain instances of other DataCanon semantic types.</p><p><strong>DataCanon Value (DCV)</strong>
-Canonical DataCanon text encoding exactly one instance of a DataCanon semantic
-type.</p><p>Two DCVs are equal if and only if their text is identical. DCVs corresponding
-to different semantic types cannot be equal.</p><p><strong>DataCanon Source (DCS)</strong>
+A data type defined by the DataCanon specification. Each DCST defines the information constituting its instances, the invariants those instances must satisfy, the equality relation between its instances, and their canonical representation. Composite DCSTs may recursively contain instances of other DCSTs.</p><p><strong>DataCanon Semantic Instance (DCSI)</strong>
+An instance of exactly one DCST.
+DCSI equality is defined by the corresponding DCST and is independent of any implementation-language representation.</p><p><strong>DataCanon Value (DCV)</strong>
+Canonical DataCanon text encoding exactly one DCSI.</p><p><strong>DataCanon Source (DCS)</strong>
 Text intended as input to a DataCanon parser.</p><p>A DCS may contain textual freedoms permitted by the parser, such as
 noncanonical whitespace or other accepted noncanonical syntax.</p><p><strong>Valid DataCanon Source (valid DCS)</strong>
 A DCS accepted by a conforming DataCanon parser.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1,2,3]
@@ -666,29 +664,50 @@ using an alternative persistence mechanism such as HDF5 without changing its
 DataCanon identity.</p><hr><h2 id=minimal>Minimal</h2><p>The language favors simple, deterministic rules over expressive but ambiguous
 alternatives.</p><p>DataCanon defines only the structure and canonical representation necessary to
 identify its semantic types. It does not define general computation or
-mathematical simplification.</p><hr><h1 id=primitive-types>Primitive Types</h1><h2 id=integer>Integer</h2><p>Integers denote exact mathematical integers.</p><p>Integers have unlimited precision.</p><hr><h2 id=float>Float</h2><p>Floating-point literals denote IEEE-754 binary64 values.</p><p>Floating-point values are inherently approximate.</p><p>Applications requiring an explicitly rational representation should instead use
-Fractions.</p><hr><h2 id=negative-numeric-literals>Negative Numeric Literals</h2><p>Integer, floating-point, and fraction literals may be preceded by a leading
-minus sign.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>-42
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>-3.14
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>-1/2
-</span></span></code></pre></div><p>Negative factors may likewise appear when constructing Coefficients.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>-2 * sqrt(3)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>-1/2 * sqrt(3)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>-1.89 * sqrt(3)
-</span></span></code></pre></div><p>Negative floating-point literals may also appear as Coefficient offsets.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>3/4 + -0.199
-</span></span></code></pre></div><p>Here <code>+</code> is part of Coefficient syntax and <code>-0.199</code> is a negative
-floating-point literal.</p><p>DataCanon defines negative numeric literals.</p><p>It does <strong>not</strong> define a general unary negation or subtraction operator.</p><hr><h2 id=string>String</h2><p>Strings are enclosed by double quotation marks.</p><p>Single-quoted strings are not part of Version 1.</p><hr><h2 id=boolean>Boolean</h2><p>Boolean literals are</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>true
+mathematical simplification.</p><hr><h1 id=primitive-types>Primitive Types</h1><h2 id=integer>Integer</h2><p>The Integer DCST represents the mathematical integers (\mathbb{Z}).</p><p>An Integer DCSI consists of exactly one mathematical integer. Integer has
+unlimited precision.</p><p>Two Integer DCSIs are equal if and only if they represent the same mathematical
+integer.</p><p>The canonical representation of an Integer is its base-10 representation,
+preceded by <code>-</code> if the value is negative.</p><hr><h2 id=float>Float</h2><p>The Float DCST represents finite IEEE-754 binary64 values.</p><p>A Float DCSI consists of exactly one finite IEEE-754 binary64 value, including
+its sign. Positive and negative zero are therefore distinct Float DCSIs.</p><p>Two Float DCSIs are equal if and only if their IEEE-754 binary64 bit
+representations are identical.</p><p>NaN and positive and negative infinity are not Float DCSIs in Version 1.</p><p>Floating-point values are inherently approximate. Applications requiring an
+explicitly rational representation should use a suitable exact DataCanon
+semantic type.</p><p>The canonical representation of a Float is a decimal floating-point literal
+that uniquely identifies its binary64 value according to the canonical
+rendering rules.</p><hr><h2 id=string>String</h2><p>The String DCST represents finite sequences of Unicode scalar values.</p><p>A String DCSI consists of exactly one such sequence.</p><p>Two String DCSIs are equal if and only if they contain identical sequences of
+Unicode scalar values.</p><p>DataCanon performs no Unicode normalization. Strings that are visually
+identical but consist of different sequences of Unicode scalar values are
+therefore distinct String DCSIs.</p><p>String literals are enclosed by double quotation marks.</p><p>Single-quoted strings are not part of Version 1.</p><hr><h2 id=boolean>Boolean</h2><p>The Boolean DCST contains exactly two DCSIs, canonically represented as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>true
 </span></span><span style=display:flex><span>false
-</span></span></code></pre></div><hr><h2 id=null>Null</h2><p>The null literal is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>null
-</span></span></code></pre></div><hr><h1 id=atomic-types>Atomic Types</h1><p>Atomic semantic types encode values that are conceptually indivisible.</p><p>They render on a single line.</p><hr><h2 id=fraction>Fraction</h2><p>Fractions encode an integer numerator and a positive integer denominator.</p><p>The numerator and denominator are preserved exactly as specified. DataCanon
-does not reduce or otherwise mathematically simplify Fractions.</p><p>Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
+</span></span></code></pre></div><p>Two Boolean DCSIs are equal if and only if they represent the same Boolean
+value.</p><p>Boolean is semantically distinct from Integer. In particular, <code>true</code> and <code>1</code>
+are instances of different DCSTs and are not equal.</p><hr><h2 id=null>Null</h2><p>The Null DCST contains exactly one DCSI.</p><p>Its canonical representation is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>null
+</span></span></code></pre></div><p>All Null DCSIs are therefore equal.</p><hr><h1 id=atomic-types>Atomic Types</h1><p>Atomic semantic types represent values that are conceptually indivisible despite
+having internal structure.</p><p>They render on a single line.</p><h2 id=fraction>Fraction</h2><p>The Fraction DCST represents a structured ratio of two mathematical integers.</p><p>A Fraction DCSI consists of</p><ul><li>an Integer numerator, and</li><li>a positive Integer denominator.</li></ul><p>The denominator MUST be nonzero and positive.</p><p>Two Fraction DCSIs are equal if and only if their numerators are equal and
+their denominators are equal.</p><p>Thus, Fraction identity is structural rather than mathematical. For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
 </span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2/4
-</span></span></code></pre></div><p>are distinct DCVs.</p><p>Fractions are not arithmetic expressions.</p><hr><h2 id=coefficient>Coefficient</h2><p>Coefficients preserve a structured numerical decomposition consisting of a
-multiplicative term and an optional floating-point offset.</p><p>A Coefficient has the general form</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>scale * numerator/denominator * sqrt(radicand) + offset
-</span></span></code></pre></div><p>where the multiplicative term may contain</p><ul><li>an optional floating-point scale,</li><li>an optional rational factor,</li><li>an optional square-root factor,</li></ul><p>and the additive offset, when present, is a floating-point value.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(2)
+</span></span></code></pre></div><p>represent distinct Fraction DCSIs even though they denote the same rational
+number mathematically.</p><p>DataCanon does not reduce, normalize, or otherwise mathematically simplify
+Fractions.</p><p>The canonical representation of a Fraction is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>numerator/denominator
+</span></span></code></pre></div><p>with the numerator and denominator rendered according to the canonical Integer
+rules.</p><p>Fractions are semantic values, not arithmetic expressions. The <code>/</code> character
+is part of Fraction syntax and does not define a general division operator.</p><hr><h2 id=coefficient>Coefficient</h2><p>The Coefficient DCST represents a structured numerical decomposition consisting
+of a multiplicative term and an additive floating-point offset.</p><p>A Coefficient DCSI consists of five constituents:</p><ul><li>a Float <strong>scale</strong>,</li><li>an Integer <strong>numerator</strong>,</li><li>a positive Integer <strong>denominator</strong>,</li><li>a positive Integer <strong>radicand</strong>,</li><li>a Float <strong>offset</strong>.</li></ul><p>The constituents have the identity values</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>scale       = 1.0
+</span></span><span style=display:flex><span>numerator   = 1
+</span></span><span style=display:flex><span>denominator = 1
+</span></span><span style=display:flex><span>radicand    = 1
+</span></span><span style=display:flex><span>offset      = 0.0
+</span></span></code></pre></div><p>The denominator and radicand MUST be positive.</p><p>The scale and offset MUST be finite Float DCSIs. When the offset is zero, it
+MUST be positive zero. Negative zero is not permitted as a zero Coefficient
+offset.</p><p>Two Coefficient DCSIs are equal if and only if all five corresponding
+constituents are equal according to their respective DCST equality rules.</p><p>Thus, Coefficient identity is structural rather than mathematical. DataCanon
+does not reduce, simplify, or otherwise mathematically transform the
+constituents of a Coefficient.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(12)
+</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2 * sqrt(3)
+</span></span></code></pre></div><p>represent distinct Coefficient DCSIs.</p><p>Likewise, distinct rational structures remain distinct. No common factors are
+cancelled between the numerator and denominator.</p><h3 id=canonical-representation>Canonical Representation</h3><p>A Coefficient has the general structural form</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>scale * numerator/denominator * sqrt(radicand) + offset
+</span></span></code></pre></div><p>The multiplicative term contains the scale, rational factor, and square-root
+factor represented by the corresponding Coefficient constituents.</p><p>Canonical rendering emits multiplicative factors in the order</p><ol><li>floating-point scale,</li><li>rational factor,</li><li>square-root factor,</li></ol><p>followed by the additive offset when the offset is nonzero.</p><p>Identity factors are omitted whenever their omission does not make the
+Coefficient indistinguishable from another DCST.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(2)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>2 * sqrt(2)
 </span></span><span style=display:flex><span>
@@ -707,38 +726,59 @@ multiplicative term and an optional floating-point offset.</p><p>A Coefficient h
 </span></span><span style=display:flex><span>sqrt(2) + 0.225
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>1.89 * 1/2 * sqrt(3) + 0.225
-</span></span></code></pre></div><p>Coefficients are not arithmetic expressions.</p><p>The <code>*</code> and <code>+</code> characters have no general arithmetic meaning in DataCanon.
-They occur only as structural components of Coefficient syntax.</p><p>A Coefficient may contain at most one factor of each multiplicative kind and
-at most one additive offset.</p><p>Parsers may accept multiplicative factors in any order.</p><p>Renderers always emit multiplicative factors in the canonical order</p><ol><li>floating-point scale,</li><li>rational factor,</li><li>square-root factor,</li></ol><p>followed by the additive offset when nonzero.</p><p>Identity factors are omitted except when required to preserve the Coefficient
-semantic type.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(3)
-</span></span></code></pre></div><p>already identifies a Coefficient and therefore requires no identity factor.</p><p>In contrast,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
-</span></span></code></pre></div><p>denotes a Fraction, while</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 * 1
-</span></span></code></pre></div><p>denotes a Coefficient.</p><p>Similarly,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1.89
-</span></span></code></pre></div><p>denotes a floating-point Scalar, while</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1.89 * 1
-</span></span></code></pre></div><p>denotes a Coefficient.</p><p>When a nonzero offset is present, the <code>+</code> syntax itself identifies the
-Coefficient semantic type. Therefore,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 + 0.225
-</span></span></code></pre></div><p>requires no <code>* 1</code> identity factor.</p><p>The offset must be a floating-point literal. DataCanon does not define general
-addition. Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 + 0.225
+</span></span></code></pre></div><p>are Coefficient representations.</p><p>The square-root factor is omitted when the radicand is <code>1</code>.</p><p>Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(3)
+</span></span></code></pre></div><p>already identifies the Coefficient DCST and requires no additional identity
+factor.</p><p>In contrast,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
+</span></span></code></pre></div><p>is not a Coefficient, while</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 * 1
+</span></span></code></pre></div><p>is a Coefficient whose radicand is <code>1</code>.</p><p>Similarly,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1.89
+</span></span></code></pre></div><p>is a Float, while</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1.89 * 1
+</span></span></code></pre></div><p>is a Coefficient.</p><p>When the offset is nonzero, the <code>+</code> syntax itself identifies the Coefficient
+DCST. Therefore,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 + 0.225
+</span></span></code></pre></div><p>requires no multiplicative identity factor.</p><p>The offset is omitted when it is positive zero.</p><h3 id=valid-source>Valid Source</h3><p>A parser MAY accept multiplicative factors in any order, provided that the
+source unambiguously determines the five constituents of the Coefficient DCSI.</p><p>A Coefficient may contain at most one factor of each multiplicative kind and at
+most one additive offset.</p><p>The offset must be a Float literal. Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 + 0.225
 </span></span></code></pre></div><p>is valid Coefficient syntax, while</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2 + 1/3
-</span></span></code></pre></div><p>is not a DataCanon arithmetic expression.</p><p>DataCanon preserves the explicitly encoded Coefficient structure. Mathematical
-simplification of that structure is outside the DataCanon specification.</p><hr><h1 id=composite-types>Composite Types</h1><h2 id=complex>Complex</h2><p>Complex values encode a real component and an imaginary component.</p><p>Each component must be an instance of one of the following real-valued numerical
-DataCanon semantic types:</p><ul><li>Integer,</li><li>Float,</li><li>Fraction,</li><li>Coefficient.</li></ul><p>Complex values are written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(real, imaginary)
-</span></span></code></pre></div><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1, 2)
+</span></span></code></pre></div><p>is not.</p><p>Coefficients are not arithmetic expressions.</p><p>The <code>*</code>, <code>+</code>, and <code>sqrt(...)</code> syntax appearing in a Coefficient describes its
+structure. These constructs do not define general multiplication, addition, or
+square-root operations in DataCanon.</p><hr><h2 id=complex>Complex</h2><p>The Complex DCST represents a structured complex number consisting of a real
+component and an imaginary component.</p><p>A Complex DCSI consists of</p><ul><li>a <strong>real component</strong>, and</li><li>an <strong>imaginary component</strong>,</li></ul><p>each of which MUST be a DCSI of one of the following real-valued numerical
+DCSTs:</p><ul><li>Integer,</li><li>Float,</li><li>Fraction,</li><li>Coefficient.</li></ul><p>Two Complex DCSIs are equal if and only if their real components are equal and
+their imaginary components are equal according to their respective DCST
+equality rules.</p><p>The DCST of each component therefore participates in Complex identity.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1, 2)
+</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1.0, 2.0)
+</span></span></code></pre></div><p>represent distinct Complex DCSIs because Integer and Float are distinct DCSTs.</p><p>Likewise,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
+</span></span></code></pre></div><p>preserves the Fraction and Coefficient structures of its components exactly.</p><p>DataCanon does not convert Complex components to floating-point values or
+otherwise mathematically simplify them.</p><h3 id=canonical-representation-1>Canonical Representation</h3><p>The canonical representation of a Complex DCSI is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(real, imaginary)
+</span></span></code></pre></div><p>where <code>real</code> and <code>imaginary</code> are the DCVs of the corresponding component
+DCSIs.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1, 2)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>complex(1.0, -3.5)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>complex(1/2, 3/4)
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>The real and imaginary components retain their own DataCanon semantic types and
-structure. DataCanon does not convert the components to floating-point values
-or otherwise mathematically simplify them.</p><p>Thus,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>preserves the exact Fraction and Coefficient components rather than replacing
-them with floating-point approximations.</p><p>Complex values are not arithmetic expressions. The <code>complex(...)</code> syntax
-constructs a Complex value from two real-valued numerical DataCanon instances;
-it does not perform mathematical evaluation.</p><hr><h2 id=lists>Lists</h2><p>Lists are ordered collections of DataCanon semantic-type instances.</p><p>Lists are written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ ... ]
-</span></span></code></pre></div><hr><h2 id=tuples>Tuples</h2><p>Tuples are ordered immutable collections of DataCanon semantic-type instances.</p><p>Tuples are written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>( ... )
-</span></span></code></pre></div><p>Parsers may accept an optional trailing comma.</p><p>Renderers always emit the canonical form without a trailing comma.</p><hr><h2 id=sets>Sets</h2><p>Sets are unordered collections of distinct DataCanon semantic-type instances.</p><p>Sets are written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ ... }
+</span></span></code></pre></div><p>are Complex representations.</p><p>Because the component DCSTs participate in Complex identity, canonical
+rendering preserves their distinctions. Integer components are not converted
+to Float components, Fractions are not reduced or converted to floating point,
+and Coefficients retain their encoded structure.</p><p>Complex values are not arithmetic expressions.</p><p>The <code>complex(...)</code> syntax constructs a Complex DCSI from two real-valued
+numerical DCSIs. It does not define complex arithmetic or mathematical
+evaluation in DataCanon.</p><h1 id=composite-types>Composite Types</h1><p>Composite DCSTs contain collections of other DCSIs.</p><p>Their identity is determined by their constituent DCSIs according to the
+structure and equality rules defined by each composite DCST.</p><h2 id=list>List</h2><p>The List DCST represents a finite ordered sequence of DCSIs.</p><p>A List DCSI consists of zero or more DCSIs in a defined order.</p><p>Two List DCSIs are equal if and only if</p><ul><li>they contain the same number of items, and</li><li>corresponding items are equal according to their respective DCST equality
+rules.</li></ul><p>Thus, item order participates in List identity.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1, 2]
+</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[2, 1]
+</span></span></code></pre></div><p>represent distinct List DCSIs.</p><p>The canonical representation of a List is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[item1, item2, ...]
+</span></span></code></pre></div><p>where each item is represented by its DCV.</p><p>An empty List is represented as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[]
+</span></span></code></pre></div><p>Lists may recursively contain DCSIs of any DCST, including other composite
+DCSTs.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1, 1/2, [2, 3], (4, 5)]
+</span></span></code></pre></div><p>is a List containing an Integer, a Fraction, another List, and a Tuple.</p><hr><h2 id=tuple>Tuple</h2><p>The Tuple DCST represents a finite ordered sequence of DCSIs.</p><p>A Tuple DCSI consists of zero or more DCSIs in a defined order.</p><p>Two Tuple DCSIs are equal if and only if</p><ul><li>they contain the same number of items, and</li><li>corresponding items are equal according to their respective DCST equality
+rules.</li></ul><p>Thus, item order participates in Tuple identity.</p><p>Tuple and List are distinct DCSTs. A Tuple DCSI and a List DCSI are therefore
+never equal, even when they contain equal constituent DCSIs in the same order.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>(1, 2)
+</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1, 2]
+</span></span></code></pre></div><p>represent distinct DCSIs.</p><p>The canonical representation of a Tuple is</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>(item1, item2, ...)
+</span></span></code></pre></div><p>where each item is represented by its DCV.</p><p>An empty Tuple is represented as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>()
+</span></span></code></pre></div><p>A one-item Tuple is represented as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>(item)
+</span></span></code></pre></div><p>and does not require a trailing comma.</p><p>Tuples may recursively contain DCSIs of any DCST, including other composite
+DCSTs.</p><hr><h2 id=sets>Sets</h2><p>Sets are unordered collections of distinct DataCanon semantic-type instances.</p><p>Sets are written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ ... }
 </span></span></code></pre></div><p>The empty set is written</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>emptyset
 </span></span></code></pre></div><p>Set elements are rendered in canonical semantic order so that insertion order
 does not affect the resulting DCV.</p><hr><h2 id=mappings>Mappings</h2><p>Mappings associate keys with values.</p><p>Mapping entries preserve insertion order. Entry order therefore participates in
