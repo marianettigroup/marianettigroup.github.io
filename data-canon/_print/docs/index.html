@@ -536,130 +536,120 @@ classes should be documented from their current implementation; the exported
 names alone do not establish those signatures.</p><h2 id=specifications>Specifications</h2><p>The <a href=/data-canon/docs/specifications/>six Version 1 specifications</a>
 define DCT identity, canonical bytes, and the contracts for each representation.
 Python-specific construction, formatting controls, and native-object
-conversion are implementation interfaces layered on those definitions.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-e74bebdd66a15fad4182deb76e779a53>4 - Publication Outline</h1><hr><p>A possible journal would be <strong>The Journal of Open Source Software</strong>.</p><h2 id=working-title>Working Title</h2><p><strong>DataCanon: Deterministic Semantic Identity for Structured Scientific Data</strong></p><p>Alternative titles:</p><ul><li><strong>DataCanon: A Canonical Language for Structured Scientific Data</strong></li><li><strong>DataCanon: Language-Independent Identity and Persistence for Scientific Data</strong></li><li><strong>Canonical Semantic Representation of Structured Scientific Data</strong></li></ul><hr><h1 id=central-thesis>Central Thesis</h1><p>Scientific software requires more than serialization.</p><p>A scientific data object should possess a stable identity that is independent
-of</p><ul><li>programming language,</li><li>in-memory representation,</li><li>persistence mechanism,</li><li>formatting choices,</li><li>and the lifetime of a particular software implementation.</li></ul><p>DataCanon addresses this problem by defining a small formal language in which
-each supported data instance has a unique canonical textual representation,
-the <strong>DataCanon Value (DCV)</strong>.</p><p>The DCV provides a language-independent semantic identity from which
-deterministic fingerprints, interchange formats, and persistence mechanisms
-can be derived.</p><hr><h1 id=1-introduction>1. Introduction</h1><h2 id=11-the-problem>1.1 The problem</h2><p>Scientific software routinely stores structured data containing objects such
-as</p><ul><li>integers and floating-point values,</li><li>exact rational numbers,</li><li>structured irrational coefficients,</li><li>complex values,</li><li>multidimensional numerical arrays,</li><li>tuples and lists,</li><li>sets,</li><li>mappings with structured keys.</li></ul><p>Existing serialization and persistence formats solve important parts of this
-problem but generally do not define a single canonical semantic identity for
-such data.</p><p>Questions that arise in long-lived scientific software include:</p><ul><li>When are two independently constructed data objects identical?</li><li>Can that identity survive a change of programming language?</li><li>Can the same identity survive migration between text, HDF5, databases, or
-future persistence mechanisms?</li><li>Can the identity be fingerprinted deterministically?</li><li>Can exact mathematical structure be preserved without introducing a
-symbolic algebra system?</li></ul><h2 id=12-datacanon>1.2 DataCanon</h2><p>Introduce DataCanon as a formal language for structured scientific data.</p><p>Central idea:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>data instance
-</span></span><span style=display:flex><span>     ↓
-</span></span><span style=display:flex><span>canonical representation
-</span></span><span style=display:flex><span>     ↓
-</span></span><span style=display:flex><span>DataCanon Value
-</span></span><span style=display:flex><span>     ↓
-</span></span><span style=display:flex><span>deterministic fingerprint
-</span></span></code></pre></div><p>Emphasize that DataCanon separates <strong>semantic identity</strong> from</p><ul><li>storage,</li><li>computation,</li><li>implementation language,</li><li>and human-oriented input conventions.</li></ul><h2 id=13-contributions>1.3 Contributions</h2><p>Possible contribution list:</p><ol><li>A formal canonical language for structured scientific data.</li><li>Explicit semantic types designed for scientific applications.</li><li>Deterministic canonical representation and fingerprinting.</li><li>Preservation of exact numerical structure without symbolic evaluation.</li><li>Explicit distinction between ordered and unordered collections.</li><li>A practical portable model for multidimensional machine arrays.</li><li>Lossless interchange with alternative persistence formats.</li><li>A Python reference implementation.</li><li>A language-independent conformance suite.</li><li>Independent Python and Julia implementations demonstrating cross-language
-canonical identity.</li></ol><p>Items 9 and 10 depend on completion of the proposed Julia implementation.</p><hr><h1 id=2-design-requirements>2. Design Requirements</h1><p>Describe the engineering requirements that motivated DataCanon.</p><h2 id=21-determinism>2.1 Determinism</h2><p>Every instance of a DataCanon semantic type has exactly one DCV.</p><h2 id=22-language-independence>2.2 Language independence</h2><p>Canonical identity should not depend on Python or another implementation
-language.</p><h2 id=23-losslessness>2.3 Losslessness</h2><p>Semantic distinctions represented by DataCanon must survive parsing,
-rendering, interchange, and persistence.</p><h2 id=24-long-term-stability>2.4 Long-term stability</h2><p>Scientific data may outlive</p><ul><li>particular source-code versions,</li><li>serialization libraries,</li><li>programming languages,</li><li>and storage technologies.</li></ul><h2 id=25-human-readability>2.5 Human readability</h2><p>Canonical text should remain reasonably readable for small and moderate data
-structures.</p><h2 id=26-practicality>2.6 Practicality</h2><p>Language independence must not require DataCanon to replace mature native
-facilities such as numerical array implementations.</p><p>Discuss the distinction between principled portability and impractical
-abstraction.</p><h2 id=27-non-goals>2.7 Non-goals</h2><p>DataCanon does not provide</p><ul><li>symbolic algebra,</li><li>expression evaluation,</li><li>variables,</li><li>functions,</li><li>units,</li><li>dimensional analysis,</li><li>or general computation.</li></ul><p>Key principle:</p><blockquote><p><strong>DataCanon canonicalizes representation, not mathematics.</strong></p></blockquote><hr><h1 id=3-datacanon-language-model>3. DataCanon Language Model</h1><h2 id=31-datacanon-source>3.1 DataCanon Source</h2><p>Define DataCanon Source (DCS) and valid DCS.</p><p>Multiple valid source strings may differ textually.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[1,2,3]
-</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ 1, 2, 3 ]
-</span></span></code></pre></div><h2 id=32-datacanon-value>3.2 DataCanon Value</h2><p>Define:</p><blockquote><p><strong>DataCanon Value (DCV):</strong> Canonical DataCanon text encoding exactly one
-instance of a DataCanon semantic type.</p></blockquote><p>Two DCVs are equal if and only if their text is identical.</p><h2 id=33-parsing-and-rendering>3.3 Parsing and rendering</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Valid DCS
-</span></span><span style=display:flex><span>   ↓
-</span></span><span style=display:flex><span> parsing
-</span></span><span style=display:flex><span>   ↓
-</span></span><span style=display:flex><span>semantic instance
-</span></span><span style=display:flex><span>   ↓
-</span></span><span style=display:flex><span> rendering
-</span></span><span style=display:flex><span>   ↓
-</span></span><span style=display:flex><span>  DCV
-</span></span></code></pre></div><p>For a DCV,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>render(parse(DCV)) = DCV
-</span></span></code></pre></div><h2 id=34-canonical-identity>3.4 Canonical identity</h2><p>Explain why textual identity provides a simple implementation-independent
-definition of equality.</p><hr><h1 id=4-semantic-types>4. Semantic Types</h1><p>Present the Version 1 semantic types and motivate distinctions that are
-important for scientific data.</p><h2 id=41-primitive-scalar-types>4.1 Primitive scalar types</h2><ul><li>Integer</li><li>Float</li><li>String</li><li>Boolean</li><li>Null</li></ul><h2 id=42-fraction>4.2 Fraction</h2><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
-</span></span></code></pre></div><p>Discuss preservation of numerator and denominator.</p><p>Important example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1/2
-</span></span></code></pre></div><p>and</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>2/4
-</span></span></code></pre></div><p>are distinct DCVs.</p><p>DataCanon does not perform rational reduction.</p><h2 id=43-coefficient>4.3 Coefficient</h2><p>Examples:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>sqrt(3)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>1/2 * sqrt(3)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>1.89 * 1/2 * sqrt(3)
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>1/4 + 0.199
-</span></span></code></pre></div><p>Explain the motivation for preserving structured irrational numerical data.</p><p>Emphasize that <code>*</code> and <code>+</code> are structural syntax rather than general
-arithmetic operators.</p><h2 id=44-complex>4.4 Complex</h2><p>Complex values compose two real-valued numerical DataCanon instances.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>Use this as a central scientific example.</p><p>Discuss exact representation of complex phase factors and other quantities
-that would otherwise be prematurely converted to floating point.</p><h2 id=45-ordered-composite-types>4.5 Ordered composite types</h2><h3 id=list>List</h3><p>Ordered recursive collection.</p><h3 id=tuple>Tuple</h3><p>Ordered immutable structural collection.</p><p>Explain why List and Tuple remain semantically distinct.</p><h2 id=46-unordered-collections>4.6 Unordered collections</h2><h3 id=set>Set</h3><p>Semantically unordered but stored/rendered in canonical semantic order.</p><p>Explain distinction between <strong>semantic order</strong> and <strong>canonical order</strong>.</p><h2 id=47-mappings>4.7 Mappings</h2><h3 id=mapping>Mapping</h3><p>Entry order participates in semantic identity.</p><h3 id=unorderedmapping>UnorderedMapping</h3><p>Entry order does not participate in semantic identity.</p><p>Entries are nevertheless stored and rendered in canonical semantic order.</p><p>This section provides a useful illustration of the distinction between</p><ul><li>semantic ordering,</li><li>insertion ordering,</li><li>canonical ordering.</li></ul><hr><h1 id=5-arrays>5. Arrays</h1><p>This should probably be a substantial section because Arrays illustrate one of
-the central design compromises in DataCanon.</p><h2 id=51-motivation>5.1 Motivation</h2><p>Scientific software requires efficient multidimensional machine arrays.</p><p>Treating every Array element as an independent recursively typed DataCanon
-instance would impose unnecessary restrictions and overhead.</p><h2 id=52-array-construction-and-semantic-identity>5.2 Array construction and semantic identity</h2><p>DataCanon deliberately does not prescribe all native Array construction and
-coercion policies.</p><p>Array construction may therefore depend on the underlying language
-implementation.</p><p>Once a portable Array representation exists, however, its canonical identity
-is specified by DataCanon.</p><h2 id=53-portable-array-types>5.3 Portable Array types</h2><p>Version 1 standardizes portable representations for</p><ul><li><code>bool</code></li><li><code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code></li><li><code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code></li><li><code>float16</code>, <code>float32</code>, <code>float64</code></li><li><code>complex64</code>, <code>complex128</code></li></ul><p>Arrays with the same portable Array type, shape, and element values must
-produce identical DCVs across conforming implementations.</p><h2 id=54-structural-representation>5.4 Structural representation</h2><p>Arrays containing at most 1000 elements are represented structurally.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>array(
-</span></span><span style=display:flex><span>  [[1.0, 0.0],
-</span></span><span style=display:flex><span>   [0.0, 1.0]]
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>Explain that the brackets inside <code>array(...)</code> describe Array structure and do
-not construct nested DataCanon Lists.</p><p>Complex machine-array values use compact Array syntax such as</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1.0+2.0j
-</span></span></code></pre></div><p>which is distinct from the structured DataCanon Complex type.</p><h2 id=55-binary-representation>5.5 Binary representation</h2><p>Arrays containing more than 1000 elements use canonical binary representation.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>array(
-</span></span><span style=display:flex><span>  binary(
-</span></span><span style=display:flex><span>    &#34;float64&#34;,
-</span></span><span style=display:flex><span>    (1001),
-</span></span><span style=display:flex><span>    &#34;...&#34;
-</span></span><span style=display:flex><span>  )
-</span></span><span style=display:flex><span>)
-</span></span></code></pre></div><p>Specify</p><ul><li>portable dtype,</li><li>shape,</li><li>C-contiguous ordering,</li><li>canonical little-endian byte order,</li><li>hexadecimal encoding.</li></ul><h2 id=56-why-not-nested-lists>5.6 Why not nested Lists?</h2><p>Nested Lists remain available when every element must retain independently
-defined DataCanon semantics.</p><p>This provides an explicit escape hatch from implementation-dependent Array
-construction.</p><hr><h1 id=6-canonical-ordering>6. Canonical Ordering</h1><p>Describe the semantic ordering used to canonicalize intrinsically unordered
-types.</p><p>Applications include</p><ul><li>Set,</li><li>UnorderedMapping,</li><li>future unordered semantic types.</li></ul><p>Explain that canonical ordering is not mathematical ordering and carries no
-application-specific interpretation.</p><p>Its purpose is solely to produce deterministic representation.</p><hr><h1 id=7-fingerprinting-and-semantic-identity>7. Fingerprinting and Semantic Identity</h1><p>A fingerprint is computed from the UTF-8 encoding of the DCV.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>semantic instance
-</span></span><span style=display:flex><span>       ↓
-</span></span><span style=display:flex><span>      DCV
-</span></span><span style=display:flex><span>       ↓
-</span></span><span style=display:flex><span>     UTF-8
-</span></span><span style=display:flex><span>       ↓
-</span></span><span style=display:flex><span>    SHA-256
-</span></span></code></pre></div><p>Consequences:</p><ul><li>fingerprinting requires no independent semantic rules,</li><li>identical DCVs necessarily produce identical fingerprints,</li><li>fingerprint identity is independent of persistence mechanism.</li></ul><p>Discuss ordered versus unordered mapping fingerprints as an illustrative
-example.</p><hr><h1 id=8-human-oriented-input-and-rendering>8. Human-Oriented Input and Rendering</h1><p>Canonical representation need not be the most convenient representation for
-humans.</p><h2 id=81-pretty-rendering>8.1 Pretty rendering</h2><p>Describe alignment and compact formatting.</p><p>Pretty output remains valid DCS but need not itself be a DCV.</p><h2 id=82-augmented-parsing>8.2 Augmented parsing</h2><p>Describe the separation between canonical language and input conveniences.</p><p>Features include</p><ul><li>internal substitutions,</li><li>external substitutions,</li><li>mathematical substitutions,</li><li>List Shorthand.</li></ul><p>Emphasize that augmented parsing does not enlarge the canonical DataCanon
-language.</p><hr><h1 id=9-interchange-and-persistence>9. Interchange and Persistence</h1><h2 id=91-yaml-interchange>9.1 YAML interchange</h2><p>Discuss ordinary YAML for types YAML represents faithfully and explicit <code>DC></code>
-escapes for richer DataCanon values.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#204a87;font-weight:700>fraction</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8> </span><span style=color:#000>DC&gt; 1/2</span><span style=color:#f8f8f8>
-</span></span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>phase</span><span style=color:#000;font-weight:700>:</span><span style=color:#f8f8f8> </span><span style=color:#000>DC&gt; complex(1/2, 1/2 * sqrt(3))</span><span style=color:#f8f8f8>
-</span></span></span></code></pre></div><p>Discuss structured Mapping keys as an example of a semantic distinction that
-ordinary YAML workflows may handle awkwardly.</p><h2 id=92-hdf5-persistence>9.2 HDF5 persistence</h2><p>Describe recursive preservation of DataCanon semantic types.</p><p>Explain why persistence is deliberately separated from canonical identity.</p><h2 id=93-datacanon-text-as-persistence>9.3 DataCanon text as persistence</h2><p>The DCV itself is a complete textual persistence representation.</p><p>Alternative persistence formats optimize different engineering goals while
-preserving DataCanon identity.</p><hr><h1 id=10-python-reference-implementation>10. Python Reference Implementation</h1><p>Keep this section relatively short. The paper is about DataCanon rather than
-the Python package.</p><h2 id=101-data-skeleton>10.1 Data Skeleton</h2><p>The Python implementation uses an immutable intermediate representation called
-the Data Skeleton.</p><p>Emphasize that the Data Skeleton is an implementation detail rather than part
-of the DataCanon language specification.</p><h2 id=102-native-python-types>10.2 Native Python types</h2><p>The reference implementation supplies native Python types where standard
-Python types do not adequately represent DataCanon semantics:</p><ul><li><code>Coefficient</code></li><li><code>ComplexNumber</code></li><li><code>UnorderedDict</code></li></ul><p>Explain the distinction between DC representation and Python mathematical
-behavior.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>maps losslessly to a Python <code>ComplexNumber</code>.</p><p>Explicit conversion to built-in Python <code>complex</code> may introduce floating-point
-approximation.</p><h2 id=103-conversion-boundary>10.3 Conversion boundary</h2><p>Discuss explicit conversion:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>Python ↔ Data Skeleton ↔ DataCanon
-</span></span></code></pre></div><p>and why parsing and Python conversion are deliberately separate operations.</p><hr><h1 id=11-cross-language-conformance>11. Cross-Language Conformance</h1><p>This section becomes particularly important if the Julia implementation is
-completed.</p><h2 id=111-julia-implementation>11.1 Julia implementation</h2><p>Describe an independent implementation of the normative DataCanon core in
-Julia.</p><p>The implementation need not reproduce Python-specific API choices.</p><h2 id=112-shared-conformance-corpus>11.2 Shared conformance corpus</h2><p>Construct an implementation-independent corpus containing</p><ul><li>valid DCS,</li><li>expected DCV,</li><li>expected fingerprint.</li></ul><p>Both Python and Julia implementations operate independently on the same corpus.</p><h2 id=113-cross-language-results>11.3 Cross-language results</h2><p>Demonstrate byte-for-byte agreement of DCVs and fingerprints.</p><p>Particularly important cases:</p><ul><li>Fraction,</li><li>Coefficient,</li><li>structured Complex,</li><li>Set canonical ordering,</li><li>Mapping and UnorderedMapping,</li><li>every portable Array dtype,</li><li>structural Arrays,</li><li>binary Arrays,</li><li>multidimensional shapes,</li><li>signed zero and floating-point edge cases.</li></ul><h2 id=114-native-array-interoperability>11.4 Native Array interoperability</h2><p>Construct equivalent Arrays natively in Python/NumPy and Julia and demonstrate
-identical DCVs.</p><p>Examples:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>NumPy Float32 ↔ Julia Float32
-</span></span><span style=display:flex><span>NumPy Int32   ↔ Julia Int32
-</span></span><span style=display:flex><span>NumPy UInt64  ↔ Julia UInt64
-</span></span></code></pre></div><p>This provides direct experimental evidence for DataCanon&rsquo;s language-independence
-claims.</p><hr><h1 id=12-comparison-with-existing-approaches>12. Comparison with Existing Approaches</h1><p>This section requires a proper literature review before writing.</p><p>Potential comparisons include</p><ul><li>JSON and canonical JSON schemes,</li><li>YAML,</li><li>CBOR and deterministic/canonical CBOR,</li><li>MessagePack,</li><li>Protocol Buffers or related schema-driven formats,</li><li>HDF5,</li><li>scientific data standards where relevant,</li><li>content-addressable and canonical serialization systems.</li></ul><p>The comparison should distinguish several separate concerns:</p><ul><li>serialization,</li><li>canonical identity,</li><li>scientific semantic types,</li><li>exact numerical structure,</li><li>persistence,</li><li>human readability,</li><li>language independence.</li></ul><p>Avoid claiming that competing formats are deficient merely because they solve
-a different problem.</p><p>The central comparison should be:</p><blockquote><p>DataCanon is designed primarily to assign deterministic semantic identity to
-structured scientific data; serialization and persistence follow from that
-identity.</p></blockquote><hr><h1 id=13-scientific-use-cases>13. Scientific Use Cases</h1><h2 id=131-crystallographic-data>13.1 Crystallographic data</h2><p>Examples:</p><ul><li>exact fractional coordinates,</li><li>structured irrational coefficients,</li><li>lattice vectors,</li><li>symmetry data.</li></ul><h2 id=132-exact-complex-phase-factors>13.2 Exact complex phase factors</h2><p>Use translation-group or symmetry examples motivating structured Complex
-values.</p><p>For example,</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>can preserve an exact phase factor that would otherwise be represented by
-floating-point approximations.</p><h2 id=133-long-lived-scientific-software>13.3 Long-lived scientific software</h2><p>Discuss persistence across</p><ul><li>software versions,</li><li>programming languages,</li><li>storage backends,</li><li>computational workflows.</li></ul><h2 id=134-principia-materia>13.4 Principia Materia</h2><p>Potential case study demonstrating DataCanon as infrastructure for a larger
-scientific software system.</p><p>This section can be expanded after integration experience is available.</p><hr><h1 id=14-limitations-and-future-work>14. Limitations and Future Work</h1><p>Possible topics:</p><ul><li>additional portable Array representations,</li><li>additional language implementations,</li><li>evolution and versioning of the specification,</li><li>larger conformance suites,</li><li>schema systems layered above DataCanon,</li><li>integration with databases and content-addressed storage,</li><li>performance characterization.</li></ul><p>Emphasize that computation and symbolic mathematics remain intentionally
-outside the DataCanon language.</p><hr><h1 id=15-conclusion>15. Conclusion</h1><p>Restate the central separation:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>semantic identity
-</span></span><span style=display:flex><span>      ≠
-</span></span><span style=display:flex><span>storage format
-</span></span><span style=display:flex><span>      ≠
-</span></span><span style=display:flex><span>programming-language representation
-</span></span><span style=display:flex><span>      ≠
-</span></span><span style=display:flex><span>mathematical computation
-</span></span></code></pre></div><p>DataCanon defines a canonical semantic identity for structured scientific data
-while permitting implementations and persistence mechanisms to optimize their
-own concerns.</p><p>If demonstrated with independent Python and Julia implementations, emphasize
-that canonical identity is determined by the specification rather than by
-either implementation.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-f2da30c00e2ce75ff9af184803b2767a>5 - Specifications</h1><p>DataCanon Version 1 is defined by six complementary specifications. Core defines the data model, equality, canonical encoding, and fingerprinting. The other specifications define representations, optional preprocessing, and persistence behavior.</p><p>These documents are drafts for independent implementation review. Outstanding conformance and interoperability items are recorded in the individual specifications.</p><p>This section is generated from the specifications in the DataCanon code repository. Changes should be made there and synchronized here.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-5ea4a05b75eb97cfca1cda3d4c76bdd8>5.1 - DataCanon Core</h1><h1 id=version-1-draft>Version 1 Draft</h1><hr><h1 id=introduction>Introduction</h1><p><strong>DataCanon (DC)</strong> is a data model for structured scientific data with a
+conversion are implementation interfaces layered on those definitions.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-e74bebdd66a15fad4182deb76e779a53>4 - Publication Outline</h1><p>This outline proposes a paper for the <strong>Journal of Open Source Software
+(JOSS)</strong> describing DataCanon and its Python reference implementation.</p><p>The paper should explain the research problem, the software&rsquo;s contribution,
+and the evidence supporting its use. The six specifications and documentation
+carry the detailed type definitions, encoding rules, and API reference.</p><h2 id=working-title>Working title</h2><p><strong>DataCanon: Deterministic Identity and Persistence for Structured Scientific Data</strong></p><p>An alternative retaining the original emphasis is:</p><p><strong>DataCanon: Deterministic Semantic Identity for Structured Scientific Data</strong></p><h2 id=central-thesis>Central thesis</h2><p>Scientific software needs to preserve complex structured data across changes
+in programming language, software implementation, and storage format.
+DataCanon gives that data an explicit, portable identity model and supplies
+software for constructing, communicating, fingerprinting, and persisting it.</p><p>DataCanon defines DataCanon Types (DCTs), their valid DataCanon Instances
+(DCIs), and their equality relations. Every DCI has a unique canonical byte
+encoding. Human-readable Shorthand, YAML interchange, and HDF5 represent that
+same data without defining its identity.</p><p>The scientific motivation should lead: exact irrational Coefficients,
+structured Complex values, typed multidimensional Arrays, and reliable
+persistence of nested scientific data. The paper should then explain how
+canonical identity makes those structures portable and reproducibly
+identifiable.</p><h2 id=joss-format-and-scope>JOSS format and scope</h2><p>The <a href=https://joss.readthedocs.io/en/latest/paper.html>current JOSS paper guidance</a>
+sets a 750–1,750-word range and identifies sections for Summary, Statement of
+need, State of the field, Software design, Research impact statement, AI usage
+disclosure, Acknowledgements, and References.</p><p>Organize the manuscript around those sections. Aim for approximately
+1,400–1,600 words of prose, leaving room to adjust the emphasis during writing.
+The word allocations below are planning targets, not journal requirements.</p><table><thead><tr><th>Section</th><th style=text-align:right>Approximate words</th></tr></thead><tbody><tr><td>Summary</td><td style=text-align:right>150</td></tr><tr><td>Statement of need</td><td style=text-align:right>250</td></tr><tr><td>State of the field</td><td style=text-align:right>250</td></tr><tr><td>Software design</td><td style=text-align:right>450</td></tr><tr><td>Research impact statement</td><td style=text-align:right>250</td></tr><tr><td>AI usage disclosure and Acknowledgements</td><td style=text-align:right>100</td></tr></tbody></table><p>The submitted paper concerns usable research software. The Python package,
+its tests, documentation, and scientific applications should therefore have a
+substantial role. An independent Julia implementation would strengthen the
+portability evidence, but should be described as completed work only when it
+has been implemented and validated.</p><h2 id=1-summary>1. Summary</h2><p>Introduce DataCanon in language accessible to a researcher who has never used
+it. Explain that it allows complex scientific data to be written, recovered,
+compared, and fingerprinted using an identity model independent of storage
+layout and implementation language.</p><p>Briefly identify the distinctive capabilities:</p><ul><li>Exact structured numerical data, including irrational Coefficients and
+Complex values with independently typed components.</li><li>Portable typed Arrays alongside recursively structured collections.</li><li>Deterministic binary identity and SHA-256 fingerprinting.</li><li>Human-readable input and identity-preserving YAML and HDF5 representations.</li><li>External-resource references with deferred retrieval and integrity checks.</li></ul><p>Describe the Python package as the reference implementation of a
+language-independent specification. Avoid an API inventory or encoding tutorial
+in the summary.</p><h2 id=2-statement-of-need>2. Statement of need</h2><h3 id=research-problem-and-audience>Research problem and audience</h3><p>Address developers of long-lived computational science and engineering
+software, especially workflows that combine exact numerical structure with
+large machine Arrays.</p><p>Explain the practical requirements using a concrete scientific object: a
+crystal structure or symmetry calculation containing lattice Arrays,
+fractional coordinates, exact complex phase factors, parameters, and externally
+stored numerical results.</p><p>Such an object may need to survive storage changes, support reproducible
+identification, and move between implementations while retaining distinctions
+that matter to the application.</p><h3 id=scientific-example>Scientific example</h3><p>Use a structured complex phase factor as the central numerical example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
+</span></span></code></pre></div><p>This preserves the exact real and irrational imaginary components instead of
+immediately replacing both with floating-point approximations. Discuss why
+this is useful for crystallographic or symmetry data, alongside ordinary
+floating-point Arrays required by numerical calculations.</p><p>Mention that DataCanon preserves type and constituent structure without
+mathematical simplification. Detailed normalization edge cases belong in the
+specifications rather than the motivation.</p><h3 id=practical-outcome>Practical outcome</h3><p>Explain what the package enables: identity-preserving disk round trips,
+format transfers, and stable fingerprints of scientifically meaningful data.
+If a code fragment is needed, use one short persistence example; leave a full
+walkthrough in Getting Started.</p><h2 id=3-state-of-the-field>3. State of the field</h2><p>Compare against existing software and standards using primary documentation
+and appropriate software citations. This section requires a focused literature
+review before it becomes manuscript prose.</p><p>Candidate comparison families include JSON canonicalization, deterministic
+CBOR, schema-driven serialization, YAML tooling, HDF5, and scientific data
+containers used by the intended audience. Select the closest alternatives
+rather than cataloguing every serialization format.</p><p>Evaluate the distinctions that motivate DataCanon:</p><table><thead><tr><th>Concern</th><th>Question for the comparison</th></tr></thead><tbody><tr><td>Identity</td><td>What equality relation and canonical encoding are provided?</td></tr><tr><td>Scientific types</td><td>How are structured exact numbers and typed Arrays represented?</td></tr><tr><td>Collections</td><td>Are ordered and unordered structures distinguished?</td></tr><tr><td>Persistence</td><td>Can storage layout change while retaining the same identity?</td></tr><tr><td>External data</td><td>How are payload metadata, content verification, and retrieval separated?</td></tr><tr><td>Interoperability</td><td>What agreement is required across implementations?</td></tr></tbody></table><p>Give a concrete reason for developing DataCanon rather than extending a
+particular existing package. The proposed contribution is the combination of
+an explicit scientific data model, canonical identity, and multiple faithful
+representations. Existing formats may provide related capabilities or support
+extensions; comparisons must establish the relevant differences rather than
+claiming that canonicalization or portability is unique to DataCanon.</p><p>Explain that DataCanon uses mature facilities such as NumPy and HDF5 instead
+of replacing their numerical and storage infrastructure.</p><h2 id=4-software-design>4. Software design</h2><p>Organize this section around decisions and their consequences for scientific
+workflows. Keep low-level byte tables in the specifications.</p><h3 id=identity-is-separate-from-representation>Identity is separate from representation</h3><p>Define DCT and DCI briefly. Equality is specified by types and constituents;
+canonical encoding represents that equality injectively:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>x = y  if and only if  E(x) = E(y)
+</span></span></code></pre></div><p>Fingerprinting is:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>F(x) = SHA-256(E(x))
+</span></span></code></pre></div><p>Shorthand formatting does not determine identity. Distinguish exact canonical
+byte equality from digest comparisons, which rely on collision resistance.</p><h3 id=scientific-types-and-machine-arrays>Scientific types and machine Arrays</h3><p>Version 1 defines 17 DCTs: five primitives, three atomic types, and nine
+composite types. Highlight Coefficient, Complex, Record, Array, and external
+references rather than explaining every type in the paper.</p><p>Arrays retain portable type, shape, and element identity. Their elements are
+machine values, not individually tagged DCIs. The 14 portable Array types
+support efficient numerical containers; canonical elements use logical C
+order and prescribed big-endian multibyte representations, independently of
+native strides or layout. Nested Lists remain available for individually
+typed constituent data.</p><p>Distinguish the fully specified core Array identity from the draft Shorthand
+rules for inference and conversion, whose NumPy reference behavior still needs
+finalization.</p><h3 id=order-belongs-to-the-data-model>Order belongs to the data model</h3><p>Mapping entry order participates in identity; UnorderedMapping entry order
+does not. Likewise, Lists and Tuples are ordered, while Sets are unordered.
+Canonical binary encoding sorts Set member encodings and UnorderedMapping
+key encodings lexicographically. That encoding order is not a numerical
+comparison or a mandated text-rendering order.</p><h3 id=external-payloads-and-persistence>External payloads and persistence</h3><p>ExternalFile and ExternalArray retain relative paths and content digests as
+semantic metadata. ExternalArray also carries portable type and shape.
+External bytes are not needed to decode or fingerprint their metadata.</p><p>Source location, cached bytes, and retrieval state are nonsemantic. Retrieval
+verifies digests and, for ExternalArray, element-stream validity. Complete
+packages preserve those references while placing payloads in directory-backed
+storage or embedding them in HDF5.</p><h3 id=six-contracts-and-the-python-implementation>Six contracts and the Python implementation</h3><p>Summarize the specification boundaries:</p><table><thead><tr><th>Specification</th><th>Responsibility</th></tr></thead><tbody><tr><td>Core</td><td>DCTs, equality, canonical bytes, and fingerprints</td></tr><tr><td>Shorthand</td><td>Strict text parsing and identity-preserving rendering</td></tr><tr><td>Shorthand Preprocessing</td><td>Optional compact Lists, substitutions, and explicit <code>eval(...)</code></td></tr><tr><td>YAML Interchange</td><td>Native YAML conversion and the <code>DC></code> convention</td></tr><tr><td>HDF5</td><td>Portable object layout, numerical datasets, and embedded payloads</td></tr><tr><td>Persistence</td><td>Format selection, resource namespaces, verification, and transfer</td></tr></tbody></table><p>Connect those contracts to the Python implementation&rsquo;s explicit conversion,
+encoding/decoding, parser/renderer, and persistence boundaries. Python
+convenience types support scientific structures without making Python classes
+normative.</p><p>Core does not perform computation. Optional preprocessing performs explicitly
+requested arithmetic before strict parsing; it does not alter DCT identity.</p><h2 id=5-research-impact-statement>5. Research impact statement</h2><p>Build this section from specific evidence available at submission time.
+Distinguish actual use from proposed applications.</p><p>Possible evidence to collect includes:</p><ul><li>A documented Principia Materia integration showing which scientific objects
+use DataCanon and what workflow it supports.</li><li>Reproducible crystallographic or symmetry examples using exact structured
+Complex values and typed Arrays.</li><li>Verified format transfers preserving canonical bytes and fingerprints.</li><li>Benchmarks for representative numerical workloads, if performance is a
+material reason to adopt the package.</li><li>Independent users, integrations, or publications, if available.</li></ul><p>The repository tree shows tests covering conversion, canonical encoding and
+vectors, parsing/rendering, YAML, HDF5, and external sources. Report test
+results and fixtures only after running and inspecting them; filenames alone
+are not validation evidence.</p><p>If Julia conformance is completed, include independently generated matching
+canonical bytes and fingerprints, all portable Array types, and bidirectional
+HDF5 fixtures. Text layout and HDF5 file bytes need not match. Report completed
+coverage and remaining limitations explicitly.</p><h2 id=6-ai-usage-disclosure>6. AI usage disclosure</h2><p>Prepare an accurate account of AI assistance with software development,
+documentation, or manuscript preparation, together with the human review and
+verification performed. This documentation and outline have received AI
+assistance. Establish the scope of any code assistance separately rather than
+assuming it from this conversation.</p><p>Record the tools and available version information when preparing the
+submission. Do not describe syntax-only checks as execution, interoperability
+validation, or scientific verification.</p><h2 id=7-acknowledgements>7. Acknowledgements</h2><p>Identify contributors, institutional support, and funding actually associated
+with the software. Obtain the correct grant identifiers and attribution before
+submission.</p><h2 id=8-references>8. References</h2><p>Prepare software and primary-source citations for the closest alternatives,
+the numerical/storage facilities discussed, and scientific applications used
+as evidence. Link the versioned DataCanon specifications and archive the
+software release associated with the paper.</p><h2 id=supporting-material-and-remaining-work>Supporting material and remaining work</h2><p>The documentation should provide the material omitted from the short paper:
+full type definitions, byte encodings, fixed conformance vectors, API
+signatures, preprocessing details, and persistence examples.</p><p>Before finalizing the manuscript, resolve or clearly delimit the portability
+items already recorded in the six drafts, especially NumPy/PyYAML reference
+behavior, preprocessing numerical semantics, and HDF5 datatype validation.
+Confirm the package&rsquo;s license, release, installation instructions, tests,
+contribution guidance, and cited scientific evidence against the actual
+repository. These are items to inspect, not claims that they are currently
+missing.</p><p>A longer technical treatment could develop the full model and conformance
+results separately. The JOSS paper should stay centered on the research
+software, its design choices, and demonstrated usefulness.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-f2da30c00e2ce75ff9af184803b2767a>5 - Specifications</h1><p>DataCanon Version 1 is defined by six complementary specifications. Core defines the data model, equality, canonical encoding, and fingerprinting. The other specifications define representations, optional preprocessing, and persistence behavior.</p><p>These documents are drafts for independent implementation review. Outstanding conformance and interoperability items are recorded in the individual specifications.</p><p>This section is generated from the specifications in the DataCanon code repository. Changes should be made there and synchronized here.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-5ea4a05b75eb97cfca1cda3d4c76bdd8>5.1 - DataCanon Core</h1><h1 id=version-1-draft>Version 1 Draft</h1><hr><h1 id=introduction>Introduction</h1><p><strong>DataCanon (DC)</strong> is a data model for structured scientific data with a
 canonical identity encoding.</p><p>DataCanon defines a set of data types and their equality relations, together with a
 unique canonical byte encoding for every instance.</p><p>These definitions provide a common, representation-independent basis for
 communicating, identifying, comparing, and preserving structured scientific
