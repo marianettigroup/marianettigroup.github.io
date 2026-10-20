@@ -638,7 +638,15 @@ embedded in HDF5. Missing or invalid required resources cause the dump to fail.<
 <code>--longhand</code> selects explicit constructors for structured DCIs. Layout and
 notation are independent:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --longhand --style aligned
 </span></span></code></pre></div><p>For aligned layouts, <code>--align left</code> or <code>--align right</code> controls column alignment;
-left alignment is the default.</p><p>The same options apply when dumping Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump readable.dcs --style aligned
+left alignment is the default.</p><p>Nested Lists and Tuples use one row per item in every style. Coordinate Tuples
+remain inline, so the rutile lattice vectors and atom positions appear as
+separate rows. Aligned styles add column padding for rectangular rows, including
+coordinates containing Sums or Products. For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 0), (0, -1)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --style aligned
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[
+</span></span><span style=display:flex><span>  (1,  0),
+</span></span><span style=display:flex><span>  (0, -1)
+</span></span><span style=display:flex><span>]
+</span></span></code></pre></div><p><code>aligned-compact</code> uses the same alignment with the final <code>]</code> on the last row.</p><p>The same options apply when dumping Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump readable.dcs --style aligned
 </span></span><span style=display:flex><span>dc rutile.dcb --dump constructors.dcs --longhand
 </span></span></code></pre></div><p>Rendering options affect textual representation, not DCI identity. The options also apply
 to values printed by <code>--get</code>. They are rejected with <code>--count</code>, <code>--fingerprint</code>,
