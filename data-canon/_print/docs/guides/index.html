@@ -534,11 +534,15 @@ can insert constructors just as it can insert shorter forms:</p><div class=highl
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>prepared</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#39;([1, 2], 1/3)&#39;</span><span style=color:#000;font-weight:700>)</span>
 </span></span></code></pre></div><p>The <code>longhand</code> renderer flag has no effect on preprocessing. Compact List
 notation refers specifically to angle-bracket input groups; it is unrelated
-to the <code>aligned-compact</code> rendering layout style.</p><h2 id=use-preprocessing-explicitly>Use preprocessing explicitly</h2><p>Call <code>parse_shorthand()</code> directly for strict Shorthand. When preprocessing is
+to the <code>aligned-compact</code> rendering layout style.</p><h2 id=python-parsing-and-cli-defaults>Python parsing and CLI defaults</h2><p>Call <code>parse_shorthand()</code> directly for strict Shorthand. When preprocessing is
 wanted, call <code>preprocess_shorthand()</code> first and parse its result.</p><p>Quoted Strings are protected during every stage. Text such as <code>"&lt;1 2>"</code>,
 <code>"eval(2 + 3)"</code>, or <code>"a | b"</code> remains ordinary String content.</p><p>Preprocessing does not change DataCanon&rsquo;s types or identity rules. YAML <code>DC></code>
 values and <code>.dcs</code> persistence files use strict Shorthand and do not implicitly
-perform preprocessing.</p><p>For the detailed rules, see the
+perform preprocessing when read through the ordinary Python persistence API.
+The CLI is a human-input frontend and enables preprocessing by default:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc
+</span></span><span style=display:flex><span>dc rutile.dcs --dump rutile.dcb
+</span></span></code></pre></div><p>Use <code>--strict</code> to require strict Shorthand input in the CLI. The option does
+not change the Python API defaults or enable preprocessing in key/count queries.</p><p>For the detailed rules, see the
 <a href=/data-canon/docs/specifications/shorthand_preprocessing_v1/>Shorthand Preprocessing specification</a>.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-84da7b7684ee9566fffa3afcb8646fae>3 - Command-Line Interface</h1><p>The <code>dc</code> command loads a DataCanon file and displays, converts, or searches its
 DCI. It works with Shorthand (<code>.dcs</code>), canonical binary bytes (<code>.dcb</code>), and
 DataCanon HDF5 files (<code>.h5</code> or <code>.hdf5</code>).</p><p>Put an input filename first, or omit it to read Shorthand from standard input.
@@ -558,12 +562,13 @@ file contents to suggest mapping keys.</p><h2 id=read-shorthand-from-standard-in
 </span></span></code></pre></div><p>The command preserves the Power DCI and displays it in Shorthand. Constructor
 names are lowercase. All existing actions and rendering options also work
 with piped input:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;power(8, 1, 3)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --longhand
-</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{&#34;outer&#34;: {&#34;x&#34;: 3}}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --get <span style=color:#4e9a06>&#39;&#34;x&#34;&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{&#34;outer&#34;: {&#34;x&#34;: 3}}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --get x
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[1, 2, 1]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --count <span style=color:#0000cf;font-weight:700>1</span>
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;power(8, 1, 3)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --fingerprint
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;power(8, 1, 3)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --dump root.dcb
 </span></span></code></pre></div><p>Use <code>-</code> to select standard input explicitly, including with shell redirection:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc - --style aligned &lt; structure.dcs
-</span></span></code></pre></div><p>Preprocessing remains opt-in:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --preprocess --dump matrix.dcb
+</span></span></code></pre></div><p>The CLI preprocesses Shorthand input by default, so compact Lists,
+substitutions, and explicit <code>eval(...)</code> expressions need no extra option:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --dump matrix.dcb
 </span></span></code></pre></div><p>The resulting DCI is a List of Lists. Standard input is Shorthand text; use a
 filename for canonical binary or HDF5 input. A displayed DCI can feed another
 <code>dc</code> command:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc matrix.dcb <span style=color:#000;font-weight:700>|</span> dc --longhand
@@ -603,16 +608,22 @@ given as fractions of those vectors and grouped by chemical element.</p><p>Save 
 </span></span></code></pre></div><p>The <code>lattice_vectors</code> and <code>basis_atoms</code> keys follow the Principia Materia
 (PM) conventions. Lattice vectors and atom positions are written explicitly
 as Lists of Tuples. The exact halves remain Fractions, and the parameter <code>u</code>
-makes the relationships between oxygen positions visible in the input.</p><p>Load it with preprocessing enabled:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --preprocess
+makes the relationships between oxygen positions visible in the input.</p><p>Load the input file directly:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs
 </span></span></code></pre></div><p>Definitions are resolved in source order, so <code>c</code> can use <code>a</code> and <code>c_over_a</code>.
 The definition <code>c = a * c_over_a</code> retains a Product in the third lattice
 vector. No evaluation is needed to load or store that structure. Use
 <code>c = eval(a * c_over_a)</code> if a computed numerical lattice parameter is wanted
-instead.</p><p><code>--preprocess</code> is opt-in and applies to <code>.dcs</code> files and Shorthand from standard
-input. Without it, the input must contain strict Shorthand. The <code>.dcs</code> suffix alone does not enable
-substitutions, compact Lists, or <code>eval(...)</code>. See
-<a href=/data-canon/docs/guides/shorthand-preprocessing/>Shorthand Preprocessing</a> for
-the individual features.</p><h2 id=dump-to-another-format>Dump to another format</h2><p>Write the resolved DCI as canonical binary bytes:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --preprocess --dump rutile.dcb
+instead.</p><p>The CLI preprocesses <code>.dcs</code> and standard-input Shorthand by default. Use
+<code>--strict</code> to disable compact Lists, substitutions, and <code>eval(...)</code> and require
+strict Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcs --strict
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --strict
+</span></span></code></pre></div><p>The second command reports a syntax error. <code>--strict</code> controls input parsing;
+it does not change rendering or mapping-key interpretation. Canonical binary
+and HDF5 files use their existing readers in either mode. The Python
+<code>parse_shorthand()</code> function, <code>read()</code> function, and YAML airlocks retain their
+strict defaults. See
+<a href=/data-canon/docs/guides/shorthand-preprocessing/>Shorthand Preprocessing</a>
+for the individual input features.</p><h2 id=dump-to-another-format>Dump to another format</h2><p>Write the resolved DCI as canonical binary bytes:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --dump rutile.dcb
 </span></span></code></pre></div><p>The <code>.dcb</code> file is binary. It stores the DCI, including its numerical structure;
 substitution definitions and source formatting are not stored. Subsequent reads
 of this file do not need preprocessing.</p><p>The destination suffix selects the output format:</p><table><thead><tr><th>Destination suffix</th><th>Output</th></tr></thead><tbody><tr><td><code>.dcs</code></td><td>UTF-8 strict Shorthand</td></tr><tr><td><code>.dcb</code></td><td>Canonical binary bytes</td></tr><tr><td><code>.h5</code> or <code>.hdf5</code></td><td>DataCanon HDF5</td></tr><tr><td>No suffix</td><td>Shorthand, with <code>.dcs</code> appended</td></tr></tbody></table><p>For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump rutile.h5
@@ -631,8 +642,8 @@ left alignment is the default.</p><p>The same options apply when dumping Shortha
 </span></span><span style=display:flex><span>dc rutile.dcb --dump constructors.dcs --longhand
 </span></span></code></pre></div><p>Rendering options affect textual representation, not DCI identity. The options also apply
 to values printed by <code>--get</code>. They are rejected with <code>--count</code>, <code>--fingerprint</code>,
-and binary or HDF5 dumps, where there is no Shorthand output to format.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply the key as one complete strict Shorthand DCI. To find the titanium
-positions, include Shorthand quotation marks inside the shell argument:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get <span style=color:#4e9a06>&#39;&#34;Ti&#34;&#39;</span>
+and binary or HDF5 dumps, where there is no Shorthand output to format.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply a bare name for a String key. For example, find the titanium positions
+in the nested <code>basis_atoms</code> Mapping:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get Ti
 </span></span></code></pre></div><p>The search visits Mappings and UnorderedMappings throughout the DCI, so it finds
 <code>"Ti"</code> inside <code>"basis_atoms"</code>. It also visits mappings nested in collections,
 Record field values, and mapping keys. It does not require a Mapping at the root.</p><p>One matching entry prints its value. If the same key occurs in multiple
@@ -641,10 +652,18 @@ order. Equal repeated values remain separate occurrences. It continues searching
 inside a matched value, so deeper matches are included too. Traversal follows
 the recovered constituent order; unordered collections do not promise an
 application-level ordering of results.</p><p>For example, save this strict Shorthand as <code>repeated.dcs</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{&#34;left&#34;: {&#34;x&#34;: 1}, &#34;right&#34;: {&#34;x&#34;: 2}}
-</span></span></code></pre></div><p>Then:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc repeated.dcs --get <span style=color:#4e9a06>&#39;&#34;x&#34;&#39;</span>
+</span></span></code></pre></div><p>Then:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc repeated.dcs --get x
 </span></span></code></pre></div><p>prints a List containing <code>1</code> and <code>2</code>. A single match whose value is itself a
 List is printed directly; multiple List-valued matches form an outer List.</p><p>Keys can belong to any DCT. For example, when a file contains a Tuple key:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc results.dcb --get <span style=color:#4e9a06>&#39;(1/2, 0, 0)&#39;</span>
-</span></span></code></pre></div><p>Key comparison uses DCI equality. Integer <code>1</code>, Float <code>1.0</code>, and Boolean <code>true</code>
+</span></span></code></pre></div><p>Valid Shorthand keys retain their DCTs. To select String keys whose text would
+otherwise parse as another DCT, include explicit Shorthand quotes:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc results.dcb --get <span style=color:#0000cf;font-weight:700>1</span>          <span style=color:#8f5902;font-style:italic># Integer key</span>
+</span></span><span style=display:flex><span>dc results.dcb --get <span style=color:#204a87>true</span>       <span style=color:#8f5902;font-style:italic># Boolean key</span>
+</span></span><span style=display:flex><span>dc results.dcb --get <span style=color:#4e9a06>&#39;&#34;1&#34;&#39;</span>      <span style=color:#8f5902;font-style:italic># String key</span>
+</span></span><span style=display:flex><span>dc results.dcb --get <span style=color:#4e9a06>&#39;&#34;true&#34;&#39;</span>   <span style=color:#8f5902;font-style:italic># String key</span>
+</span></span></code></pre></div><p>Implicit String handling accepts bare identifiers, including Unicode letters
+and names such as <code>basis_atoms</code> or <code>site_1</code>. Names with spaces or punctuation
+need explicit Shorthand quotes, for example <code>--get '"site label"'</code>. Malformed
+structured keys such as <code>power(1,</code> remain errors; they do not become Strings.</p><p>Key comparison uses DCI equality. Integer <code>1</code>, Float <code>1.0</code>, and Boolean <code>true</code>
 remain distinct keys. Record names and field names are fixed metadata, so
 <code>--get</code> does not treat them as mapping keys. A missing key is an error.</p><h2 id=count-occurrences-of-a-dci>Count occurrences of a DCI</h2><p><code>--count</code> searches for a complete DCI using its type-defined equality:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --count <span style=color:#4e9a06>&#39;1/2&#39;</span>
 </span></span></code></pre></div><p>It prints an integer count. Zero matches is a successful search that prints <code>0</code>.</p><p>The search includes the root and all constituent DCIs: collection members,
@@ -653,8 +672,9 @@ and Quotient constituents. Repeated occurrences count separately, including
 repeated members of Multisets, Sums, and Products.</p><p>Fixed information prescribed directly by a DCT is not a separate DCI. Searching for Integer <code>1</code> does
 not match a Fraction numerator or a Power exponent field. Likewise, Array
 elements, Record names, relative-path components, and byte payload contents
-are not searched as constituent DCIs.</p><p>Queries are always strict Shorthand, even if <code>--preprocess</code> is enabled for the
-input file. For a negative numeric query, use an equals sign so argument parsing
+are not searched as constituent DCIs.</p><p>Queries are never preprocessed. <code>--count</code> requires strict Shorthand;
+<code>--get</code> additionally accepts bare String names as described above. For a
+negative numeric query, use an equals sign so argument parsing
 keeps the value with its option:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc results.dcb --count<span style=color:#ce5c00;font-weight:700>=</span>-1
 </span></span></code></pre></div><p>The same convention works for negative keys: <code>--get=-1</code>.</p><h2 id=print-the-fingerprint>Print the fingerprint</h2><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --fingerprint
 </span></span></code></pre></div><p>The output is the 64-character lowercase hexadecimal SHA-256 fingerprint of the
