@@ -6,7 +6,7 @@ DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The six specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
-DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-15T00:43:39-04:00"><meta itemprop=wordCount content="1994"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
+DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-20T14:54:16-04:00"><meta itemprop=wordCount content="2127"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The six specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
@@ -93,14 +93,23 @@ Multiset retains repeated members; Sum and Product similarly retain Numerical
 operand multiplicity and nesting. Canonical binary encoding sorts Set and
 Multiset members, Sum and Product operands, and UnorderedMapping keys by their
 complete canonical encodings. That encoding order is not a numerical
-comparison or a mandated text-rendering order.</p><h3 id=text-and-python-conveniences>Text and Python conveniences</h3><p>One strict Shorthand grammar accepts explicit constructors and shorter forms.
+comparison or a mandated text-rendering order.</p><h3 id=text-and-conventional-type-conversion>Text and conventional-type conversion</h3><p>One strict Shorthand grammar accepts explicit constructors and shorter forms.
 Longhand is the constructor-based subset. The renderer&rsquo;s <code>longhand</code> flag is
 independent of its layout styles; constructor fallbacks preserve nested
-structure in the default rendering.</p><p>Distinguish the structural DCI model from Python numerical conveniences.
-Python Sum and Product simplify matching terms and factors while preserving
-first-occurrence presentation order. Powers remain symbolic; explicit <code>float()</code>
-and <code>int()</code> request numerical results. Native conversion is not a universal
-lossless identity round trip.</p><h3 id=contained-and-external-payloads>Contained and external payloads</h3><p>Bytes stores an opaque byte sequence directly in the DCI. A Record can hold
+structure in the default rendering.</p><p>Define conventional types as types used directly for data and computation in
+a programming language, including built-in, library-provided, and user-defined
+types. The conversion interface constructs instances of conventional types
+from DCIs and constructs DCIs from supported conventional objects. A <code>ListDC</code> object and a conventional <code>list</code> object are both Python objects,
+but their types and equality contracts differ.</p><p>Existing conventional types include <code>list</code>, <code>Fraction</code>, and NumPy arrays. The
+reference implementation supplies new conventional types such as <code>Power</code>,
+<code>Sum</code>, and <code>Multiset</code> where suitable types are missing. Arithmetic belongs to
+the numerical conventional types, not to the DCT identity rules. Conventional
+Sum and Product simplify matching terms and factors; explicit <code>float()</code> and
+<code>int()</code> request numerical results. Conversion through conventional objects
+need not preserve an arbitrary DCI&rsquo;s identity.</p><p>Keep conventional arithmetic as an implementation interface in the paper,
+without introducing a separately named arithmetic facility or a seventh
+DataCanon specification. Link the merged Conventional Types guide for the
+worked arithmetic and collection examples.</p><h3 id=contained-and-external-payloads>Contained and external payloads</h3><p>Bytes stores an opaque byte sequence directly in the DCI. A Record can hold
 its interpretation metadata. This permits a canonical binary file to contain
 both structured scientific data and binary payloads without companion files.
 External references serve the distinct purpose described below.</p><h3 id=external-payloads-and-persistence>External payloads and persistence</h3><p>ExternalFile and ExternalArray retain relative paths and content digests as
@@ -108,10 +117,11 @@ semantic metadata. ExternalArray also carries portable type and shape.
 External bytes are not needed to decode or fingerprint their metadata.</p><p>Source location, cached bytes, and retrieval state are nonsemantic. Retrieval
 verifies digests and, for ExternalArray, element-stream validity. Complete
 packages preserve those references while placing payloads in directory-backed
-storage or embedding them in HDF5.</p><h3 id=six-contracts-and-the-python-implementation>Six contracts and the Python implementation</h3><p>Summarize the specification boundaries:</p><table><thead><tr><th>Specification</th><th>Responsibility</th></tr></thead><tbody><tr><td>Core</td><td>DCTs, equality, canonical bytes, and fingerprints</td></tr><tr><td>Shorthand</td><td>Strict text parsing and identity-preserving rendering</td></tr><tr><td>Shorthand Preprocessing</td><td>Optional compact Lists, substitutions, and explicit <code>eval(...)</code></td></tr><tr><td>YAML Interchange</td><td>Native YAML conversion and the <code>DC></code> convention</td></tr><tr><td>HDF5</td><td>Portable object layout, numerical datasets, and embedded payloads</td></tr><tr><td>Persistence</td><td>Format selection, resource namespaces, verification, and transfer</td></tr></tbody></table><p>Connect those contracts to the Python implementation&rsquo;s explicit conversion,
-encoding/decoding, parser/renderer, and persistence boundaries. Python
-convenience types support scientific structures without making Python classes
-normative.</p><p>Core does not perform computation. Optional preprocessing performs explicitly
+storage or embedding them in HDF5.</p><h3 id=six-contracts-and-the-python-implementation>Six contracts and the Python implementation</h3><p>Summarize the specification boundaries:</p><table><thead><tr><th>Specification</th><th>Responsibility</th></tr></thead><tbody><tr><td>Core</td><td>DCTs, equality, canonical bytes, and fingerprints</td></tr><tr><td>Shorthand</td><td>Strict text parsing and identity-preserving rendering</td></tr><tr><td>Shorthand Preprocessing</td><td>Optional compact Lists, substitutions, and explicit <code>eval(...)</code></td></tr><tr><td>YAML Interchange</td><td>Native YAML conversion and the <code>DC></code> convention</td></tr><tr><td>HDF5</td><td>Portable object layout, numerical datasets, and embedded payloads</td></tr><tr><td>Persistence</td><td>Format selection, resource namespaces, verification, and transfer</td></tr></tbody></table><p>Connect the contracts to explicit conversion, encoding/decoding,
+parser/renderer, and persistence boundaries. The DCTs and DCI equality are
+language-independent. The associated conventional types and their conversion
+rules are provided by each implementation; Python&rsquo;s conventional types are
+examples rather than normative DCT definitions.</p><p>Core does not perform computation. Optional preprocessing performs explicitly
 requested arithmetic before strict parsing; it does not alter DCT identity.</p><h2 id=5-research-impact-statement>5. Research impact statement</h2><p>Build this section from specific evidence available at submission time.
 Distinguish actual use from proposed applications.</p><p>Possible evidence to collect includes:</p><ul><li>A documented Principia Materia integration showing which scientific objects
 use DataCanon and what workflow it supports.</li><li>Reproducible crystallographic or symmetry examples using exact structured
@@ -148,7 +158,7 @@ items already recorded in the six drafts, especially NumPy/PyYAML reference
 behavior, preprocessing numerical semantics, and HDF5 datatype validation.
 Confirm the package&rsquo;s license, release, installation instructions, tests,
 contribution guidance, and cited scientific evidence against the actual
-repository. These are items to inspect, not claims that they are currently
+repository. The checklist identifies items to inspect, not claims that they are currently
 missing.</p><p>A longer technical treatment could develop the full model and conformance
 results separately. The JOSS paper should stay centered on the research
 software, its design choices, and demonstrated usefulness.</p></div></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
