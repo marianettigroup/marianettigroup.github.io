@@ -17,7 +17,11 @@ object and a conventional <code>list</code> object are both Python objects, but 
 does not make their semantics identical.</p><p>The examples use Python. Implementations in Julia, Rust, C, or another language
 can define conversions involving conventional types from their own language
 and libraries. The DataCanon DCTs and DCI equality rules remain independent of
-those choices.</p><h2 id=distinguish-dcts-their-implementations-and-conventional-types>Distinguish DCTs, their implementations, and conventional types</h2><table><thead><tr><th>DCT</th><th>Python class implementing the DCT</th><th>Examples of associated conventional types in Python</th></tr></thead><tbody><tr><td>Integer</td><td><code>IntegerDC</code></td><td><code>int</code></td></tr><tr><td>Float</td><td><code>FloatDC</code></td><td><code>float</code></td></tr><tr><td>List</td><td><code>ListDC</code></td><td><code>list</code></td></tr><tr><td>Tuple</td><td><code>TupleDC</code></td><td><code>tuple</code></td></tr><tr><td>Fraction</td><td><code>FractionDC</code></td><td><code>fractions.Fraction</code></td></tr><tr><td>Array</td><td><code>ArrayDC</code></td><td><code>numpy.ndarray</code></td></tr><tr><td>Complex</td><td><code>ComplexDC</code></td><td><code>complex</code>, <code>ComplexNumber</code></td></tr></tbody></table><p>The table identifies conversion relationships, not type equivalences or a
+those choices.</p><p>The optional <a href=/data-canon/docs/specifications/conventional_types_v1/>Conventional Types specification</a>
+defines common construction, arithmetic, comparison, and collection requirements
+for independent implementations. Support is declared per conventional type;
+Core conformance does not require conventional arithmetic. The guide introduces
+the Python binding, including its interfaces and conversion choices.</p><h2 id=distinguish-dcts-their-implementations-and-conventional-types>Distinguish DCTs, their implementations, and conventional types</h2><table><thead><tr><th>DCT</th><th>Python class implementing the DCT</th><th>Examples of associated conventional types in Python</th></tr></thead><tbody><tr><td>Integer</td><td><code>IntegerDC</code></td><td><code>int</code></td></tr><tr><td>Float</td><td><code>FloatDC</code></td><td><code>float</code></td></tr><tr><td>List</td><td><code>ListDC</code></td><td><code>list</code></td></tr><tr><td>Tuple</td><td><code>TupleDC</code></td><td><code>tuple</code></td></tr><tr><td>Fraction</td><td><code>FractionDC</code></td><td><code>fractions.Fraction</code></td></tr><tr><td>Array</td><td><code>ArrayDC</code></td><td><code>numpy.ndarray</code></td></tr><tr><td>Complex</td><td><code>ComplexDC</code></td><td><code>complex</code>, <code>ComplexNumber</code></td></tr></tbody></table><p>The table identifies conversion relationships, not type equivalences or a
 universal one-to-one correspondence. For example, both built-in <code>complex</code> and
 <code>ComplexNumber</code> objects can be converted to Complex DCIs, but their component
 information differs. The <a href=/data-canon/docs/python_api/>Python API</a> specifies
@@ -322,7 +326,10 @@ DCIs without retrieving the payloads.</p><p>For constructor signatures, complete
 use the <a href=/data-canon/docs/python_api/>Python API</a>. For numerical DCT
 structure, nesting, and identity, use the
 <a href=/data-canon/docs/reference/>Reference</a> and
-<a href=/data-canon/docs/specifications/data_canon_v1/>Core specification</a>.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-155fd76f8f77146d412ef40ae0d3f4e3>2 - Shorthand Preprocessing</h1><h2 id=overview>Overview</h2><p>Shorthand preprocessing provides three conveniences for entering scientific
+<a href=/data-canon/docs/specifications/data_canon_v1/>Core specification</a>.
+For the language-independent conventional behavior and its required comparison
+cases, use the
+<a href=/data-canon/docs/specifications/conventional_types_v1/>Conventional Types specification</a>.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-155fd76f8f77146d412ef40ae0d3f4e3>2 - Shorthand Preprocessing</h1><h2 id=overview>Overview</h2><p>Shorthand preprocessing provides three conveniences for entering scientific
 data by hand: compact List notation, named textual substitutions, and scalar
 mathematical evaluation with <code>eval(...)</code>.</p><p>Preprocessing transforms text into strict Shorthand. Parsing that text then
 constructs a DataCanon Instance. This guide introduces each feature separately
