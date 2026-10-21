@@ -642,8 +642,10 @@ embedded in HDF5. Missing or invalid required resources cause the dump to fail.<
 </span></span><span style=display:flex><span>dc rutile.dcb --style aligned-compact
 </span></span><span style=display:flex><span>dc rutile.dcb --longhand
 </span></span></code></pre></div><p>The default is <code>standard</code> layout with shorter notation where appropriate.
-<code>--longhand</code> selects explicit constructors for structured DCIs. Layout and
-notation are independent:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --longhand --style aligned
+<code>--longhand</code> selects explicit constructors for structured values. Null, Boolean,
+Integer, Float, and String remain literals: <code>sum(1, 1.0, fraction(1, 2))</code> is
+longhand. Fraction uses <code>fraction(...)</code>, Bytes keeps <code>bytes(...)</code>, and Array
+elements retain their specialized syntax. Layout and notation are independent:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --longhand --style aligned
 </span></span></code></pre></div><p>For aligned layouts, <code>--align left</code> or <code>--align right</code> controls column alignment;
 left alignment is the default.</p><p>Nested Lists and Tuples use one row per item in every style. Coordinate Tuples
 remain inline, so the rutile lattice vectors and atom positions appear as
