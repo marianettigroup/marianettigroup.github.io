@@ -90,9 +90,9 @@ Mapping DCI constructed above:</p><div class=highlight><pre tabindex=0 style=bac
 </span></span><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>instance</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;standard&#34;</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87>print</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span>
 </span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{
-</span></span><span style=display:flex><span>  (&#34;Eg&#34;, 0): 2.37,
-</span></span><span style=display:flex><span>  &#34;species&#34;: [&#34;Sr&#34;, &#34;Ti&#34;, &#34;O&#34;],
-</span></span><span style=display:flex><span>  &#34;origin&#34;: (0.0, 0.0, 0.0),
+</span></span><span style=display:flex><span>  ( &#34;Eg&#34;, 0 ): 2.37,
+</span></span><span style=display:flex><span>  &#34;species&#34;: [ &#34;Sr&#34;, &#34;Ti&#34;, &#34;O&#34; ],
+</span></span><span style=display:flex><span>  &#34;origin&#34;: ( 0.0, 0.0, 0.0 ),
 </span></span><span style=display:flex><span>  &#34;lattice&#34;:
 </span></span><span style=display:flex><span>    array(
 </span></span><span style=display:flex><span>      [[1.0, 0.0, 0.0],
@@ -107,8 +107,14 @@ required canonical textual layout.</p><p>Layout, column alignment, and indentati
 </span></span></code></pre></div><p><code>standard</code> places multiline opening and closing delimiters on separate lines.
 <code>semi-compact</code> puts the opening delimiter beside the first item or entry;
 <code>compact</code> also puts the closing delimiter beside the final content line.
-Flat sequences stay inline. <code>align</code> controls column padding independently,
-and <code>indent</code> specifies spaces per structural nesting level, defaulting to 2.</p><p>Per-type layouts can keep Mapping boundaries visible while packing coordinate
+<code>inline</code> forces the entire selected value onto one line, including its nested
+contents. Flat sequences stay inline in the other layouts too.</p><p><code>align</code> controls column padding. <code>indent</code> controls structural nesting on new
+lines, defaulting to 2. <code>padding</code> controls gaps beside same-line collection and
+constructor delimiters, defaulting to 1. Compact continuation rows align with
+the first row; changing <code>indent</code> moves nested blocks, not the first-row gap.
+Use <code>padding=0</code> to remove same-line delimiter gaps.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>one_line</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>instance</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;inline&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>padding</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>0</span><span style=color:#000;font-weight:700>)</span>
+</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#4e9a06>&#34;</span><span style=color:#4e9a06>\n</span><span style=color:#4e9a06>&#34;</span> <span style=color:#204a87;font-weight:700>not</span> <span style=color:#204a87;font-weight:700>in</span> <span style=color:#000>one_line</span>
+</span></span></code></pre></div><p>Per-type layouts can keep Mapping boundaries visible while packing coordinate
 rows:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>coordinates</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#39;{&#34;positions&#34;: [(0, 0), (1/2, 1/2)]}&#39;</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87>print</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>coordinates</span><span style=color:#000;font-weight:700>,</span>
@@ -116,8 +122,8 @@ rows:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-mo
 </span></span><span style=display:flex><span>    <span style=color:#000>align</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;left&#34;</span><span style=color:#000;font-weight:700>,</span>
 </span></span><span style=display:flex><span><span style=color:#000;font-weight:700>))</span>
 </span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ &#34;positions&#34;:
-</span></span><span style=display:flex><span>    [ (0  , 0  ),
-</span></span><span style=display:flex><span>      (1/2, 1/2) ]
+</span></span><span style=display:flex><span>    [ ( 0  , 0   ),
+</span></span><span style=display:flex><span>      ( 1/2, 1/2 ) ]
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>The <a href=/data-canon/docs/python_api/>Python API</a> lists all configurable types.
 The same layout contracts apply to Sets, Multisets, Mappings, Records, and
@@ -923,31 +929,45 @@ embedded in HDF5. Missing or invalid required resources cause the dump to fail.<
 <code>--layout standard</code> puts multiline delimiters on separate lines;
 <code>--layout semi-compact</code> shares the opening line with the first item or entry;
 <code>--layout compact</code> also shares the closing line with the final content.
-Flat sequences and empty collections remain inline.</p><p><code>--align left</code>, <code>--align right</code>, and <code>--align none</code> independently select column
-padding. Padding is disabled unless requested. <code>--indent N</code> sets spaces per structural nesting level; the default
-is 2, and 0 is allowed. Continuation items after a shared opening delimiter
-align with the first item rather than adding another structural indent.</p><p>Use <code>--custom-layout</code> for per-type overrides:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --custom-layout <span style=color:#4e9a06>&#39;{&#34;mapping&#34;:&#34;semi-compact&#34;,&#34;list&#34;:&#34;compact&#34;,&#34;tuple&#34;:&#34;compact&#34;,&#34;set&#34;:&#34;compact&#34;}&#39;</span> --align left
+<code>--layout inline</code> forces the selected value and its whole subtree onto one line.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout inline --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span>dc rutile.dcb --custom-layout <span style=color:#4e9a06>&#39;{&#34;list&#34;:&#34;inline&#34;}&#39;</span>
+</span></span></code></pre></div><p>A List forced inline also renders nested Mappings, Arrays, and other values
+inline. Child layout overrides yield to that enclosing inline requirement;
+siblings outside the List retain their own layouts. Column alignment and
+structural indentation have no effect inside an inline subtree.</p><p><code>--align left</code>, <code>--align right</code>, and <code>--align none</code> control column padding.
+Alignment is disabled unless requested. <code>--indent N</code> controls structural nesting
+on new lines, defaulting to 2. It does not add spaces after a same-line opener.
+Compact continuation items align beneath the first item; indentation moves
+nested blocks below keys rather than changing that alignment.</p><p><code>--padding N</code> controls spaces beside same-line collection and constructor
+delimiters, defaulting to 1. It applies to flat values too: <code>[ 1, 2 ]</code> becomes
+<code>[1, 2]</code> with <code>--padding 0</code>. Standalone delimiters receive no padding.
+Both options accept nonnegative integers, including zero.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{1, 2, [0, 1]}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --layout compact --indent <span style=color:#0000cf;font-weight:700>0</span> --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{1,
+</span></span><span style=display:flex><span> 2,
+</span></span><span style=display:flex><span> [0, 1]}
+</span></span></code></pre></div><p>Use <code>--custom-layout</code> for per-type overrides:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --custom-layout <span style=color:#4e9a06>&#39;{&#34;mapping&#34;:&#34;semi-compact&#34;,&#34;list&#34;:&#34;compact&#34;,&#34;tuple&#34;:&#34;compact&#34;,&#34;set&#34;:&#34;compact&#34;}&#39;</span> --align left
 </span></span></code></pre></div><p>The argument is a strict DataCanon Mapping or UnorderedMapping with String keys
 and String values. Quote the entire argument for the shell. Constructor form,
 such as <code>mapping("set": "compact")</code>, is also accepted. The CLI does not use
-JSON, Python evaluation, or preprocessing to read this configuration.</p><p>Every structured type accepts the same three layout contracts. For example,
+JSON, Python evaluation, or preprocessing to read this configuration.</p><p>Every structured type accepts the same four layout contracts. For example,
 <code>"set"</code>, <code>"multiset"</code>, <code>"unordered_mapping"</code>, <code>"record"</code>, and <code>"array"</code> can be
 configured alongside Lists, Tuples, and Mappings. The
 <a href=/data-canon/docs/python_api/>Python API</a> lists all accepted type names.
 An override affects only its named DCT; unspecified types use <code>--layout</code>
 (default <code>standard</code>). No separate per-type command-line flags are needed.
 Unknown names, invalid values, and duplicate keys are errors before input loading.
-Multiline Mapping values start below their keys.</p><p><code>--longhand</code> selects explicit constructors for structured values. Null, Boolean,
+Multiline Mapping values start below their keys unless an enclosing inline
+layout suppresses the line breaks.</p><p><code>--longhand</code> selects explicit constructors for structured values. Null, Boolean,
 Integer, Float, and String remain literals: <code>sum(1, 1.0, fraction(1, 2))</code> is
 longhand. Fraction uses <code>fraction(...)</code>, Bytes keeps <code>bytes(...)</code>, and Array
 elements retain their specialized syntax. Layout and notation are independent:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --longhand --layout semi-compact --align left
 </span></span></code></pre></div><p>Lists, Tuples, Sets, and Multisets use one row per item when they contain a
-List or Tuple, or an item that already spans multiple lines. Coordinate Tuples
+List or Tuple, or an item that already spans multiple lines, unless forced inline. Coordinate Tuples
 remain inline, so the rutile lattice vectors and atom positions appear as
 separate rows. Alignment adds column padding for rectangular rows, including
 coordinates containing Sums or Products. For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 0), (0, -1)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --layout semi-compact --align left
-</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ (1,  0),
-</span></span><span style=display:flex><span>  (0, -1)
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ ( 1,  0 ),
+</span></span><span style=display:flex><span>  ( 0, -1 )
 </span></span><span style=display:flex><span>]
 </span></span></code></pre></div><p>Using <code>--layout compact</code> also puts the final <code>]</code> on the last row.</p><p>The same options apply when dumping Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump readable.dcs --layout standard --align left
 </span></span><span style=display:flex><span>dc rutile.dcb --dump constructors.dcs --longhand
@@ -1066,7 +1086,7 @@ parentheses are not general grouping: <code>(1 + 2)</code> is a singleton Tuple 
 a Sum. Use constructors when nesting needs to be explicit.</p><p>Preprocessing can be requested directly:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>prepared_instance</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;&lt;1 2 3&gt;&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>preprocess</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87;font-weight:700>True</span><span style=color:#000;font-weight:700>)</span>
 </span></span></code></pre></div><p>The <code>dc</code> CLI preprocesses Shorthand by default and offers <code>--strict</code>; that
 frontend policy does not change this function&rsquo;s strict default.</p><p>Supplying <code>substitutions</code> requires <code>preprocess=True</code>. For a clear two-stage
-workflow, call <code>preprocess_shorthand()</code> separately as shown below.</p><h2 id=shorthand-rendering>Shorthand rendering</h2><h3 id=render_shorthandnode--layoutstandard-custom_layoutnone-alignfalse-indent2-longhandfalse><code>render_shorthand(node, *, layout="standard", custom_layout=None, align=False, indent=2, longhand=False)</code></h3><p>Render a DCI as identity-preserving Shorthand. A conventional input object is
+workflow, call <code>preprocess_shorthand()</code> separately as shown below.</p><h2 id=shorthand-rendering>Shorthand rendering</h2><h3 id=render_shorthandnode--layoutstandard-custom_layoutnone-alignfalse-indent2-padding1-longhandfalse><code>render_shorthand(node, *, layout="standard", custom_layout=None, align=False, indent=2, padding=1, longhand=False)</code></h3><p>Render a DCI as identity-preserving Shorthand. A conventional input object is
 first converted with <code>as_dc_instance()</code>, and the resulting DCI is rendered:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#204a87;font-weight:700>from</span> <span style=color:#000>data_canon</span> <span style=color:#204a87;font-weight:700>import</span> <span style=color:#000>render_shorthand</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>phase</span><span style=color:#000;font-weight:700>)</span>
@@ -1081,30 +1101,44 @@ For example, <code>sum(1, 1.0, fraction(1, 2))</code> is longhand; literals need
 additional wrappers. Version 1 defines neither <code>integer(...)</code>, <code>float(...)</code>,
 nor <code>string(...)</code> wrappers, nor a separate fully wrapped rendering mode.
 The same parser accepts both outputs.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>value</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#34;1/2 * sqrt(3)&#34;</span><span style=color:#000;font-weight:700>)</span>
-</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>value</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;standard&#34;</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#4e9a06>&#34;1/2 * sqrt(3)&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>value</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;standard&#34;</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#4e9a06>&#34;1/2 * sqrt( 3 )&#34;</span>
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>value</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;standard&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>longhand</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#204a87;font-weight:700>True</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000;font-weight:700>(</span>
-</span></span><span style=display:flex><span>    <span style=color:#4e9a06>&#34;product(fraction(1, 2), power(3, 1, 2))&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#4e9a06>&#34;product( fraction(1, 2), power( 3, 1, 2 ) )&#34;</span>
 </span></span><span style=display:flex><span><span style=color:#000;font-weight:700>)</span>
 </span></span></code></pre></div><table><thead><tr><th>Structure</th><th>Default examples</th><th>Longhand</th></tr></thead><tbody><tr><td>Fraction</td><td><code>1/2</code></td><td><code>fraction(1, 2)</code></td></tr><tr><td>Sum</td><td><code>1 + 2</code></td><td><code>sum(1, 2)</code></td></tr><tr><td>Product</td><td><code>2 * sqrt(3)</code></td><td><code>product(2, power(3, 1, 2))</code></td></tr><tr><td>Power</td><td><code>5**2</code>, <code>5**(1/3)</code>, <code>sqrt(5)</code></td><td><code>power(5, 2)</code>, <code>power(5, 1, 3)</code>, <code>power(5, 1, 2)</code></td></tr><tr><td>List</td><td><code>[1, 2]</code></td><td><code>list(1, 2)</code></td></tr><tr><td>Tuple</td><td><code>(1, 2)</code></td><td><code>tuple(1, 2)</code></td></tr><tr><td>Set</td><td><code>{1, 2}</code>, <code>set()</code></td><td><code>set(1, 2)</code>, <code>set()</code></td></tr><tr><td>Mapping</td><td><code>{"a": 1}</code></td><td><code>mapping("a": 1)</code></td></tr></tbody></table><p>Default rendering uses constructors to retain empty or singleton Sums and
 Products, nesting, and unambiguous Power bases. Quotient retains <code>quotient(...)</code>.
-No separate <code>notation</code> or <code>power_style</code> option is provided.</p><h3 id=independent-layout-alignment-and-indentation>Independent layout, alignment, and indentation</h3><p><code>layout</code> controls delimiter placement for multiline values:</p><table><thead><tr><th>Layout</th><th>Opening delimiter</th><th>Closing delimiter</th></tr></thead><tbody><tr><td><code>standard</code></td><td>Separate line</td><td>Separate line</td></tr><tr><td><code>semi-compact</code></td><td>Shares the first item or entry line</td><td>Separate line</td></tr><tr><td><code>compact</code></td><td>Shares the first item or entry line</td><td>Shares the final content line</td></tr></tbody></table><p>For example, a semi-compact Mapping renders as:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ &#34;a&#34;: 1,
+No separate <code>notation</code> or <code>power_style</code> option is provided.</p><h3 id=independent-layout-alignment-indentation-and-padding>Independent layout, alignment, indentation, and padding</h3><p><code>layout</code> controls line breaking and delimiter placement:</p><table><thead><tr><th>Layout</th><th>Opening delimiter</th><th>Closing delimiter</th></tr></thead><tbody><tr><td><code>standard</code></td><td>Separate line</td><td>Separate line</td></tr><tr><td><code>semi-compact</code></td><td>Shares the first item or entry line</td><td>Separate line</td></tr><tr><td><code>compact</code></td><td>Shares the first item or entry line</td><td>Shares the final content line</td></tr><tr><td><code>inline</code></td><td>Shares the only content line</td><td>Shares the only content line</td></tr></tbody></table><p>For example, a semi-compact Mapping renders as:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ &#34;a&#34;: 1,
 </span></span><span style=display:flex><span>  &#34;b&#34;: 2
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Scalar-only collections and empty collections stay inline. Lists, Tuples,
-Sets, and Multisets become multiline when they directly contain a List or
-Tuple, or when an item
-already renders across multiple lines. Nonempty Mappings are multiline.
-With an explicit layout, multiline Mapping values start below their keys,
+</span></span></code></pre></div><p>Scalar-only collections and empty collections normally stay inline. Lists,
+Tuples, Sets, and Multisets normally become multiline when they directly
+contain a List or Tuple, or an item already spans multiple lines. An inline
+subtree suppresses those line breaks. Nonempty Mappings are multiline unless their effective layout is <code>inline</code>.
+Multiline Mapping values start below their keys,
 so indentation does not depend on key length. Multiline keys remain valid
 Shorthand and use the same recursive rendering rules.</p><p><code>align="left"</code> or <code>align="right"</code> pads cells in rectangular List/Tuple rows
-and supported Array tables. <code>align=False</code> disables padding. Alignment can be
+and supported Array tables. <code>align=False</code> disables column padding. Alignment can be
 combined with every layout and with longhand. Ragged rows receive no column
-padding. Alignment does not introduce a line-width wrapping threshold.</p><p><code>indent</code> is the number of spaces per structural nesting level, defaulting to
-<code>2</code>. It accepts nonnegative integers, including <code>0</code>; Boolean, negative, and
-noninteger arguments are rejected. Continuation items after a shared opening
-delimiter align with the first item. For example, the second entry in
-<code>{ "a": ...</code> begins two columns after <code>{</code>, regardless of <code>indent</code>. Indentation
-controls nesting; hanging alignment follows the opening token&rsquo;s width.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>rows</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#39;{&#34;rows&#34;: [(1, 20), (30, 4)]}&#39;</span><span style=color:#000;font-weight:700>)</span>
+padding. Alignment does not introduce a line-width wrapping threshold.</p><p><code>indent</code> controls extra indentation when structural nesting places content on
+new lines, defaulting to <code>2</code>. For example, it controls content after a
+standalone opener and a multiline value below its Mapping key. It does not
+add spacing after an opener that shares its content line. Compact continuation
+items align beneath the first item, whose column is determined by the opening
+token and <code>padding</code>. Consequently, changing indentation does not move compact
+Mapping keys; it moves nested blocks below them.</p><p><code>padding</code> controls gaps beside same-line collection and constructor delimiters,
+defaulting to <code>1</code>. For example, a flat List is <code>[ 1, 2 ]</code>; <code>padding=0</code> gives
+<code>[1, 2]</code>. It also supplies the gap after a shared multiline opener and before
+a shared multiline closer. A standalone delimiter receives no padding.
+Continuation items begin at relative column <code>len(opening) + padding</code>.</p><p>Both options accept nonnegative integers, including zero, and reject Boolean,
+negative, and noninteger arguments. Empty collections retain <code>[]</code>, <code>()</code>,
+<code>set()</code>, and similar spellings. Primitive literals and their fixed constructor
+spellings, item separators, and specialized Array element brackets retain their
+existing forms. <code>align</code> independently controls table-cell padding.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>packed</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#39;{1, 2, [0, 1]}&#39;</span><span style=color:#000;font-weight:700>)</span>
+</span></span><span style=display:flex><span><span style=color:#204a87>print</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>packed</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;compact&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>indent</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>0</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>padding</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>0</span><span style=color:#000;font-weight:700>))</span>
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{1,
+</span></span><span style=display:flex><span> 2,
+</span></span><span style=display:flex><span> [0, 1]}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>rows</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#4e9a06>&#39;{&#34;rows&#34;: [(1, 20), (30, 4)]}&#39;</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>rows</span><span style=color:#000;font-weight:700>,</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>custom_layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#000;font-weight:700>{</span><span style=color:#4e9a06>&#34;list&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;compact&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#4e9a06>&#34;tuple&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;compact&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#4e9a06>&#34;mapping&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;semi-compact&#34;</span><span style=color:#000;font-weight:700>},</span>
@@ -1114,8 +1148,8 @@ controls nesting; hanging alignment follows the opening token&rsquo;s width.</p>
 </span></span><span style=display:flex><span><span style=color:#204a87>print</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000>rows</span>
 </span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{ &#34;rows&#34;:
-</span></span><span style=display:flex><span>    [ (1 , 20),
-</span></span><span style=display:flex><span>      (30, 4 ) ]
+</span></span><span style=display:flex><span>    [ ( 1 , 20 ),
+</span></span><span style=display:flex><span>      ( 30, 4  ) ]
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p><code>layout</code> is a single global layout name, defaulting to <code>"standard"</code>.
 <code>custom_layout</code> is an optional conventional mapping from lowercase type names
@@ -1123,10 +1157,10 @@ to layout names. Each override applies only to the named DCT; all unspecified
 types use the global layout. The arguments do not change one another.</p><p>Accepted override names are <code>list</code>, <code>tuple</code>, <code>mapping</code>, <code>unordered_mapping</code>,
 <code>record</code>, <code>set</code>, <code>multiset</code>, <code>sum</code>, <code>product</code>, <code>power</code>, <code>quotient</code>, <code>complex</code>,
 <code>array</code>, <code>external_file</code>, and <code>external_array</code>. Sets, Multisets, Records, and
-other constructor forms follow the same three multiline delimiter contracts.
+other constructor forms follow the same four layout contracts.
 Mapping overrides do not implicitly affect UnorderedMappings or Records.
-Ordinary scalar literals remain unchanged. A layout only changes a value that
-renders across multiple lines; it does not force an inline value to break.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span>
+Ordinary scalar literals remain unchanged. The three multiline layouts do not
+force a flat sequence to break; <code>inline</code> suppresses structural line breaks.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>rows</span><span style=color:#000;font-weight:700>,</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;compact&#34;</span><span style=color:#000;font-weight:700>,</span>
 </span></span><span style=display:flex><span>    <span style=color:#000>custom_layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#000;font-weight:700>{</span><span style=color:#4e9a06>&#34;mapping&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;semi-compact&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#4e9a06>&#34;set&#34;</span><span style=color:#000;font-weight:700>:</span> <span style=color:#4e9a06>&#34;standard&#34;</span><span style=color:#000;font-weight:700>},</span>
@@ -1134,13 +1168,26 @@ renders across multiple lines; it does not force an inline value to break.</p><d
 </span></span><span style=display:flex><span>    <span style=color:#000>indent</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>4</span><span style=color:#000;font-weight:700>,</span>
 </span></span><span style=display:flex><span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000>rows</span>
-</span></span></code></pre></div><p>Constructor names participate in hanging alignment: continuation arguments in
-<code>list( ...</code> align after <code>list( </code>. Unknown layouts or type names are rejected;
-<code>layout</code> does not accept a mapping. <code>align</code> defaults to <code>False</code>; only <code>False</code>,
-<code>"left"</code>, and <code>"right"</code> are accepted. Settings are passed per call.</p><p>Array element brackets retain their specialized numerical syntax; Array
+</span></span></code></pre></div><p>Constructor continuation arguments align beneath the first argument, at the
+opening token&rsquo;s length plus <code>padding</code>. Indentation does not change that column.
+Unknown layouts or type names are rejected. <code>layout</code> does not accept a mapping.
+<code>align</code> defaults to <code>False</code>; only <code>False</code>, <code>"left"</code>, and <code>"right"</code> are accepted.
+Settings are passed per call.</p><h3 id=force-one-line-globally-or-for-a-subtree>Force one line globally or for a subtree</h3><p><code>layout="inline"</code> renders the selected value and every descendant on one line.
+An inline parent overrides child layout choices inside that subtree. Alignment
+is disabled there, and indentation has no effect; padding still applies.
+String line breaks remain escaped within their literals. No input is evaluated
+or mathematically simplified.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#000>text</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>render_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>rows</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>layout</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#4e9a06>&#34;inline&#34;</span><span style=color:#000;font-weight:700>,</span> <span style=color:#000>padding</span><span style=color:#ce5c00;font-weight:700>=</span><span style=color:#0000cf;font-weight:700>0</span><span style=color:#000;font-weight:700>)</span>
+</span></span><span style=display:flex><span><span style=color:#204a87>print</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span>
+</span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>parse_shorthand</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>text</span><span style=color:#000;font-weight:700>)</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000>rows</span>
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{&#34;rows&#34;: [(1, 20), (30, 4)]}
+</span></span></code></pre></div><p>Use <code>custom_layout={"list": "inline"}</code> to keep Lists on one line while other
+values follow their selected layouts. A Mapping or Array inside such a List
+is also inline, even if its own type override requests <code>standard</code>. Siblings
+outside that List retain their selected layouts. A type override is consulted
+at each node unless an enclosing inline value has already forced the subtree.</p><p>Array element brackets retain their specialized numerical syntax; Array
 elements are not List DCIs. The Array constructor follows its selected layout,
 and structural Array nesting uses the requested indentation. Scalars retain
-their existing spellings.</p><h3 id=rectangular-rows-and-line-breaking>Rectangular rows and line breaking</h3><p>Lists, Tuples, Sets, and Multisets become multiline when they directly
+their existing spellings.</p><h3 id=rectangular-rows-and-line-breaking>Rectangular rows and line breaking</h3><p>Outside an inline subtree, Lists, Tuples, Sets, and Multisets become multiline when they directly
 contain a List or Tuple, including an empty one, or when an item already renders
 across multiple lines. Scalar and inline numerical items do not independently force breaks.
 Flat sequences have no automatic line-width threshold.</p><p>Alignment recognizes rectangular List or Tuple rows inside any of those four
@@ -1438,10 +1485,13 @@ than the Core type classification: primitive Fraction still uses
 For example, <code>sum(1, 1.0, fraction(1, 2))</code> is longhand without additional
 literal wrappers. The renderer&rsquo;s <code>longhand</code> flag is
 independent of its layout styles; constructor fallbacks preserve nested
-structure in the default rendering.</p><p>The Python binding separates delimiter layout, column alignment, and structural
-indentation. Layout can be standard, semi-compact, or compact, globally or per
+structure in the default rendering.</p><p>The Python binding separates delimiter layout, column alignment, structural
+indentation, and padding beside shared delimiters. Layout can be standard,
+semi-compact, compact, or inline, globally or per
 type; alignment can be disabled or set left/right. Per-type <code>custom_layout</code> overrides leave unspecified types using the global
-layout. Sets and other multiline constructor forms use the same contracts. Formatting choices preserve DCI identity.</p><p>Define conventional types as types used directly for data and computation in
+layout. Inline parents force all descendants onto one line. Padding controls
+same-line gaps, while indentation controls nested blocks on new lines. Sets
+and other constructor forms use the same contracts. Formatting choices preserve DCI identity.</p><p>Define conventional types as types used directly for data and computation in
 a programming language, including built-in, library-provided, and user-defined
 types. The conversion interface constructs instances of conventional types
 from DCIs and constructs DCIs from supported conventional objects. A <code>ListDC</code> object and a conventional <code>list</code> object are both Python objects,
@@ -1566,13 +1616,14 @@ syntax. <code>sum(1, 1.0, fraction(1, 2))</code> is longhand without extra liter
 The parser accepts both
 and any mixture; <code>render_shorthand(..., longhand=True)</code> selects longhand.
 Default rendering uses shorter forms with identity-preserving fallbacks.
-Layout styles are independent of that choice.</p><p>The Python renderer separates delimiter <code>layout</code> (<code>standard</code>, <code>semi-compact</code>,
-or <code>compact</code>) from column <code>align</code> and structural <code>indent</code> (default 2 spaces).
-Use <code>layout</code> globally and <code>custom_layout</code> for per-type overrides. A semi-compact Mapping shares
-its opening line with the first entry and retains a separate closing line;
-a compact List shares both delimiter lines with its contents. The
-<a href=/data-canon/docs/python_api/>Python API</a> defines the options and the
-complete set of configurable types.</p><p>Optional preprocessing expands compact Lists, substitutes names, and evaluates
+Layout styles are independent of that choice.</p><p>The Python renderer separates <code>layout</code> (<code>standard</code>, <code>semi-compact</code>, <code>compact</code>,
+or <code>inline</code>) from column <code>align</code>, structural <code>indent</code> (default 2), and same-line
+<code>padding</code> (default 1). Use <code>custom_layout</code> for per-type overrides. Compact
+continuation items align with their first item; indentation controls nested
+blocks on new lines. Padding also applies to flat collections. An inline
+value forces its entire subtree onto one line, overriding child layouts and
+ignoring alignment and indentation there. The
+<a href=/data-canon/docs/python_api/>Python API</a> defines the options.</p><p>Optional preprocessing expands compact Lists, substitutes names, and evaluates
 explicit scalar <code>eval(...)</code> expressions before strict parsing. It is not
 implicitly used by YAML airlocks or persistence reads.</p><h2 id=representations>Representations</h2><table><thead><tr><th>Representation</th><th>Role</th></tr></thead><tbody><tr><td>Canonical bytes / <code>.dcb</code></td><td>Unique binary identity encoding</td></tr><tr><td>Shorthand / <code>.dcs</code></td><td>Readable strict text, including longhand</td></tr><tr><td>YAML interchange</td><td>Native YAML plus <code>DC></code> strict Shorthand</td></tr><tr><td>HDF5 / <code>.h5</code></td><td>Native numerical datasets, structured DCIs, and embedded external payloads</td></tr></tbody></table><p>SHA-256 of canonical bytes is the DCI fingerprint. It is not a hash of Shorthand,
 YAML, or HDF5 file bytes. SHA-256 content digests also identify external payloads;
@@ -2185,22 +2236,26 @@ Multiline output may also use constructors for clearer layout.</p><p>For example
 </span></span><span style=display:flex><span>2 * sum(3, 4)
 </span></span><span style=display:flex><span>power(1/2, 3)
 </span></span></code></pre></div><p>Longhand selection and any constructor fallback do not participate in DCI
-identity or canonical binary encoding.</p><p>Renderers MAY choose their own whitespace, indentation, line breaking, column alignment, and compactness policies. The Python binding&rsquo;s formatting options are <strong>not</strong> distinct dialects or normative cross-language layout requirements.</p><p>The Python binding also provides independent <code>layout</code>, <code>align</code>, and <code>indent</code>
-options, plus a <code>custom_layout</code> mapping of per-type overrides. For multiline output, <code>standard</code> layout places both delimiters on
-separate lines, <code>semi-compact</code> shares the opening line with the first item or
-entry, and <code>compact</code> also shares the closing line with the final content.
-The global <code>layout</code> applies to every structured type unless its exact type
-name appears in <code>custom_layout</code>. Sets, Multisets, Records, and other constructor
-forms follow the same contracts. Scalar spellings remain unchanged. Alignment controls column
-padding; indentation controls spaces per structural nesting level, with a
-default of two. Continuation items following a shared opening delimiter align
-with the first item. The Python renderer makes Lists, Tuples, Sets, and
-Multisets multiline when they directly contain a List or Tuple, or an item
-that already spans multiple lines. Rectangular List/Tuple rows can be aligned
-inside any of those four collection types. Scalar-only collections and empty
-collections may remain inline.
-All choices preserve the same DCI identity and grammar;
-the Python API documents their precise rendering behavior.</p><p>Renderers MUST NOT normalize numerical structures mathematically, erase Float signed zero, reorder ordered collections, or change any other constituent that participates in DCI identity.</p><p>A renderer of an unordered collection MAY choose any entry/member order accepted by the strict parser. The canonical ordering of the <strong>binary encoding</strong> does not impose a textual ordering requirement.</p><h1 id=invalid-input-and-error-handling>Invalid input and error handling</h1><p>A conforming parser MUST reject malformed syntax, unsupported identifiers, invalid numeric values, invalid escape sequences, duplicate keys or fields, invalid Array shapes or types, invalid external paths or digests, and input remaining after a complete DCI has been parsed.</p><p>An implementation MAY use its own error types and diagnostics. No specific error-message text is required by this specification.</p><p>Implementations MAY impose resource limits on text size, nesting depth, Array allocation, or integer magnitude. Such limits are implementation constraints and do not change DCI identity.</p><h1 id=relationship-to-other-datacanon-specifications>Relationship to other DataCanon specifications</h1><ul><li><strong>DataCanon Core V1</strong> defines the DCTs, equality, canonical encoding, and fingerprinting.</li><li><strong>Shorthand Preprocessing V1</strong> (separate document) will define compact List notation, general substitutions, and restricted scalar <code>eval(...)</code> transformations before strict parsing.</li><li><strong>YAML Interchange V1</strong> (separate document) may embed strict Shorthand using the <code>DC></code> convention.</li><li><strong>HDF5 V1</strong> and <strong>Persistence V1</strong> (separate documents) will define storage and external-resource conventions.</li></ul><p>Neither the preprocessor nor a persistence mechanism alters the strict Shorthand grammar defined here.</p><h1 id=appendix-a--conformance-examples>Appendix A — Conformance examples</h1><p>The conformance examples identify the DCT or property that a conforming strict parser MUST recover. They are not prescribed renderer output.</p><table><thead><tr><th>Input</th><th>Expected result</th></tr></thead><tbody><tr><td><code>null</code></td><td>Null</td></tr><tr><td><code>false</code></td><td>Boolean false</td></tr><tr><td><code>-42</code></td><td>Integer -42</td></tr><tr><td><code>-0.0</code></td><td>Float negative zero</td></tr><tr><td><code>bytes("")</code></td><td>Empty Bytes</td></tr><tr><td><code>bytes("00FF")</code></td><td>Bytes containing <code>00 ff</code></td></tr><tr><td><code>"a\\nb"</code></td><td>String with a line feed</td></tr><tr><td><code>2/4</code></td><td>Fraction with numerator 2, denominator 4</td></tr><tr><td><code>sum(1, 1, 2)</code></td><td>Sum retaining duplicate terms</td></tr><tr><td><code>1/2 * sqrt(3)</code></td><td>Product containing Fraction and Power</td></tr><tr><td><code>sqrt(3)</code></td><td>Power with numerator 1 and denominator 2</td></tr><tr><td><code>power(5, 2)</code></td><td>Power with denominator 1</td></tr><tr><td><code>quotient(1, sum(2, 3))</code></td><td>Quotient with a Sum denominator</td></tr><tr><td><code>complex(1, 2.0)</code></td><td>Complex(Integer, Float)</td></tr><tr><td><code>[]</code></td><td>Empty List</td></tr><tr><td><code>()</code></td><td>Empty Tuple</td></tr><tr><td><code>(1)</code></td><td>One-element Tuple</td></tr><tr><td><code>{}</code></td><td>Empty Mapping</td></tr><tr><td><code>set()</code></td><td>Empty Set</td></tr><tr><td><code>{1, 2}</code></td><td>Two-member Set</td></tr><tr><td><code>multiset()</code></td><td>Empty Multiset</td></tr><tr><td><code>multiset(1, 1, 2)</code></td><td>Multiset with three occurrences</td></tr><tr><td><code>multiset(2, 1, 1)</code></td><td>Equal to <code>multiset(1, 1, 2)</code></td></tr><tr><td><code>multiset(1,)</code></td><td>Multiset with one occurrence</td></tr><tr><td><code>{"a": 1, "b": 2}</code></td><td>Ordered Mapping</td></tr><tr><td><code>umapping("b": 2, "a": 1)</code></td><td>UnorderedMapping</td></tr><tr><td><code>record("Point", "x": 1)</code></td><td>Record</td></tr><tr><td><code>array([1.0, 2.0])</code></td><td>Array with inferred portable type and shape</td></tr></tbody></table><p>The following are invalid strict Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1 2
+identity or canonical binary encoding.</p><p>Renderers MAY choose their own whitespace, indentation, line breaking, column alignment, and compactness policies. The Python binding&rsquo;s formatting options are <strong>not</strong> distinct dialects or normative cross-language layout requirements.</p><p>The Python binding provides independent <code>layout</code>, <code>align</code>, <code>indent</code>, and
+<code>padding</code> options, plus <code>custom_layout</code> per-type overrides. For multiline output,
+<code>standard</code> places both delimiters on separate lines, <code>semi-compact</code> shares the
+opening line with the first item or entry, and <code>compact</code> also shares the closing
+line with the final content. <code>inline</code> forces the selected value and all its
+descendants onto one line. An enclosing inline requirement overrides child
+layout selections and disables table alignment within that subtree.</p><p>Indentation controls structural nesting on new lines, defaulting to two spaces.
+Padding controls same-line gaps beside collection and constructor delimiters,
+defaulting to one space, including flat values. Shared-opener continuation
+items align with the first item at relative column <code>len(opening) + padding</code>;
+indentation does not add another gap there. Standard multiline delimiters
+receive no padding because they occupy separate lines. Compact shared closers
+receive the requested padding before them. Both options are nonnegative
+integers. Primitive literal forms and specialized Array element syntax remain
+unchanged; Array constructors can still be rendered inline.</p><p>Lists, Tuples, Sets, and Multisets normally become multiline when they directly
+contain a List or Tuple, or an item already spanning multiple lines. Inline
+layout overrides that rule. Rectangular List/Tuple rows can be aligned inside
+any of those four collection types. Empty collections retain their empty forms.
+All layout choices preserve DCI identity and the same strict grammar; the
+Python API specifies their precise presentation behavior.</p><p>Renderers MUST NOT normalize numerical structures mathematically, erase Float signed zero, reorder ordered collections, or change any other constituent that participates in DCI identity.</p><p>A renderer of an unordered collection MAY choose any entry/member order accepted by the strict parser. The canonical ordering of the <strong>binary encoding</strong> does not impose a textual ordering requirement.</p><h1 id=invalid-input-and-error-handling>Invalid input and error handling</h1><p>A conforming parser MUST reject malformed syntax, unsupported identifiers, invalid numeric values, invalid escape sequences, duplicate keys or fields, invalid Array shapes or types, invalid external paths or digests, and input remaining after a complete DCI has been parsed.</p><p>An implementation MAY use its own error types and diagnostics. No specific error-message text is required by this specification.</p><p>Implementations MAY impose resource limits on text size, nesting depth, Array allocation, or integer magnitude. Such limits are implementation constraints and do not change DCI identity.</p><h1 id=relationship-to-other-datacanon-specifications>Relationship to other DataCanon specifications</h1><ul><li><strong>DataCanon Core V1</strong> defines the DCTs, equality, canonical encoding, and fingerprinting.</li><li><strong>Shorthand Preprocessing V1</strong> (separate document) will define compact List notation, general substitutions, and restricted scalar <code>eval(...)</code> transformations before strict parsing.</li><li><strong>YAML Interchange V1</strong> (separate document) may embed strict Shorthand using the <code>DC></code> convention.</li><li><strong>HDF5 V1</strong> and <strong>Persistence V1</strong> (separate documents) will define storage and external-resource conventions.</li></ul><p>Neither the preprocessor nor a persistence mechanism alters the strict Shorthand grammar defined here.</p><h1 id=appendix-a--conformance-examples>Appendix A — Conformance examples</h1><p>The conformance examples identify the DCT or property that a conforming strict parser MUST recover. They are not prescribed renderer output.</p><table><thead><tr><th>Input</th><th>Expected result</th></tr></thead><tbody><tr><td><code>null</code></td><td>Null</td></tr><tr><td><code>false</code></td><td>Boolean false</td></tr><tr><td><code>-42</code></td><td>Integer -42</td></tr><tr><td><code>-0.0</code></td><td>Float negative zero</td></tr><tr><td><code>bytes("")</code></td><td>Empty Bytes</td></tr><tr><td><code>bytes("00FF")</code></td><td>Bytes containing <code>00 ff</code></td></tr><tr><td><code>"a\\nb"</code></td><td>String with a line feed</td></tr><tr><td><code>2/4</code></td><td>Fraction with numerator 2, denominator 4</td></tr><tr><td><code>sum(1, 1, 2)</code></td><td>Sum retaining duplicate terms</td></tr><tr><td><code>1/2 * sqrt(3)</code></td><td>Product containing Fraction and Power</td></tr><tr><td><code>sqrt(3)</code></td><td>Power with numerator 1 and denominator 2</td></tr><tr><td><code>power(5, 2)</code></td><td>Power with denominator 1</td></tr><tr><td><code>quotient(1, sum(2, 3))</code></td><td>Quotient with a Sum denominator</td></tr><tr><td><code>complex(1, 2.0)</code></td><td>Complex(Integer, Float)</td></tr><tr><td><code>[]</code></td><td>Empty List</td></tr><tr><td><code>()</code></td><td>Empty Tuple</td></tr><tr><td><code>(1)</code></td><td>One-element Tuple</td></tr><tr><td><code>{}</code></td><td>Empty Mapping</td></tr><tr><td><code>set()</code></td><td>Empty Set</td></tr><tr><td><code>{1, 2}</code></td><td>Two-member Set</td></tr><tr><td><code>multiset()</code></td><td>Empty Multiset</td></tr><tr><td><code>multiset(1, 1, 2)</code></td><td>Multiset with three occurrences</td></tr><tr><td><code>multiset(2, 1, 1)</code></td><td>Equal to <code>multiset(1, 1, 2)</code></td></tr><tr><td><code>multiset(1,)</code></td><td>Multiset with one occurrence</td></tr><tr><td><code>{"a": 1, "b": 2}</code></td><td>Ordered Mapping</td></tr><tr><td><code>umapping("b": 2, "a": 1)</code></td><td>UnorderedMapping</td></tr><tr><td><code>record("Point", "x": 1)</code></td><td>Record</td></tr><tr><td><code>array([1.0, 2.0])</code></td><td>Array with inferred portable type and shape</td></tr></tbody></table><p>The following are invalid strict Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>1 2
 </span></span><span style=display:flex><span>&#39;hello&#39;
 </span></span><span style=display:flex><span>+1
 </span></span><span style=display:flex><span>1/0

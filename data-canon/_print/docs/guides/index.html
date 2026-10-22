@@ -645,31 +645,45 @@ embedded in HDF5. Missing or invalid required resources cause the dump to fail.<
 <code>--layout standard</code> puts multiline delimiters on separate lines;
 <code>--layout semi-compact</code> shares the opening line with the first item or entry;
 <code>--layout compact</code> also shares the closing line with the final content.
-Flat sequences and empty collections remain inline.</p><p><code>--align left</code>, <code>--align right</code>, and <code>--align none</code> independently select column
-padding. Padding is disabled unless requested. <code>--indent N</code> sets spaces per structural nesting level; the default
-is 2, and 0 is allowed. Continuation items after a shared opening delimiter
-align with the first item rather than adding another structural indent.</p><p>Use <code>--custom-layout</code> for per-type overrides:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --custom-layout <span style=color:#4e9a06>&#39;{&#34;mapping&#34;:&#34;semi-compact&#34;,&#34;list&#34;:&#34;compact&#34;,&#34;tuple&#34;:&#34;compact&#34;,&#34;set&#34;:&#34;compact&#34;}&#39;</span> --align left
+<code>--layout inline</code> forces the selected value and its whole subtree onto one line.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout inline --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span>dc rutile.dcb --custom-layout <span style=color:#4e9a06>&#39;{&#34;list&#34;:&#34;inline&#34;}&#39;</span>
+</span></span></code></pre></div><p>A List forced inline also renders nested Mappings, Arrays, and other values
+inline. Child layout overrides yield to that enclosing inline requirement;
+siblings outside the List retain their own layouts. Column alignment and
+structural indentation have no effect inside an inline subtree.</p><p><code>--align left</code>, <code>--align right</code>, and <code>--align none</code> control column padding.
+Alignment is disabled unless requested. <code>--indent N</code> controls structural nesting
+on new lines, defaulting to 2. It does not add spaces after a same-line opener.
+Compact continuation items align beneath the first item; indentation moves
+nested blocks below keys rather than changing that alignment.</p><p><code>--padding N</code> controls spaces beside same-line collection and constructor
+delimiters, defaulting to 1. It applies to flat values too: <code>[ 1, 2 ]</code> becomes
+<code>[1, 2]</code> with <code>--padding 0</code>. Standalone delimiters receive no padding.
+Both options accept nonnegative integers, including zero.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{1, 2, [0, 1]}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --layout compact --indent <span style=color:#0000cf;font-weight:700>0</span> --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{1,
+</span></span><span style=display:flex><span> 2,
+</span></span><span style=display:flex><span> [0, 1]}
+</span></span></code></pre></div><p>Use <code>--custom-layout</code> for per-type overrides:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --custom-layout <span style=color:#4e9a06>&#39;{&#34;mapping&#34;:&#34;semi-compact&#34;,&#34;list&#34;:&#34;compact&#34;,&#34;tuple&#34;:&#34;compact&#34;,&#34;set&#34;:&#34;compact&#34;}&#39;</span> --align left
 </span></span></code></pre></div><p>The argument is a strict DataCanon Mapping or UnorderedMapping with String keys
 and String values. Quote the entire argument for the shell. Constructor form,
 such as <code>mapping("set": "compact")</code>, is also accepted. The CLI does not use
-JSON, Python evaluation, or preprocessing to read this configuration.</p><p>Every structured type accepts the same three layout contracts. For example,
+JSON, Python evaluation, or preprocessing to read this configuration.</p><p>Every structured type accepts the same four layout contracts. For example,
 <code>"set"</code>, <code>"multiset"</code>, <code>"unordered_mapping"</code>, <code>"record"</code>, and <code>"array"</code> can be
 configured alongside Lists, Tuples, and Mappings. The
 <a href=/data-canon/docs/python_api/>Python API</a> lists all accepted type names.
 An override affects only its named DCT; unspecified types use <code>--layout</code>
 (default <code>standard</code>). No separate per-type command-line flags are needed.
 Unknown names, invalid values, and duplicate keys are errors before input loading.
-Multiline Mapping values start below their keys.</p><p><code>--longhand</code> selects explicit constructors for structured values. Null, Boolean,
+Multiline Mapping values start below their keys unless an enclosing inline
+layout suppresses the line breaks.</p><p><code>--longhand</code> selects explicit constructors for structured values. Null, Boolean,
 Integer, Float, and String remain literals: <code>sum(1, 1.0, fraction(1, 2))</code> is
 longhand. Fraction uses <code>fraction(...)</code>, Bytes keeps <code>bytes(...)</code>, and Array
 elements retain their specialized syntax. Layout and notation are independent:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --longhand --layout semi-compact --align left
 </span></span></code></pre></div><p>Lists, Tuples, Sets, and Multisets use one row per item when they contain a
-List or Tuple, or an item that already spans multiple lines. Coordinate Tuples
+List or Tuple, or an item that already spans multiple lines, unless forced inline. Coordinate Tuples
 remain inline, so the rutile lattice vectors and atom positions appear as
 separate rows. Alignment adds column padding for rectangular rows, including
 coordinates containing Sums or Products. For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 0), (0, -1)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --layout semi-compact --align left
-</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ (1,  0),
-</span></span><span style=display:flex><span>  (0, -1)
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ ( 1,  0 ),
+</span></span><span style=display:flex><span>  ( 0, -1 )
 </span></span><span style=display:flex><span>]
 </span></span></code></pre></div><p>Using <code>--layout compact</code> also puts the final <code>]</code> on the last row.</p><p>The same options apply when dumping Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump readable.dcs --layout standard --align left
 </span></span><span style=display:flex><span>dc rutile.dcb --dump constructors.dcs --longhand
