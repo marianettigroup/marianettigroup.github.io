@@ -6,7 +6,7 @@ DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The seven specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
-DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-20T22:27:03-04:00"><meta itemprop=wordCount content="2219"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
+DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-21T20:35:26-04:00"><meta itemprop=wordCount content="2273"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The seven specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
@@ -101,7 +101,10 @@ than the Core type classification: primitive Fraction still uses
 For example, <code>sum(1, 1.0, fraction(1, 2))</code> is longhand without additional
 literal wrappers. The renderer&rsquo;s <code>longhand</code> flag is
 independent of its layout styles; constructor fallbacks preserve nested
-structure in the default rendering.</p><p>Define conventional types as types used directly for data and computation in
+structure in the default rendering.</p><p>The Python binding separates delimiter layout, column alignment, and structural
+indentation. Layout can be standard, semi-compact, or compact, globally or per
+type; alignment can be disabled or set left/right. Per-type <code>custom_layout</code> overrides leave unspecified types using the global
+layout. Sets and other multiline constructor forms use the same contracts. Formatting choices preserve DCI identity.</p><p>Define conventional types as types used directly for data and computation in
 a programming language, including built-in, library-provided, and user-defined
 types. The conversion interface constructs instances of conventional types
 from DCIs and constructs DCIs from supported conventional objects. A <code>ListDC</code> object and a conventional <code>list</code> object are both Python objects,
