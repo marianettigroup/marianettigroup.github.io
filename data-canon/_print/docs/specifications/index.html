@@ -1171,7 +1171,24 @@ classes from <code>data_canon</code>. Python&rsquo;s <code>fractions.Fraction</c
 </span></span><span style=display:flex><span><span style=color:#000>converted</span> <span style=color:#ce5c00;font-weight:700>=</span> <span style=color:#000>as_dc_instance</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>conventional</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>converted</span> <span style=color:#ce5c00;font-weight:700>==</span> <span style=color:#000>PowerDC</span><span style=color:#000;font-weight:700>(</span><span style=color:#000>IntegerDC</span><span style=color:#000;font-weight:700>(</span><span style=color:#0000cf;font-weight:700>4</span><span style=color:#000;font-weight:700>),</span> <span style=color:#0000cf;font-weight:700>3</span><span style=color:#000;font-weight:700>,</span> <span style=color:#0000cf;font-weight:700>1</span><span style=color:#000;font-weight:700>)</span>
 </span></span><span style=display:flex><span><span style=color:#204a87;font-weight:700>assert</span> <span style=color:#000>converted</span> <span style=color:#ce5c00;font-weight:700>!=</span> <span style=color:#000>source</span>
-</span></span></code></pre></div><h1 id=independent-implementation-review>Independent implementation review</h1><p>Cross-language tests SHOULD cover the required stored Power results, mandatory
+</span></span></code></pre></div><h1 id=application-defined-record-conventions>Application-defined Record conventions</h1><p>Bindings MAY provide explicit application-defined conversions between
+conventional types and Record DCIs. Such conventions do not define additional
+DCTs. For example, an application can choose a date Record with year, month,
+and day fields, or include calendar metadata according to its requirements.
+This specification does not prescribe a date schema or calendar.</p><p>A binding offering custom conversion SHOULD support recursive conversion within
+supported constituent structures and document handler selection, validation,
+precedence, and error behavior. The application is responsible for its Record
+schema and for the meaning and validity of the conventional result. A valid
+Record DCI need not satisfy an application&rsquo;s schema.</p><p>Application conversion MUST NOT change DCI equality or canonical encoding.
+Canonical decoding MUST reconstruct the DCI independently of application
+conversion handlers. A Record name alone MUST NOT cause implicit execution of
+application code during decoding. Custom conversion is a separate explicit
+operation. Registries and executable handlers are not DCI constituents.</p><p>The Python binding provides an explicit <code>ConversionRegistry</code> with exact
+conventional-type matching and exact Record-name matching. Other bindings may
+use idiomatic mechanisms with separately documented policies. Cross-language
+interoperability of an application convention requires agreement on the Record
+name, field names, DCTs, order, and application meaning; matching language class
+names is not sufficient.</p><h1 id=independent-implementation-review>Independent implementation review</h1><p>Cross-language tests SHOULD cover the required stored Power results, mandatory
 equality cases, operand-order preservation, empty and singleton constructors,
 float separation and rounding, zero denominators, negative-base domains,
 collection multiplicities, and conversions that change DCI identity.</p><p>Tests MUST distinguish numerical agreement from equal stored conventional
