@@ -552,7 +552,8 @@ The CLI is a human-input frontend and enables preprocessing by default:</p><div 
 not change the Python API defaults or enable preprocessing in key/count queries.</p><p>For the detailed rules, see the
 <a href=/data-canon/docs/specifications/shorthand_preprocessing_v1/>Shorthand Preprocessing specification</a>.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-84da7b7684ee9566fffa3afcb8646fae>3 - Command-Line Interface</h1><p>The <code>dc</code> command loads a DataCanon file and displays, converts, or searches its
 DCI. It works with Shorthand (<code>.dcs</code>), canonical binary bytes (<code>.dcb</code>), and
-DataCanon HDF5 files (<code>.h5</code> or <code>.hdf5</code>).</p><p>Put an input filename first, or omit it to read Shorthand from standard input.
+DataCanon HDF5 files (<code>.h5</code> or <code>.hdf5</code>), and YAML interchange files
+(<code>.yml</code> or <code>.yaml</code>).</p><p>Put an input filename first, or omit it to read Shorthand from standard input.
 With no action option, <code>dc</code> prints Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb
 </span></span></code></pre></div><h2 id=installation-and-completion>Installation and completion</h2><p>Installing the Python package installs the <code>dc</code> command in the same environment.
 Activate that environment before using it. For a development installation from
@@ -576,8 +577,8 @@ with piped input:</p><div class=highlight><pre tabindex=0 style=background-color
 </span></span></code></pre></div><p>Use <code>-</code> to select standard input explicitly, including with shell redirection:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc - --layout standard --align left &lt; structure.dcs
 </span></span></code></pre></div><p>The CLI preprocesses Shorthand input by default, so compact Lists,
 substitutions, and explicit <code>eval(...)</code> expressions need no extra option:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --dump matrix.dcb
-</span></span></code></pre></div><p>The resulting DCI is a List of Lists. Standard input is Shorthand text; use a
-filename for canonical binary or HDF5 input. A displayed DCI can feed another
+</span></span></code></pre></div><p>The resulting DCI is a List of Lists. Standard input defaults to Shorthand; select YAML with <code>--input-format yaml</code>.
+Use a filename for canonical binary or HDF5 input. A displayed DCI can feed another
 <code>dc</code> command:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc matrix.dcb <span style=color:#000;font-weight:700>|</span> dc --longhand
 </span></span></code></pre></div><p>Input may span multiple lines and must contain exactly one complete expression.
 The command reads through end-of-file; when typing directly in a terminal,
@@ -633,12 +634,56 @@ strict defaults. See
 for the individual input features.</p><h2 id=dump-to-another-format>Dump to another format</h2><p>Write the resolved DCI as canonical binary bytes:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --dump rutile.dcb
 </span></span></code></pre></div><p>The <code>.dcb</code> file is binary. It stores the DCI, including its numerical structure;
 substitution definitions and source formatting are not stored. Subsequent reads
-of this file do not need preprocessing.</p><p>The destination suffix selects the output format:</p><table><thead><tr><th>Destination suffix</th><th>Output</th></tr></thead><tbody><tr><td><code>.dcs</code></td><td>UTF-8 strict Shorthand</td></tr><tr><td><code>.dcb</code></td><td>Canonical binary bytes</td></tr><tr><td><code>.h5</code> or <code>.hdf5</code></td><td>DataCanon HDF5</td></tr><tr><td>No suffix</td><td>Shorthand, with <code>.dcs</code> appended</td></tr></tbody></table><p>For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump rutile.h5
+of this file do not need preprocessing.</p><p>The destination suffix selects the output format:</p><table><thead><tr><th>Destination suffix</th><th>Output</th></tr></thead><tbody><tr><td><code>.dcs</code></td><td>UTF-8 strict Shorthand</td></tr><tr><td><code>.dcb</code></td><td>Canonical binary bytes</td></tr><tr><td><code>.h5</code> or <code>.hdf5</code></td><td>DataCanon HDF5</td></tr><tr><td><code>.yml</code> or <code>.yaml</code></td><td>DataCanon YAML interchange</td></tr><tr><td>No suffix</td><td>Shorthand, with <code>.dcs</code> appended</td></tr></tbody></table><p>For example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --dump rutile.h5
 </span></span><span style=display:flex><span>dc rutile.h5 --dump restored.dcs
+</span></span><span style=display:flex><span>dc rutile.dcb --dump rutile.yaml
 </span></span></code></pre></div><p>A successful dump prints nothing. The resulting representation preserves the
 DCI&rsquo;s identity. For DCIs with external references, dumping produces a complete
-package: resources are verified and copied beside <code>.dcs</code> or <code>.dcb</code> output, or
-embedded in HDF5. Missing or invalid required resources cause the dump to fail.</p><h2 id=choose-the-displayed-notation-and-layout>Choose the displayed notation and layout</h2><p>Choose delimiter layout, column alignment, and indentation independently:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --align left
+package: resources are verified and copied beside <code>.dcs</code>, <code>.dcb</code>, or YAML output, or
+embedded in HDF5. Missing or invalid required resources cause the dump to fail.</p><h2 id=display-yaml>Display YAML</h2><p>Use <code>--yaml</code> to print the DCI as YAML instead of Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb --yaml
+</span></span><span style=display:flex><span>dc structure.dcb --get basis_atoms --yaml
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{(&#34;Eg&#34;, 0): 2.37, &#34;position&#34;: (1/2, 0, 0)}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --yaml
+</span></span></code></pre></div><p>The existing YAML interchange rules apply: native YAML values are used where
+faithful, and <code>DC></code> introduces strict Shorthand for other DCTs, including Tuple
+keys and values. The prefix remains <code>DC></code>.</p><p>YAML output uses block-style Lists and Mappings, with one List member per
+<code>-</code> entry; empty collections remain <code>[]</code> or <code>{}</code>. Single-line <code>DC></code> values
+are not wrapped to a fixed width. YAML quotes scalars only when needed by its
+syntax or scalar-resolution rules, and multiline Shorthand uses block scalars.</p><p>A <code>.yml</code> or <code>.yaml</code> dump target selects YAML without requiring <code>--yaml</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb --dump structure.yml
+</span></span><span style=display:flex><span>dc structure.dcb --yaml --dump structure
+</span></span></code></pre></div><p>The second command creates <code>structure.yaml</code>. Combining <code>--yaml</code> with an explicit
+non-YAML suffix is an error. YAML export preserves the DCI and does not convert
+it to conventional Python objects. Terminal output needs only external metadata;
+a YAML file dump verifies and copies referenced payloads beside the output file.</p><p><code>--yaml</code> works with display and <code>--get</code>, but not <code>--count</code> or <code>--fingerprint</code>.
+YAML output accepts <code>--align left</code>, <code>--align right</code>, <code>--align none</code>, and
+<code>--padding N</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --yaml --align left --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span>dc rutile.dcb --dump rutile.yaml --align left --padding <span style=color:#0000cf;font-weight:700>1</span>
+</span></span></code></pre></div><p>Alignment is disabled by default. Within a native YAML List, rectangular groups
+of nonempty, flat Tuple rows share column widths. Each List aligns independently.
+Ragged rows, mixed List/Tuple rows, or cells requiring multiline Shorthand fall
+back to normal rendering. Native YAML Lists remain Lists; alignment does not
+replace them with Tuple escapes. Embedded Shorthand uses the same alignment
+rules as <code>render_shorthand()</code>.</p><p>Padding defaults to 1 and controls spaces beside same-line delimiters inside
+<code>DC></code> escapes, including Tuple keys and numerical constructors. <code>--padding 0</code>
+produces <code>DC> (1, 2)</code> instead of <code>DC> ( 1, 2 )</code>. Padding does not change YAML
+indentation or the space separating <code>DC></code> from its value. Fraction literals and
+other fixed forms keep their usual spelling. <code>--longhand</code>, <code>--layout</code>,
+<code>--custom-layout</code>, and <code>--indent</code> remain Shorthand-only options and are rejected
+for YAML output.</p><h2 id=read-yaml>Read YAML</h2><p>A <code>.yaml</code> or <code>.yml</code> input suffix selects YAML automatically. The default output
+remains Shorthand, so conversion needs no output option:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.yaml
+</span></span><span style=display:flex><span>dc structure.yaml --dump structure.dcb
+</span></span><span style=display:flex><span>dc structure.yaml --yaml --align left
+</span></span></code></pre></div><p>For standard input, choose YAML explicitly:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cat structure.yaml <span style=color:#000;font-weight:700>|</span> dc --input-format yaml
+</span></span><span style=display:flex><span>cat structure.yaml <span style=color:#000;font-weight:700>|</span> dc --input-format yaml --yaml --align left --padding <span style=color:#0000cf;font-weight:700>0</span>
+</span></span></code></pre></div><p><code>--input-format yaml</code> and <code>--input-format shorthand</code> override text input format
+selection for stdin or a named file. Input and output choices are independent;
+<code>--yaml</code> always selects output, never input. The CLI does not guess format from
+text contents. Canonical binary and HDF5 input still require filenames and their
+existing readers.</p><p>YAML <code>DC></code> escapes always use strict Shorthand; they never run preprocessing.
+<code>--strict</code> applies only to Shorthand input and is rejected with YAML input.
+External paths in a YAML file resolve relative to its containing directory;
+YAML received on stdin uses the current working directory. Metadata reads do
+not retrieve external payloads. Python YAML import remains <code>parse_yaml()</code>;
+this CLI support does not change generic Python <code>read()</code>/<code>write()</code> dispatch.</p><h2 id=choose-the-displayed-notation-and-layout>Choose the displayed notation and layout</h2><p>Choose delimiter layout, column alignment, and indentation independently:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --layout standard --align left
 </span></span><span style=display:flex><span>dc rutile.dcb --layout compact --align left --indent <span style=color:#0000cf;font-weight:700>4</span>
 </span></span><span style=display:flex><span>dc rutile.dcb --longhand
 </span></span></code></pre></div><p>The default is <code>standard</code> layout with shorter notation where appropriate.
@@ -689,7 +734,8 @@ coordinates containing Sums or Products. For example:</p><div class=highlight><p
 </span></span><span style=display:flex><span>dc rutile.dcb --dump constructors.dcs --longhand
 </span></span></code></pre></div><p>Rendering options affect textual representation, not DCI identity. The options also apply
 to values printed by <code>--get</code>. They are rejected with <code>--count</code>, <code>--fingerprint</code>,
-and binary or HDF5 dumps, where there is no Shorthand output to format.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply a bare name for a String key. For example, find the titanium positions
+and binary or HDF5 output. YAML accepts alignment and padding as described above;
+Shorthand layout options do not apply to YAML.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply a bare name for a String key. For example, find the titanium positions
 in the nested <code>basis_atoms</code> Mapping:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get Ti
 </span></span></code></pre></div><p>The search visits Mappings and UnorderedMappings throughout the DCI, so it finds
 <code>"Ti"</code> inside <code>"basis_atoms"</code>. It also visits mappings nested in collections,
@@ -730,12 +776,13 @@ layout. It is not a hash of the input file&rsquo;s representation bytes, except 
 that file is itself the raw canonical <code>.dcb</code> encoding.</p><p>Displaying, searching, and fingerprinting external DCIs use their metadata.
 Metadata operations do not retrieve external payloads. Dumping a complete package does require
 those resources.</p><h2 id=options-and-errors>Options and errors</h2><p>Choose at most one action: <code>--dump</code>, <code>--get</code>, <code>--count</code>, or <code>--fingerprint</code>.
-With none supplied, the action is to display Shorthand. Omitting the filename,
-or supplying <code>-</code>, reads Shorthand from standard input. Help and version output
+With none supplied, the action is to display Shorthand, or YAML with <code>--yaml</code>. Omitting the filename,
+or supplying <code>-</code>, reads text from standard input (Shorthand by default;
+<code>--input-format yaml</code> selects YAML). Help and version output
 do not read input:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc --help
 </span></span><span style=display:flex><span>dc --version
 </span></span></code></pre></div><p>Successful output goes to standard output and diagnostics go to standard error.
-This makes the displayed Shorthand suitable for shell redirection, but use
+Displayed Shorthand and YAML are suitable for shell redirection, but use
 <code>--dump</code> when creating a complete package with external resources.</p><table><thead><tr><th>Exit status</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Success, including a count of zero</td></tr><tr><td><code>1</code></td><td>Input, data, resource, or output error; or no matching mapping key</td></tr><tr><td><code>2</code></td><td>Command-line usage error</td></tr></tbody></table><p>A malformed Shorthand query, invalid input file, or failed resource verification
 produces a diagnostic and a nonzero exit status.</p></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
 2018&ndash;2026
