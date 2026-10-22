@@ -543,7 +543,7 @@ can insert constructors just as it can insert shorter forms:</p><div class=highl
 notation refers specifically to angle-bracket input groups; it is unrelated
 to the renderer&rsquo;s <code>layout="compact"</code> delimiter policy.</p><h2 id=python-parsing-and-cli-defaults>Python parsing and CLI defaults</h2><p>Call <code>parse_shorthand()</code> directly for strict Shorthand. When preprocessing is
 wanted, call <code>preprocess_shorthand()</code> first and parse its result.</p><p>Quoted Strings are protected during every stage. Text such as <code>"&lt;1 2>"</code>,
-<code>"eval(2 + 3)"</code>, or <code>"a | b"</code> remains ordinary String content.</p><p>Preprocessing does not change DataCanon&rsquo;s types or identity rules. YAML <code>DC></code>
+<code>"eval(2 + 3)"</code>, or <code>"a | b"</code> remains ordinary String content.</p><p>Preprocessing does not change DataCanon&rsquo;s types or identity rules. YAML <code>$</code>
 values and <code>.dcs</code> persistence files use strict Shorthand and do not implicitly
 perform preprocessing when read through the ordinary Python persistence API.
 The CLI is a human-input frontend and enables preprocessing by default:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;&lt;1 2, 3 4&gt;&#39;</span> <span style=color:#000;font-weight:700>|</span> dc
@@ -644,9 +644,12 @@ embedded in HDF5. Missing or invalid required resources cause the dump to fail.<
 </span></span><span style=display:flex><span>dc structure.dcb --get basis_atoms --yaml
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{(&#34;Eg&#34;, 0): 2.37, &#34;position&#34;: (1/2, 0, 0)}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --yaml
 </span></span></code></pre></div><p>The existing YAML interchange rules apply: native YAML values are used where
-faithful, and <code>DC></code> introduces strict Shorthand for other DCTs, including Tuple
-keys and values. The prefix remains <code>DC></code>.</p><p>YAML output uses block-style Lists and Mappings, with one List member per
-<code>-</code> entry; empty collections remain <code>[]</code> or <code>{}</code>. Single-line <code>DC></code> values
+faithful, and <code>$</code> introduces strict Shorthand for other DCTs, including Tuple
+keys and values. The <code>$</code> marker must be followed by whitespace. <code>$100</code> and
+<code>${HOME}</code> remain literal Strings. The marker performs no substitution or
+evaluation; quoting alone does not escape it. A literal reserved prefix uses
+a backslash, such as <code>\$ 1/2</code>. The writer handles literal-prefix escaping.</p><p>YAML output uses block-style Lists and Mappings, with one List member per
+<code>-</code> entry; empty collections remain <code>[]</code> or <code>{}</code>. Single-line <code>$</code> values
 are not wrapped to a fixed width. YAML quotes scalars only when needed by its
 syntax or scalar-resolution rules, and multiline Shorthand uses block scalars.</p><p>A <code>.yml</code> or <code>.yaml</code> dump target selects YAML without requiring <code>--yaml</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb --dump structure.yml
 </span></span><span style=display:flex><span>dc structure.dcb --yaml --dump structure
@@ -663,9 +666,9 @@ Ragged rows, mixed List/Tuple rows, or cells requiring multiline Shorthand fall
 back to normal rendering. Native YAML Lists remain Lists; alignment does not
 replace them with Tuple escapes. Embedded Shorthand uses the same alignment
 rules as <code>render_shorthand()</code>.</p><p>Padding defaults to 1 and controls spaces beside same-line delimiters inside
-<code>DC></code> escapes, including Tuple keys and numerical constructors. <code>--padding 0</code>
-produces <code>DC> (1, 2)</code> instead of <code>DC> ( 1, 2 )</code>. Padding does not change YAML
-indentation or the space separating <code>DC></code> from its value. Fraction literals and
+<code>$</code> escapes, including Tuple keys and numerical constructors. <code>--padding 0</code>
+produces <code>$ (1, 2)</code> instead of <code>$ ( 1, 2 )</code>. Padding does not change YAML
+indentation or the space separating <code>$</code> from its value. Fraction literals and
 other fixed forms keep their usual spelling. <code>--longhand</code>, <code>--layout</code>,
 <code>--custom-layout</code>, and <code>--indent</code> remain Shorthand-only options and are rejected
 for YAML output.</p><h2 id=read-yaml>Read YAML</h2><p>A <code>.yaml</code> or <code>.yml</code> input suffix selects YAML automatically. The default output
@@ -678,7 +681,7 @@ remains Shorthand, so conversion needs no output option:</p><div class=highlight
 selection for stdin or a named file. Input and output choices are independent;
 <code>--yaml</code> always selects output, never input. The CLI does not guess format from
 text contents. Canonical binary and HDF5 input still require filenames and their
-existing readers.</p><p>YAML <code>DC></code> escapes always use strict Shorthand; they never run preprocessing.
+existing readers.</p><p>YAML <code>$</code> escapes always use strict Shorthand; they never run preprocessing.
 <code>--strict</code> applies only to Shorthand input and is rejected with YAML input.
 External paths in a YAML file resolve relative to its containing directory;
 YAML received on stdin uses the current working directory. Metadata reads do
