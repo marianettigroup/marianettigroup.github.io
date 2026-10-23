@@ -164,7 +164,10 @@ compact List notation can be used directly:</p><div class=highlight><pre tabinde
 matching Mapping. Incomplete branches are skipped. <code>--index N</code> selects a List
 or Tuple item from the root or final <code>--get</code> result; indices start at zero and
 negative indices count from the end. <code>--index 1 0</code> applies both indices
-successively. Put filenames before <code>--get</code> and <code>--index</code>.</p><p><code>--get</code> searches mappings throughout the DCI. A single match prints its value;
+successively. Put filenames before <code>--get</code> and <code>--index</code>.
+Slices such as <code>--index 0:2</code> select a range, preserving List or Tuple type.
+Use <code>--index=-2:</code> for a negative slice; repeated <code>--index</code> options continue
+the same chain.</p><p><code>--get</code> searches mappings throughout the DCI. A single match prints its value;
 multiple matches print a List of values. Bare names such as <code>species</code> select
 String keys; numeric and structured Shorthand keys retain their DCTs. Files
 with substitutions or compact List notation can be loaded directly:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcs --dump rutile.dcb
@@ -1281,8 +1284,8 @@ Equal repeated matches remain separate, and List-valued matches are not flattene
 as keys. For stdin, omit the filename or use <code>-</code>. Another option ends the key
 sequence:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --yaml --align
 </span></span></code></pre></div><p>Pipelines remain useful, but a second <code>dc --get</code> searches recursively again.
-A multi-key <code>--get</code> follows direct entries after the first recursive search.</p><h2 id=select-a-list-or-tuple-item>Select a List or Tuple item</h2><p><code>--index N [N ...]</code> applies indices successively, using zero-based indexing
-and negative indices from the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>0</span>
+A multi-key <code>--get</code> follows direct entries after the first recursive search.</p><h2 id=select-or-slice-a-list-or-tuple>Select or slice a List or Tuple</h2><p><code>--index SELECTOR [SELECTOR ...]</code> applies integers or slices successively.
+Integer indices are zero-based and accept negative values from the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>0</span>
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index<span style=color:#ce5c00;font-weight:700>=</span>-1
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>1</span> <span style=color:#0000cf;font-weight:700>0</span>
 </span></span></code></pre></div><p>Without <code>--get</code>, indexing applies to the root DCI. With <code>--get</code>, it applies to
@@ -1293,14 +1296,29 @@ aggregate List; it does not index each match individually. A single List-valued
 match is indexed directly. Selection order is always <code>--get</code>, then <code>--index</code>,
 then rendering, independently of where the options occur on the command line.</p><p>Only List and Tuple DCIs support this operation. Arrays, Strings, Sets,
 Multisets, and Mappings are not indexed by this option. An incompatible target
-or an out-of-range index reports an error; malformed integer arguments are
+or an out-of-range integer index reports an error; malformed selectors are
 command-line usage errors. Empty sequences have no valid indices.</p><p>Shorthand formatting and YAML output options apply to the selected DCI.
 <code>--index</code> cannot be combined with <code>--dump</code>, <code>--count</code>, or <code>--fingerprint</code>.
 Each index is applied to the preceding result: <code>--index 1 0</code> selects item 1,
 then item 0 from that value. Every intermediate target must be a List or Tuple;
 otherwise the command fails without printing a partial result. Another option
 ends the index sequence. Put the filename before <code>--index</code> as well as <code>--get</code>.
-Use <code>--index -1 -1</code> for several negative indices.</p><h2 id=count-occurrences-of-a-dci>Count occurrences of a DCI</h2><p><code>--count</code> searches for a complete DCI using its type-defined equality:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --count <span style=color:#4e9a06>&#39;1/2&#39;</span>
+Use <code>--index -1 -1</code> for several negative integer indices.</p><p>Slices use <code>start:stop[:step]</code>, with Python&rsquo;s exclusive stop bound, omitted
+bounds, negative bounds, and negative steps:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --index 0:2
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;(0, 1, 2, 3, 4)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index ::2
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[0, 1, 2, 3, 4]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index ::-1
+</span></span></code></pre></div><p>Slicing preserves the DCT: a List slice is a List; a Tuple slice is a Tuple.
+Out-of-range bounds are clipped, and slices may produce an empty sequence.
+A zero step or malformed slice is a usage error before input is loaded.
+Subsequent selectors operate on the slice result itself, without distributing
+across its members:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(0, 1), (2, 3), (4, 5)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index 1: <span style=color:#0000cf;font-weight:700>0</span> <span style=color:#0000cf;font-weight:700>1</span>
+</span></span></code></pre></div><p>That command selects the suffix List, its first Tuple, then the Tuple&rsquo;s second
+item, producing <code>3</code>.</p><p>A slice beginning with <code>-</code> can look like an option to argparse, so attach it
+with <code>=</code>. Repeat <code>--index</code> to continue the same selection chain:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[0, 1, 2, 3, 4]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index<span style=color:#ce5c00;font-weight:700>=</span>-2:
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[[0, 1, 2], [3, 4, 5]]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>1</span> --index<span style=color:#ce5c00;font-weight:700>=</span>-2: --index <span style=color:#0000cf;font-weight:700>0</span>
+</span></span></code></pre></div><p>Repeated <code>--index</code> options concatenate their selectors in order. Integers and
+slices are the entire selection syntax; there is no expression evaluation or
+filter language. Put the input filename before the selection arguments.</p><h2 id=count-occurrences-of-a-dci>Count occurrences of a DCI</h2><p><code>--count</code> searches for a complete DCI using its type-defined equality:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --count <span style=color:#4e9a06>&#39;1/2&#39;</span>
 </span></span></code></pre></div><p>It prints an integer count. Zero matches is a successful search that prints <code>0</code>.</p><p>The search includes the root and all constituent DCIs: collection members,
 mapping keys and values, Record field values, Complex components, Power bases,
 and Quotient constituents. Repeated occurrences count separately, including
