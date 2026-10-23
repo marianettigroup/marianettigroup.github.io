@@ -337,7 +337,16 @@ or defining date operations.</p><p>Rules apply recursively through supported col
 <code>as_dc_instance(obj, registry=registry)</code> and
 <code>dc_instance_to_python(node, registry=registry)</code>. Reading a stored DCI does not
 execute those rules. The <a href=/data-canon/docs/guides/custom-conversions/>Custom Conversion Rules guide</a>
-works through a complete date example and explains validation and defaults.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-155fd76f8f77146d412ef40ae0d3f4e3>2 - Shorthand Preprocessing</h1><h2 id=overview>Overview</h2><p>Shorthand preprocessing provides three conveniences for entering scientific
+works through a complete date example and explains validation and defaults.</p><h2 id=compressed-external-arrays>Compressed external Arrays</h2><p>Use <code>ExternalArray(array, filename="forces", compression=True)</code> to select gzip
+storage for zero-heavy numerical data such as force constants. The conventional
+constructor finalizes the name as <code>forces.bin.gz</code>; compression defaults to off,
+which produces <code>forces.bin</code>. Explicit suffixes must agree with the setting.</p><p>Convert to a DCI before writing. Directory-backed packages contain the gzip
+file, while HDF5 packages apply dataset compression to the logical element
+bytes. The digest covers uncompressed canonical bytes in both representations.
+The DCI&rsquo;s finalized path and identity are preserved through transfers. A name
+ending in <code>.bin</code> identifies a different DCI from the corresponding <code>.bin.gz</code>
+name. ExternalFiles retain opaque-byte semantics.</p><p>See the <a href=/data-canon/docs/python_api/>Python API</a> for filename examples,
+validation, and compression behavior.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-155fd76f8f77146d412ef40ae0d3f4e3>2 - Shorthand Preprocessing</h1><h2 id=overview>Overview</h2><p>Shorthand preprocessing provides three conveniences for entering scientific
 data by hand: compact List notation, named textual substitutions, and scalar
 mathematical evaluation with <code>eval(...)</code>.</p><p>Preprocessing transforms text into strict Shorthand. Parsing that text then
 constructs a DataCanon Instance. This guide introduces each feature separately
@@ -820,7 +829,12 @@ of this file do not need preprocessing.</p><p>The destination suffix selects the
 </span></span></code></pre></div><p>A successful dump prints nothing. The resulting representation preserves the
 DCI&rsquo;s identity. For DCIs with external references, dumping produces a complete
 package: resources are verified and copied beside <code>.dcs</code>, <code>.dcb</code>, or YAML output, or
-embedded in HDF5. Missing or invalid required resources cause the dump to fail.</p><h2 id=display-yaml>Display YAML</h2><p>Use <code>--yaml</code> to print the DCI as YAML instead of Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb --yaml
+embedded in HDF5. Missing or invalid required resources cause the dump to fail.</p><p>ExternalArray paths ending in <code>.bin.gz</code> select gzip storage for directory
+packages and compressed embedded datasets for HDF5. The digest covers the
+uncompressed canonical element bytes. Transfers retain the same path and
+digest; an HDF5-to-directory dump recreates the gzip file. Configure compression
+when constructing the conventional <code>ExternalArray</code>; no additional CLI flag is
+needed. ExternalFile payloads remain opaque even when their paths end in <code>.gz</code>.</p><h2 id=display-yaml>Display YAML</h2><p>Use <code>--yaml</code> to print the DCI as YAML instead of Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb --yaml
 </span></span><span style=display:flex><span>dc structure.dcb --get basis_atoms --yaml
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;{(&#34;Eg&#34;, 0): 2.37, &#34;position&#34;: (1/2, 0, 0)}&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --yaml
 </span></span></code></pre></div><p>The existing YAML interchange rules apply: native YAML values are used where
