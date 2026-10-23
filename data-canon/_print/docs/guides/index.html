@@ -739,8 +739,8 @@ collections still apply their own equality and hashability rules, and a handler
 can choose a lossy conventional representation. The example date convention
 has a tested round trip because both directions agree on its schema.</p><p>The runnable date example is <code>examples/custom_conversion.py</code>; the user-defined
 class example is <code>examples/custom_datapoint.py</code> in the code repository.
-See the <a href=/data-canon/docs/python_api/>Python API</a> for registry signatures.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-84da7b7684ee9566fffa3afcb8646fae>4 - Command-Line Interface</h1><p>The <code>dc</code> command loads a DataCanon file and displays, converts, or searches its
-DCI. It works with Shorthand (<code>.dcs</code>), canonical binary bytes (<code>.dcb</code>), and
+See the <a href=/data-canon/docs/python_api/>Python API</a> for registry signatures.</p></div><div class=td-content style=page-break-before:always><h1 id=pg-84da7b7684ee9566fffa3afcb8646fae>4 - Command-Line Interface</h1><p>The <code>dc</code> command loads a DataCanon file and displays, converts, searches, or
+selects items from its DCI. It works with Shorthand (<code>.dcs</code>), canonical binary bytes (<code>.dcb</code>), and
 DataCanon HDF5 files (<code>.h5</code> or <code>.hdf5</code>), and YAML interchange files
 (<code>.yml</code> or <code>.yaml</code>).</p><p>Put an input filename first, or omit it to read Shorthand from standard input.
 With no action option, <code>dc</code> prints Shorthand:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.dcb
@@ -754,7 +754,9 @@ the code repository:</p><div class=highlight><pre tabindex=0 style=background-co
 to execute. Add the registration to your shell initialization after environment
 activation if you want it applied automatically. Completion suggests command-line
 options, filenames, and choices such as rendering styles. It does not inspect
-file contents to suggest mapping keys.</p><h2 id=read-shorthand-from-standard-input>Read Shorthand from standard input</h2><p>Omit the filename to try a DCI directly at the command line:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;power(8, 1, 3)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc
+file contents to suggest mapping keys. Option names appear when you type <code>-</code>;
+completion does not fill an empty argument position with every CLI option.
+After <code>--get</code>, further bare arguments are keys until another option begins.</p><h2 id=read-shorthand-from-standard-input>Read Shorthand from standard input</h2><p>Omit the filename to try a DCI directly at the command line:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;power(8, 1, 3)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc
 </span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>8**(1/3)
 </span></span></code></pre></div><p>The command preserves the Power DCI and displays it in Shorthand. Constructor
 names are lowercase. All existing actions and rendering options also work
@@ -893,7 +895,8 @@ this CLI support does not change generic Python <code>read()</code>/<code>write(
 inline. Child layout overrides yield to that enclosing inline requirement;
 siblings outside the List retain their own layouts. Column alignment and
 structural indentation have no effect inside an inline subtree.</p><p><code>--align left</code>, <code>--align right</code>, and <code>--align none</code> control column padding.
-Alignment is disabled unless requested. <code>--indent N</code> controls structural nesting
+<code>--align</code> without a value selects left alignment. Alignment is disabled unless
+requested. <code>--indent N</code> controls structural nesting
 on new lines, defaulting to 2. It does not add spaces after a same-line opener.
 Compact continuation items align beneath the first item; indentation moves
 nested blocks below keys rather than changing that alignment.</p><p><code>--padding N</code> controls spaces beside same-line collection and constructor
@@ -955,7 +958,47 @@ and names such as <code>basis_atoms</code> or <code>site_1</code>. Names with sp
 need explicit Shorthand quotes, for example <code>--get '"site label"'</code>. Malformed
 structured keys such as <code>power(1,</code> remain errors; they do not become Strings.</p><p>Key comparison uses DCI equality. Integer <code>1</code>, Float <code>1.0</code>, and Boolean <code>true</code>
 remain distinct keys. Record names and field names are fixed metadata, so
-<code>--get</code> does not treat them as mapping keys. A missing key is an error.</p><h2 id=count-occurrences-of-a-dci>Count occurrences of a DCI</h2><p><code>--count</code> searches for a complete DCI using its type-defined equality:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --count <span style=color:#4e9a06>&#39;1/2&#39;</span>
+<code>--get</code> does not treat them as mapping keys. A missing key is an error.</p><h2 id=follow-a-chain-of-mapping-keys>Follow a chain of mapping keys</h2><p>Supply several keys to <code>--get</code> to search for the first and then follow direct
+Mapping entries:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O
+</span></span><span style=display:flex><span>dc results.dcb --get measurements <span style=color:#4e9a06>&#39;(&#34;Eg&#34;, 0)&#39;</span>
+</span></span></code></pre></div><p>The first key is searched recursively using the existing single-key behavior.
+Every subsequent key is looked up directly in each matching Mapping or
+UnorderedMapping value. Later steps do not search recursively or descend through
+Lists. Each key uses the same strict Shorthand or bare-String-name rules.
+Negative integer keys work within the chain. For negative expressions that
+argument parsing could mistake for options, use constructor form, such as
+<code>--get measurements 'fraction(-1, 2)'</code>.
+Dots are not separators; a String key containing a dot needs Shorthand quotes,
+for example <code>--get '"basis.atoms"'</code>.</p><p>Branches missing a subsequent key, or whose intermediate value is not a
+Mapping, are skipped. If no branch completes the chain, the command reports
+an error. Results stay separate during traversal: one final match is printed
+directly, while multiple final matches become a List in traversal order.
+Equal repeated matches remain separate, and List-valued matches are not flattened.</p><p>For example, this input has two complete chains and one incomplete branch:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[{&#34;a&#34;: {&#34;b&#34;: 1}}, {&#34;a&#34;: {&#34;b&#34;: 2}}, {&#34;a&#34;: 3}]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --get a b
+</span></span></code></pre></div><p>Output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>[ 1, 2 ]
+</span></span></code></pre></div><p>Put an input filename <strong>before</strong> <code>--get</code>; subsequent bare arguments are consumed
+as keys. For stdin, omit the filename or use <code>-</code>. Another option ends the key
+sequence:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --yaml --align
+</span></span></code></pre></div><p>Pipelines remain useful, but a second <code>dc --get</code> searches recursively again.
+A multi-key <code>--get</code> follows direct entries after the first recursive search.</p><h2 id=select-a-list-or-tuple-item>Select a List or Tuple item</h2><p><code>--index N [N ...]</code> applies indices successively, using zero-based indexing
+and negative indices from the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index<span style=color:#ce5c00;font-weight:700>=</span>-1
+</span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>1</span> <span style=color:#0000cf;font-weight:700>0</span>
+</span></span></code></pre></div><p>Without <code>--get</code>, indexing applies to the root DCI. With <code>--get</code>, it applies to
+the final result after the entire key chain:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --index <span style=color:#0000cf;font-weight:700>2</span>
+</span></span><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --index<span style=color:#ce5c00;font-weight:700>=</span>-1 --yaml
+</span></span></code></pre></div><p>If there are multiple final matches, <code>--index</code> selects one member of the
+aggregate List; it does not index each match individually. A single List-valued
+match is indexed directly. Selection order is always <code>--get</code>, then <code>--index</code>,
+then rendering, independently of where the options occur on the command line.</p><p>Only List and Tuple DCIs support this operation. Arrays, Strings, Sets,
+Multisets, and Mappings are not indexed by this option. An incompatible target
+or an out-of-range index reports an error; malformed integer arguments are
+command-line usage errors. Empty sequences have no valid indices.</p><p>Shorthand formatting and YAML output options apply to the selected DCI.
+<code>--index</code> cannot be combined with <code>--dump</code>, <code>--count</code>, or <code>--fingerprint</code>.
+Each index is applied to the preceding result: <code>--index 1 0</code> selects item 1,
+then item 0 from that value. Every intermediate target must be a List or Tuple;
+otherwise the command fails without printing a partial result. Another option
+ends the index sequence. Put the filename before <code>--index</code> as well as <code>--get</code>.
+Use <code>--index -1 -1</code> for several negative indices.</p><h2 id=count-occurrences-of-a-dci>Count occurrences of a DCI</h2><p><code>--count</code> searches for a complete DCI using its type-defined equality:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --count <span style=color:#4e9a06>&#39;1/2&#39;</span>
 </span></span></code></pre></div><p>It prints an integer count. Zero matches is a successful search that prints <code>0</code>.</p><p>The search includes the root and all constituent DCIs: collection members,
 mapping keys and values, Record field values, Complex components, Power bases,
 and Quotient constituents. Repeated occurrences count separately, including
@@ -973,6 +1016,8 @@ layout. It is not a hash of the input file&rsquo;s representation bytes, except 
 that file is itself the raw canonical <code>.dcb</code> encoding.</p><p>Displaying, searching, and fingerprinting external DCIs use their metadata.
 Metadata operations do not retrieve external payloads. Dumping a complete package does require
 those resources.</p><h2 id=options-and-errors>Options and errors</h2><p>Choose at most one action: <code>--dump</code>, <code>--get</code>, <code>--count</code>, or <code>--fingerprint</code>.
+<code>--get</code> accepts one or more keys. <code>--index</code> optionally selects from the root
+or the final <code>--get</code> result; it is not valid with the other actions.
 With none supplied, the action is to display Shorthand, or YAML with <code>--yaml</code>. Omitting the filename,
 or supplying <code>-</code>, reads text from standard input (Shorthand by default;
 <code>--input-format yaml</code> selects YAML). Help and version output
@@ -980,7 +1025,7 @@ do not read input:</p><div class=highlight><pre tabindex=0 style=background-colo
 </span></span><span style=display:flex><span>dc --version
 </span></span></code></pre></div><p>Successful output goes to standard output and diagnostics go to standard error.
 Displayed Shorthand and YAML are suitable for shell redirection, but use
-<code>--dump</code> when creating a complete package with external resources.</p><table><thead><tr><th>Exit status</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Success, including a count of zero</td></tr><tr><td><code>1</code></td><td>Input, data, resource, or output error; or no matching mapping key</td></tr><tr><td><code>2</code></td><td>Command-line usage error</td></tr></tbody></table><p>A malformed Shorthand query, invalid input file, or failed resource verification
+<code>--dump</code> when creating a complete package with external resources.</p><table><thead><tr><th>Exit status</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Success, including a count of zero</td></tr><tr><td><code>1</code></td><td>Input, data, resource, output, or selection error; including no matching key chain or invalid index target/bounds</td></tr><tr><td><code>2</code></td><td>Command-line usage error</td></tr></tbody></table><p>A malformed Shorthand query, invalid input file, or failed resource verification
 produces a diagnostic and a nonzero exit status.</p></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
 2018&ndash;2026
 <span class=td-footer__authors>Docsy Authors | <a href=https://creativecommons.org/licenses/by/4.0>CC BY 4.0</a> |</span></span><span class=td-footer__all_rights_reserved>All Rights Reserved</span><span class=ms-2><a href=https://policies.google.com/privacy target=_blank rel=noopener>Privacy Policy</a></span></div></div></div></footer></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css integrity="sha512-r2+FkHzf1u0+SQbZOoIz2RxWOIWfdEzRuYybGjzKq18jG9zaSfEy9s3+jMqG/zPtRor/q4qaUCYQpmSjTw8M+g==" crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js integrity="sha512-INps9zQ2GUEMCQD7xiZQbGUVnqnzEvlynVy6eqcTcHN4+aQiLo9/uaQqckDpdJ8Zm3M0QBs+Pktg4pz0kEklUg==" crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF+NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w==" crossorigin=anonymous onload=renderMathInElement(document.body,null)></script><script src=/data-canon/js/main.min.d287f9c9849d645c20f888fba75206253abddb674477c502feb0622e3b85cab0.js integrity="sha256-0of5yYSdZFwg+Ij7p1IGJTq922dEd8UC/rBiLjuFyrA=" crossorigin=anonymous></script><script defer src=/data-canon/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/data-canon/js/tabpane-persist.js></script></body></html>
