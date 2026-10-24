@@ -8,12 +8,12 @@ Depends on: DataCanon Core Version 1
 Related: DataCanon Persistence Version 1
 Scope: Optional conventional numerical and collection types, their operations, and conversion relationships with DCIs
 Out of scope: DCT definitions, canonical encoding, textual syntax, and complete symbolic algebra
-Purpose and boundaries DataCanon Core defines data and identity. Core does not perform arithmetic. An implementation can also provide conventional types used directly for data and computation in its programming language. Conventional types include built-in, library-provided, and user-defined types."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2026-10-24T01:58:54-04:00"><meta itemprop=name content="Conventional Types"><meta itemprop=description content="DataCanon Conventional Types — Version 1 Draft Status: Draft for independent implementation review
+Purpose and boundaries DataCanon Core defines data and identity. Core does not perform arithmetic. An implementation can also provide conventional types used directly for data and computation in its programming language. Conventional types include built-in, library-provided, and user-defined types."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2026-10-24T14:28:38-04:00"><meta itemprop=name content="Conventional Types"><meta itemprop=description content="DataCanon Conventional Types — Version 1 Draft Status: Draft for independent implementation review
 Depends on: DataCanon Core Version 1
 Related: DataCanon Persistence Version 1
 Scope: Optional conventional numerical and collection types, their operations, and conversion relationships with DCIs
 Out of scope: DCT definitions, canonical encoding, textual syntax, and complete symbolic algebra
-Purpose and boundaries DataCanon Core defines data and identity. Core does not perform arithmetic. An implementation can also provide conventional types used directly for data and computation in its programming language. Conventional types include built-in, library-provided, and user-defined types."><meta itemprop=dateModified content="2026-10-24T01:58:54-04:00"><meta itemprop=wordCount content="3441"><meta name=twitter:card content="summary"><meta name=twitter:title content="Conventional Types"><meta name=twitter:description content="DataCanon Conventional Types — Version 1 Draft Status: Draft for independent implementation review
+Purpose and boundaries DataCanon Core defines data and identity. Core does not perform arithmetic. An implementation can also provide conventional types used directly for data and computation in its programming language. Conventional types include built-in, library-provided, and user-defined types."><meta itemprop=dateModified content="2026-10-24T14:28:38-04:00"><meta itemprop=wordCount content="3895"><meta name=twitter:card content="summary"><meta name=twitter:title content="Conventional Types"><meta name=twitter:description content="DataCanon Conventional Types — Version 1 Draft Status: Draft for independent implementation review
 Depends on: DataCanon Core Version 1
 Related: DataCanon Persistence Version 1
 Scope: Optional conventional numerical and collection types, their operations, and conversion relationships with DCIs
@@ -31,7 +31,7 @@ contracts. The same distinction applies to a Sum DCI and a conventional Sum:
 the DCI preserves its constituent information, while the conventional object
 supports arithmetic and construction-time simplification.</p><p>Many conventional types already exist in programming languages and libraries.
 This companion specification defines a common behavioral foundation for
-additional types, including Power, Sum, Product, Quotient, ComplexNumber,
+additional types, including Power, Sum, Product, OrderedProduct, Quotient, ComplexNumber,
 Multiset, and an unordered mapping. An implementation MAY use an existing
 type when it satisfies the relevant requirements.</p><p>Support for this companion specification is optional. Conformance to Core,
 Shorthand, or a persistence specification does not require conventional
@@ -50,9 +50,12 @@ classes, exceptions, method names, or operator overloading.</p><p>A conforming b
 provided. Extensions MUST preserve the requirements below. No universal
 canonical representation of conventional objects is defined: independently
 implemented conventional objects can have different stored forms while
-representing the same numerical value.</p><h1 id=common-numerical-model>Common numerical model</h1><h2 id=operands-and-scalar-domains>Operands and scalar domains</h2><p>Real numerical operands comprise conventional integers, exact rational
-numbers, finite floating-point numbers, and supported conventional Sum,
-Product, Power, Quotient, and Constant objects. Complex numbers are handled separately.
+representing the same numerical value.</p><h1 id=common-numerical-model>Common numerical model</h1><h2 id=operands-and-scalar-domains>Operands and scalar domains</h2><p>Scalar real numerical operands comprise conventional integers, exact rational
+numbers, finite floating-point numbers, and supported conventional
+Product, Power, Quotient, and Constant objects, plus recursively scalar Sum
+and OrderedProduct objects. Complex numbers are handled separately. Sum and
+OrderedProduct also accept numerical Arrays and array-valued expressions.
+Product, Power, Quotient, and ComplexNumber components remain scalar-only.
 Booleans MUST NOT be accepted as arithmetic operands merely because a language
 treats them as integers.</p><p>The portable scalar domains are mathematical integers, rational numbers with
 positive denominators, and finite IEEE-754 binary64 numbers. A binding SHOULD
@@ -115,7 +118,38 @@ Product.</p><p>A binding MAY provide exponentiation by zero and negative rationa
 as arithmetic operations. Zero exponent gives one wherever the operation is
 defined. A negative exponent is represented using a reciprocal Quotient and
 a positive Power. Such operations do not permit zero or negative exponent
-constituents in a Power constructor.</p><h1 id=sum>Sum</h1><p>A Sum contains zero or more real numerical terms. Its value is their sum;
+constituents in a Power constructor.</p><h1 id=orderedproduct-and-array-valued-sum>OrderedProduct and array-valued Sum</h1><p>OrderedProduct preserves a sequence of real scalar and Array-expression
+operands. Array operands in this section are instances of the numerical array
+type provided by the binding. Construction MUST NOT evaluate Array products, approximate exact
+coefficients, infer result shapes, or flatten nesting. Implementations MUST
+preserve multiplication order. Scalar-only OrderedProducts are also valid.</p><p>Bindings MAY declare scalar-only Sum support separately from Array-expression
+arithmetic. Unsupported operands MUST be rejected explicitly. For bindings
+supporting Array-expression arithmetic, the Version 1 contract is:</p><ul><li>Sum accepts Arrays of any rank with exactly matching shapes. No broadcasting
+or automatic reshaping is performed.</li><li>OrderedProduct accepts rank-two Arrays, multiplying them in order. Real
+scalar factors scale the result and may appear anywhere in the sequence.</li><li>Nonzero scalar terms mixed into an Array-valued Sum are rejected during
+evaluation; a user can supply an explicit identity Array. Scalar zero is
+accepted as an additive identity, supporting ordinary summation interfaces.</li><li>Unsupported ranks, incompatible dimensions, and nonfinite floating-point
+results cause evaluation to fail. Structural DCI validity is unaffected.</li><li>Exact rational, radical, and named-constant coefficients MUST remain exact
+during evaluation. Explicit floating-point or machine-complex conversion may
+approximate them. Fixed-width integer multiplication MUST NOT silently wrap.</li></ul><p>The Python binding supports integer, floating-point, and complex numerical
+Arrays for this arithmetic. Boolean Arrays are not arithmetic operands.
+Object Arrays may contain supported conventional scalar entries. Exact
+coefficients remain exact when scaling complex Array elements as well.</p><p>The Python binding offers <code>.evaluate()</code> on conventional numerical objects.
+Array-expression evaluation returns an object-dtype NumPy Array containing
+conventional scalar values, including ComplexNumber where needed. Such an
+object Array is not a portable DataCanon Array. To encode its result, explicitly
+choose a supported machine dtype, or convert its nested contents to Lists so
+individual exact values retain their DCTs.</p><p><code>np.asarray(expression, dtype=float)</code> or <code>dtype=complex</code> explicitly requests a
+machine approximation. Without a dtype, exact object entries remain. Evaluation
+requires allocation; <code>copy=False</code> is rejected. An Array-valued expression cannot
+be converted to scalar <code>float</code> or <code>int</code>. Array division by a real scalar may
+construct reciprocal scaling; division by an Array is not supported.</p><p>Python <code>*</code> and <code>@</code> involving a conventional array-expression object preserve
+factor order and construct OrderedProduct. Ordinary NumPy operations involving
+only ordinary NumPy Arrays retain NumPy&rsquo;s own semantics. Expressions retain
+owned read-only copies of supplied Arrays; callers MUST NOT circumvent that
+protection. Equality of conventional array expressions compares whole shapes
+and scalar entries, returning one Boolean rather than an Array of Booleans.</p><h1 id=sum>Sum</h1><p>The following normalization rules apply to scalar-only Sums. Array-valued
+Sums may retain operand boundaries until explicit evaluation as described above.</p><p>A Sum contains zero or more real numerical terms. Its value is their sum;
 an empty Sum has value zero. Construction MUST flatten directly nested Sums
 and combine exact rational constants.</p><p>Matching symbolic terms with exact rational coefficients MUST combine their
 coefficients. The mandatory comparison cases below establish a minimum set of
@@ -133,7 +167,7 @@ adding their rational exponents when the operation preserves the real value.
 An exact zero factor reduces the product&rsquo;s value to zero. A floating-point
 zero factor remains floating-point when no exact zero determines the result.
 Recognized nonzero identity factors MAY be omitted.</p><p>An explicit Product constructor need not distribute over Sum factors. The
-arithmetic multiplication operation MUST support distribution when a Sum is
+arithmetic multiplication operation MUST support distribution when a scalar Sum is
 an operand. Retaining a factored explicit Product and expanding multiplication
 are compatible: exact comparison recognizes the required distributive cases.</p><h1 id=quotient>Quotient</h1><p>A Quotient contains a real numerical numerator and denominator. Unlike the
 Fraction DCT, either operand can be a compound numerical object. Its value is
@@ -143,7 +177,7 @@ division by zero MUST fail when encountered.</p><p>Construction MUST reduce a qu
 nested Quotients, and cancel recognized matching nonzero factors. A zero
 numerator with an established nonzero denominator reduces to zero over one.
 Equal established nonzero numerator and denominator reduce to one over one.
-Construction retains the Quotient outer type.</p><p>A denominator containing a Sum is permitted. Rationalizing such a denominator
+Construction retains the Quotient outer type.</p><p>A denominator containing a scalar Sum is permitted. Rationalizing such a denominator
 is not a construction requirement. For example, the reciprocal of the sum of
 the square roots of three and two can remain stored as that Quotient.</p><p>An explicit Quotient containing a float identifies division by the exact
 stored float. Arithmetic division involving floats MAY use ordinary rounded
@@ -182,8 +216,8 @@ objects that compare equal MUST hash equally under the language&rsquo;s hash
 contract, including comparisons with existing scalar types. Hashing arbitrary
 stored syntax is insufficient for mathematical equality. DCI hashing is a
 separate matter governed by DCI identity.</p><h1 id=complexnumber>ComplexNumber</h1><p>A ComplexNumber contains real and imaginary conventional numerical components.
-The components MAY be integers, rationals, floats, Constant, Sum, Product, Power, or
-Quotient objects. Construction MUST preserve supported exact components rather
+The components MAY be integers, rationals, floats, Constant, Product, Power,
+Quotient, or recursively scalar Sum and OrderedProduct objects. Construction MUST preserve supported exact components rather
 than converting them unconditionally to floats.</p><p>Equality compares corresponding component values. A binding SHOULD support
 comparison with a real scalar by treating its imaginary component as zero,
 and with an existing machine complex type using its actual stored components.</p><p>Addition, subtraction, negation, multiplication, and division MUST follow the
@@ -211,7 +245,7 @@ binding MUST NOT claim that an ordinary mapping can retain arbitrary distinct
 DCI keys after converting them to conventional objects. Key collisions and
 unsupported keys are possible conversion outcomes.</p><h1 id=conversion-to-and-from-dcis>Conversion to and from DCIs</h1><p>Conversion MUST distinguish an instance of a conventional type from an object
 implementing a DCT. Sharing a programming language does not make their rules
-identical.</p><table><thead><tr><th>DCT</th><th>Typical conventional counterpart</th></tr></thead><tbody><tr><td>Null, Boolean, Integer, Float, String, Bytes</td><td>Existing language or library scalar types</td></tr><tr><td>Fraction</td><td>Exact rational type</td></tr><tr><td>Constant</td><td>Named conventional Constant</td></tr><tr><td>Power, Sum, Product, Quotient</td><td>Corresponding conventional numerical types</td></tr><tr><td>Complex</td><td>Structured conventional ComplexNumber or a machine complex type</td></tr><tr><td>List, Tuple, Set</td><td>Existing conventional collection types</td></tr><tr><td>Multiset</td><td>Conventional Multiset</td></tr><tr><td>Mapping, UnorderedMapping</td><td>Suitable conventional mapping types or adapters</td></tr><tr><td>Record</td><td>Binding-defined record or application type</td></tr><tr><td>Array</td><td>Numerical array type</td></tr><tr><td>ExternalFile, ExternalArray</td><td>Resource adapters or verified materialized content</td></tr></tbody></table><p>An implementation claiming conversions for a supported conventional type MUST
+identical.</p><table><thead><tr><th>DCT</th><th>Typical conventional counterpart</th></tr></thead><tbody><tr><td>Null, Boolean, Integer, Float, String, Bytes</td><td>Existing language or library scalar types</td></tr><tr><td>Fraction</td><td>Exact rational type</td></tr><tr><td>Constant</td><td>Named conventional Constant</td></tr><tr><td>Power, Sum, Product, Quotient, OrderedProduct</td><td>Corresponding conventional numerical types</td></tr><tr><td>Complex</td><td>Structured conventional ComplexNumber or a machine complex type</td></tr><tr><td>List, Tuple, Set</td><td>Existing conventional collection types</td></tr><tr><td>Multiset</td><td>Conventional Multiset</td></tr><tr><td>Mapping, UnorderedMapping</td><td>Suitable conventional mapping types or adapters</td></tr><tr><td>Record</td><td>Binding-defined record or application type</td></tr><tr><td>Array</td><td>Numerical array type</td></tr><tr><td>ExternalFile, ExternalArray</td><td>Resource adapters or verified materialized content</td></tr></tbody></table><p>An implementation claiming conversions for a supported conventional type MUST
 document both directions independently. Conversion to a DCI MUST use the
 conventional object&rsquo;s current stored information. It MUST NOT substitute an
 approximate evaluated scalar for a structured numerical object merely because
@@ -286,6 +320,6 @@ documented behavior beyond the mandatory exact-comparison foundation,
 floating-point overflow and signed zero, and resource-limit reporting.
 Reference implementation behavior is evidence for conformance, not permission
 to silently relax a normative requirement.</p><style>.feedback--answer{display:inline-block}.feedback--answer-no{margin-left:1em}.feedback--response{display:none;margin-top:1em}.feedback--response__visible{display:block}</style><div class=d-print-none><h2 class=feedback--title>Feedback</h2><p class=feedback--question>Was this page helpful?</p><button class="btn btn-primary mb-4 feedback--answer feedback--answer-yes">Yes</button>
-<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button><p class="feedback--response feedback--response-yes">Glad to hear it! Please <a href=https://github.com/USERNAME/REPOSITORY/issues/new>tell us how we can improve</a>.</p><p class="feedback--response feedback--response-no">Sorry to hear that. Please <a href=https://github.com/USERNAME/REPOSITORY/issues/new>tell us how we can improve</a>.</p></div><script>const yesButton=document.querySelector(".feedback--answer-yes"),noButton=document.querySelector(".feedback--answer-no"),yesResponse=document.querySelector(".feedback--response-yes"),noResponse=document.querySelector(".feedback--response-no"),disableButtons=()=>{yesButton.disabled=!0,noButton.disabled=!0},sendFeedback=e=>{if(typeof gtag!="function")return;gtag("event","page_helpful",{event_category:"Helpful",event_label:window.location.pathname,value:e})};yesButton.addEventListener("click",()=>{yesResponse.classList.add("feedback--response__visible"),disableButtons(),sendFeedback(100)}),noButton.addEventListener("click",()=>{noResponse.classList.add("feedback--response__visible"),disableButtons(),sendFeedback(0)})</script><br><div class=td-page-meta__lastmod>Last modified October 24, 2026: <a href=https://github.com/google/docsy-example/commit/e78e88ca0cc00a012ab570d4621705f82ea2dcb6>Add named constants, numerical transformations, and shared DC operations (e78e88c)</a></div></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
+<button class="btn btn-primary mb-4 feedback--answer feedback--answer-no">No</button><p class="feedback--response feedback--response-yes">Glad to hear it! Please <a href=https://github.com/USERNAME/REPOSITORY/issues/new>tell us how we can improve</a>.</p><p class="feedback--response feedback--response-no">Sorry to hear that. Please <a href=https://github.com/USERNAME/REPOSITORY/issues/new>tell us how we can improve</a>.</p></div><script>const yesButton=document.querySelector(".feedback--answer-yes"),noButton=document.querySelector(".feedback--answer-no"),yesResponse=document.querySelector(".feedback--response-yes"),noResponse=document.querySelector(".feedback--response-no"),disableButtons=()=>{yesButton.disabled=!0,noButton.disabled=!0},sendFeedback=e=>{if(typeof gtag!="function")return;gtag("event","page_helpful",{event_category:"Helpful",event_label:window.location.pathname,value:e})};yesButton.addEventListener("click",()=>{yesResponse.classList.add("feedback--response__visible"),disableButtons(),sendFeedback(100)}),noButton.addEventListener("click",()=>{noResponse.classList.add("feedback--response__visible"),disableButtons(),sendFeedback(0)})</script><br><div class=td-page-meta__lastmod>Last modified October 24, 2026: <a href=https://github.com/google/docsy-example/commit/23184fecae2433d56bdac0622e1e81967317827a>Add OrderedProduct and support arrays in Sum (23184fe)</a></div></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
 2018&ndash;2026
 <span class=td-footer__authors>Docsy Authors | <a href=https://creativecommons.org/licenses/by/4.0>CC BY 4.0</a> |</span></span><span class=td-footer__all_rights_reserved>All Rights Reserved</span><span class=ms-2><a href=https://policies.google.com/privacy target=_blank rel=noopener>Privacy Policy</a></span></div></div></div></footer></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css integrity="sha512-r2+FkHzf1u0+SQbZOoIz2RxWOIWfdEzRuYybGjzKq18jG9zaSfEy9s3+jMqG/zPtRor/q4qaUCYQpmSjTw8M+g==" crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js integrity="sha512-INps9zQ2GUEMCQD7xiZQbGUVnqnzEvlynVy6eqcTcHN4+aQiLo9/uaQqckDpdJ8Zm3M0QBs+Pktg4pz0kEklUg==" crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF+NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w==" crossorigin=anonymous onload=renderMathInElement(document.body,null)></script><script src=/data-canon/js/main.min.d287f9c9849d645c20f888fba75206253abddb674477c502feb0622e3b85cab0.js integrity="sha256-0of5yYSdZFwg+Ij7p1IGJTq922dEd8UC/rBiLjuFyrA=" crossorigin=anonymous></script><script defer src=/data-canon/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/data-canon/js/tabpane-persist.js></script></body></html>
