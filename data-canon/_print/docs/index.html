@@ -1463,7 +1463,7 @@ the final result after the entire key chain:</p><div class=highlight><pre tabind
 </span></span></code></pre></div><p>If there are multiple final matches, <code>--index</code> selects one member of the
 aggregate List; it does not index each match individually. A single List-valued
 match is indexed directly. Selection order is always <code>--get</code>, then <code>--index</code>,
-then rendering, independently of where the options occur on the command line.</p><p>Only List and Tuple DCIs support this operation. Arrays, Strings, Sets,
+then rendering, independently of where the options occur on the command line.</p><p>Only List and Tuple and Array DCIs support this operation. Strings, Sets,
 Multisets, and Mappings are not indexed by this option. An incompatible target
 or an out-of-range integer index reports an error; malformed selectors are
 command-line usage errors. Empty sequences have no valid indices.</p><p>Shorthand formatting and YAML output options apply to the selected DCI.
@@ -1476,8 +1476,13 @@ Use <code>--index -1 -1</code> for several negative integer indices.</p><p>Slice
 bounds, negative bounds, and negative steps:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --index 0:2
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;(0, 1, 2, 3, 4)&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index ::2
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[0, 1, 2, 3, 4]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index ::-1
-</span></span></code></pre></div><p>Slicing preserves the DCT: a List slice is a List; a Tuple slice is a Tuple.
-Out-of-range bounds are clipped, and slices may produce an empty sequence.
+</span></span></code></pre></div><p>Integer indexing selects a contained DCI for Lists and Tuples. For Arrays,
+integer indexing selects along the first dimension. If the result is an Array,
+it is returned as an Array DCI; if the result is an Array element, that value
+is converted to a DCI. Slicing operates along the first dimension and
+preserves the DCT: a List slice is a List, a Tuple slice is a Tuple, and an
+Array slice is an Array.
+Out-of-range bounds are clipped, and slices may produce an empty result.
 A zero step or malformed slice is a usage error before input is loaded.
 Subsequent selectors operate on the slice result itself, without distributing
 across its members:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(0, 1), (2, 3), (4, 5)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index 1: <span style=color:#0000cf;font-weight:700>0</span> <span style=color:#0000cf;font-weight:700>1</span>
