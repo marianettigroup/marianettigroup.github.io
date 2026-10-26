@@ -6,175 +6,260 @@ DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The seven specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
-DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-23T14:30:16-04:00"><meta itemprop=wordCount content="2324"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
+DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><meta itemprop=dateModified content="2026-10-25T22:08:07-04:00"><meta itemprop=wordCount content="2824"><meta name=twitter:card content="summary"><meta name=twitter:title content="Publication Outline"><meta name=twitter:description content="This outline proposes a paper for the Journal of Open Source Software (JOSS) describing DataCanon and its Python reference implementation.
 The paper should explain the research problem, the software’s contribution, and the evidence supporting its use. The seven specifications and documentation carry the detailed type definitions, encoding rules, and API reference.
 Working title DataCanon: Deterministic Identity and Persistence for Structured Scientific Data
 An alternative retaining the original emphasis is:
 DataCanon: Deterministic Semantic Identity for Structured Scientific Data"><link rel=preload href=/data-canon/scss/main.min.da828eb2a5d6b260f385db37d6c1342258f644924812358227d220e7574975ba.css as=style><link href=/data-canon/scss/main.min.da828eb2a5d6b260f385db37d6c1342258f644924812358227d220e7574975ba.css rel=stylesheet><script src=https://code.jquery.com/jquery-3.7.1.min.js integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin=anonymous></script></head><body class=td-section><header><nav class="td-navbar js-navbar-scroll" data-bs-theme=dark><div class="container-fluid flex-column flex-md-row"><a class=navbar-brand href=/data-canon/><span class="navbar-brand__logo navbar-logo"><svg id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500" style="enable-background:new 0 0 500 500"><g><path style="fill:#fff" d="M116.8525 421.9722c-5.7041.0-10.3442-4.3127-10.3442-9.6129V88.183c0-5.3002 4.6401-9.6117 10.3442-9.6117H320.858c3.0347.0 9.3959.5498 11.7506 2.6302l.3545.3442 58.905 63.2912c2.3101 2.491 2.9202 8.4928 2.9202 11.3184v256.2039c0 5.3002-4.6407 9.6129-10.3436 9.6129H116.8525z"/><g><g><g><path style="fill:#767676" d="M384.4445 423.2066H116.852c-6.3839.0-11.5786-4.8658-11.5786-10.8474V88.1831c0-5.9804 5.1947-10.8461 11.5786-10.8461h204.0062c.377.0 9.2786.0329 12.568 2.9389l.3947.3833 58.9508 63.337c3.2135 3.4652 3.2514 11.7924 3.2514 12.1593v256.2036C396.0231 418.3408 390.8284 423.2066 384.4445 423.2066zM116.5079 411.9189c.0848.0278.1999.0531.3441.0531h267.5925c.1442.0.2581-.0253.3441-.0531V156.1556c-.0076-.9033-.3593-3.7347-.7034-5.0037l-57.6527-61.9416c-1.4651-.3176-4.4533-.6389-5.5742-.6389H116.852c-.143.0-.2594.024-.3441.0531V411.9189zm267.4533-261.149zM327.0321 89.371v.0013V89.371z"/></g></g></g><g><g><path style="fill:#5b7fc0" d="M189.0874 210.1754l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4473C177.5953 212.627 183.0601 210.1742 189.0874 210.1754zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 234.1722 197.0804 232.033z"/><path style="opacity:.3;fill:#fff" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/><g><defs><path id="SVGID_1_" d="M194.7376 237.6875c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 234.2399 196.1861 236.239 194.7376 237.6875z"/></defs><clipPath id="SVGID_2_"><use xlink:href="#SVGID_1_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_2_);fill:#fff" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/><path style="opacity:.13;clip-path:url(#SVGID_2_);fill:#020202" d="M190.0704 225.0237c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 225.7247 191.9774 225.0237 190.0704 225.0237z"/></g><g><defs><path id="SVGID_3_" d="M189.0898 210.176c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 212.6276 183.0612 210.176 189.0898 210.176zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 236.239 197.0839 234.2399 197.0839 232.0372z"/></defs><clipPath id="SVGID_4_"><use xlink:href="#SVGID_3_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_4_);fill:#5b7fc0" d="M172.6595 215.6045c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8475-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 209.1953 176.6171 211.647 172.6595 215.6045z"/></g></g><rect x="198.8952" y="225.1043" style="fill:#5b7fc0" width="122.6266" height="13.8671"/></g><g><path style="fill:#d95140" d="M189.0874 155.7611l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.0249 2.454-11.4897 6.4116-15.4473C177.5953 158.2128 183.0601 155.7599 189.0874 155.7611zm7.993 21.8577c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.2508 181.7667 197.0816 179.758 197.0804 177.6188z"/><path style="opacity:.3;fill:#fff" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/><g><defs><path id="SVGID_5_" d="M194.7376 183.2733c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 179.8256 196.1861 181.8248 194.7376 183.2733z"/></defs><clipPath id="SVGID_6_"><use xlink:href="#SVGID_5_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_6_);fill:#fff" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/><path style="opacity:.13;clip-path:url(#SVGID_6_);fill:#020202" d="M190.0704 170.6095c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9546.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.663-2.8588-6.116.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C193.7885 171.3104 191.9774 170.6095 190.0704 170.6095z"/></g><g><defs><path id="SVGID_7_" d="M189.0898 155.7617c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8066-21.8612-21.8613.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 158.2134 183.0612 155.7617 189.0898 155.7617zm7.9941 21.8613c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 181.8248 197.0839 179.8256 197.0839 177.623z"/></defs><clipPath id="SVGID_8_"><use xlink:href="#SVGID_7_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_8_);fill:#d95140" d="M172.6595 161.1903c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 154.7811 176.6171 157.2327 172.6595 161.1903z"/></g><rect x="198.8952" y="170.69" style="fill:#d95140" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#56a55c" d="M189.5379 264.6147l.0012-.0012c7.7751.0012 15.0294 4.1862 18.932 10.9235 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3304-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032-5.8394.0-11.3281-2.2733-15.458-6.4032-4.13-4.13-6.4032-9.6186-6.4056-15.4628.0012-6.0249 2.454-11.4897 6.4116-15.4472C178.0458 267.0663 183.5105 264.6135 189.5379 264.6147zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6538 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403C196.7013 290.6202 197.5321 288.6115 197.5309 286.4723z"/><path style="opacity:.3;fill:#fff" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/><g><defs><path id="SVGID_9_" d="M195.1881 292.1268c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.9989 7.9942-7.9941 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.5344 288.6792 196.6366 290.6783 195.1881 292.1268z"/></defs><clipPath id="SVGID_10_"><use xlink:href="#SVGID_9_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_10_);fill:#fff" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/><path style="opacity:.13;clip-path:url(#SVGID_10_);fill:#020202" d="M190.5209 279.463c-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7446-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9941 2.3802-1e-4 4.616 1.0833 6.1218 2.8788C194.239 280.164 192.4279 279.463 190.5209 279.463z"/></g><g><defs><path id="SVGID_11_" d="M189.5403 264.6153c7.7763.0 15.0283 4.1826 18.926 10.9151 1.9201 3.3135 2.9377 7.0987 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8613-12.0547.0024-21.8636-9.8065-21.8612-21.8613.0-6.0285 2.4516-11.492 6.4116-15.452C178.0482 267.0669 183.5117 264.6153 189.5403 264.6153zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9941.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.6366 290.6783 197.5344 288.6792 197.5344 286.4765z"/></defs><clipPath id="SVGID_12_"><use xlink:href="#SVGID_11_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_12_);fill:#56a55c" d="M173.11 270.0439c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8613 12.0547.0024 21.8636-9.797 21.8613-21.8613.0024-3.8474-1.0151-7.6326-2.9353-10.9462-3.8977-6.7325-11.1497-10.9151-18.926-10.9151C182.5311 263.6346 177.0676 266.0863 173.11 270.0439z"/></g></g><rect x="199.3456" y="279.5436" style="fill:#56a55c" width="122.6266" height="13.8671"/></g><g><g><path style="fill:#f1bc42" d="M189.0874 318.7208l.0012-.0012c7.7751.0012 15.0295 4.1862 18.932 10.9234 1.9177 3.3159 2.9305 7.1011 2.9293 10.9378.0 5.8394-2.2733 11.3305-6.4032 15.4604-4.1288 4.1288-9.6186 6.4032-15.458 6.4032s-11.328-2.2733-15.458-6.4032-6.4032-9.6186-6.4056-15.4628c.0012-6.025 2.454-11.4897 6.4116-15.4472C177.5953 321.1724 183.0601 318.7196 189.0874 318.7208zm7.993 21.8576c.0012-1.4042-.3687-2.7868-1.063-3.9887-1.4293-2.4684-4.0833-3.9995-6.9299-4.0019-4.4077.0024-7.993 3.5877-7.993 7.993.0 2.1356.832 4.1431 2.3427 5.6539 1.5083 1.5083 3.5159 2.3403 5.6503 2.3415 2.1356.0 4.1443-.8308 5.6539-2.3403S197.0816 342.7176 197.0804 340.5784z"/><path style="opacity:.3;fill:#fff" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/><g><defs><path id="SVGID_13_" d="M194.7376 346.2329c-1.4461 1.4461-3.4452 2.3439-5.6479 2.3439-4.4077-.0024-7.9918-3.5865-7.9942-7.9942.0024-4.4125 3.5937-7.999 7.9942-7.9942 2.8443.0 5.497 1.5323 6.924 3.9983.6991 1.2067 1.0702 2.5881 1.0702 3.9959C197.0839 342.7853 196.1861 344.7844 194.7376 346.2329z"/></defs><clipPath id="SVGID_14_"><use xlink:href="#SVGID_13_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_14_);fill:#fff" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/><path style="opacity:.13;clip-path:url(#SVGID_14_);fill:#020202" d="M190.0704 333.5691c-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0011 1.9547.7088 3.7452 1.8782 5.1354-1.7447-1.4674-2.8575-3.6631-2.8588-6.1161.0024-4.4125 3.5936-7.999 7.9942-7.9942 2.3802-1e-4 4.616 1.0834 6.1218 2.8788C193.7885 334.2701 191.9774 333.5691 190.0704 333.5691z"/></g><g><defs><path id="SVGID_15_" d="M189.0898 318.7214c7.7763.0 15.0283 4.1826 18.926 10.915 1.9201 3.3136 2.9377 7.0988 2.9353 10.9462.0024 12.0643-9.8065 21.8636-21.8613 21.8612-12.0547.0024-21.8636-9.8065-21.8612-21.8612.0-6.0285 2.4516-11.4921 6.4116-15.452C177.5977 321.173 183.0612 318.7214 189.0898 318.7214zm7.9941 21.8612c0-1.4078-.3711-2.7892-1.0702-3.9959-1.4269-2.466-4.0797-3.9983-6.924-3.9983-4.4005-.0048-7.9918 3.5817-7.9942 7.9942.0024 4.4077 3.5865 7.9918 7.9942 7.9942 2.2027.0 4.2018-.8978 5.6479-2.3439C196.1861 344.7844 197.0839 342.7853 197.0839 340.5826z"/></defs><clipPath id="SVGID_16_"><use xlink:href="#SVGID_15_" style="overflow:visible"/></clipPath><path style="clip-path:url(#SVGID_16_);fill:#f1bc42" d="M172.6595 324.15c-3.96 3.96-6.4116 9.4235-6.4116 15.452-.0024 12.0547 9.8066 21.8636 21.8613 21.8612 12.0547.0024 21.8636-9.797 21.8613-21.8612.0024-3.8474-1.0151-7.6327-2.9353-10.9462-3.8977-6.7324-11.1497-10.9151-18.926-10.9151C182.0806 317.7407 176.6171 320.1924 172.6595 324.15z"/></g></g><rect x="198.8952" y="333.6497" style="fill:#f1bc42" width="122.6266" height="13.8671"/></g></g></svg></span><span class=navbar-brand__name>Data Canon</span></a><div class="td-navbar-nav-scroll ms-md-auto" id=main_navbar><ul class=navbar-nav></ul></div><div class="d-none d-lg-block"><div class=td-search><div class=td-search__icon></div><input type=search class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete=off></div></div></div></nav></header><div class="container-fluid td-outer"><div class=td-main><div class="row flex-xl-nowrap"><main class="col-12 col-md-9 col-xl-8 ps-md-5" role=main><div class=td-content><div class="pageinfo pageinfo-primary d-print-none"><p>This is the multi-page printable view of this section.
 <a href=# onclick="return print(),!1">Click here to print</a>.</p><p><a href=/data-canon/docs/publication/>Return to the regular view of this page</a>.</p></div><h1 class=title>Publication Outline</h1><ul></ul><div class=content><p>This outline proposes a paper for the <strong>Journal of Open Source Software
-(JOSS)</strong> describing DataCanon and its Python reference implementation.</p><p>The paper should explain the research problem, the software&rsquo;s contribution,
-and the evidence supporting its use. The seven specifications and documentation
-carry the detailed type definitions, encoding rules, and API reference.</p><h2 id=working-title>Working title</h2><p><strong>DataCanon: Deterministic Identity and Persistence for Structured Scientific Data</strong></p><p>An alternative retaining the original emphasis is:</p><p><strong>DataCanon: Deterministic Semantic Identity for Structured Scientific Data</strong></p><p>A different choice which tries to capture the versatility for exploring data.</p><p><strong>DataCanon: The Last Mile of Scientific Data</strong></p><p><em>Canonical Identity Across Programming Languages and Storage Formats</em></p><h2 id=central-thesis>Central thesis</h2><p>Scientific software needs to preserve complex structured data across changes
-in programming language, software implementation, and storage format.
-DataCanon gives that data an explicit, portable identity model and supplies
-software for constructing, communicating, fingerprinting, and persisting it.</p><p>DataCanon defines DataCanon Types (DCTs), their valid DataCanon Instances
-(DCIs), and their equality relations. Every DCI has a unique canonical byte
-encoding. Human-readable Shorthand, YAML interchange, and HDF5 represent that
-same data without defining its identity.</p><p>The scientific motivation should lead: exact numerical structures built from Fractions, Products, Powers, Sums,
-and Quotients, structured Complex values, typed multidimensional Arrays, and reliable
-persistence of nested scientific data. The paper should then explain how
-canonical identity makes those structures portable and reproducibly
-identifiable.</p><h2 id=joss-format-and-scope>JOSS format and scope</h2><p>The <a href=https://joss.readthedocs.io/en/latest/paper.html>current JOSS paper guidance</a>
-sets a 750–1,750-word range and identifies sections for Summary, Statement of
-need, State of the field, Software design, Research impact statement, AI usage
-disclosure, Acknowledgements, and References.</p><p>Organize the manuscript around those sections. Aim for approximately
-1,400–1,600 words of prose, leaving room to adjust the emphasis during writing.
-The word allocations below are planning targets, not journal requirements.</p><table><thead><tr><th>Section</th><th style=text-align:right>Approximate words</th></tr></thead><tbody><tr><td>Summary</td><td style=text-align:right>150</td></tr><tr><td>Statement of need</td><td style=text-align:right>250</td></tr><tr><td>State of the field</td><td style=text-align:right>250</td></tr><tr><td>Software design</td><td style=text-align:right>450</td></tr><tr><td>Research impact statement</td><td style=text-align:right>250</td></tr><tr><td>AI usage disclosure and Acknowledgements</td><td style=text-align:right>100</td></tr></tbody></table><p>The submitted paper concerns usable research software. The Python package,
-its tests, documentation, and scientific applications should therefore have a
-substantial role. An independent Julia implementation would strengthen the
-portability evidence, but should be described as completed work only when it
-has been implemented and validated.</p><h2 id=1-summary>1. Summary</h2><p>Introduce DataCanon in language accessible to a researcher who has never used
-it. Explain that it allows complex scientific data to be written, recovered,
-compared, and fingerprinted using an identity model independent of storage
-layout and implementation language.</p><p>Briefly identify the distinctive capabilities:</p><ul><li>Exact structured numerical data, including irrational Powers, structured Quotients, and
-Complex values with independently typed components.</li><li>Portable typed Arrays alongside recursively structured collections.</li><li>Deterministic binary identity and SHA-256 fingerprinting.</li><li>Human-readable input and identity-preserving YAML and HDF5 representations.</li><li>External-resource references with deferred retrieval and integrity checks.</li></ul><p>Describe the Python package as the reference implementation of a
-language-independent specification. Avoid an API inventory or encoding tutorial
-in the summary.</p><h2 id=2-statement-of-need>2. Statement of need</h2><h3 id=research-problem-and-audience>Research problem and audience</h3><p>Address developers of long-lived computational science and engineering
-software, especially workflows that combine exact numerical structure with
-large machine Arrays.</p><p>Explain the practical requirements using a concrete scientific object: a
-crystal structure or symmetry calculation containing lattice Arrays,
-fractional coordinates, exact complex phase factors, parameters, and externally
-stored numerical results.</p><p>Such an object may need to survive storage changes, support reproducible
-identification, and move between implementations while retaining distinctions
-that matter to the application.</p><h3 id=scientific-example>Scientific example</h3><p>Use a structured complex phase factor as the central numerical example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
-</span></span></code></pre></div><p>This preserves the exact real and irrational imaginary components instead of
-immediately replacing both with floating-point approximations. Discuss why
-this is useful for crystallographic or symmetry data, alongside ordinary
-floating-point Arrays required by numerical calculations.</p><p>Mention that DataCanon preserves type and constituent structure without
-mathematical simplification. Detailed normalization edge cases belong in the
-specifications rather than the motivation.</p><h3 id=practical-outcome>Practical outcome</h3><p>Explain what the package enables: identity-preserving disk round trips,
-format transfers, and stable fingerprints of scientifically meaningful data.
-If a code fragment is needed, use one short persistence example; leave a full
-walkthrough in Getting Started.</p><h2 id=3-state-of-the-field>3. State of the field</h2><p>Compare against existing software and standards using primary documentation
-and appropriate software citations. This section requires a focused literature
-review before it becomes manuscript prose.</p><p>Candidate comparison families include JSON canonicalization, deterministic
-CBOR, schema-driven serialization, YAML tooling, HDF5, and scientific data
-containers used by the intended audience. Select the closest alternatives
-rather than cataloguing every serialization format.</p><p>Evaluate the distinctions that motivate DataCanon:</p><table><thead><tr><th>Concern</th><th>Question for the comparison</th></tr></thead><tbody><tr><td>Identity</td><td>What equality relation and canonical encoding are provided?</td></tr><tr><td>Scientific types</td><td>How are structured exact numbers and typed Arrays represented?</td></tr><tr><td>Collections</td><td>Are ordered and unordered structures distinguished?</td></tr><tr><td>Persistence</td><td>Can storage layout change while retaining the same identity?</td></tr><tr><td>External data</td><td>How are payload metadata, content verification, and retrieval separated?</td></tr><tr><td>Interoperability</td><td>What agreement is required across implementations?</td></tr></tbody></table><p>Give a concrete reason for developing DataCanon rather than extending a
-particular existing package. The proposed contribution is the combination of
-an explicit scientific data model, canonical identity, and multiple faithful
-representations. Existing formats may provide related capabilities or support
-extensions; comparisons must establish the relevant differences rather than
-claiming that canonicalization or portability is unique to DataCanon.</p><p>Explain that DataCanon uses mature facilities such as NumPy and HDF5 instead
-of replacing their numerical and storage infrastructure.</p><h2 id=4-software-design>4. Software design</h2><p>Organize this section around decisions and their consequences for scientific
-workflows. Keep low-level byte tables in the specifications.</p><h3 id=identity-is-separate-from-representation>Identity is separate from representation</h3><p>Define DCT and DCI briefly. Equality is specified by types and constituents;
-canonical encoding represents that equality injectively:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>x = y  if and only if  E(x) = E(y)
+(JOSS)</strong> describing DataCanon and its Python reference implementation.</p><p>The paper should explain the research problem, the software&rsquo;s
+contribution, and the evidence supporting its use. The seven
+specifications and documentation carry the detailed type definitions,
+encoding rules, and API reference.</p><h2 id=working-title>Working title</h2><p><strong>DataCanon: Deterministic Identity and Persistence for Structured
+Scientific Data</strong></p><p>An alternative retaining the original emphasis is:</p><p><strong>DataCanon: Deterministic Semantic Identity for Structured Scientific
+Data</strong></p><p>A different choice which tries to capture the versatility for exploring
+data:</p><p><strong>DataCanon: The Last Mile of Scientific Data</strong></p><p><strong>Canonical Identity Across Programming Languages and Storage Formats</strong></p><h2 id=central-thesis>Central thesis</h2><p>Scientific software needs a precise way to say what structured data
+<strong>is</strong>, independently of how that data happens to be represented,
+stored, or manipulated. DataCanon provides a formal,
+language-independent data model for structured scientific data together
+with canonical identity.</p><p>DataCanon defines DataCanon Types (DCTs), their valid DataCanon
+Instances (DCIs), and their equality relations. Every DCI has a unique
+canonical byte encoding. Human-readable Shorthand, YAML interchange, and
+HDF5 represent that same data without defining its identity.</p><p>This distinction should be explicit throughout the paper. DataCanon is
+not a database, merely a serialization format, a schema system, or a
+programming language. Those systems answer related but different
+questions. DataCanon&rsquo;s core question is: <strong>what data object is this?</strong>
+Representation asks how to communicate it; persistence asks how to store
+it; a database asks how to organize, locate, query, and update
+collections of it; computation asks what operations to perform on it.</p><p>The scientific motivation should lead: exact numerical structures built
+from Fractions, Products, Powers, Sums, and Quotients, structured
+Complex values, typed multidimensional Arrays, and reliable persistence
+of nested scientific data. The paper should then explain how canonical
+identity makes those structures portable and reproducibly identifiable.</p><h2 id=joss-format-and-scope>JOSS format and scope</h2><p>The <a href=https://joss.readthedocs.io/en/latest/paper.html>current JOSS paper
+guidance</a> sets a
+750&ndash;1,750-word range and identifies sections for Summary, Statement of
+need, State of the field, Software design, Research impact statement, AI
+usage disclosure, Acknowledgements, and References.</p><p>Organize the manuscript around those sections. Aim for approximately
+1,400&ndash;1,600 words of prose, leaving room to adjust the emphasis during
+writing. The word allocations below are planning targets, not journal
+requirements.</p><p>Section Approximate words</p><hr><p>Summary 150
+Statement of need 250
+State of the field 325
+Software design 400
+Research impact statement 250
+AI usage disclosure and Acknowledgements 100</p><p>The submitted paper concerns usable research software. The Python
+package, its tests, documentation, and scientific applications should
+therefore have a substantial role. Independent implementations
+strengthen the portability evidence, but should be described as
+completed work only when they have been implemented and validated.</p><h2 id=1-summary>1. Summary</h2><p>Introduce DataCanon in language accessible to a researcher who has never
+used it. Describe it first as a <strong>formal, language-independent data
+model for structured scientific data with canonical identity</strong>, rather
+than as a serialization or persistence format.</p><p>Explain that DataCanon allows complex scientific data to be constructed,
+communicated, compared, fingerprinted, and persisted while retaining an
+identity independent of storage layout and implementation language.</p><p>Briefly identify the distinctive capabilities:</p><ul><li>Exact structured numerical data, including irrational Powers,
+structured Quotients, and Complex values with independently typed
+components.</li><li>Portable typed Arrays alongside recursively structured collections.</li><li>Deterministic binary identity and SHA-256 fingerprinting.</li><li>Human-readable input and identity-preserving YAML and HDF5
+representations.</li><li>External-resource references with deferred retrieval and integrity
+checks.</li></ul><p>Describe the Python package as the reference implementation of a
+language-independent specification. Avoid an API inventory or encoding
+tutorial in the summary.</p><h2 id=2-statement-of-need>2. Statement of need</h2><h3 id=research-problem-and-audience>Research problem and audience</h3><p>Address developers of long-lived computational science and engineering
+software, especially workflows that combine exact numerical structure
+with large machine Arrays.</p><p>Explain that scientific software often has no difficulty <em>storing</em> data,
+but still lacks a representation-independent answer to more basic
+questions: What type of data object is this? When are two independently
+constructed objects the same? Which structural distinctions participate
+in identity? Can that identity survive a change of programming language
+or storage technology?</p><p>Use a concrete scientific object: a crystal structure or symmetry
+calculation containing lattice Arrays, fractional coordinates, exact
+complex phase factors, parameters, and externally stored numerical
+results.</p><p>Such an object may need to survive storage changes, support reproducible
+identification, and move between implementations while retaining
+distinctions that matter to the application.</p><h3 id=scientific-example>Scientific example</h3><p>Use a structured complex phase factor as the central numerical example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
+</span></span></code></pre></div><p>This preserves the exact real and irrational imaginary components
+instead of immediately replacing both with floating-point
+approximations. Discuss why this is useful for crystallographic or
+symmetry data, alongside ordinary floating-point Arrays required by
+numerical calculations.</p><p>Mention that DataCanon preserves type and constituent structure without
+mathematical simplification. Detailed normalization edge cases belong in
+the specifications rather than the motivation.</p><h3 id=practical-outcome>Practical outcome</h3><p>Explain what the package enables: identity-preserving disk round trips,
+format transfers, stable fingerprints of scientifically meaningful data,
+and communication of the same DCI across independent implementations.</p><p>If a code fragment is needed, use one short persistence example; leave a
+full walkthrough in Getting Started.</p><h2 id=3-state-of-the-field>3. State of the field</h2><p>Use this section not only to compare features, but to establish <strong>what
+kind of thing DataCanon is</strong>. One of the easiest ways to understand
+DataCanon is to distinguish the data model from neighboring layers that
+solve different problems.</p><p>A useful organizing framework is:</p><table><thead><tr><th>Layer</th><th>Primary question</th></tr></thead><tbody><tr><td>Data model</td><td>What is the data?</td></tr><tr><td>Representation / serialization</td><td>How is the data communicated or encoded?</td></tr><tr><td>Persistence</td><td>How is the data stored and recovered?</td></tr><tr><td>Database</td><td>How are collections of data organized, located, queried, and updated?</td></tr><tr><td>Computation</td><td>What operations are performed on the data?</td></tr></tbody></table><p>DataCanon fundamentally addresses the first question. Its specifications
+and software also provide representations and persistence mechanisms,
+but those do not define DCI identity. DataCanon can therefore use or
+coexist with systems at the other layers rather than replacing them.</p><h3 id=comparison-with-generic-data-models>Comparison with generic data models</h3><p>Compare DataCanon first with generic structured-data models such as JSON
+and CBOR, not only with their concrete serializations. This comparison
+establishes the conceptual neighborhood: recursively structured,
+language-independent data whose values can be realized in multiple
+programming languages.</p><p>A compact comparison table would be valuable in the paper. The exact
+entries must be verified against primary specifications during the
+literature review; the table below records the questions and intended
+comparison rather than final publication claims.</p><table><thead><tr><th>Capability</th><th>JSON</th><th>CBOR</th><th>Document / NoSQL models</th><th>DataCanon</th></tr></thead><tbody><tr><td>Language-independent structured-data model</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Recursive heterogeneous structures</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Distinct List and Tuple semantics</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Set / Multiset semantics</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Structured exact numerical types</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Typed multidimensional machine Arrays</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Explicit type-and-constituent equality</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr><tr><td>Canonical identity intrinsic to the model</td><td>Compare</td><td>Compare</td><td>Compare</td><td>Yes</td></tr></tbody></table><p>The point is not that other models are deficient. They make different
+choices for different purposes. The literature review should identify
+which DataCanon distinctions are unusual or useful for scientific
+software without claiming that canonicalization, portability, or
+structured data are unique inventions.</p><h3 id=comparison-with-document--nosql-systems>Comparison with document / NoSQL systems</h3><p>Use document databases as a particularly intuitive comparison. DataCanon
+shares the document-model intuition that a scientifically meaningful
+object may naturally be one recursively structured object rather than
+something that must first be decomposed into relational tables.</p><p>The abstraction level is nevertheless different. A document database is
+primarily concerned with storing, retrieving, indexing, querying, and
+updating documents. DataCanon instead specifies the types, constituent
+structure, equality, and canonical identity of the data itself. A DCI
+could therefore be stored in a document database; the two systems need
+not compete.</p><p>Avoid treating &ldquo;NoSQL&rdquo; as one formal data model. Distinguish document
+databases from key-value, wide-column, graph, and other systems when
+preparing the final literature review. The document model is the
+relevant comparison here.</p><h3 id=comparison-with-representations-and-persistence-formats>Comparison with representations and persistence formats</h3><p>Then compare against technologies operating at neighboring layers: JSON
+canonicalization, deterministic CBOR, schema-driven serialization, YAML
+tooling, HDF5, and scientific data containers used by the intended
+audience. Select the closest alternatives rather than cataloguing every
+serialization format.</p><p>Evaluate the distinctions that motivate DataCanon:</p><hr><p>Concern Question for the comparison</p><hr><p>Identity What equality relation and
+canonical encoding are provided?</p><p>Scientific types How are structured exact numbers
+and typed Arrays represented?</p><p>Collections Are ordered and unordered
+structures distinguished?</p><p>Persistence Can storage layout change while
+retaining the same identity?</p><p>External data How are payload metadata, content
+verification, and retrieval
+separated?</p><h2 id=implementations>Interoperability What agreement is required across
+implementations?</h2><p>Give a concrete reason for developing DataCanon rather than extending a
+particular existing package. The proposed contribution is the
+combination of an explicit scientific data model, canonical identity,
+and multiple faithful representations. Existing formats may provide
+related capabilities or support extensions; comparisons must establish
+the relevant differences rather than claiming that canonicalization or
+portability is unique to DataCanon.</p><p>Explain that DataCanon deliberately uses mature facilities such as NumPy
+and HDF5 instead of replacing their numerical and storage
+infrastructure. The same principle applies more broadly: DataCanon
+defines identity at the data-model layer and can interoperate with
+representation, persistence, database, and computational systems built
+for other concerns.</p><h2 id=4-software-design>4. Software design</h2><p>Organize this section around the design decisions that make the abstract
+data model usable in scientific software. Because Section 3 establishes
+the data-model / representation / persistence distinction, avoid
+repeating that conceptual argument here; show how the software realizes
+it. Keep low-level byte tables in the specifications.</p><h3 id=identity-is-separate-from-representation>Identity is separate from representation</h3><p>Define DCT and DCI briefly. Equality is specified by types and
+constituents; canonical encoding represents that equality injectively:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>x = y  if and only if  E(x) = E(y)
 </span></span></code></pre></div><p>Fingerprinting is:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>F(x) = SHA-256(E(x))
-</span></span></code></pre></div><p>Shorthand formatting does not determine identity. Distinguish exact canonical
-byte equality from digest comparisons, which rely on collision resistance.</p><h3 id=scientific-types-and-machine-arrays>Scientific types and machine Arrays</h3><p>Version 1 defines 22 DCTs: seven primitive types, three atomic types, and twelve
-composite types. Highlight composable numerical structures, Complex, Record,
-Multiset, Bytes, Array, and external references rather than explaining every
-type in the paper.</p><p>Numerical DCIs are Integer, Float, Fraction, Sum, Product, Power, and Quotient.
-This is a category for constituent restrictions, not an additional DCT. Type
-membership makes no assertion about mathematical evaluability.</p><p>Explain the composition rule with a concrete example. Fraction&rsquo;s prescribed
-integers are direct information. A Complex component or Power base is a DCI,
-whose individual DCT and recursive structure matter. Encoding reuses shared
-payload rules for direct fields and complete DCI encodings for variable-type
-constituents.</p><p>Arrays retain portable type, shape, and element identity. Their elements are
-machine values, not individually tagged DCIs. The 14 portable Array types
+</span></span></code></pre></div><p>Shorthand formatting does not determine identity. Distinguish exact
+canonical byte equality from digest comparisons, which rely on collision
+resistance.</p><h3 id=scientific-types-and-machine-arrays>Scientific types and machine Arrays</h3><p>Version 1 defines the DCTs in the Core specification. In the manuscript,
+highlight composable numerical structures, Complex, Record, Multiset,
+Bytes, Array, and external references rather than explaining every type.
+Verify the final DCT count against the publication release rather than
+baking a draft count into the prose.</p><p>Numerical DCIs include Integer, Float, Fraction, Sum, Product, Power,
+and Quotient, together with any additional numerical DCTs present in the
+finalized Version 1 specification. This is a category for constituent
+restrictions, not an additional DCT. Type membership makes no assertion
+about mathematical evaluability.</p><p>Explain the composition rule with a concrete example. Fraction&rsquo;s
+prescribed integers are direct information. A Complex component or Power
+base is a DCI, whose individual DCT and recursive structure matter.
+Encoding reuses shared payload rules for direct fields and complete DCI
+encodings for variable-type constituents.</p><p>Arrays retain portable type, shape, and element identity. Their elements
+are machine values, not individually tagged DCIs. Portable Array types
 support efficient numerical containers; canonical elements use logical C
-order and prescribed big-endian multibyte representations, independently of
-native strides or layout. Nested Lists remain available for individually
-typed constituent data.</p><p>Distinguish the fully specified core Array identity from the draft Shorthand
-rules for inference and conversion, whose NumPy reference behavior still needs
-finalization.</p><h3 id=order-belongs-to-the-data-model>Order belongs to the data model</h3><p>Mapping entry order participates in identity; UnorderedMapping entry order
-does not. Likewise, Lists and Tuples are ordered, while Sets are unordered.
-Multiset retains repeated members; Sum and Product similarly retain Numerical
-operand multiplicity and nesting. Canonical binary encoding sorts Set and
-Multiset members, Sum and Product operands, and UnorderedMapping keys by their
-complete canonical encodings. That encoding order is not a numerical
-comparison or a mandated text-rendering order.</p><h3 id=text-and-conventional-type-conversion>Text and conventional-type conversion</h3><p>One strict Shorthand grammar accepts explicit constructors and shorter forms.
-Longhand uses constructors for structured values and ordinary literals for
-Null, Boolean, Integer, Float, and String. The boundary is syntactic rather
-than the Core type classification: primitive Fraction still uses
-<code>fraction(...)</code>. Bytes and Array elements retain their prescribed syntax.
-For example, <code>sum(1, 1.0, fraction(1, 2))</code> is longhand without additional
-literal wrappers. The renderer&rsquo;s <code>longhand</code> flag is
-independent of its layout styles; constructor fallbacks preserve nested
-structure in the default rendering.</p><p>The Python binding separates delimiter layout, column alignment, structural
-indentation, and padding beside shared delimiters. Layout can be standard,
-semi-compact, compact, or inline, globally or per
-type; alignment can be disabled or set left/right. Per-type <code>custom_layout</code> overrides leave unspecified types using the global
-layout. Inline parents force all descendants onto one line. Padding controls
-same-line gaps, while indentation controls nested blocks on new lines. Sets
-and other constructor forms use the same contracts. Formatting choices preserve DCI identity.</p><p>Define conventional types as types used directly for data and computation in
-a programming language, including built-in, library-provided, and user-defined
-types. The conversion interface constructs instances of conventional types
-from DCIs and constructs DCIs from supported conventional objects. A <code>ListDC</code> object and a conventional <code>list</code> object are both Python objects,
-but their types and equality contracts differ.</p><p>Existing conventional types include <code>list</code>, <code>Fraction</code>, and NumPy arrays. The
-reference implementation supplies new conventional types such as <code>Power</code>,
-<code>Sum</code>, and <code>Multiset</code> where suitable types are missing. Arithmetic belongs to
-the numerical conventional types, not to the DCT identity rules. Conventional
-Sum and Product simplify matching terms and factors; explicit <code>float()</code> and
-<code>int()</code> request numerical results. Conversion through conventional objects
-need not preserve an arbitrary DCI&rsquo;s identity.</p><p>Present conventional arithmetic as an optional companion interface in the paper,
-without introducing a separately named arithmetic facility. The seventh
-specification, Conventional Types, defines common behavior for independent
-implementations, with conformance declared per type. Core does not require
-that support. Link the Conventional Types guide for worked examples and the
-companion specification for its behavioral requirements and comparison limits.</p><h3 id=contained-and-external-payloads>Contained and external payloads</h3><p>Bytes stores an opaque byte sequence directly in the DCI. A Record can hold
-its interpretation metadata. This permits a canonical binary file to contain
-both structured scientific data and binary payloads without companion files.
-External references serve the distinct purpose described below.</p><h3 id=external-payloads-and-persistence>External payloads and persistence</h3><p>ExternalFile and ExternalArray retain relative paths and content digests as
-semantic metadata. ExternalArray also carries portable type and shape.
-External bytes are not needed to decode or fingerprint their metadata.</p><p>Source location, cached bytes, and retrieval state are nonsemantic. Retrieval
-verifies digests and, for ExternalArray, element-stream validity. Complete
-packages preserve those references while placing payloads in directory-backed
-storage or embedding them in HDF5.</p><h3 id=seven-specifications-and-the-python-implementation>Seven specifications and the Python implementation</h3><p>Summarize the specification boundaries:</p><table><thead><tr><th>Specification</th><th>Responsibility</th></tr></thead><tbody><tr><td>Core</td><td>DCTs, equality, canonical bytes, and fingerprints</td></tr><tr><td>Shorthand</td><td>Strict text parsing and identity-preserving rendering</td></tr><tr><td>Shorthand Preprocessing</td><td>Optional compact Lists, substitutions, and explicit <code>eval(...)</code></td></tr><tr><td>YAML Interchange</td><td>Native YAML conversion and the <code>$</code> convention</td></tr><tr><td>HDF5</td><td>Portable object layout, numerical datasets, and embedded payloads</td></tr><tr><td>Persistence</td><td>Format selection, resource namespaces, verification, and transfer</td></tr><tr><td>Conventional Types</td><td>Optional conventional construction, arithmetic, comparison, collections, and conversion contracts</td></tr></tbody></table><p>Connect the contracts to explicit conversion, encoding/decoding,
-parser/renderer, and persistence boundaries. The DCTs and DCI equality are
-language-independent. The optional Conventional Types companion specifies a
-common behavioral foundation. Language bindings document their supported types,
-interfaces, additional simplifications, and conversion choices. Python classes
-are examples of a binding rather than normative DCT definitions.</p><p>Core does not perform computation. Optional preprocessing performs explicitly
-requested arithmetic before strict parsing; it does not alter DCT identity.</p><h2 id=5-research-impact-statement>5. Research impact statement</h2><p>Build this section from specific evidence available at submission time.
-Distinguish actual use from proposed applications.</p><p>Possible evidence to collect includes:</p><ul><li>A documented Principia Materia integration showing which scientific objects
-use DataCanon and what workflow it supports.</li><li>Reproducible crystallographic or symmetry examples using exact structured
-Complex values and typed Arrays.</li><li>Verified format transfers preserving canonical bytes and fingerprints.</li><li>Benchmarks for representative numerical workloads, if performance is a
-material reason to adopt the package.</li><li>Independent users, integrations, or publications, if available.</li></ul><p>The repository tree shows tests covering conversion, canonical encoding and
-vectors, parsing/rendering, YAML, HDF5, and external sources. Report test
-results and fixtures only after running and inspecting them; filenames alone
-are not validation evidence.</p><p>If Julia conformance is completed, include independently generated matching
-canonical bytes and fingerprints, all portable Array types, and bidirectional
-HDF5 fixtures. Text layout and HDF5 file bytes need not match. Report completed
-coverage and remaining limitations explicitly.</p><h2 id=6-ai-usage-disclosure>6. AI usage disclosure</h2><p>Prepare an accurate account of AI assistance with software development,
-documentation, or manuscript preparation, together with the human review and
-verification performed. This documentation and outline have received AI
-assistance. The implementation, tests, specifications, and documentation have also
-received AI assistance during this redesign. Record the reviewed scope and
-the actual human checks performed before preparing submission text.</p><p>Record the tools and available version information when preparing the
-submission. Do not describe syntax-only checks as execution, interoperability
-validation, or scientific verification.</p><h2 id=7-acknowledgements>7. Acknowledgements</h2><p>Identify contributors, institutional support, and funding actually associated
-with the software. Obtain the correct grant identifiers and attribution before
-submission.</p><h2 id=8-references>8. References</h2><p>Prepare software and primary-source citations for the closest alternatives,
-the numerical/storage facilities discussed, and scientific applications used
-as evidence. Link the versioned DataCanon specifications and archive the
-software release associated with the paper.</p><h2 id=version-1-draft-revisions>Version 1 draft revisions</h2><p>The numerical redesign replaces Coefficient with Sum, Product, Power, and
-Quotient. Multiset and Bytes are now first-class DCTs. Fixed integer and Unicode
-fields use direct payload encodings; affected earlier draft bytes and
-fingerprints are incompatible with the current encoding.</p><p>Use the finalized Version 1 encodings for publication fixtures. Do not mix
-results from incompatible draft revisions. Tests should cover the full
-numerical structure, both longhand and shorter text forms, byte payloads,
-multisets, and transfers preserving the current canonical bytes.</p><h2 id=supporting-material-and-remaining-work>Supporting material and remaining work</h2><p>The documentation should provide the material omitted from the short paper:
-full type definitions, byte encodings, fixed conformance vectors, API
-signatures, numerical Python behavior, longhand rendering, preprocessing
-details, and persistence examples.</p><p>Before finalizing the manuscript, resolve or clearly delimit the portability
-items already recorded in the seven drafts, especially NumPy/PyYAML reference
-behavior, preprocessing numerical semantics, and HDF5 datatype validation.
-Confirm the package&rsquo;s license, release, installation instructions, tests,
-contribution guidance, and cited scientific evidence against the actual
-repository. The checklist identifies items to inspect, not claims that they are currently
-missing.</p><p>A longer technical treatment could develop the full model and conformance
-results separately. The JOSS paper should stay centered on the research
-software, its design choices, and demonstrated usefulness.</p></div></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
+order and prescribed big-endian multibyte representations, independently
+of native strides or layout. Nested Lists remain available for
+individually typed constituent data.</p><p>Distinguish the fully specified Core Array identity from Shorthand
+inference and conversion rules where implementation-reference behavior
+remains relevant.</p><h3 id=order-belongs-to-the-data-model>Order belongs to the data model</h3><p>Mapping entry order participates in identity; UnorderedMapping entry
+order does not. Likewise, Lists and Tuples are ordered, while Sets are
+unordered. Multiset retains repeated members; numerical collection types
+likewise retain the multiplicity and nesting prescribed by Core.
+Canonical binary encoding orders unordered constituents according to the
+finalized Core rules. That encoding order is not a numerical comparison
+or a mandated text-rendering order.</p><h3 id=text-and-conventional-type-conversion>Text and conventional-type conversion</h3><p>One strict Shorthand grammar accepts explicit constructors and shorter
+forms. Longhand uses constructors for structured values and ordinary
+literals where specified by Shorthand. The boundary is syntactic rather
+than simply the Core type classification. Formatting choices preserve
+DCI identity.</p><p>Define conventional types as types used directly for data and
+computation in a programming language, including built-in,
+library-provided, and user-defined types. The conversion interface
+constructs instances of conventional types from DCIs and constructs DCIs
+from supported conventional objects. A <code>ListDC</code> object and a
+conventional <code>list</code> object are both Python objects, but their types and
+equality contracts differ.</p><p>Existing conventional types include <code>list</code>, <code>Fraction</code>, and NumPy
+arrays. The reference implementation supplies new conventional types
+where suitable types are missing. Arithmetic belongs to the numerical
+conventional types, not to the DCT identity rules. Conversion through
+conventional objects need not preserve an arbitrary DCI&rsquo;s identity.</p><p>Present conventional arithmetic as an optional companion interface in
+the paper, without introducing a separately named arithmetic facility.
+The seventh specification, Conventional Types, defines common behavior
+for independent implementations, with conformance declared per type.
+Core does not require that support. Link the Conventional Types guide
+for worked examples and the companion specification for its behavioral
+requirements and comparison limits.</p><h3 id=contained-and-external-payloads>Contained and external payloads</h3><p>Bytes stores an opaque byte sequence directly in the DCI. A Record can
+hold its interpretation metadata. This permits a canonical binary file
+to contain both structured scientific data and binary payloads without
+companion files. External references serve the distinct purpose
+described below.</p><h3 id=external-payloads-and-persistence>External payloads and persistence</h3><p>ExternalFile and ExternalArray retain relative paths and content digests
+as semantic metadata. ExternalArray also carries portable type and
+shape. External bytes are not needed to decode or fingerprint their
+metadata.</p><p>Source location, cached bytes, and retrieval state are nonsemantic.
+Retrieval verifies digests and, for ExternalArray, element-stream
+validity. Complete packages preserve those references while placing
+payloads in directory-backed storage or embedding them in HDF5.</p><h3 id=seven-specifications-and-the-python-implementation>Seven specifications and the Python implementation</h3><p>Summarize the specification boundaries:</p><hr><p>Specification Responsibility</p><hr><p>Core DCTs, equality, canonical bytes,
+and fingerprints</p><p>Shorthand Strict text parsing and
+identity-preserving rendering</p><p>Shorthand Preprocessing Optional compact Lists,
+substitutions, and explicit
+<code>eval(...)</code></p><p>YAML Interchange Native YAML conversion and the <code>$</code>
+convention</p><p>HDF5 Portable object layout, numerical
+datasets, and embedded payloads</p><p>Persistence Format selection, resource
+namespaces, verification, and
+transfer</p><h2 id=contracts>Conventional Types Optional conventional construction,
+arithmetic, comparison,
+collections, and conversion
+contracts</h2><p>Connect the contracts to explicit conversion, encoding/decoding,
+parser/renderer, and persistence boundaries. The DCTs and DCI equality
+are language-independent. The optional Conventional Types companion
+specifies a common behavioral foundation. Language bindings document
+their supported types, interfaces, additional simplifications, and
+conversion choices. Python classes are examples of a binding rather than
+normative DCT definitions.</p><p>Core does not perform computation. Optional preprocessing performs
+explicitly requested arithmetic before strict parsing; it does not alter
+DCT identity.</p><h2 id=5-research-impact-statement>5. Research impact statement</h2><p>Build this section from specific evidence available at submission time.
+Distinguish actual use from proposed applications.</p><p>Possible evidence to collect includes:</p><ul><li>A documented Principia Materia integration showing which scientific
+objects use DataCanon and what workflow it supports.</li><li>Reproducible crystallographic or symmetry examples using exact
+structured Complex values and typed Arrays.</li><li>Verified format transfers preserving canonical bytes and
+fingerprints.</li><li>Benchmarks for representative numerical workloads, if performance is
+a material reason to adopt the package.</li><li>Independent users, integrations, or publications, if available.</li></ul><p>The repository tree shows tests covering conversion, canonical encoding
+and vectors, parsing/rendering, YAML, HDF5, and external sources. Report
+test results and fixtures only after running and inspecting them;
+filenames alone are not validation evidence.</p><p>If independent language conformance is completed, include independently
+generated matching canonical bytes and fingerprints, all portable Array
+types, and bidirectional HDF5 fixtures. Text layout and HDF5 file bytes
+need not match. Report completed coverage and remaining limitations
+explicitly.</p><h2 id=6-ai-usage-disclosure>6. AI usage disclosure</h2><p>Prepare an accurate account of AI assistance with software development,
+documentation, or manuscript preparation, together with the human review
+and verification performed. This documentation and outline have received
+AI assistance. The implementation, tests, specifications, and
+documentation have also received AI assistance during this redesign.
+Record the reviewed scope and the actual human checks performed before
+preparing submission text.</p><p>Record the tools and available version information when preparing the
+submission. Do not describe syntax-only checks as execution,
+interoperability validation, or scientific verification.</p><h2 id=7-acknowledgements>7. Acknowledgements</h2><p>Identify contributors, institutional support, and funding actually
+associated with the software. Obtain the correct grant identifiers and
+attribution before submission.</p><h2 id=8-references>8. References</h2><p>Prepare software and primary-source citations for the closest
+alternatives, the numerical/storage facilities discussed, and scientific
+applications used as evidence. Link the versioned DataCanon
+specifications and archive the software release associated with the
+paper.</p><h2 id=version-1-draft-revisions>Version 1 draft revisions</h2><p>Keep this section synchronized with the final Version 1 specification.
+The numerical model and DCT inventory have changed during development,
+so publication fixtures must use the finalized encodings and terminology
+rather than incompatible earlier drafts.</p><p>Do not mix results from incompatible draft revisions. Tests should cover
+the full finalized numerical structure, longhand and shorter text forms,
+byte payloads, multisets, and transfers preserving the current canonical
+bytes.</p><h2 id=supporting-material-and-remaining-work>Supporting material and remaining work</h2><p>The documentation should provide the material omitted from the short
+paper: full type definitions, byte encodings, fixed conformance vectors,
+API signatures, numerical conventional-type behavior, longhand
+rendering, preprocessing details, and persistence examples.</p><p>Before finalizing the manuscript, resolve or clearly delimit the
+portability items already recorded in the seven drafts, especially
+implementation-reference behavior, preprocessing numerical semantics,
+and HDF5 datatype validation. Confirm the package&rsquo;s license, release,
+installation instructions, tests, contribution guidance, and cited
+scientific evidence against the actual repository. The checklist
+identifies items to inspect, not claims that they are currently missing.</p><p>A longer technical treatment could develop the full model and
+conformance results separately. The JOSS paper should stay centered on
+the research software, its design choices, and demonstrated usefulness.</p></div></div></main></div></div><footer class="td-footer row d-print-none"><div class=container-fluid><div class="row mx-md-2"><div class="td-footer__left col-6 col-sm-4 order-sm-1"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title="User mailing list" aria-label="User mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="User mailing list"><i class="fa fa-envelope"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Twitter aria-label=Twitter><a target=_blank rel=noopener href=https://example.org/twitter aria-label=Twitter><i class="fab fa-twitter"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Stack Overflow" aria-label="Stack Overflow"><a target=_blank rel=noopener href=https://example.org/stack aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a></li></ul></div><div class="td-footer__right col-6 col-sm-4 order-sm-3"><ul class=td-footer__links-list><li class=td-footer__links-item data-bs-toggle=tooltip title=GitHub aria-label=GitHub><a target=_blank rel=noopener href=https://github.com/google/docsy aria-label=GitHub><i class="fab fa-github"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title=Slack aria-label=Slack><a target=_blank rel=noopener href=https://example.org/slack aria-label=Slack><i class="fab fa-slack"></i></a></li><li class=td-footer__links-item data-bs-toggle=tooltip title="Developer mailing list" aria-label="Developer mailing list"><a target=_blank rel=noopener href=https://example.org/mail aria-label="Developer mailing list"><i class="fa fa-envelope"></i></a></li></ul></div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2"><span class=td-footer__copyright>&copy;
 2018&ndash;2026
 <span class=td-footer__authors>Docsy Authors | <a href=https://creativecommons.org/licenses/by/4.0>CC BY 4.0</a> |</span></span><span class=td-footer__all_rights_reserved>All Rights Reserved</span><span class=ms-2><a href=https://policies.google.com/privacy target=_blank rel=noopener>Privacy Policy</a></span></div></div></div></footer></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css integrity="sha512-r2+FkHzf1u0+SQbZOoIz2RxWOIWfdEzRuYybGjzKq18jG9zaSfEy9s3+jMqG/zPtRor/q4qaUCYQpmSjTw8M+g==" crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js integrity="sha512-INps9zQ2GUEMCQD7xiZQbGUVnqnzEvlynVy6eqcTcHN4+aQiLo9/uaQqckDpdJ8Zm3M0QBs+Pktg4pz0kEklUg==" crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js integrity="sha512-YJVxTjqttjsU3cSvaTRqsSl0wbRgZUNF+NGGCgto/MUbIvaLdXQzGTCQu4CvyJZbZctgflVB0PXw9LLmTWm5/w==" crossorigin=anonymous onload=renderMathInElement(document.body,null)></script><script src=/data-canon/js/main.min.d287f9c9849d645c20f888fba75206253abddb674477c502feb0622e3b85cab0.js integrity="sha256-0of5yYSdZFwg+Ij7p1IGJTq922dEd8UC/rBiLjuFyrA=" crossorigin=anonymous></script><script defer src=/data-canon/js/click-to-copy.min.73478a7d4807698aed7e355eb23f9890ca18fea3158604c8471746d046702bad.js integrity="sha256-c0eKfUgHaYrtfjVesj+YkMoY/qMVhgTIRxdG0EZwK60=" crossorigin=anonymous></script><script src=/data-canon/js/tabpane-persist.js></script></body></html>
