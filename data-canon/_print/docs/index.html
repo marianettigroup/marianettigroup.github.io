@@ -2129,7 +2129,17 @@ comparison rather than final publication claims.</p><table><thead><tr><th>Capabi
 choices for different purposes. The literature review should identify
 which DataCanon distinctions are unusual or useful for scientific
 software without claiming that canonicalization, portability, or
-structured data are unique inventions.</p><h3 id=comparison-with-document--nosql-systems>Comparison with document / NoSQL systems</h3><p>Use document databases as a particularly intuitive comparison. DataCanon
+structured data are unique inventions.</p><h3 id=cbor-as-a-data-model-and-binary-encoding>CBOR as a data model and binary encoding</h3><p>Treat CBOR as a particularly important comparison, but distinguish its
+underlying data model from its binary encoding conventions. CBOR can
+represent additional scientific structures through tags and prescribed
+conventions. DataCanon&rsquo;s contribution is not that CBOR is incapable of
+representing its DCTs; it is the explicit scientific type system,
+constituent structure, equality contract, and canonical identity.</p><p>A CBOR-based encoding of DCIs would remain possible without changing the
+DataCanon semantic model. However, it would require a fixed mapping of
+DCTs to CBOR values, rules for structured numerical types and Arrays,
+and a frozen deterministic encoding profile. Avoid claiming that CBOR
+cannot meet these requirements. Instead, distinguish the semantic need
+for DataCanon from the engineering choice of canonical byte encoding.</p><h3 id=comparison-with-document--nosql-systems>Comparison with document / NoSQL systems</h3><p>Use document databases as a particularly intuitive comparison. DataCanon
 shares the document-model intuition that a scientifically meaningful
 object may naturally be one recursively structured object rather than
 something that must first be decomposed into relational tables.</p><p>The abstraction level is nevertheless different. A document database is
@@ -2171,7 +2181,20 @@ constituents; canonical encoding represents that equality injectively:</p><div c
 </span></span></code></pre></div><p>Fingerprinting is:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>F(x) = SHA-256(E(x))
 </span></span></code></pre></div><p>Shorthand formatting does not determine identity. Distinguish exact
 canonical byte equality from digest comparisons, which rely on collision
-resistance.</p><h3 id=scientific-types-and-machine-arrays>Scientific types and machine Arrays</h3><p>Version 1 defines the DCTs in the Core specification. In the manuscript,
+resistance.</p><h3 id=rationale-for-the-canonical-byte-encoding>Rationale for the canonical byte encoding</h3><p>Explain why Core specifies its own canonical bytes instead of adopting
+CBOR&rsquo;s binary encoding or a deterministic CBOR profile. The present
+encoding follows the DCT structure directly: a type identifier and a
+prescribed payload, with shared rules for lengths, constituents, and
+machine values. This favors a small, auditable specification and direct
+independent implementations over introducing another encoding layer.</p><p>Canonical bytes are normative to DataCanon identity, not an incidental
+serialization choice. Once Version 1 is stable, changing the encoding
+would change fingerprints even if DCI equality remained unchanged.
+An alternative CBOR-based encoding could preserve the same semantics,
+but would require an equally precise and version-stable byte contract.</p><p>Acknowledge the potential advantages of CBOR-style compact headers and
+established encoding tools, particularly for small nested objects. Do
+not claim that the current encoding is smaller or faster without
+measurements. The justification is presently architectural minimalism,
+clarity, and direct control, not demonstrated performance superiority.</p><h3 id=scientific-types-and-machine-arrays>Scientific types and machine Arrays</h3><p>Version 1 defines the DCTs in the Core specification. In the manuscript,
 highlight composable numerical structures, Complex, Record, Multiset,
 Bytes, Array, and external references rather than explaining every type.
 Verify the final DCT count against the publication release rather than
@@ -2257,7 +2280,17 @@ filenames alone are not validation evidence.</p><p>If independent language confo
 generated matching canonical bytes and fingerprints, all portable Array
 types, and bidirectional HDF5 fixtures. Text layout and HDF5 file bytes
 need not match. Report completed coverage and remaining limitations
-explicitly.</p><h2 id=6-ai-usage-disclosure>6. AI usage disclosure</h2><p>Prepare an accurate account of AI assistance with software development,
+explicitly.</p><h3 id=deferred-canonical-encoding-evaluation>Deferred canonical-encoding evaluation</h3><p>Record a possible future comparison of the current encoding with a
+CBOR-inspired alternative, holding the DCT model and equality rules
+fixed. Compare encoded size, encoding and decoding speed, compressed
+size, and specification/implementation complexity. Cover every DCT,
+small and deeply nested objects, contained Arrays across dtype, rank,
+and size, ExternalArrays, and representative scientific datasets. Do not
+assume that large Arrays are always externalized or that any one
+scientific workload is representative.</p><p>This evaluation is worthwhile but is not a prerequisite for completing
+the remaining Version 1 implementation work. Revisit the byte encoding
+before finalizing the canonical identity contract if evidence reveals a
+substantial benefit. Otherwise retain the simpler current design.</p><h2 id=6-ai-usage-disclosure>6. AI usage disclosure</h2><p>Prepare an accurate account of AI assistance with software development,
 documentation, or manuscript preparation, together with the human review
 and verification performed. This documentation and outline have received
 AI assistance. The implementation, tests, specifications, and
