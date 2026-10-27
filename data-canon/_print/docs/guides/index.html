@@ -1153,7 +1153,7 @@ produces <code>$ (1, 2)</code> instead of <code>$ ( 1, 2 )</code>. Padding does 
 indentation or the space separating <code>$</code> from its value. Fraction literals and
 other fixed forms keep their usual spelling. <code>--longhand</code>, <code>--layout</code>,
 <code>--custom-layout</code>, and <code>--indent</code> remain Shorthand-only options and are rejected
-for YAML output.</p><h2 id=read-yaml>Read YAML</h2><p>A <code>.yaml</code> or <code>.yml</code> input suffix selects YAML automatically. The default output
+for YAML output.</p><h2 id=read-or-write-yaml>Read or write YAML</h2><p>A <code>.yaml</code> or <code>.yml</code> input suffix selects YAML automatically. The default output
 remains Shorthand, so conversion needs no output option:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc structure.yaml
 </span></span><span style=display:flex><span>dc structure.yaml --dump structure.dcb
 </span></span><span style=display:flex><span>dc structure.yaml --yaml --align left
@@ -1163,7 +1163,8 @@ remains Shorthand, so conversion needs no output option:</p><div class=highlight
 selection for stdin or a named file. Input and output choices are independent;
 <code>--yaml</code> always selects output, never input. The CLI does not guess format from
 text contents. Canonical binary and HDF5 input still require filenames and their
-existing readers.</p><p>YAML <code>$</code> escapes always use strict Shorthand; they never run preprocessing.
+existing readers.</p><p>YAML output uses block-style Lists and Mappings. Native multiline Strings use YAML literal block scalars where supported by PyYAML, with quoted fallback when necessary to preserve their contents. Multiline <code>$</code> escapes likewise use literal block scalars when possible. The <code>--fold-string N</code> option enables width-controlled folded scalars for eligible long single-line Strings. YAML&rsquo;s native folding and chomping rules apply; these differ from DataCanon Shorthand block-string rules.
+YAML <code>$</code> escapes always use strict Shorthand; they never run preprocessing.
 <code>--strict</code> applies only to Shorthand input and is rejected with YAML input.
 External paths in a YAML file resolve relative to its containing directory;
 YAML received on stdin uses the current working directory. Metadata reads do
@@ -1221,7 +1222,26 @@ coordinates containing Sums or Products. For example:</p><div class=highlight><p
 </span></span></code></pre></div><p>Rendering options affect textual representation, not DCI identity. The options also apply
 to values printed by <code>--get</code>. They are rejected with <code>--count</code>, <code>--fingerprint</code>,
 and binary or HDF5 output. YAML accepts alignment and padding as described above;
-Shorthand layout options do not apply to YAML.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply a bare name for a String key. For example, find the titanium positions
+Shorthand layout options do not apply to YAML.</p><h3 id=render-multiline-and-folded-strings>Render multiline and folded Strings</h3><p>By default, standard Shorthand layout renders Strings containing LF characters as literal blocks when possible:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  &#34;message&#34;:
+</span></span><span style=display:flex><span>    &#34;&#34;&#34;
+</span></span><span style=display:flex><span>    First line
+</span></span><span style=display:flex><span>    Second line
+</span></span><span style=display:flex><span>    &#34;&#34;&#34;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Literal blocks preserve the String&rsquo;s actual line breaks and whitespace. Strings that cannot safely use block syntax retain their ordinary quoted representation.</p><p>For long Strings without semantic line breaks, use <code>--fold-string N</code> to request physical wrapping at a preferred width of N characters:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc flight_log.dcs --fold-string <span style=color:#0000cf;font-weight:700>80</span>
+</span></span><span style=display:flex><span>dc flight_log.dcs --dump readable.dcs --fold-string <span style=color:#0000cf;font-weight:700>80</span>
+</span></span></code></pre></div><p>The renderer uses folded blocks when it can do so without changing the String DCI:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  &#34;description&#34;:
+</span></span><span style=display:flex><span>    &#34;&#34;&#34;&gt;
+</span></span><span style=display:flex><span>    This is a long description that can be wrapped across
+</span></span><span style=display:flex><span>    physical lines without introducing semantic newlines
+</span></span><span style=display:flex><span>    into the underlying String.
+</span></span><span style=display:flex><span>    &#34;&#34;&#34;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>The requested width is a preference, not a strict maximum. Long words and significant whitespace may require longer lines or fallback to quoted rendering.</p><p>Block Strings are emitted only under <code>standard</code> Shorthand layout. The <code>semi-compact</code>, <code>compact</code>, and <code>inline</code> policies retain quoted Strings with escapes. Enclosing inline layouts take precedence over child rendering preferences.</p><p>The same <code>--fold-string</code> option is available for YAML output:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc flight_log.dcs --yaml --fold-string <span style=color:#0000cf;font-weight:700>80</span>
+</span></span><span style=display:flex><span>dc flight_log.dcs --dump readable.yaml --fold-string <span style=color:#0000cf;font-weight:700>80</span>
+</span></span></code></pre></div><p>YAML uses its native literal (<code>|</code>) and folded (<code>></code>) scalar syntax. PyYAML may choose quoted scalars when block formatting is unsuitable, particularly when significant trailing whitespace is present. Width-controlled folding is applied selectively to eligible Strings, not globally to all YAML output.</p><p>These options affect textual presentation only. Parsing the output recovers the same DCI and therefore the same canonical bytes and fingerprint.</p><h2 id=find-a-mapping-key>Find a mapping key</h2><p>Supply a bare name for a String key. For example, find the titanium positions
 in the nested <code>basis_atoms</code> Mapping:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get Ti
 </span></span></code></pre></div><p>The search visits Mappings and UnorderedMappings throughout the DCI, so it finds
 <code>"Ti"</code> inside <code>"basis_atoms"</code>. It also visits mappings nested in collections,
@@ -1265,7 +1285,7 @@ Equal repeated matches remain separate, and List-valued matches are not flattene
 as keys. For stdin, omit the filename or use <code>-</code>. Another option ends the key
 sequence:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc rutile.dcb --get basis_atoms O --yaml --align
 </span></span></code></pre></div><p>Pipelines remain useful, but a second <code>dc --get</code> searches recursively again.
-A multi-key <code>--get</code> follows direct entries after the first recursive search.</p><h2 id=select-or-slice-a-list-or-tuple>Select or slice a List or Tuple</h2><p><code>--index SELECTOR [SELECTOR ...]</code> applies integers or slices successively.
+A multi-key <code>--get</code> follows direct entries after the first recursive search.</p><h2 id=select-or-slice-a-list-tuple-or-array>Select or slice a List, Tuple, or Array</h2><p><code>--index SELECTOR [SELECTOR ...]</code> applies integers or slices successively.
 Integer indices are zero-based and accept negative values from the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>0</span>
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index<span style=color:#ce5c00;font-weight:700>=</span>-1
 </span></span><span style=display:flex><span><span style=color:#204a87>echo</span> <span style=color:#4e9a06>&#39;[(1, 2), (3, 4)]&#39;</span> <span style=color:#000;font-weight:700>|</span> dc --index <span style=color:#0000cf;font-weight:700>1</span> <span style=color:#0000cf;font-weight:700>0</span>
@@ -1275,10 +1295,13 @@ the final result after the entire key chain:</p><div class=highlight><pre tabind
 </span></span></code></pre></div><p>If there are multiple final matches, <code>--index</code> selects one member of the
 aggregate List; it does not index each match individually. A single List-valued
 match is indexed directly. Selection order is always <code>--get</code>, then <code>--index</code>,
-then rendering, independently of where the options occur on the command line.</p><p>Only List and Tuple and Array DCIs support this operation. Strings, Sets,
-Multisets, and Mappings are not indexed by this option. An incompatible target
-or an out-of-range integer index reports an error; malformed selectors are
-command-line usage errors. Empty sequences have no valid indices.</p><p>Shorthand formatting and YAML output options apply to the selected DCI.
+then rendering, independently of where the options occur on the command line.</p><p>For Lists and Tuples, integer indexing selects a contained DCI. For Arrays,
+integer indexing selects along the first dimension. If the result is an Array,
+it is returned as an Array DCI; if the result is an Array element, that value
+is converted to a DCI. Strings, Sets, Multisets, and Mappings are not indexed.
+An incompatible target or an out-of-range integer index reports
+an error; malformed selectors are command-line usage errors. Empty sequences
+have no valid indices.</p><p>Slicing operates along the first dimension and preserves the DCT: a List slice is a List, a Tuple slice is a Tuple, and an Array slice is an Array. Out-of-range bounds are clipped, and slices may produce an empty result. A zero step or malformed slice is a usage error before input is loaded. Subsequent selectors operate on the slice result itself, without distributing across its members.</p><p>Shorthand formatting and YAML output options apply to the selected DCI.
 <code>--index</code> cannot be combined with <code>--dump</code>, <code>--count</code>, or <code>--fingerprint</code>.
 Each index is applied to the preceding result: <code>--index 1 0</code> selects item 1,
 then item 0 from that value. Every intermediate target must be a List or Tuple;
