@@ -1424,7 +1424,16 @@ DCI&rsquo;s canonical bytes. It is independent of Shorthand layout and HDF5 stor
 layout. It is not a hash of the input file&rsquo;s representation bytes, except when
 that file is itself the raw canonical <code>.dcb</code> encoding.</p><p>Displaying, searching, and fingerprinting external DCIs use their metadata.
 Metadata operations do not retrieve external payloads. Dumping a complete package does require
-those resources.</p><h2 id=options-and-errors>Options and errors</h2><p>Operations are applied in command-line order; they are not restricted to a
+those resources.</p><h2 id=check-equality-between-two-dci>Check equality between two DCI</h2><p><code>--is-equal FILE</code> compares the <strong>current pipeline DCI</strong> with the DCI read
+from exactly one file, using DataCanon equality. It prints <code>true</code> or <code>false</code>;
+both results are successful operations (exit status zero). Unlike a manual
+fingerprint comparison, this is a regular pipeline step: the Boolean result
+becomes the input to any subsequent operation.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>dc first.dcs --is-equal second.dcs
+</span></span><span style=display:flex><span>dc first.dcs --roundtrip --is-equal second.dcs
+</span></span><span style=display:flex><span>dc first.dcs --is-equal second.dcs --fingerprint
+</span></span></code></pre></div><p>Operations before <code>--is-equal</code> transform only the first DCI. The comparison
+file is read without those transformations. <code>--is-equal</code> accepts exactly one
+filename and does not compare the rendered text of the files.</p><h2 id=options-and-errors>Options and errors</h2><p>Operations are applied in command-line order; they are not restricted to a
 single query or transformation per invocation. The <code>render</code> child schema
 controls text output, and <code>--dump FILE</code> writes the final result to a supported
 DataCanon file. Output actions are handled separately from transformations.</p><p>Supplying <code>-</code> as the filename reads text from standard input
