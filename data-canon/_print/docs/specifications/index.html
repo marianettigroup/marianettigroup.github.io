@@ -99,15 +99,16 @@ number, the base of the natural logarithm. No decimal approximation is stored.</
 primitive DCT: its prescribed name is direct information, not a String DCI.
 A Constant is never equal to a Float containing an approximation of its value.
 No other names, aliases, user-defined constants, or physical constants are
-included in Version 1.</p><h2 id=numerical-instances>Numerical Instances</h2><p>A <strong>Numerical DCI</strong> is an Integer, Float, Fraction, Constant, Product, Power,
-Quotient, Array, Sum, or OrderedProduct DCI. Sum and OrderedProduct operands
-MUST themselves be Numerical DCIs. Boolean and Complex are not members of
-this category. A Boolean Array is still an Array DCI; category membership does
-not promise that a conventional arithmetic implementation supports it.</p><p>A <strong>Scalar Numerical DCI</strong> is one of:</p><ul><li>an Integer, Float, Fraction, or Constant DCI;</li><li>a Product, Power, or Quotient DCI, whose invariants require scalar constituents;</li><li>a Sum or OrderedProduct DCI whose every operand is a Scalar Numerical DCI.</li></ul><p>An empty Sum or OrderedProduct satisfies the scalar classification. An Array,
+included in Version 1.</p><h2 id=numerical-instances>Numerical Instances</h2><p>A <strong>Numerical DCI</strong> is an Integer, Float, Fraction, Constant, Complex, Product,
+Power, Quotient, Array, Sum, or OrderedProduct DCI. Sum and OrderedProduct
+operands MUST themselves be Numerical DCIs. Boolean is outside this category.
+A Boolean Array is still an Array DCI; category membership does
+not promise that a conventional arithmetic implementation supports it.</p><p>A <strong>Scalar Numerical DCI</strong> is one of:</p><ul><li>an Integer, Float, Fraction, Constant, or Complex DCI;</li><li>a Product, Power, or Quotient DCI, whose invariants require scalar constituents;</li><li>a Sum or OrderedProduct DCI whose every operand is a Scalar Numerical DCI.</li></ul><p>An empty Sum or OrderedProduct satisfies the scalar classification. An Array,
 including a rank-zero Array, does not. Classification depends on constituent
 structure, without evaluating values or inferring ranks or shapes of results.
 For example, a Sum containing an Array through a nested OrderedProduct is not
-scalar, regardless of the Array&rsquo;s shape or the factors&rsquo; mathematical values.</p><p>The categories specify permitted constituent DCIs; neither is an additional
+scalar, regardless of the Array&rsquo;s shape or the factors&rsquo; mathematical values.</p><p>A <strong>Real Scalar Numerical DCI</strong> is a Scalar Numerical DCI whose constituent
+tree contains no Complex DCI, including at the root.</p><p>The categories specify permitted constituent DCIs; neither is an additional
 DCT. Scalar structural validity does not certify that an interpretation is
 mathematically defined or real. Types listed here may be defined later.</p><h2 id=atomic-types>Atomic Types</h2><p>An <strong>atomic DCT</strong> has a fixed set of named fields and at least one constituent
 DCI. Fields may contain directly specified information or constituent DCIs,
@@ -128,7 +129,7 @@ constituents. This draft imposes numerical constituent-type restrictions but
 no nonzero-denominator invariant. Structural validity does not certify that
 the mathematical division is defined. Any stronger denominator restriction
 must be specified explicitly as a DCT invariant.</p><hr><h3 id=complex>Complex</h3><p>The Complex DCT represents a structured complex number consisting of a real
-component and an imaginary component.</p><p>A Complex DCI consists of</p><ul><li>a <strong>real</strong> component, and</li><li>an <strong>imaginary</strong> component.</li></ul><p>Each component MUST be a Scalar Numerical DCI.</p><p>Two Complex DCIs are equal if and only if their corresponding components are
+component and an imaginary component.</p><p>A Complex DCI consists of</p><ul><li>a <strong>real</strong> component, and</li><li>an <strong>imaginary</strong> component.</li></ul><p>Each component MUST be a Real Scalar Numerical DCI.</p><p>Two Complex DCIs are equal if and only if their corresponding components are
 equal.</p><p>Because instances of different DCTs are never equal, the DCT of each component
 participates in Complex identity.</p><p>DataCanon does not convert Complex components between numerical DCTs or
 otherwise mathematically simplify them.</p><h2 id=composite-types>Composite Types</h2><p>A <strong>composite DCT</strong> has variable-size constituent structure.</p><p>The organization and permitted contents of that structure are defined by the
@@ -603,7 +604,7 @@ resulting DCI, whether or not it was written explicitly.</p><h2 id=quotient>Quot
 an optional trailing comma is permitted. The parser performs no division,
 cancellation, or denominator rationalization. Fraction literal syntax remains
 unchanged and constructs Fraction, not Quotient.</p><h2 id=complex>Complex</h2><p>A Complex is written:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(real, imaginary)
-</span></span></code></pre></div><p>Each component MUST parse to a Scalar Numerical DCI. The two components retain their DCTs and their individual identities.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
+</span></span></code></pre></div><p>Each component MUST parse to a Real Scalar Numerical DCI. The two components retain their DCTs and their individual identities.</p><p>Example:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex(1/2, 1/2 * sqrt(3))
 </span></span></code></pre></div><p>This notation is distinct from the special complex-number syntax used <strong>inside Arrays</strong>.</p><h2 id=list-and-tuple>List and Tuple</h2><p>A List uses square brackets or <code>list(...)</code>; a Tuple uses parentheses or
 <code>tuple(...)</code>. Constructor arguments are the items themselves, rather than a
 single collection to convert. Elements are arbitrary DCIs separated by commas.
@@ -873,8 +874,8 @@ reduced and nested base structure MUST be preserved.</p><h2 id=quotient>Quotient
 preserve their roles and structure without division or simplification. The
 Core Quotient invariants determine validity; HDF5 introduces no additional
 mathematical denominator check.</p><h2 id=complex>Complex</h2><p>A Complex is a group with <code>kind = "complex"</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>complex/
-</span></span><span style=display:flex><span>├── real            Scalar Numerical DCI
-</span></span><span style=display:flex><span>└── imaginary       Scalar Numerical DCI
+</span></span><span style=display:flex><span>├── real            Real Scalar Numerical DCI
+</span></span><span style=display:flex><span>└── imaginary       Real Scalar Numerical DCI
 </span></span></code></pre></div><p>The real and imaginary components are themselves complete DCI representations. A Complex DCI is distinct from an Array element of a complex Array type.</p><h1 id=composite-collections>Composite collections</h1><h2 id=list-tuple-and-set>List, Tuple, and Set</h2><p>List, Tuple, and Set DCIs use groups whose <code>kind</code> values are respectively <code>list</code>, <code>tuple</code>, and <code>set</code>. Each contains indexed child DCIs named <code>0</code>, <code>1</code>, and so forth.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>collection/            kind = &#34;list&#34;, &#34;tuple&#34;, or &#34;set&#34;
 </span></span><span style=display:flex><span>├── 0                  DCI
 </span></span><span style=display:flex><span>├── 1                  DCI
@@ -1087,6 +1088,10 @@ Product, Power, Quotient, and Constant objects, plus recursively scalar Sum
 and OrderedProduct objects. Complex numbers are handled separately. Sum and
 OrderedProduct also accept numerical Arrays and array-valued expressions.
 Product, Power, Quotient, and ComplexNumber components remain scalar-only.
+The Python reference binding can also store complex-bearing Sum, Product,
+OrderedProduct, Power, and Quotient expressions for conversion to and from DCIs.
+This structural support does not specify evaluation or exact comparison for
+these expressions, including branch selection for complex powers.
 Booleans MUST NOT be accepted as arithmetic operands merely because a language
 treats them as integers.</p><p>The portable scalar domains are mathematical integers, rational numbers with
 positive denominators, and finite IEEE-754 binary64 numbers. A binding SHOULD
